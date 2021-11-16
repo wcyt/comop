@@ -1,9 +1,11 @@
 package dao;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
+
+import tera.CommandFactory;
 
 
 public abstract class AbstractDaoFactory {
@@ -14,7 +16,9 @@ public abstract class AbstractDaoFactory {
 
 		try {
 			// プロパティファイルを読み込む
-			prop.load(new FileInputStream("c:/j2ee4.1/dao.properties"));
+			InputStream file = CommandFactory.class.getClassLoader().getResourceAsStream("dao.properties");
+			prop.load(file);
+
 
 			String name = prop.getProperty("dao");
 
