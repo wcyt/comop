@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import tera.CommandFactory;
+import command.CommandFactory;
 
 
 public abstract class AbstractDaoFactory {

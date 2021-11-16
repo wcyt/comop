@@ -1,6 +1,6 @@
 package command.admin;
 
-import tera.AbstractCommand;
+import command.AbstractCommand;
 import tera.ResponseContext;
 
 public class AddColorCommand extends AbstractCommand {
