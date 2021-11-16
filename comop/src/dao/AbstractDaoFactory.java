@@ -14,7 +14,7 @@ public abstract class AbstractDaoFactory {
 
 		try {
 			// プロパティファイルを読み込む
-			prop.load(new FileInputStream("C:\\pleiades-2019-12-java-win-64bit-jre_20200213\\pleiades\\workspace\\j2ee4/dao.properties"));
+			prop.load(new FileInputStream("c:/j2ee4.1/dao.properties"));
 
 			String name = prop.getProperty("dao");
 
