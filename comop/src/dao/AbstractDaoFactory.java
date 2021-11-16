@@ -44,5 +44,5 @@ public abstract class AbstractDaoFactory {
 		}
 		return factory;
 	}
-	public abstract ProductsDao getProductsDao();
+	//public abstract ProductsDao getProductsDao();
 }
