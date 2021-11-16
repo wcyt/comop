@@ -1,7 +1,7 @@
 package tera;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public abstract class CommandFactory {
@@ -12,7 +12,8 @@ public abstract class CommandFactory {
 
 		try {
 			// プロパティファイルを読み込む
-			prop.load(new FileInputStream("C:\\pleiades-2019-12-java-win-64bit-jre_20200213\\pleiades\\workspace\\j2ee4/commands.properties"));
+			InputStream file = CommandFactory.class.getClassLoader().getResourceAsStream("commands.properties");
+			prop.load(file);
 
 			// Classクラスのインスタンスを利用して対応するクラスのインスタンス化を行う
 			command = (AbstractCommand) Class.forName(prop.getProperty(requestContext.getCommandPath())).newInstance();

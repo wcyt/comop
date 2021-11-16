@@ -14,25 +14,3 @@ public abstract class AbstractCommand {
 
 	public abstract ResponseContext execute(ResponseContext responseContext);
 }
-
-
-//private Map<String,String> parameters;
-//private Object result;
-//
-//protected Map<String,String> getParameters() {
-//	return parameters;
-//}
-//
-//public void init(Map<String,String> parameters) {
-//	this.parameters = parameters;
-//}
-//
-//public Object getResult() {
-//	return result;
-//}
-//
-//protected void setResult(Object data) {
-//	this.result = data;
-//}
-//
-//public abstract String execute();
