@@ -5,6 +5,6 @@ public interface UserDAO {
 	public void changePassword(String user_id,String pass);
 	public void editUserInfo(User u);
 	public void lapseUser(String user_id);
-	public void updatePoint(String user_id,int point);
+	public void updatePoint(String user_id,String point);
 	public User getMyUserInfo(String user_id);
 }
