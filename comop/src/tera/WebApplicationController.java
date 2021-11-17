@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.AbstractCommand;
+import command.CommandFactory;
+
 public class WebApplicationController implements ApplicationController {
 	// RequestContextのFactoryMethod
 	public RequestContext getRequest(Object request) {
