@@ -5,15 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bean.User;
-
+import bean.UserBean;
 import dao.Connector;
 
 public class MySQLUserDAO implements UserDAO {
 	private PreparedStatement st = null;
 
 	//アカウントを作成
-	public void createAccount(User u) {
+	public void createAccount(UserBean u) {
 		try {
 			Connection cn = Connector.connect();
 
@@ -55,7 +54,7 @@ public class MySQLUserDAO implements UserDAO {
 
 	}
 	//ユーザー情報の編集
-	public void editUserInfo(User u) {
+	public void editUserInfo(UserBean u) {
 		try {
 			Connection cn = Connector.connect();
 
@@ -127,7 +126,7 @@ public class MySQLUserDAO implements UserDAO {
 		}
 	}
 	//自分のユーザー情報の取得
-	public User getMyUserInfo(String user_id) {
+	public UserBean getMyUserInfo(String user_id) {
 		try {
 			Connection cn = Connector.connect();
 
@@ -138,7 +137,7 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			User u = new User();
+			UserBean u = new UserBean();
 
 			u.setUser_id(rs.getString(1));
 			u.setName(rs.getString(2));
