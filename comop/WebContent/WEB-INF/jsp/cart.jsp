@@ -133,7 +133,6 @@
                 <a href="" class="flex justify-center pb-4 text-blue-400">ショッピングを続ける</a>
             </div>
         </div>
-
     </main>
     <!-- Main End -->
 </body>
