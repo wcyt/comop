@@ -2,8 +2,11 @@ package command.user;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
+import bean.UserBean;
 import command.AbstractCommand;
 import dao.AbstractDaoFactory;
+import dao.user.MySQLUserDAO;
+import tera.RequestContext;
 import tera.ResponseContext;
 
 class CreateAccountCommand  extends AbstractCommand {
@@ -21,19 +24,18 @@ class CreateAccountCommand  extends AbstractCommand {
 		String[] mails = reqc.getParameter("password");
 		String password = passwords[0];
 
-		User u = new User();
+		UserBean u = new UserBean();
 		u.setName(name);
 		u.setMail(mail);
 		u.setPass(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		UserDAO ud = factory.getUserDAO();
-		ud.addCart(u);
+		MySQLUserDAO msud = factory.getFactory();
+		msud.createAccount(u);
 
-		resc.setTarget("cart");
+		resc.setTarget("sineUpComplete");
 
 		return resc;
 
 	}
 }
-

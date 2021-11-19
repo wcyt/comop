@@ -1,17 +1,17 @@
 package command.user;
 
+import bean.UserBean;
 import command.AbstractCommand;
-import dao.user.UserDAO;
+import dao.user.MySQLUserDAO;
 import tera.ResponseContext;
 
 class GetUserInfoCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
-		User id;
-		UserDAO ud = new UserDAO();
-
-		resc.setResult(ud.getGetUserInfo(id));
+		UserBean u;
+		MySQLUserDAO msud = new MySQLUserDAO();
+		resc.setResult(msud.getUserInfo(u));
 
 		return resc;
 	}
