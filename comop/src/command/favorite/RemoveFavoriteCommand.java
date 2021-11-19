@@ -20,7 +20,7 @@ public class RemoveFavoriteCommand extends AbstractCommand{
 
 		favdao.removeFavorite(user_id, product_id);
 
-		return resc;//
+		return resc;
 	}
 
 }

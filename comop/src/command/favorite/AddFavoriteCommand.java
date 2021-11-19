@@ -23,7 +23,7 @@ public class AddFavoriteCommand extends AbstractCommand{
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favdao = factory.getFavoriteDAO();
 
-		favdao.addFavorite(f);//
+		favdao.addFavorite(f);
 
 		return resc;
 	}
