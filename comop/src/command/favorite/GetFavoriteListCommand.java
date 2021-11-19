@@ -25,7 +25,7 @@ class GetFavoriteCommand  extends AbstractCommand {
 
 
 
-		return resc;
+		return resc;//
 	}
 }
 
