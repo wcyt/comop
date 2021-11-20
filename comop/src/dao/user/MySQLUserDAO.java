@@ -67,12 +67,11 @@ public class MySQLUserDAO implements UserDAO {
 			st.setString(4, u.getFirst_name());
 			st.setString(5, u.getFirst_name_kana());
 			st.setString(6, u.getLast_name());
-			st.setString(7, u.getLast_name_kana);
+			st.setString(7, u.getLast_name_kana());
 			st.setString(8, u.getTel());
 			st.setString(9, u.getPostal_code());
 			st.setString(10, u.getPassword());
-
-			st.setString(11, u.getUser_id);
+			st.setString(11, u.getUser_id());
 
 			st.executeUpdate();
 
