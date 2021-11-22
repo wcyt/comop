@@ -10,6 +10,8 @@ public class PointOrderBean implements Serializable {
 	private int reward_product_id;
 	private int buy_count;
 
+	public PointOrderBean() {}
+
 	public int getPoint_order_id() {
 		return point_order_id;
 	}

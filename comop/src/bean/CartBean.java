@@ -7,6 +7,8 @@ public class CartBean implements Serializable {
 	private int product_id;
 	private int buy_count;
 
+	public CartBean() {}
+
 	public int getUser_id() {
 		return user_id;
 	}

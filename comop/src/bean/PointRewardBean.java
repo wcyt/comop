@@ -8,6 +8,8 @@ public class PointRewardBean implements Serializable {
 	private String reward_product_image;
 	private String reward_product_description;
 
+	public PointRewardBean() {}
+
 	public int getReward_product_id() {
 		return reward_product_id;
 	}

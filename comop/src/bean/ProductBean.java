@@ -12,6 +12,8 @@ public class ProductBean implements Serializable {
 	private int color_id;
 	private String size;
 
+	public ProductBean() {}
+
 	public int getProduct_id() {
 		return product_id;
 	}
