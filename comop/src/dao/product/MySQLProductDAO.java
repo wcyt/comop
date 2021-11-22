@@ -98,12 +98,13 @@ public class MySQLProductDAO implements ProductDAO {
 
 			p.setProduct_name(rs.getString(1));
 			p.setProduct_image(rs.getString(2));
-			p.setPrice(rs.getString(3));
-
-			}
+			p.setPrice(rs.getInt(3));
 
 			cn.commit();
 			cn.close();
+
+			}
+
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
