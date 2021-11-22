@@ -31,9 +31,9 @@ public class MySQLProductDAO implements ProductDAO {
 					where += "(";
 					for (int i = 0;i<val.length;i++) {
 						if(i==val.length-1){
-							where += key + "=" + val[i];
+							where += key + "='" + val[i] +"'";
 						}else{
-							where += key + "=" + val[i] + "||";
+							where += key + "='" + val[i] + "'||";
 						}
 					}
 					where += ")";
@@ -48,9 +48,9 @@ public class MySQLProductDAO implements ProductDAO {
 					where += "(";
 					for (int i = 0;i<val.length;i++) {
 						if(i==val.length-1){
-							where += key + "=" + val[i];
+							where += key + "='" + val[i]+"'";
 						}else{
-							where += key + "=" + val[i] + "||";
+							where += key + "='" + val[i] + "'||";
 						}
 					}
 					where += ")";
@@ -60,7 +60,7 @@ public class MySQLProductDAO implements ProductDAO {
 			//最後の&&を消す
 			where.substring(0,where.length()-3);
 
-			String sql = "SELECT product_id,product_name,product_image,price FROM product_table "+where;
+			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE "+where;
 
 			st = cn.prepareStatement(sql);
 
