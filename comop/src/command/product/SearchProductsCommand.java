@@ -12,7 +12,7 @@ class SearchProductsCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext rc = getRequestContext();
-		String key = rc.getParameter("key");
+		String key = rc.getParameter("key")[0];
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductDAO pdao = factory.getProductDAO();

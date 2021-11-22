@@ -15,7 +15,7 @@ class GetProductDetailCommand  extends AbstractCommand {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductDAO pdao = factory.getProductDAO();
 
-		String product_id = rc.getParameter("product_id");
+		String product_id = (String)rc.getParameter("product_id")[0];
 
 		List detaillist = pdao.getProductDetail(product_id);
 
