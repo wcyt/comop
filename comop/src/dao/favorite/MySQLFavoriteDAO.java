@@ -13,12 +13,14 @@ import bean.FavoriteBean;
 public class MySQLFavoriteDAO implements FavoriteDAO {
 	private PreparedStatement st = null;
 
+	//自分のお気に入りの一覧を取得
 	public List getFavoriteList(String user_id) {
 		ArrayList favorites = new ArrayList();
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "SELECT  FROM _table WHERE ";
+
+			String sql = "SELECT f.product_id, FROM favorite_table f JOIN product_table p USING(user_id) WHERE user_id="+user_id;
 			st = cn.prepareStatement(sql);
 			st.setString(1, );
 
