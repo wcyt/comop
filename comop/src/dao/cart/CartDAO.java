@@ -10,5 +10,4 @@ public interface CartDAO {
 	public void removeCart(String user_id);
 	public List getCartList();
 
-
 }

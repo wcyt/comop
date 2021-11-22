@@ -26,7 +26,6 @@ public class MySQLCartDAO implements CartDAO {
 			st.setString(2, );
 			st.setString(3, );
 
-
 			st.executeUpdate();
 
 
