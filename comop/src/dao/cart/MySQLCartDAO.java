@@ -28,7 +28,6 @@ public class MySQLCartDAO implements CartDAO {
 
 			st.executeUpdate();
 
-
 			cn.commit();
 			cn.close();
 		}catch(SQLException e) {
