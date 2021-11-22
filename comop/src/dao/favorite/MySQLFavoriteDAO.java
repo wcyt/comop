@@ -1,4 +1,4 @@
-package dao.order;
+package dao.favorite;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,18 +7,53 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.OrderBean;
-import bean.OrderDetailBean;
 import dao.Connector;
+import bean.FavoriteBean;
 
-public class MySQLOrderDAO implements OrderDAO {
+public class MySQLFavoriteDAO implements FavoriteDAO {
 	private PreparedStatement st = null;
 
-	public void addOrder(OrderBean o,OrderDetailBean od) {
+	public List getFavoriteList(String user_id) {
+		ArrayList favorites = new ArrayList();
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "INSERT into order_table() values()";
+			String sql = "SELECT  FROM _table WHERE ";
+			st = cn.prepareStatement(sql);
+			st.setString(1, );
+
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				FavoriteBean f=new FavoriteBean();
+
+				u.set(rs.getString(1));
+				u.set(rs.getString(2));
+				u.set(rs.getString(3));
+				u.set(rs.getString(4));
+				u.set(rs.getString(5));
+				u.set(rs.getString(6));
+				u.set(rs.getString(7));
+				u.sety(rs.getString(8));
+				u.set(rs.getString(9));
+				u.set(rs.getString(10));
+				u.set(rs.getString(11));
+				u.set(rs.getInt(12));
+
+				//user.add(u);
+			}
+			cn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return favorites;
+
+	}
+	public void addFavorite(FavoriteBean f) {
+		try {
+			Connection cn = Connector.connect();
+
+			String sql = "INSERT into _table() values()";
 
 			st = cn.prepareStatement(sql);
 
@@ -42,40 +77,8 @@ public class MySQLOrderDAO implements OrderDAO {
 			e.printStackTrace();
 		}
 	}
-	public List getOrderList(String user_id) {
-		ArrayList user = new ArrayList();
-		try {
-			Connection cn = Connector.connect();
+	//引数保留
+	public void removeFavorite() {
 
-			String sql = "SELECT  FROM _table WHERE ";
-			st = cn.prepareStatement(sql);
-			st.setString(1, );
-
-			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				//User u = new User();
-
-				u.set(rs.getString(1));
-				u.set(rs.getString(2));
-				u.set(rs.getString(3));
-				u.set(rs.getString(4));
-				u.set(rs.getString(5));
-				u.set(rs.getString(6));
-				u.set(rs.getString(7));
-				u.sety(rs.getString(8));
-				u.set(rs.getString(9));
-				u.set(rs.getString(10));
-				u.set(rs.getString(11));
-				u.set(rs.getInt(12));
-
-				//user.add(u);
-			}
-			cn.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-
-		return ;
 	}
-
 }
