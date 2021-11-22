@@ -71,7 +71,7 @@ public class MySQLUserDAO implements UserDAO {
 			st.setString(8, u.getTel());
 			st.setString(9, u.getPostal_code());
 			st.setString(10, u.getPassword());
-			st.setString(11, u.getUser_id());
+			st.setInt(11, u.getUser_id());
 
 			st.executeUpdate();
 
@@ -126,6 +126,7 @@ public class MySQLUserDAO implements UserDAO {
 	}
 	//自分のユーザー情報の取得
 	public UserBean getMyUserInfo(String user_id) {
+		UserBean u = new UserBean();
 		try {
 			Connection cn = Connector.connect();
 
@@ -136,9 +137,7 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			UserBean u = new UserBean();
-
-			u.setUser_id(rs.getString(1));
+			u.setUser_id(rs.getInt(1));
 			u.setName(rs.getString(2));
 			u.setMail(rs.getString(3));
 			u.setAddress(rs.getString(4));
@@ -157,4 +156,5 @@ public class MySQLUserDAO implements UserDAO {
 		}
 		return u;
 	}
+
 }
