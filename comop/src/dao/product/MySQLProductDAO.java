@@ -158,7 +158,6 @@ public class MySQLProductDAO implements ProductDAO {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-
 		return products;
 	}
 
