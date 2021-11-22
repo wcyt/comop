@@ -14,13 +14,15 @@ import dao.Connector;
 
 public class MySQLProductDAO implements ProductDAO {
 	private PreparedStatement st = null;
+
+	//商品一覧の取得
 	public List getProductsList(Map parameters) {
 		ArrayList products = new ArrayList();
 		try {
 			Connection cn = Connector.connect();
 
-			//sql文のWHERE句以降を格納
-			String where="";
+			String where="";	//sql文のWHERE句以降を格納
+
 			Iterator it = parameters.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String)it.next();
@@ -84,6 +86,7 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 		return products;
 	}
+	//商品詳細の取得
 	public List getProductDetail(String product_id) {
 		ArrayList products = new ArrayList();
 
@@ -110,6 +113,7 @@ public class MySQLProductDAO implements ProductDAO {
 
 			products.add(p);
 
+			//色違いの商品の一覧を取得
 			String sql2 = "SELECT p.product_id,p.product_image,c.color_name FROM product_table p JOIN color_table c USING(color_id) WHERE product_name="+p.getProduct_name();
 
 			st = cn.prepareStatement(sql2);
@@ -135,6 +139,7 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 		return products;
 	}
+	//商品検索
 	public List searchProducts(String key) {
 		ArrayList products = new ArrayList();
 		try {
