@@ -156,5 +156,29 @@ public class MySQLUserDAO implements UserDAO {
 		}
 		return u;
 	}
+	//ログインできるかどうか
+	public boolean login(String mail,String password) {
+		boolean isRegist=false;
+		try {
+			Connection cn = Connector.connect();
 
+			String sql = "SELECT password FROM user_table WHERE mail=?";
+			st = cn.prepareStatement(sql);
+			st.setString(1, mail);
+
+			ResultSet rs = st.executeQuery();
+			//入力されたメールアドレスが登録されてるか
+			if(rs.next()==true) {
+				//パスワードがあってるか
+				if(password.equals(rs.getString(1))) {
+					isRegist=true;
+				}
+			}
+			cn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return isRegist;
+	}
 }
