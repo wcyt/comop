@@ -20,7 +20,7 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 			Connection cn = Connector.connect();
 
 
-			String sql = "SELECT f.product_id, FROM favorite_table f JOIN product_table p USING(user_id) WHERE user_id="+user_id;
+			String sql = "SELECT f.product_id, FROM favorite_table f JOIN product_table p USING(user_id) WHERE user_id=?";
 			st = cn.prepareStatement(sql);
 			st.setString(1, );
 
@@ -28,20 +28,12 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 			while(rs.next()) {
 				FavoriteBean f=new FavoriteBean();
 
-				u.set(rs.getString(1));
-				u.set(rs.getString(2));
-				u.set(rs.getString(3));
-				u.set(rs.getString(4));
-				u.set(rs.getString(5));
-				u.set(rs.getString(6));
-				u.set(rs.getString(7));
-				u.sety(rs.getString(8));
-				u.set(rs.getString(9));
-				u.set(rs.getString(10));
-				u.set(rs.getString(11));
-				u.set(rs.getInt(12));
+				f.setProduct_id(rs.getInt(1));
+				f.setProduct_name(rs.getString(2));
+				f.setProduct_image(rs.getString(3));
+				f.setPrice(rs.getInt(4));
 
-				//user.add(u);
+				favorites.add(f);
 			}
 			cn.close();
 		}catch(SQLException e) {
