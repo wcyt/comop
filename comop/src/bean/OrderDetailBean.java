@@ -7,6 +7,8 @@ public class OrderDetailBean implements Serializable {
 	private int product_id;
 	private int buy_count;
 
+	public OrderDetailBean() {}
+
 	public int getOrder_id() {
 		return order_id;
 	}

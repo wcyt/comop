@@ -8,6 +8,8 @@ public class OrderBean implements Serializable {
 	private String order_date;
 	private int total_price;
 
+	public OrderBean() {}
+
 	public int getOrder_id() {
 		return order_id;
 	}

@@ -10,7 +10,10 @@ public class ProductBean implements Serializable {
 	private String product_description;
 	private int price;
 	private int color_id;
+	private String color_name;
 	private String size;
+
+	public ProductBean() {}
 
 	public int getProduct_id() {
 		return product_id;
@@ -66,6 +69,14 @@ public class ProductBean implements Serializable {
 
 	public void setColor_id(int color_id) {
 		this.color_id = color_id;
+	}
+
+	public String getColor_name() {
+		return color_name;
+	}
+
+	public void setColor_name(String color_name) {
+		this.color_name=color_name;
 	}
 
 	public String getSize() {

@@ -6,6 +6,8 @@ public class FavoriteBean implements Serializable {
 	private int user_id;
 	private int product_id;
 
+	public FavoliteBean() {}
+
 	public int getUser_id() {
 		return user_id;
 	}

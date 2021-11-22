@@ -17,6 +17,8 @@ public class UserBean implements Serializable {
 	private int point;
 	private boolean user_lapse;
 
+	public UserBean() {}
+
 	public int getUser_id() {
 		return user_id;
 	}

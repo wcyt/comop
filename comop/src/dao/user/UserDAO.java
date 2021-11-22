@@ -1,5 +1,7 @@
 package dao.user;
 
+import bean.UserBean;
+
 public interface UserDAO {
 	public void createAccount(UserBean u);
 	public void changePassword(String user_id,String pass);

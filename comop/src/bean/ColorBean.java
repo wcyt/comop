@@ -6,6 +6,8 @@ public class ColorBean implements Serializable {
 	private int color_id;
 	private String color_name;
 
+	public ColorBean() {}
+
 	public int getColor_id() {
 		return color_id;
 	}

@@ -7,6 +7,8 @@ public class CreditBean implements Serializable {
 	private String credit_number;
 	private String card_holder;
 
+	public CreditBean() {}
+
 	public int getUser_id() {
 		return user_id;
 	}

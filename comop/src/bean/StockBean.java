@@ -9,6 +9,8 @@ public class StockBean implements Serializable {
 	private int new_stock;
 	private int stock_change;
 
+	public StockBean() {}
+
 	public int getProduct_id() {
 		return product_id;
 	}
