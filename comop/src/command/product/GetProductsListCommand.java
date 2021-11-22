@@ -24,6 +24,9 @@ class GetProductListCommand extends AbstractCommand {
 		promap.put("size", (String)rc.getParameter("size")[0]);
 		promap.put("material", (String)rc.getParameter("material")[0]);
 		promap.put("packing_type", (String)rc.getParameter("packing_type")[0]);
+		promap.put("pmin", (String)rc.getParameter("pmin")[0]);
+		promap.put("pmax", (String)rc.getParameter("pmax")[0]);
+		promap.put("color_id", (String)rc.getParameter("color_id")[0]);
 
 		List prolist = prodao.getProductsList(promap);
 
