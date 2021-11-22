@@ -3,8 +3,8 @@ package command.favorite;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.favorite.FavoriteDAO;
 import dao.AbstractDaoFactory;
+import dao.favorite.FavoriteDAO;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -16,7 +16,7 @@ class GetFavoriteCommand  extends AbstractCommand {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favdao = factory.getFavoriteDAO();
 
-		String user_id = (String)rc.getSessionAttribute("user_id")
+		String user_id = (String)rc.getParameter("user_id")[0];
 
 		List favlist = favdao.getFavoriteList(user_id);
 
