@@ -65,7 +65,7 @@
         </aside>
         <article class="col-span-10 ml-14">
             <!-- Member Registration Information -->
-            <form method="" action="" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
+            <form method="" action="" id="registMemberInfo" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
                 <h2 class="pb-4 text-2xl border-b border-gray-400">パスワードの変更</h2>
                 <!-- Now Password -->
                 <div class="grid grid-cols-12 py-5 border-b border-gray-400">
@@ -137,7 +137,7 @@
         console.log(inputLists);
     }
 
-    document.getElementById("registMemberInfo ").onkeypress = (e) => {
+    document.getElementById("registMemberInfo").onkeypress = (e) => {
         // form1に入力されたキーを取得
         const key = e.keyCode || e.charCode || 0;
         // 13はEnterキーのキーコード
