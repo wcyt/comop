@@ -7,6 +7,7 @@ public class OrderBean implements Serializable {
 	private int user_id;
 	private String order_date;
 	private int total_price;
+	private boolean shipped;
 	private int product_id;
 	private int buy_count;
 	private String product_name;
@@ -78,5 +79,13 @@ public class OrderBean implements Serializable {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public boolean isShipped() {
+		return shipped;
+	}
+
+	public void setShipped(boolean shipped) {
+		this.shipped = shipped;
 	}
 }
