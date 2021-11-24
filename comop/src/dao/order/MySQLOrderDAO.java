@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.OrderBean;
+import bean.OrderDetailBean;
 import dao.Connector;
 
 public class MySQLOrderDAO implements OrderDAO {
 	private PreparedStatement st = null;
 
 	//注文テーブルに追加
-	public void addOrder(OrderBean o) {
+	public void addOrder(OrderBean o,List order_details) {
 		try {
 			Connection cn = Connector.connect();
 
@@ -29,12 +30,17 @@ public class MySQLOrderDAO implements OrderDAO {
 
 			String sql2 = "INSERT into order_detail(order_id,product_id,buy_count) values(last_insert_id(),?,?)";
 
-			st = cn.prepareStatement(sql2);
 
-			st.setInt(1, o.getProduct_id());
-			st.setInt(2, o.getBuy_count());
+			for(int i=0; i<order_details.size(); i++) {
+				OrderDetailBean od=(OrderDetailBean)order_details.get(i);
 
-			st.executeUpdate();
+				st = cn.prepareStatement(sql2);
+
+				st.setInt(1, od.getProduct_id());
+				st.setInt(2, od.getBuy_count());
+
+				st.executeUpdate();
+			}
 
 			cn.commit();
 			cn.close();
