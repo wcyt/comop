@@ -4,17 +4,17 @@ window.addEventListener("load", function () {
             <!-- Header -->
             <header class="fixed z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row md:px-32">
                 <!-- SiteName And Search Input -->
-                <div class="flex flex-row sm:my-1">
+                <form class="flex flex-row sm:my-1">
                     <!-- SiteName -->
-                    <p class="inline mt-2 mb-3 font-bold text-center">サイト名予定地</p>
+                    <p class="inline mt-3 mb-3 font-bold text-center">サイト名予定地</p>
                     <!-- SiteName End -->
                     <!-- Search Input -->
                     <div class="flex flex-row ml-10 bg-white rounded-lg">
                         <button class="focus:outline-none focus:ring-white"><i class="ml-5 mr-3 bi bi-search"></i></button>
-                        <input class="border-none outline-none w-96 rounded-2xl focus:outline-none focus:ring-white" type="search" placeholder="すべてのアイテムから探す">
+                        <input type="search" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 rounded-2xl focus:outline-none focus:ring-white" >
                     </div>
                     <!-- Search Input End -->
-                </div>
+                </form>
                 <!-- Site Name And Search Input End-->
                 <!-- Menu -->
                 <div class="flex flex-row">
@@ -85,5 +85,7 @@ window.addEventListener("load", function () {
             </footer>
             <!-- Footer End -->
         `;
-	const main = document.getElementById("main").insertAdjacentHTML("afterend", footer);
+	const main = document
+		.getElementById("main")
+		.insertAdjacentHTML("afterend", footer);
 });

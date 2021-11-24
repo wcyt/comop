@@ -65,7 +65,7 @@
         </aside>
         <article class="col-span-10 ml-14">
             <!-- Member Registration Information -->
-            <form method="" action="" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
+            <form method="" action="" id="memberRegistInfo" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
                 <h2 class="pb-4 text-2xl border-b border-gray-400">基本情報の変更</h2>
                 <!-- Name -->
                 <div class="grid grid-cols-12 py-5 border-t border-b border-gray-400">
@@ -74,8 +74,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="" placeholder="例）上尾" class="w-1/2">
-                        <input type="text" name="" placeholder="太郎" class="w-1/2">
+                        <input type="text" name="" id="firstName" placeholder="例）上尾" class="w-1/2">
+                        <input type="text" name="" id="lastName" placeholder="太郎" class="w-1/2">
                     </div>
                 </div>
                 <!-- Name End -->
@@ -89,8 +89,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="" placeholder="例）アゲオ" class="w-1/2">
-                        <input type="text" name="" placeholder="タロウ" class="w-1/2">
+                        <input type="text" name="" id="firstNameKana" placeholder="例）アゲオ" class="w-1/2">
+                        <input type="text" name="" id="lastNameKana" placeholder="タロウ" class="w-1/2">
                     </div>
                 </div>
                 <!-- Name(kana) End -->
@@ -101,7 +101,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="postalCode" class="w-1/2">
+                        <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" class="w-1/2">
                         <a href="https://www.post.japanpost.jp/zipcode/index.html" class="text-blue-400 hover:underline">郵便番号を調べる<i class="ml-3 bi bi-box-arrow-up-right"></i></a>
                     </div>
                 </div>
@@ -113,19 +113,72 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="address" class="w-1/2">
+                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" class="w-full lg:w-1/2">
                     </div>
                 </div>
                 <!-- Address End -->
-                <!-- Submit Button -->
-                <div class="flex justify-center">
-                    <button type="submit" class="px-20 py-2 mt-8 font-bold text-white bg-blue-400">送信する</button>
+                <!-- Modal -->
+                <input type="checkbox" id="my-modal-2" class="modal-toggle">
+                <div class="modal">
+                    <div class="modal-box">
+                        <!-- Modal Contents -->
+                        <div id="inputValues"></div>
+                        <div class="modal-action">
+                            <label for="my-modal-2">
+                                <button type="submit" class="btn btn-primary">送信</button>
+                            </label>
+                            <label for="my-modal-2" class="btn" onclick="deleteBasicInfo()">キャンセル</label>
+                        </div>
+                        <!-- Modal Contents -->
+                    </div>
                 </div>
-                <!-- Submit Button End -->
+                <!-- Modal End -->
+                <!-- Check Button -->
+                <div class="flex justify-center mt-10">
+                    <label for="my-modal-2" class="px-20 py-3 text-xl font-bold text-white bg-blue-400 rounded-md " onclick="checkBasicInfo()">確認する</label>
+                </div>
+                <!-- Check Button End -->
             </form>
             <!-- Member Registration Information End -->
     </main>
     <!-- Main End -->
 </body>
+<script>
+    function checkBasicInfo() {
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const firstNameKana = document.getElementById('firstNameKana').value;
+        const lastNameKana = document.getElementById('lastNameKana').value;
+        const postalCode = document.getElementById('postalCode').value;
+        const address = document.getElementById('address').value;
+        const output =
+            `
+            <div id="inputLists" class="text-lg">
+                <p class="mb-4 text-2xl font-bold">変更内容の確認</p>
+                <p class="my-2">お名前：${firstName} ${lastName}</p>
+                <p class="my-2">お名前（カナ）：${firstNameKana} ${lastNameKana}</p>
+                <p class="my-2">郵便番号：${postalCode}</p>
+                <p class="my-2">住所：${address}</p>
+            </div>
+        `;
+        document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
+    }
+
+    function deleteBasicInfo() {
+        const inputLists = document.getElementById('inputLists');
+        inputLists.remove();
+        console.log(inputLists);
+    }
+
+    document.getElementById("registMemberInfo").onkeypress = (e) => {
+        // form1に入力されたキーを取得
+        const key = e.keyCode || e.charCode || 0;
+        // 13はEnterキーのキーコード
+        if (key == 13) {
+            // アクションを行わない
+            e.preventDefault();
+        }
+    }
+</script>
 
 </html>
