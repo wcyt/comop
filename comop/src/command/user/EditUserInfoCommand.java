@@ -35,7 +35,9 @@ public class EditUserInfoCommand extends AbstractCommand{
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		MySQLUserDAO msud = factory.getFactory();
-		msud.editUseInfo(u);
+		msud.editUserInfo(u);
+
+		reqc.setAttribute("mess","ユーザー情報を変更しました");
 
 		resc.setTarget("トップに行くか、編集ページに戻るか選ぶページをはさむ");
 		return resc;

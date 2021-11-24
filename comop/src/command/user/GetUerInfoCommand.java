@@ -9,10 +9,11 @@ class GetUserInfoCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
-		UserBean u;
+		UserBean u = new UserBean();
 		MySQLUserDAO msud = new MySQLUserDAO();
 		resc.setResult(msud.getUserInfo(u));
 
+		resc.setTarget("default");
 		return resc;
 	}
 }
