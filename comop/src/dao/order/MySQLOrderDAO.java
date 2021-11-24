@@ -8,33 +8,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.OrderBean;
-import bean.OrderDetailBean;
 import dao.Connector;
 
 public class MySQLOrderDAO implements OrderDAO {
 	private PreparedStatement st = null;
 
-	public void addOrder(OrderBean o,OrderDetailBean od) {
+	//注文テーブルに追加
+	public void addOrder(OrderBean o) {
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "INSERT into order_table() values()";
+			String sql = "INSERT into order_table(user_id,total_price) values(?,?)";
 
 			st = cn.prepareStatement(sql);
 
-			st.setString(1, );
-			st.setString(2, );
-			st.setString(3, );
-			st.setString(4, );
-			st.setString(5, );
-			st.setString(6, );
-			st.setString(7, );
-			st.setString(8, );
-			st.setString(9, );
-			st.setString(10, );
+			st.setInt(1, o.getUser_id());
+			st.setInt(2, o.getTotal_price());
 
 			st.executeUpdate();
 
+			String sql2 = "INSERT into order_detail(order_id,product_id,buy_count) values(last_insert_id(),?,?)";
+
+			st = cn.prepareStatement(sql2);
+
+			st.setInt(1, o.getProduct_id());
+			st.setInt(2, o.getBuy_count());
+
+			st.executeUpdate();
 
 			cn.commit();
 			cn.close();
@@ -42,40 +42,37 @@ public class MySQLOrderDAO implements OrderDAO {
 			e.printStackTrace();
 		}
 	}
+	//自分の注文テーブルの一覧の取得
 	public List getOrderList(String user_id) {
-		ArrayList user = new ArrayList();
+		ArrayList orders = new ArrayList();
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "SELECT  FROM _table WHERE ";
+			String sql = "SELECT o.order_date,o.total_price,o.shipped,product_id,od.buy_count,p.product_name,p.product_image,p.price FROM order_table o JOIN order_detail od USING(order_id) JOIN product_table p USING(prodct_id) WHERE o.user_id=?";
 			st = cn.prepareStatement(sql);
-			st.setString(1, );
+			st.setString(1, user_id);
 
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
-				//User u = new User();
+				OrderBean o=new OrderBean();
 
-				u.set(rs.getString(1));
-				u.set(rs.getString(2));
-				u.set(rs.getString(3));
-				u.set(rs.getString(4));
-				u.set(rs.getString(5));
-				u.set(rs.getString(6));
-				u.set(rs.getString(7));
-				u.sety(rs.getString(8));
-				u.set(rs.getString(9));
-				u.set(rs.getString(10));
-				u.set(rs.getString(11));
-				u.set(rs.getInt(12));
+				o.setOrder_date(rs.getString(1));
+				o.setTotal_price(rs.getInt(2));
+				o.setShipped(rs.getBoolean(3));
+				o.setProduct_id(rs.getInt(4));
+				o.setBuy_count(rs.getInt(5));
+				o.setProduct_name(rs.getString(6));
+				o.setProduct_image(rs.getString(7));
+				o.setPrice(rs.getInt(8));
 
-				//user.add(u);
+				orders.add(o);
 			}
 			cn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 
-		return ;
+		return orders;
 	}
 
 }
