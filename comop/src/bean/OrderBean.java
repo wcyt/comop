@@ -7,6 +7,8 @@ public class OrderBean implements Serializable {
 	private int user_id;
 	private String order_date;
 	private int total_price;
+	private int product_id;
+	private int buy_count;
 
 	public OrderBean() {}
 
@@ -33,5 +35,21 @@ public class OrderBean implements Serializable {
 	}
 	public void setTotal_price(int total_price) {
 		this.total_price = total_price;
+	}
+
+	public int getProduct_id() {
+		return product_id;
+	}
+
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+
+	public int getBuy_count() {
+		return buy_count;
+	}
+
+	public void setBuy_count(int buy_count) {
+		this.buy_count = buy_count;
 	}
 }
