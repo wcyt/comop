@@ -15,19 +15,9 @@ class CreateAccountCommand extends AbstractCommand {
 
 		// パラメータを取得
 		String name = reqc.getParameter("name")[0];
-		String mail = reqc.getParameter("mails")[0];
+		String mail = reqc.getParameter("mail")[0];
 		String password = reqc.getParameter("password")[0];
 
-<<<<<<< HEAD
-		// Beanにセットする
-=======
-		String[] mails = reqc.getParameter("mail");
-		String mail = mails[0];
-
-		String[] passwords = reqc.getParameter("password");
-		String password = passwords[0];
-
->>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 		UserBean u = new UserBean();
 		u.setName(name);
 		u.setMail(mail);
