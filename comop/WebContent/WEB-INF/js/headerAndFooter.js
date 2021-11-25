@@ -18,13 +18,10 @@ window.addEventListener("load", function () {
                 <!-- Site Name And Search Input End-->
                 <!-- Menu -->
                 <div class="flex flex-row">
-                    <a class="px-5 py-3 font-medium transition text-md duration-400 hover:bg-gray-300 hover:text-black">ログイン</a>
+                    <a href="/WEB-INF/jsp/signIn.jsp" class="px-5 py-3 font-medium transition text-md duration-400 hover:bg-gray-300 hover:text-black">ログイン</a>
                     <!-- ログインしてない時はベル・ハート・カートを消す -->
-                    <a class="px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-bell"></i></a>
-                    <a class="px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-suit-heart"></i></a>
-                    <a class="px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
-                    <!-- ログインしてない時はベル・ハート・カートを消す -->
-                    <a class="px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-list"></i></a>
+                    <a href="getFavoriteList" class="px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-suit-heart"></i></a>
+                    <a href="getCartList" class="px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
                 </div>
                 <!-- Menu End -->
             </header>
@@ -85,7 +82,5 @@ window.addEventListener("load", function () {
             </footer>
             <!-- Footer End -->
         `;
-	const main = document
-		.getElementById("main")
-		.insertAdjacentHTML("afterend", footer);
+	const main = document.getElementById("main").insertAdjacentHTML("afterend", footer);
 });

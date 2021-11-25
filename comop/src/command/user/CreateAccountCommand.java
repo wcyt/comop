@@ -26,7 +26,7 @@ class CreateAccountCommand extends AbstractCommand {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		MySQLUserDAO msud = factory.getFactory();
 
-		resc.setTarget("sineUpComplete");
+		resc.setTarget("signUpComplete");
 
 		if (msud.getMail(mail).equals("nomail") == false) {
 
