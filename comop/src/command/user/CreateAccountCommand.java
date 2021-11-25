@@ -18,10 +18,10 @@ class CreateAccountCommand  extends AbstractCommand {
 		String[] names = reqc.getParameter("name");
 		String name = names[0];
 
-		String[] mails = reqc.getParameter("mails");
+		String[] mails = reqc.getParameter("mail");
 		String mail = mails[0];
 
-		String[] mails = reqc.getParameter("password");
+		String[] passwords = reqc.getParameter("password");
 		String password = passwords[0];
 
 		UserBean u = new UserBean();
