@@ -75,3 +75,4 @@ public class MySQLColorManagementDAO {
 		return colors;
 	}
 }
+

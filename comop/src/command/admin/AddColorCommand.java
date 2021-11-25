@@ -2,6 +2,7 @@ package command.admin;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
+import admin.MySQLColorManagementDAO;
 import bean.ColorBean;
 import command.AbstractCommand;
 import dao.AbstractDaoFactory;
@@ -12,7 +13,7 @@ public class AddColorCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
-		RequestContext rqsc = getRequestContext();
+		RequestContext reqc = getRequestContext();
 
 		String[] colorIds = reqc.getParameter("color_id");
 		String[] colorNames = reqc.getParameter("color_name");
@@ -27,7 +28,7 @@ public class AddColorCommand extends AbstractCommand {
 		cb.setColorName(colorName);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		ColorManagementDAO cmd = factory.getColorManagementDAO();
+		MySQLColorManagementDAO cmd = factory.getMySQLColorManagementDAO();
 
 
 		if(cmd.getColor(cb.getColor_id())!=null) {
