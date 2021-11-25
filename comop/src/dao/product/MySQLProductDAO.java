@@ -16,8 +16,8 @@ public class MySQLProductDAO implements ProductDAO {
 	private PreparedStatement st = null;
 
 	//商品一覧の取得
-	public List getProductsList(Map parameters) {
-		ArrayList products = new ArrayList();
+	public List<ProductBean> getProductsList(Map parameters) {
+		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
 			Connection cn = Connector.connect();
 
@@ -87,8 +87,8 @@ public class MySQLProductDAO implements ProductDAO {
 		return products;
 	}
 	//商品詳細の取得
-	public List getProductDetail(String product_id) {
-		ArrayList products = new ArrayList();
+	public List<ProductBean> getProductDetail(String product_id) {
+		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 
 		try {
 			Connection cn = Connector.connect();
@@ -140,8 +140,8 @@ public class MySQLProductDAO implements ProductDAO {
 		return products;
 	}
 	//商品検索
-	public List searchProducts(String key) {
-		ArrayList products = new ArrayList();
+	public List<ProductBean> searchProducts(String key) {
+		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
 			Connection cn = Connector.connect();
 
