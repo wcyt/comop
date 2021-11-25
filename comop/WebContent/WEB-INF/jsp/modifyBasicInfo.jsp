@@ -74,8 +74,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="" id="firstName" placeholder="例）上尾" class="w-1/2">
-                        <input type="text" name="" id="lastName" placeholder="太郎" class="w-1/2">
+                        <input type="text" name="firstName" id="firstName" placeholder="例）上尾" class="w-1/2">
+                        <input type="text" name="lastName" id="lastName" placeholder="太郎" class="w-1/2">
                     </div>
                 </div>
                 <!-- Name End -->
@@ -89,8 +89,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="" id="firstNameKana" placeholder="例）アゲオ" class="w-1/2">
-                        <input type="text" name="" id="lastNameKana" placeholder="タロウ" class="w-1/2">
+                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" class="w-1/2">
+                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" class="w-1/2">
                     </div>
                 </div>
                 <!-- Name(kana) End -->
