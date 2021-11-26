@@ -29,7 +29,7 @@ public class EditUserInfoCommand extends AbstractCommand{
 		u.setPostal_code(postalCode);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getFactory();
+		MySQLUserDAO msud = factory.getMySQLUserDAO();
 		msud.editUserInfo(u);
 
 		reqc.setAttribute("mess","ユーザー情報を変更しました");

@@ -2,9 +2,10 @@ package command.cart;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
+import bean.CartBean;
 import command.AbstractCommand;
 import dao.AbstractDaoFactory;
-import dao.cart.CartDAO;
+import dao.cart.MySQLCartDAO;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -14,22 +15,22 @@ class AddCartCommand  extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
-		String[] uids = reqc.getParameter("uid");
-		String[] pids = reqc.getParameter("pid");
+		String[] user_ids = reqc.getParameter("user_id");
+		String[] product_ids = reqc.getParameter("product_id");
 
 
-		String uid = uids[0];
-		String pid = pids[0];
+		String user_id = user_ids[0];
+		String product_id = product_ids[0];
 
 
-		Product p = new Product();
-		p.setUid(uid);
-		p.setPid(pid);
+		CartBean cb = new CartBean();
+		cb.setUser_id(Integer.parseInt(user_id));
+		cb.setProduct_id(Integer.parseInt(product_id));
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		CartDAO cd = factory.getCartDAO();
-		cd.addCart(p);
+		MySQLCartDAO mscd = factory.getMySQLCartDAO();
+		mscd.addCart(cb);
 
 		resc.setTarget("cart");
 
