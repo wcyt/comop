@@ -13,6 +13,7 @@ import dao.Connector;
 public class MySQLColorManagementDAO {
 	private PreparedStatement st = null;
 
+	//色の追加
 	public void addColor(String color_name) {
 		try {
 			Connection cn = Connector.connect();
@@ -31,6 +32,7 @@ public class MySQLColorManagementDAO {
 			e.printStackTrace();
 		}
 	}
+	//色の削除
 	public void removeColor(String color_id) {
 		try {
 			Connection cn = Connector.connect();
@@ -49,6 +51,7 @@ public class MySQLColorManagementDAO {
 			e.printStackTrace();
 		}
 	}
+	//色の一覧を取得
 	public List getColorList() {
 		ArrayList colors = new ArrayList();
 		try {
