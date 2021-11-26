@@ -15,7 +15,7 @@ public class MySQLOrderDAO implements OrderDAO {
 	private PreparedStatement st = null;
 
 	//注文テーブルに追加
-	public void addOrder(OrderBean o,List order_details) {
+	public void addOrder(OrderBean o,List<OrderDetailBean> order_details) {
 		try {
 			Connection cn = Connector.connect();
 
@@ -49,8 +49,8 @@ public class MySQLOrderDAO implements OrderDAO {
 		}
 	}
 	//自分の注文テーブルの一覧の取得
-	public List getOrderList(String user_id) {
-		ArrayList orders = new ArrayList();
+	public List<OrderBean> getOrderList(String user_id) {
+		ArrayList<OrderBean> orders = new ArrayList<OrderBean>();
 		try {
 			Connection cn = Connector.connect();
 
