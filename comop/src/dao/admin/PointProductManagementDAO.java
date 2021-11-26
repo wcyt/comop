@@ -4,7 +4,7 @@ import java.util.List;
 
 import bean.PointRewardBean;
 
-public interface PointProductDAO {
+public interface PointProductManagementDAO {
 	public List<PointRewardBean> getRewardProductsList();
 	public void editRewardProduct(PointRewardBean p);
 	public void addRewardProduct();
