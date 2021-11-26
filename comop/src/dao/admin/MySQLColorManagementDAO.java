@@ -52,8 +52,8 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 		}
 	}
 	//色の一覧を取得
-	public List getColorList() {
-		ArrayList colors = new ArrayList();
+	public List<ColorBean> getColorList() {
+		ArrayList<ColorBean> colors = new ArrayList<ColorBean>();
 		try {
 			Connection cn = Connector.connect();
 

@@ -3,6 +3,7 @@ package bean;
 import java.io.Serializable;
 
 public class StockBean implements Serializable {
+	private int stock_change_id;
 	private int product_id;
 	private int user_id;
 	private int old_stock;
@@ -49,5 +50,13 @@ public class StockBean implements Serializable {
 
 	public void setStock_change(int stock_change) {
 		this.stock_change = stock_change;
+	}
+
+	public int getStock_change_id() {
+		return stock_change_id;
+	}
+
+	public void setStock_change_id(int stock_change_id) {
+		this.stock_change_id = stock_change_id;
 	}
 }
