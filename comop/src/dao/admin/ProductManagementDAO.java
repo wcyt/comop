@@ -6,7 +6,7 @@ import bean.ProductBean;
 
 public interface ProductManagementDAO {
 	public List<ProductBean> getProductList();
-	public void editProduct(String product_id);
-	public void addProduct();
+	public void editProduct(ProductBean p);
+	public void addProduct(ProductBean p);
 	public void removeProduct(String product_id);
 }
