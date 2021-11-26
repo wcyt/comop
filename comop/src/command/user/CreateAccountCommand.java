@@ -1,7 +1,5 @@
 package command.user;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
-
 import bean.UserBean;
 import command.AbstractCommand;
 import dao.AbstractDaoFactory;
@@ -9,42 +7,46 @@ import dao.user.MySQLUserDAO;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class CreateAccountCommand  extends AbstractCommand {
+class CreateAccountCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
 
+		// パラメータを取得
 		String[] names = reqc.getParameter("name");
-		String name = names[0];
+		String[] mails = reqc.getParameter("mail");
+		String[] passwords = reqc.getParameter("password");
 
-		String[] mails = reqc.getParameter("mails");
+		String name = names[0];
 		String mail = mails[0];
+<<<<<<< HEAD
 
 		String[] eeeee = reqc.getParameter("password");
+=======
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 		String password = passwords[0];
 
 		UserBean u = new UserBean();
 		u.setName(name);
 		u.setMail(mail);
-		u.setPass(password);
+		u.setPassword(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getFactory();
+		MySQLUserDAO msud = factory.getMySQLUserDAO();
 
+		resc.setTarget("signUpComplete");
 
-		resc.setTarget("sineUpComplete");
-
-		if(msud.getMail(mail).equals("nomail") == false) {
+		if (msud.getMail(mail).equals("nomail") == false) {
 
 			reqc.setAttribute("mess", "このメールアドレスは使われています");
 
 			resc.setTarget("signUp");
 
-		}else {
+		} else {
 
 			msud.createAccount(u);
-			reqc.setAttribute("mess","ユーザーを登録しました");
+			reqc.setAttribute("mess", "ユーザーを登録しました");
 
 			resc.setTarget("signUpComplete");
 		}

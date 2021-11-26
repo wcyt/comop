@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -65,7 +65,7 @@
         </aside>
         <article class="col-span-10 ml-14">
             <!-- Member Registration Information -->
-            <form method="" action="" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
+            <form method="" action="" id="registMemberInfo" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
                 <h2 class="pb-4 text-2xl border-b border-gray-400">パスワードの変更</h2>
                 <!-- Now Password -->
                 <div class="grid grid-cols-12 py-5 border-b border-gray-400">
@@ -74,7 +74,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                        <input type="text" name="" class="w-full lg:w-1/2">
+                        <input type="text" name="" id="nowPassword" class="w-full lg:w-1/2">
                     </div>
                 </div>
                 <!-- Now Password End -->
@@ -85,19 +85,67 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                        <input type="text" name="" class="w-full lg:w-1/2">
+                        <input type="text" name="" id="afterPassword" class="w-full lg:w-1/2">
                     </div>
                 </div>
                 <!-- New Password End -->
-                <!-- Submit Button -->
-                <div class="flex justify-center">
-                    <button type="submit" class="px-20 py-2 mt-8 font-bold text-white bg-blue-400">送信する</button>
+                <!-- Modal -->
+                <input type="checkbox" id="my-modal-2" class="modal-toggle">
+                <div class="modal">
+                    <div class="modal-box">
+                        <!-- Modal Contents -->
+                        <div id="inputValues"></div>
+                        <div class="modal-action">
+                            <label for="my-modal-2">
+                                <button type="submit" class="btn btn-primary">送信</button>
+                            </label>
+                            <label for="my-modal-2" class="btn" onclick="deletePassword()">キャンセル</label>
+                        </div>
+                        <!-- Modal Contents -->
+                    </div>
                 </div>
-                <!-- Submit Button End -->
+                <!-- Modal End -->
+                <!-- Check Button -->
+                <div class="flex justify-center mt-10">
+                    <label for="my-modal-2" class="px-20 py-3 text-xl font-bold text-white bg-blue-400 rounded-md " onclick="checkPassword()">確認する</label>
+                </div>
+                <!-- Check Button End -->
             </form>
             <!-- Member Registration Information End -->
     </main>
     <!-- Main End -->
 </body>
+
+<script>
+    function checkPassword() {
+        const nowPassword = document.getElementById('nowPassword').value;
+        const afterPassword = document.getElementById('afterPassword').value;
+        const output =
+            `
+                <div id="inputLists" class="text-lg ">
+                    <p class="mb-6 text-2xl font-bold ">変更内容の確認</p>
+                    <p class="my-2 ">現在のメールアドレス：${nowPassword}</p>
+                    <p class="my-2 ">新しいメールアドレス：${afterPassword}</p>
+                </div>
+            `;
+        document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
+    }
+
+    function deletePassword() {
+        const inputLists = document.getElementById('inputLists');
+        inputLists.remove();
+        console.log(inputLists);
+    }
+
+    document.getElementById("registMemberInfo").onkeypress = (e) => {
+        // form1に入力されたキーを取得
+        const key = e.keyCode || e.charCode || 0;
+        // 13はEnterキーのキーコード
+        if (key == 13) {
+            // アクションを行わない
+            e.preventDefault();
+        }
+    }
+</script>
 
 </html>

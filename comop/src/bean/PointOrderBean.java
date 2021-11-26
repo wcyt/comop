@@ -9,6 +9,9 @@ public class PointOrderBean implements Serializable {
 	private int total_point_price;
 	private int reward_product_id;
 	private int buy_count;
+	private String reward_product_name;
+	private String reward_product_image;
+	private int point_price;
 
 	public PointOrderBean() {}
 
@@ -58,5 +61,29 @@ public class PointOrderBean implements Serializable {
 
 	public void setBuy_count(int buy_count) {
 		this.buy_count = buy_count;
+	}
+
+	public String getReward_product_name() {
+		return reward_product_name;
+	}
+
+	public void setReward_product_name(String reward_product_name) {
+		this.reward_product_name = reward_product_name;
+	}
+
+	public String getReward_product_image() {
+		return reward_product_image;
+	}
+
+	public void setReward_product_image(String reward_product_image) {
+		this.reward_product_image = reward_product_image;
+	}
+
+	public int getPoint_price() {
+		return point_price;
+	}
+
+	public void setPoint_price(int point_price) {
+		this.point_price = point_price;
 	}
 }
