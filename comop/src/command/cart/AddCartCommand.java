@@ -15,20 +15,24 @@ class AddCartCommand  extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 
 		String[] uids = reqc.getParameter("uid");
-		String uid = uids[0];
-
 		String[] pids = reqc.getParameter("pid");
+
+
+		String uid = uids[0];
 		String pid = pids[0];
+
 
 		Product p = new Product();
 		p.setUid(uid);
 		p.setPid(pid);
+
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		CartDAO cd = factory.getCartDAO();
 		cd.addCart(p);
 
 		resc.setTarget("cart");
+
 
 		return resc;
 	}

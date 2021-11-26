@@ -17,8 +17,10 @@ public class LapseUserCommand extends AbstractCommand{
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		MySQLUserDAO msud = factory.getFactory();
-
+		System.out.print(user_id+"を削除しました");
 		msud.lapseUser(user_id);
+
+		rqsc.setAttribute("mess",user_id+"を削除しました")
 
 		return resc;
 	}

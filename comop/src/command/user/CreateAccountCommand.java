@@ -21,7 +21,7 @@ class CreateAccountCommand  extends AbstractCommand {
 		String[] mails = reqc.getParameter("mails");
 		String mail = mails[0];
 
-		String[] mails = reqc.getParameter("password");
+		String[] eeeee = reqc.getParameter("password");
 		String password = passwords[0];
 
 		UserBean u = new UserBean();
@@ -31,10 +31,23 @@ class CreateAccountCommand  extends AbstractCommand {
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		MySQLUserDAO msud = factory.getFactory();
-		msud.createAccount(u);
+
 
 		resc.setTarget("sineUpComplete");
 
+		if(msud.getMail(mail).equals("nomail") == false) {
+
+			reqc.setAttribute("mess", "このメールアドレスは使われています");
+
+			resc.setTarget("signUp");
+
+		}else {
+
+			msud.createAccount(u);
+			reqc.setAttribute("mess","ユーザーを登録しました");
+
+			resc.setTarget("signUpComplete");
+		}
 		return resc;
 
 	}
