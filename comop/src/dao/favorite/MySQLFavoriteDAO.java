@@ -16,8 +16,8 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 	private PreparedStatement st = null;
 
 	//自分のお気に入りの一覧を取得
-	public List getFavoriteList(String user_id) {
-		ArrayList favorites = new ArrayList();
+	public List<FavoriteBean> getFavoriteList(String user_id) {
+		ArrayList<FavoriteBean> favorites = new ArrayList<FavoriteBean>();
 		try {
 			Connection cn = Connector.connect();
 
@@ -67,11 +67,11 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 		}
 	}
 	//お気に入りを削除
-	public void removeFavorite(String user_id,Map product_ids) {
+	public void removeFavorite(String user_id,Map<String,String[]> product_ids) {
 		try {
 			Connection cn = Connector.connect();
 
-			Iterator it=product_ids.keySet().iterator();
+			Iterator<String> it=product_ids.keySet().iterator();
 
 			String key=(String)it.next();
 

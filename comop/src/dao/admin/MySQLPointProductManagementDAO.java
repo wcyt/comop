@@ -10,7 +10,7 @@ import java.util.List;
 import bean.PointRewardBean;
 import dao.Connector;
 
-public class MySQLPointProductManagementDAO implements PointProductDAO {
+public class MySQLPointProductManagementDAO implements PointProductManagementDAO {
 	private PreparedStatement st = null;
 
 	//ポイント商品の一覧を取得
@@ -68,11 +68,45 @@ public class MySQLPointProductManagementDAO implements PointProductDAO {
 		}
 	}
 	//ポイント商品を追加
-	public void addRewardProduct() {
+	public void addRewardProduct(PointRewardBean p) {
+		try {
+			Connection cn = Connector.connect();
 
+			String sql = "INSERT into point_reward_table(reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price) values(?,?,?,?,?)";
+			st = cn.prepareStatement(sql);
+
+			st.setString(1, p.getReward_product_name());
+			st.setString(2, p.getReward_product_image());
+			st.setString(3, p.getReward_product_description());
+			st.setInt(4, p.getStock_quantity());
+			st.setInt(5, p.getPoint_price());
+
+			st.executeUpdate();
+
+
+			cn.commit();
+			cn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	//ポイント商品を削除
 	public void removeRewardProduct(String reward_product_id) {
+		try {
+			Connection cn = Connector.connect();
 
+			String sql = "DELETE FROM point_reward_table WHERE reward_product_id=?";
+
+			st = cn.prepareStatement(sql);
+
+			st.setString(1, reward_product_id);
+
+			st.executeUpdate();
+
+			cn.commit();
+			cn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

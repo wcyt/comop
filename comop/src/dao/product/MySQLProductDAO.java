@@ -16,7 +16,7 @@ public class MySQLProductDAO implements ProductDAO {
 	private PreparedStatement st = null;
 
 	//商品一覧の取得
-	public List<ProductBean> getProductsList(Map parameters) {
+	public List<ProductBean> getProductsList(Map<String,String[]> parameters) {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
 			Connection cn = Connector.connect();
@@ -164,6 +164,28 @@ public class MySQLProductDAO implements ProductDAO {
 			e.printStackTrace();
 		}
 		return products;
+	}
+	//在庫数を取得
+	public int getStock_quantity(String product_id) {
+		int stock=0;
+		try {
+			Connection cn = Connector.connect();
+
+			String sql = "SELECT stock_quantity FROM product_table WHERE product_id=?";
+			st = cn.prepareStatement(sql);
+			st.setString(1, product_id);
+
+			ResultSet rs = st.executeQuery();
+			rs.next();
+
+			stock=rs.getInt(1);
+
+			cn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return stock;
 	}
 
 

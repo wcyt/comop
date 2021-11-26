@@ -14,9 +14,9 @@ public class MySQLPointProductDAO {
 	private PreparedStatement st = null;
 
 	//ポイント商品の一覧を取得
-	public List getRewardProductsList() {
+	public List<PointRewardBean> getRewardProductsList() {
 
-		ArrayList point_rewards = new ArrayList();
+		ArrayList<PointRewardBean> point_rewards = new ArrayList<PointRewardBean>();
 		try {
 			Connection cn = Connector.connect();
 
@@ -44,8 +44,8 @@ public class MySQLPointProductDAO {
 		return point_rewards;
 	}
 	//ポイント商品の検索
-	public List searchRewardProducts(String key) {
-		ArrayList point_rewards = new ArrayList();
+	public List<PointRewardBean> searchRewardProducts(String key) {
+		ArrayList<PointRewardBean> point_rewards = new ArrayList<PointRewardBean>();
 		try {
 			Connection cn = Connector.connect();
 

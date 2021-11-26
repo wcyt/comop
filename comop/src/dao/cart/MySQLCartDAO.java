@@ -86,8 +86,8 @@ public class MySQLCartDAO implements CartDAO {
 		}
 	}
 	//自分のカートの一覧を取得
-	public List getCartList(String user_id) {
-		ArrayList carts = new ArrayList();
+	public List<CartBean> getCartList(String user_id) {
+		ArrayList<CartBean> carts = new ArrayList<CartBean>();
 		try {
 			Connection cn = Connector.connect();
 

@@ -10,9 +10,10 @@ import java.util.List;
 import bean.ColorBean;
 import dao.Connector;
 
-public class MySQLColorManagementDAO {
+public class MySQLColorManagementDAO implements ColorManagementDAO {
 	private PreparedStatement st = null;
 
+	//色の追加
 	public void addColor(String color_name) {
 		try {
 			Connection cn = Connector.connect();
@@ -31,6 +32,7 @@ public class MySQLColorManagementDAO {
 			e.printStackTrace();
 		}
 	}
+	//色の削除
 	public void removeColor(String color_id) {
 		try {
 			Connection cn = Connector.connect();
@@ -49,8 +51,9 @@ public class MySQLColorManagementDAO {
 			e.printStackTrace();
 		}
 	}
-	public List getColorList() {
-		ArrayList colors = new ArrayList();
+	//色の一覧を取得
+	public List<ColorBean> getColorList() {
+		ArrayList<ColorBean> colors = new ArrayList<ColorBean>();
 		try {
 			Connection cn = Connector.connect();
 

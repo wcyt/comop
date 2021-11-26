@@ -6,9 +6,9 @@ import java.util.Map;
 import bean.FavoriteBean;
 
 public interface FavoriteDAO {
-	public List getFavoriteList(String user_id);
+	public List<FavoriteBean> getFavoriteList(String user_id);
 	public void addFavorite(FavoriteBean f);
-	public void removeFavorite(String user_id,Map product_ids);
+	public void removeFavorite(String user_id,Map<String,String[]> product_ids);
 }
 
 

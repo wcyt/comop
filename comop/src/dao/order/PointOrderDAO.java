@@ -6,5 +6,5 @@ import bean.PointOrderBean;
 
 public interface PointOrderDAO {
 	public void addPointOrder(PointOrderBean po);
-	public List getPointOrderList(String user_id);
+	public List<PointOrderBean> getPointOrderList(String user_id);
 }
