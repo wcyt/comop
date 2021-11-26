@@ -15,20 +15,20 @@ class GetProductListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		ProductDAO prodao = factory.getProductDAO();
+		ProductDAO proddao = factory.getProductDAO();
 
 		RequestContext rc = getRequestContext();
 
-		Map<String, String> promap = new HashMap<>();
+		Map<String, String[]> promap = new HashMap<>();
 
-		promap.put("size", (String)rc.getParameter("size")[0]);
-		promap.put("material", (String)rc.getParameter("material")[0]);
-		promap.put("packing_type", (String)rc.getParameter("packing_type")[0]);
-		promap.put("pmin", (String)rc.getParameter("pmin")[0]);
-		promap.put("pmax", (String)rc.getParameter("pmax")[0]);
-		promap.put("color_id", (String)rc.getParameter("color_id")[0]);
+		promap.put("size", rc.getParameter("size"));
+		promap.put("material", rc.getParameter("material"));
+		promap.put("packing_type", rc.getParameter("packing_type"));
+		promap.put("pmin", rc.getParameter("pmin"));
+		promap.put("pmax", rc.getParameter("pmax"));
+		promap.put("color_id", rc.getParameter("color_id"));
 
-		List prolist = prodao.getProductsList(promap);
+		List prolist = proddao.getProductsList(promap);
 
 		resc.setResult(prolist);
 		resc.setTarget("/WEB-INF/jsp/productsList.jsp");
