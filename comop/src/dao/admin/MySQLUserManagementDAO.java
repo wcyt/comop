@@ -13,6 +13,7 @@ import dao.Connector;
 public class MySQLUserManagementDAO implements UserManagementDAO {
 	private PreparedStatement st = null;
 
+	//ユーザーの一覧を取得
 	public List<UserBean> getUserList(){
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		try {
@@ -47,6 +48,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 
 		return users;
 	}
+	//登録しているユーザーを削除
 	public void lapseUser(String user_id) {
 		try {
 			Connection cn = Connector.connect();
