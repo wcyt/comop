@@ -6,12 +6,17 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import command.CommandFactory;
-import dao.admin.*;
-import dao.favorite.*;
-import dao.cart.*;
-import dao.product.*;
-import dao.user.*;
-import dao.order.*;
+import dao.admin.ColorManagementDAO;
+import dao.admin.PointProductManagementDAO;
+import dao.admin.ProductManagementDAO;
+import dao.admin.StockDAO;
+import dao.admin.UserManagementDAO;
+import dao.cart.CartDAO;
+import dao.favorite.FavoriteDAO;
+import dao.order.OrderDAO;
+import dao.order.PointOrderDAO;
+import dao.product.ProductDAO;
+import dao.user.UserDAO;
 
 
 public abstract class AbstractDaoFactory {
@@ -61,7 +66,7 @@ public abstract class AbstractDaoFactory {
 	public abstract CartDAO getCartDAO();
 	public abstract ProductDAO getProductDAO();
 	public abstract PointProductManagementDAO getPointProductDAO();
-	public abstract UserDAO getUserDAOo();
+	public abstract UserDAO getUserDAO();
 	public abstract OrderDAO getOrderDAO();
 	public abstract PointOrderDAO getPointOrderDAO();
 

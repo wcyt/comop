@@ -3,7 +3,7 @@ package command.user;
 import bean.UserBean;
 import command.AbstractCommand;
 import dao.AbstractDaoFactory;
-import dao.user.MySQLUserDAO;
+import dao.user.UserDAO;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -24,7 +24,8 @@ class CreateAccountCommand extends AbstractCommand {
 		u.setPassword(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getMySQLUserDAO();
+		UserDAO ud = factory.getUserDAOo();
+		ud.createAccount(u);
 
 		resc.setTarget("signUpComplete");
 
