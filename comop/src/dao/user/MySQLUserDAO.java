@@ -60,6 +60,7 @@ public class MySQLUserDAO implements UserDAO {
 
 			String sql = "UPDATE user_table SET name=?,mail=?,address=?,first_name=?,first_name_kana=?,last_name=?,last_name_kana=?,tel=?,postal_code=?,password=? WHERE user_id=?";
 
+			st = cn.prepareStatement(sql);
 
 			st.setString(1, u.getName());
 			st.setString(2, u.getMail());
