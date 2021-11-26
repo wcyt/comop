@@ -60,7 +60,7 @@ public abstract class AbstractDaoFactory {
 	public abstract FavoriteDAO getFavoriteDAO();
 	public abstract CartDAO getCartDAO();
 	public abstract ProductDAO getProductDAO();
-	public abstract PointProductDAO getPointProductDAO();
+	public abstract PointProductManagementDAO getPointProductDAO();
 	public abstract UserDAO getUserDAOo();
 	public abstract OrderDAO getOrderDAO();
 	public abstract PointOrderDAO getPointOrderDAO();
