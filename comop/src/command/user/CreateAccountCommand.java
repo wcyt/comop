@@ -2,8 +2,8 @@ package command.user;
 
 import bean.UserBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.user.UserDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 

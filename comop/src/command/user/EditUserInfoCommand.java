@@ -2,8 +2,8 @@ package command.user;
 
 import bean.UserBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
-import dao.user.MySQLUserDAO;
+import dao.user.UserDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -29,10 +29,10 @@ public class EditUserInfoCommand extends AbstractCommand{
 		u.setPostal_code(postalCode);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getFactory();
-		msud.editUserInfo(u);
+		UserDAO ud = factory.getUserDAO();
+		ud.editUserInfo(u);
 
-		reqc.setAttribute("mess","ユーザー情報を変更しました");
+//		reqc.setAttribute("mess","ユーザー情報を変更しました");
 
 		resc.setTarget("トップに行くか、編集ページに戻るか選ぶページをはさむ");
 		return resc;

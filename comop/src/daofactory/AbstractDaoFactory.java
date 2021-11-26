@@ -4,10 +4,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import command.CommandFactory;
-
-import dao.*;
 import dao.admin.ColorManagementDAO;
-import dao.admin.MySQLColorManagementDAO;
 import dao.admin.PointProductManagementDAO;
 import dao.admin.ProductManagementDAO;
 import dao.admin.StockDAO;
@@ -31,7 +28,7 @@ public abstract class AbstractDaoFactory {
 			properties.load(file);
 
 			String name = properties.getProperty("dao");
-			System.out.println("AbstractDaoFactory:"name);
+			System.out.println("AbstractDaoFactory:" + name);
 			Class c = Class.forName(name);
 			factory = (AbstractDaoFactory)c.newInstance();
 		} catch (Exception e) {
@@ -39,6 +36,7 @@ public abstract class AbstractDaoFactory {
 		}
 		return factory;
 	}
+
 	public abstract ColorManagementDAO getColorManagementDAO();
 	public abstract ProductManagementDAO getProductManagementDAO();
 	public abstract PointProductManagementDAO getPointProductManagementDAO();

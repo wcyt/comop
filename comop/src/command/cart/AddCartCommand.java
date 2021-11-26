@@ -3,7 +3,7 @@ package command.cart;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
+import daofactory.AbstractDaoFactory;
 import dao.cart.CartDAO;
 import tera.RequestContext;
 import tera.ResponseContext;

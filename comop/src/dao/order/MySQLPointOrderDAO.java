@@ -10,7 +10,7 @@ import java.util.List;
 import bean.PointOrderBean;
 import dao.Connector;
 
-public class MySQLPointOrderDAO {
+public class MySQLPointOrderDAO implements PointOrderDAO {
 	private PreparedStatement st = null;
 
 	//ポイント注文テーブルに追加

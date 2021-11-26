@@ -1,11 +1,9 @@
 package command.admin;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
-
-import admin.MySQLColorManagementDAO;
 import bean.ColorBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
+import dao.admin.ColorManagementDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -21,24 +19,23 @@ public class AddColorCommand extends AbstractCommand {
 		String colorId = colorIds[0];
 		String colorName = colorNames[0];
 
-
 		ColorBean cb = new ColorBean();
 
-		cb.setColorId(colorId);
-		cb.setColorName(colorName);
+		cb.setColor_id(colorId);
+		cb.setColor_name(colorName);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLColorManagementDAO cmd = factory.getMySQLColorManagementDAO();
+		ColorManagementDAO cmd = factory.getColorManagementDAO();
+		cmd.addColor(colorName);
 
+		if (cmd.getColor(cb.getColor_id()) != null) {
 
-		if(cmd.getColor(cb.getColor_id())!=null) {
+			rqsc.setAttribute("mess", (Object) "このIDはすでに使用されています");
 
-			rqsc.setAttribute("mess",(Object)"このIDはすでに使用されています");
-
-		}else {
+		} else {
 
 			cmd.addColor(cb);
-			rqsc.setAttribute("mess",(Object)"新しいカラーを追加しました");
+			rqsc.setAttribute("mess", (Object) "新しいカラーを追加しました");
 
 		}
 
