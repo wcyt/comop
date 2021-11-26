@@ -165,6 +165,28 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 		return products;
 	}
+	//在庫数を取得
+	public int getStock_quantity(String product_id) {
+		int stock=0;
+		try {
+			Connection cn = Connector.connect();
+
+			String sql = "SELECT stock_quantity FROM product_table WHERE product_id=?";
+			st = cn.prepareStatement(sql);
+			st.setString(1, product_id);
+
+			ResultSet rs = st.executeQuery();
+			rs.next();
+
+			stock=rs.getInt(1);
+
+			cn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+		return stock;
+	}
 
 
 

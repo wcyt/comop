@@ -69,7 +69,7 @@ public class MySQLDaoFactory extends AbstractDaoFactory {
 	}
 
 	@Override
-	public UserDAO getUserDAOo() {
+	public UserDAO getUserDAO() {
 		return new MySQLUserDAO();
 	}
 
