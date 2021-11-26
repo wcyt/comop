@@ -45,7 +45,7 @@
         <h1 class="col-span-12 my-5 text-3xl">新規会員登録</h1>
         <!-- New Member Registration Text End -->
         <!-- Login Form -->
-        <form method="post" action="" class="col-span-12 px-28 py-8 mt-10 bg-gray-200 lg:mx-44">
+        <form method="post" action="createAccount" class="col-span-12 px-28 py-8 mt-10 bg-gray-200 lg:mx-44">
             <!-- User Info Text -->
             <p class="py-4 text-xl">ユーザー情報</p>
             <!-- User Info Text End -->
@@ -56,7 +56,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="" id="" class="w-full">
+                    <input type="text" name="name" id="" class="w-full">
                 </div>
             </div>
             <!-- User Name-->
@@ -67,7 +67,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="" id="" class="w-full">
+                    <input type="text" name="mail" id="" class="w-full">
                 </div>
             </div>
             <!-- Mail Address End -->
@@ -78,7 +78,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="" id="" class="w-full">
+                    <input type="text" name="password" id="" class="w-full">
                 </div>
             </div>
             <!-- Password End -->

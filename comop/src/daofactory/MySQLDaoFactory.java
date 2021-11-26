@@ -1,4 +1,6 @@
-package dao;
+package daofactory;
+
+import dao.AbstractDaoFactory;
 
 public class MySQLDaoFactory extends AbstractDaoFactory {
 	/*
