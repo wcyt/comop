@@ -14,9 +14,13 @@ class CreateAccountCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 
 		// パラメータを取得
-		String name = reqc.getParameter("name")[0];
-		String mail = reqc.getParameter("mail")[0];
-		String password = reqc.getParameter("password")[0];
+		String[] names = reqc.getParameter("name");
+		String[] mails = reqc.getParameter("mail");
+		String[] passwords = reqc.getParameter("password");
+
+		String name = names[0];
+		String mail = mails[0];
+		String password = passwords[0];
 
 		UserBean u = new UserBean();
 		u.setName(name);
@@ -24,7 +28,7 @@ class CreateAccountCommand extends AbstractCommand {
 		u.setPassword(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getFactory();
+		MySQLUserDAO msud = factory.getMySQLUserDAO();
 
 		resc.setTarget("signUpComplete");
 
