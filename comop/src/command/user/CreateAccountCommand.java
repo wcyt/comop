@@ -24,24 +24,23 @@ class CreateAccountCommand extends AbstractCommand {
 		u.setPassword(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		UserDAO ud = factory.getUserDAOo();
+		UserDAO ud = factory.getUserDAO();
 		ud.createAccount(u);
 
 		resc.setTarget("signUpComplete");
-
-		if (msud.getMail(mail).equals("nomail") == false) {
-
-			reqc.setAttribute("mess", "このメールアドレスは使われています");
-
-			resc.setTarget("signUp");
-
-		} else {
-
-			msud.createAccount(u);
-			reqc.setAttribute("mess", "ユーザーを登録しました");
-
-			resc.setTarget("signUpComplete");
-		}
+//		if (msud.getMail(mail).equals("nomail") == false) {
+//
+//			reqc.setAttribute("mess", "このメールアドレスは使われています");
+//
+//			resc.setTarget("signUp");
+//
+//		} else {
+//
+//			msud.createAccount(u);
+//			reqc.setAttribute("mess", "ユーザーを登録しました");
+//
+//			resc.setTarget("signUpComplete");
+//		}
 		return resc;
 
 	}
