@@ -36,8 +36,8 @@ public class MySQLPointOrderDAO {
 		}
 	}
 	//自分のポイント注文テーブルの一覧を取得
-	public List getPointOrderList(String user_id) {
-		ArrayList point_orders = new ArrayList();
+	public List<PointOrderBean> getPointOrderList(String user_id) {
+		ArrayList<PointOrderBean> point_orders = new ArrayList<PointOrderBean>();
 		try {
 			Connection cn = Connector.connect();
 
