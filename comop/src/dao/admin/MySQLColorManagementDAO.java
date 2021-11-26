@@ -10,7 +10,7 @@ import java.util.List;
 import bean.ColorBean;
 import dao.Connector;
 
-public class MySQLColorManagementDAO {
+public class MySQLColorManagementDAO implements ColorManagementDAO {
 	private PreparedStatement st = null;
 
 	//色の追加
