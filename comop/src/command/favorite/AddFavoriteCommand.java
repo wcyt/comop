@@ -2,8 +2,8 @@ package command.favorite;
 
 import bean.FavoriteBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.favorite.FavoriteDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 

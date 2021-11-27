@@ -6,8 +6,8 @@ import java.util.List;
 import bean.OrderBean;
 import bean.OrderDetailBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.order.OrderDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 

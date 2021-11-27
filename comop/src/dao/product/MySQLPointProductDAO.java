@@ -10,7 +10,7 @@ import java.util.List;
 import bean.PointRewardBean;
 import dao.Connector;
 
-public class MySQLPointProductDAO {
+public class MySQLPointProductDAO implements PointProductDAO{
 	private PreparedStatement st = null;
 
 	//ポイント商品の一覧を取得

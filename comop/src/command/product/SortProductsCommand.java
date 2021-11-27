@@ -3,8 +3,8 @@ package command.product;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.product.ProductDAO;
+import daofactory.AbstractDaoFactory;
 import tera.ResponseContext;
 
 class SortProductsCommand extends AbstractCommand {

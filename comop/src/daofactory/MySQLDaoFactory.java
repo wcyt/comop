@@ -1,9 +1,9 @@
 package daofactory;
 
-import dao.AbstractDaoFactory;
 import dao.admin.ColorManagementDAO;
 import dao.admin.MySQLColorManagementDAO;
 import dao.admin.MySQLPointProductManagementDAO;
+import dao.admin.MySQLProductManagementDAO;
 import dao.admin.MySQLStockDAO;
 import dao.admin.MySQLUserManagementDAO;
 import dao.admin.PointProductManagementDAO;
@@ -18,7 +18,9 @@ import dao.order.MySQLOrderDAO;
 import dao.order.MySQLPointOrderDAO;
 import dao.order.OrderDAO;
 import dao.order.PointOrderDAO;
+import dao.product.MySQLPointProductDAO;
 import dao.product.MySQLProductDAO;
+import dao.product.PointProductDAO;
 import dao.product.ProductDAO;
 import dao.user.MySQLUserDAO;
 import dao.user.UserDAO;
@@ -35,7 +37,7 @@ public class MySQLDaoFactory extends AbstractDaoFactory {
 	}
 	@Override
 	public ProductManagementDAO getProductManagementDAO() {
-		return MySQLProductManagementDAO();
+		return new MySQLProductManagementDAO();
 	}
 
 	@Override
@@ -63,10 +65,7 @@ public class MySQLDaoFactory extends AbstractDaoFactory {
 		return new MySQLProductDAO();
 	}
 
-	@Override
-	public PointProductManagementDAO getPointProductDAO() {
-		return new MySQLPointProductManagementDAO();
-	}
+
 
 	@Override
 	public UserDAO getUserDAO() {
@@ -81,6 +80,10 @@ public class MySQLDaoFactory extends AbstractDaoFactory {
 	@Override
 	public PointOrderDAO getPointOrderDAO() {
 		return new MySQLPointOrderDAO();
+	}
+	@Override
+	public PointProductDAO getPointProductDAO() {
+		return new MySQLPointProductDAO();
 	}
 
 }

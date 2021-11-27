@@ -3,8 +3,8 @@ package command.favorite;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.favorite.FavoriteDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 

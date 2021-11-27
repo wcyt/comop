@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.product.ProductDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
