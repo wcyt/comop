@@ -16,14 +16,12 @@ public class MySQLUserDAO implements UserDAO {
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "INSERT into user_table(name,mail,password) value(?,?,?)";
+			String sql = "insert into user_table(name,mail,password) values(?,?,?)";
 
 			st = cn.prepareStatement(sql);
-
 			st.setString(1, u.getName());
 			st.setString(2, u.getMail());
 			st.setString(3, u.getPassword());
-
 			st.executeUpdate();
 
 			cn.commit();
@@ -32,6 +30,7 @@ public class MySQLUserDAO implements UserDAO {
 			e.printStackTrace();
 		}
 	}
+
 	//パスワードを変更(ログイン前)
 	public void changePassword(String user_id,String pass) {
 		try {
@@ -181,5 +180,9 @@ public class MySQLUserDAO implements UserDAO {
 		}
 
 		return isRegist;
+	}
+
+	@Override
+	public void changePassword(int user_id, String pass) {
 	}
 }

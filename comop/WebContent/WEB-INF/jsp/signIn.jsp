@@ -7,9 +7,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- js -->
-<script src="./js/headerAndFooter.js"></script>
-    <!-- js -->
     <!-- font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,8 +22,9 @@
 </head>
 
 <body>
+	<%@include file="Header.jsp" %>
     <!-- Main -->
-    <main id="main" class="grid grid-cols-12 mb-8 lg:px-32 sm:px-4">
+    <main id="main" class="grid grid-cols-12 pt-16 mb-8 lg:px-32 sm:px-4">
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
@@ -44,11 +42,12 @@
             <input type="text" id="mailAddress" placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input">
             <input type="text" id="password" placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input">
             <button id="loginButton" class="py-3 mt-10 text-xl font-bold text-white bg-blue-400 rounded-full focus:outline-none">ログインする</button>
-            <a href="/WEB-INF/jsp/signUp.jsp" class="mt-4 text-sm font-bold text-center text-blue-400 hover:underline">はじめてご利用の方（新規会員登録）</a>
+            <a href="signUp" class="mt-4 text-sm font-bold text-center text-blue-400 hover:underline">はじめてご利用の方（新規会員登録）</a>
         </form>
         <!-- Login Form End -->
     </main>
     <!-- Main End -->
+    <%@include file="Footer.jsp" %>
 </body>
 
 <script>

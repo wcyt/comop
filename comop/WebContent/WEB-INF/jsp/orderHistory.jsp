@@ -7,9 +7,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- js -->
-    <script src="./js/headerAndFooter.js"></script>
-    <!-- js -->
     <!-- font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,6 +22,7 @@
 </head>
 
 <body>
+	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
         <!-- Breadcrumbs -->
@@ -92,6 +90,7 @@
         </article>
     </main>
     <!-- Main End -->
+    <%@include file="Footer.jsp" %>
 </body>
 
 </html>
