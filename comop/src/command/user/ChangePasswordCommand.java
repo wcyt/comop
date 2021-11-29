@@ -12,16 +12,16 @@ public class ChangePasswordCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext rqsc = getRequestContext();
 
-		int userId = Integer.parseInt(rqsc.getParameter("user_id")[0]);
+		int user_id = Integer.parseInt(rqsc.getParameter("user_id")[0]);
 		String password = rqsc.getParameter("password")[0];
 
 		UserBean u = new UserBean();
-		u.setUser_id(userId);
+		u.setUser_id(user_id);
 		u.setPassword(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		UserDAO ud = factory.getUserDAO();
-		ud.changePassword(userId, password);
+		ud.changePassword(user_id, password);
 
 //		reqs.setAttribute("mess","パスワードを変更しました");
 

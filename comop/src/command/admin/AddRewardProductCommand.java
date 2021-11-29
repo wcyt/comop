@@ -2,8 +2,8 @@ package command.admin;
 
 import bean.PointRewardBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.admin.MySQLPointProductManagementDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -42,7 +42,6 @@ public class AddRewardProductCommand  extends AbstractCommand {
 
 		msppm.addProduct(prb);
 
-		resc.setAttribute("ポイント商品を追加しました");
 		resc.setTarget("productManagement");
 
 		return resc;

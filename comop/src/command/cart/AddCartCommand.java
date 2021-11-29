@@ -1,16 +1,9 @@
 package command.cart;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
-
 import bean.CartBean;
 import command.AbstractCommand;
-<<<<<<< HEAD
-import dao.AbstractDaoFactory;
 import dao.cart.MySQLCartDAO;
-=======
 import daofactory.AbstractDaoFactory;
-import dao.cart.CartDAO;
->>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 import tera.RequestContext;
 import tera.ResponseContext;
 
