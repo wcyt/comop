@@ -56,7 +56,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="name" id="" class="w-full">
+                    <input type="text" name="name" id="" class="w-full" required>
                 </div>
             </div>
             <!-- User Name-->
@@ -67,7 +67,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="mail" id="" class="w-full">
+                    <input type="email" name="mail" id="" class="w-full" required>
                 </div>
             </div>
             <!-- Mail Address End -->
@@ -78,7 +78,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="password" name="password" id="" class="w-full">
+                    <input type="password" name="password" id="" class="w-full" required>
                 </div>
             </div>
             <!-- Password End -->

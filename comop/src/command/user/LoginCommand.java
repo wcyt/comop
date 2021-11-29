@@ -6,7 +6,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class LoginCommand  extends AbstractCommand {
+class LoginCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
@@ -17,8 +17,14 @@ class LoginCommand  extends AbstractCommand {
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		UserDAO userDAO = daoFactory.getUserDAO();
 		userDAO.login(mail, password);
-		
-		
+
+
+		// adminの場合
+		if (mail == "admin" && password == "admin") {
+			resc.setTarget("signUpComplete");
+		}
+
+		resc.setTarget("top");
 
 		return resc;
 	}
