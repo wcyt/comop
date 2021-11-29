@@ -39,7 +39,7 @@
         <!-- Login Form -->
         <form method="post" action="login" class="container col-span-12 px-12 py-8 mx-auto mt-4 bg-gray-200 w-96 form-control rounded-3xl">
             <p class="py-2 text-2xl font-bold text-center">ログイン</p>
-            <input type="text" id="mailAddress" placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input">
+            <input type="text"  id="mailAddress" placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input">
             <input type="password" id="password" placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input">
             <button id="loginButton" class="py-3 mt-10 text-xl font-bold text-white bg-blue-400 rounded-full focus:outline-none">ログインする</button>
             <a href="signUp" class="mt-4 text-sm font-bold text-center text-blue-400 hover:underline">はじめてご利用の方（新規会員登録）</a>
