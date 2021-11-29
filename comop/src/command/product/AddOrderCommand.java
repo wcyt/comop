@@ -11,7 +11,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class AddOrderCommand extends AbstractCommand {
+public class AddOrderCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext rc = getRequestContext();

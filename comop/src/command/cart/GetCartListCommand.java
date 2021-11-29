@@ -3,8 +3,8 @@ package command.cart;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
-import dao.cart.MySQLCartDAO;
+import dao.cart.CartDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -19,9 +19,9 @@ public class GetCartListCommand extends AbstractCommand {
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLCartDAO mscd = factory.getMySQLCartDAO();
+		CartDAO cd = factory.getCartDAO();
 
-		List carts = mscd.getCartList();
+		List carts = cd.getCartList(user_id);
 
 
 		resc.setResult(carts);

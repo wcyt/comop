@@ -2,8 +2,8 @@ package command.admin;
 
 import bean.ProductBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.admin.MySQLProductManagementDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -15,14 +15,14 @@ public class EditProductCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 
 
-		String[] product_names = reqs.getParameter("product_name");
-		String[] product_images = reqs.getParameter("product_image");
-		String[] stock_quantites = reqs.getParameter("stock_quantity");
-		String[] product_descriptions = reqs.getParameter("product_decription");
-		String[] prices = reqs.getParameter("price");
-		String[] color_ids = reqs.getParameter("color_id");
-	  //String[] color_names = reqs.getParameter("color_name");
-		String[] sizes = reqs.getParameter("size");
+		String[] product_names = reqc.getParameter("product_name");
+		String[] product_images = reqc.getParameter("product_image");
+		String[] stock_quantites = reqc.getParameter("stock_quantity");
+		String[] product_descriptions = reqc.getParameter("product_decription");
+		String[] prices = reqc.getParameter("price");
+		String[] color_ids = reqc.getParameter("color_id");
+	  //String[] color_names = reqc.getParameter("color_name");
+		String[] sizes = reqc.getParameter("size");
 
 
 		String product_name = product_names[0];
@@ -46,11 +46,10 @@ public class EditProductCommand extends AbstractCommand {
 		pb.setSize(size);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLProductManagementDAO mspm = new MySQLProductManagementDAO();
+		MySQLProductManagementDAO mspm = factory.getMySQLProductManagementDAO();
 
 		mspm.editProduct(pb);
 
-		resc.setAttribute("商品情報を変更しました");
 		resc.setTarget("productManagement");
 
 

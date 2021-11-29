@@ -7,7 +7,7 @@ import dao.product.ProductDAO;
 import daofactory.AbstractDaoFactory;
 import tera.ResponseContext;
 
-class SortProductsCommand extends AbstractCommand {
+public class SortProductsCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
@@ -15,8 +15,7 @@ class SortProductsCommand extends AbstractCommand {
 		List pricesort = pdao.sortProducts();
 
 		resc.setResult(pricesort);
-		resc.setTarget("/WEB-INF/jsp/productsList.jsp");
-
+		resc.setTarget("productsList");
 
 		return resc;
 	}

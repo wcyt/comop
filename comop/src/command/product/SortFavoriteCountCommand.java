@@ -7,7 +7,7 @@ import dao.product.ProductDAO;
 import daofactory.AbstractDaoFactory;
 import tera.ResponseContext;
 
-class SortFavoriteCountCommand extends AbstractCommand {
+public class SortFavoriteCountCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
@@ -16,7 +16,6 @@ class SortFavoriteCountCommand extends AbstractCommand {
 		List favsort = pdao.sortFavoriteCount();
 
 		resc.setResult(favsort);
-		resc.setTarget("/WEB-INF/jsp/productsList.jsp");
 
 		return resc;
 	}

@@ -13,31 +13,18 @@ public class AddColorCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
-		String[] colorIds = reqc.getParameter("color_id");
-		String[] colorNames = reqc.getParameter("color_name");
+		String[] color_names = reqc.getParameter("color_name");
 
-		String colorId = colorIds[0];
-		String colorName = colorNames[0];
+		String color_name = color_names[0];
 
 		ColorBean cb = new ColorBean();
 
-		cb.setColor_id(colorId);
-		cb.setColor_name(colorName);
+		cb.setColor_name(color_name);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ColorManagementDAO cmd = factory.getColorManagementDAO();
-		cmd.addColor(colorName);
+		cmd.addColor(cb);
 
-		if (cmd.getColor(cb.getColor_id()) != null) {
-
-			rqsc.setAttribute("mess", (Object) "このIDはすでに使用されています");
-
-		} else {
-
-			cmd.addColor(cb);
-			rqsc.setAttribute("mess", (Object) "新しいカラーを追加しました");
-
-		}
 
 		resc.setTarget("colorManagement");
 
