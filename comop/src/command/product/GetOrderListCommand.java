@@ -11,18 +11,16 @@ import tera.ResponseContext;
 public class GetOrderListCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
-		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		RequestContext rc = getRequestContext();
 
 		String user_id = (String)rc.getParameter("user_id")[0];
 
+		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		OrderDAO odao = factory.getOrderDAO();
-
 		List orderlist = odao.getOrderList(user_id);
+
 		resc.setResult(orderlist);
-
-		resc.setTarget("/WEB-INF/jsp/orderHistory.jsp");
-
+		resc.setTarget("orderHistory");
 
 		return resc;
 	}

@@ -2,7 +2,11 @@ package command.cart;
 
 import bean.CartBean;
 import command.AbstractCommand;
+<<<<<<< HEAD
 import dao.cart.MySQLCartDAO;
+=======
+import dao.cart.CartDAO;
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -27,11 +31,10 @@ public class AddCartCommand  extends AbstractCommand {
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLCartDAO mscd = factory.getMySQLCartDAO();
-		mscd.addCart(cb);
+		CartDAO cd = factory.getCartDAO();
+		cd.addCart(cb);
 
 		resc.setTarget("cart");
-
 
 		return resc;
 	}
