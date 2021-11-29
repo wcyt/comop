@@ -7,7 +7,7 @@ import dao.product.PointProductDAO;
 import daofactory.AbstractDaoFactory;
 import tera.ResponseContext;
 
-class GetRewardProductsListCommand extends AbstractCommand {
+public class GetRewardProductsListCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();

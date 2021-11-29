@@ -5,7 +5,7 @@ import command.AbstractCommand;
 import dao.user.MySQLUserDAO;
 import tera.ResponseContext;
 
-class GetUserInfoCommand  extends AbstractCommand {
+public class GetUserInfoCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 

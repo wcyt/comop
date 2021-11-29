@@ -7,7 +7,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class LoginCommand  extends AbstractCommand {
+public class LoginCommand  extends AbstractCommand {
 	boolean isRegist=false;
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();

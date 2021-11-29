@@ -8,7 +8,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class GetOrderListCommand extends AbstractCommand {
+public class GetOrderListCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();

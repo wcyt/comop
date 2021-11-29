@@ -7,7 +7,7 @@ import dao.product.ProductDAO;
 import daofactory.AbstractDaoFactory;
 import tera.ResponseContext;
 
-class SortFavoriteCountCommand extends AbstractCommand {
+public class SortFavoriteCountCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();

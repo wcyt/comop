@@ -8,7 +8,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class SearchProductsCommand extends AbstractCommand {
+public class SearchProductsCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext rc = getRequestContext();

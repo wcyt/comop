@@ -4,12 +4,12 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 
 import bean.CartBean;
 import command.AbstractCommand;
-import dao.AbstractDaoFactory;
 import dao.cart.MySQLCartDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class RemoveCartCommand  extends AbstractCommand {
+public class RemoveCartCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 

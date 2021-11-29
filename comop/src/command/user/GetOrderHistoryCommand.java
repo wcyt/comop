@@ -9,7 +9,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class GetOrderHistoryCommand  extends AbstractCommand {
+public class GetOrderHistoryCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
