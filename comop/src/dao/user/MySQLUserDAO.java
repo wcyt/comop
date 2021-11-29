@@ -162,7 +162,7 @@ public class MySQLUserDAO implements UserDAO {
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "SELECT password FROM user_table WHERE mail=?";
+			String sql = "SELECT password FROM user_table WHERE mail = ?";
 			st = cn.prepareStatement(sql);
 			st.setString(1, mail);
 
@@ -178,6 +178,8 @@ public class MySQLUserDAO implements UserDAO {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+
+		System.out.println("ここまでは来ている");
 
 		return isRegist;
 	}

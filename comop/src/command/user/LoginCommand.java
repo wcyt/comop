@@ -20,14 +20,11 @@ public class LoginCommand extends AbstractCommand {
 		ub.setMail(mail);
 		ub.setPassword(password);
 
+		System.out.println("beanまでは北");
+
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		UserDAO userDAO = daoFactory.getUserDAO();
 		userDAO.login(mail, password);
-
-		// adminの場合
-		if (mail == "admin" && password == "admin") {
-			resc.setTarget("admin");
-		}
 
 		resc.setTarget("top");
 
