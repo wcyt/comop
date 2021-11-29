@@ -18,10 +18,9 @@ class LoginCommand extends AbstractCommand {
 		UserDAO userDAO = daoFactory.getUserDAO();
 		userDAO.login(mail, password);
 
-
 		// adminの場合
 		if (mail == "admin" && password == "admin") {
-			resc.setTarget("signUpComplete");
+			resc.setTarget("admin");
 		}
 
 		resc.setTarget("top");
