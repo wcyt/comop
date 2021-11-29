@@ -137,18 +137,21 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			u.setUser_id(rs.getInt(1));
-			u.setName(rs.getString(2));
-			u.setMail(rs.getString(3));
-			u.setAddress(rs.getString(4));
-			u.setFirst_name(rs.getString(5));
-			u.setFirst_name_kana(rs.getString(6));
-			u.setLast_name(rs.getString(7));
-			u.setLast_name_kana(rs.getString(8));
-			u.setTel(rs.getString(9));
-			u.setPostal_code(rs.getString(10));
-			u.setPassword(rs.getString(11));
-			u.setPoint(rs.getInt(12));
+			if(rs.next()) {
+
+				u.setUser_id(rs.getInt(1));
+				u.setName(rs.getString(2));
+				u.setMail(rs.getString(3));
+				u.setAddress(rs.getString(4));
+				u.setFirst_name(rs.getString(5));
+				u.setFirst_name_kana(rs.getString(6));
+				u.setLast_name(rs.getString(7));
+				u.setLast_name_kana(rs.getString(8));
+				u.setTel(rs.getString(9));
+				u.setPostal_code(rs.getString(10));
+				u.setPassword(rs.getString(11));
+				u.setPoint(rs.getInt(12));
+			}
 
 			cn.close();
 		}catch(SQLException e) {
@@ -168,7 +171,7 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = st.executeQuery();
 			//入力されたメールアドレスが登録されてるか
-			if(rs.next()==true) {
+			if(rs.next()) {
 				//パスワードがあってるか
 				if(password.equals(rs.getString(1))) {
 					isRegist=true;

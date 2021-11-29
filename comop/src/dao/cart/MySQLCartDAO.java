@@ -29,7 +29,7 @@ public class MySQLCartDAO implements CartDAO {
 			String sql = null;
 
 			//既にカートに追加されていたらbuy_countを増やす
-			if(rs.next()==true) {
+			if(rs.next()) {
 				int buy_count=rs.getInt(3);
 
 				rs.close();

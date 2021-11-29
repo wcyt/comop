@@ -7,7 +7,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-public class AddRewardProductCommand  extends AbstractCommand {
+public class EditRewardProductCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
@@ -40,13 +40,14 @@ public class AddRewardProductCommand  extends AbstractCommand {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		MySQLPointProductManagementDAO msppm = factory.getMySQLPointProductManagementDAO();
 
-		msppm.addRewardProduct(prb);
+		msppm.editRewardProduct(prb);
 
 		resc.setTarget("productManagement");
 
 		return resc;
 	}
 }
+
 
 
 

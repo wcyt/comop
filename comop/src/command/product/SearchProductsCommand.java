@@ -19,7 +19,7 @@ public class SearchProductsCommand extends AbstractCommand {
 
 		List psearch =  pdao.searchProducts(key);
 		resc.setResult(psearch);
-		resc.setTarget("WEB-INF/jsp/productsList.jsp");
+		resc.setTarget("productsList");
 
 		return resc;
 	}
