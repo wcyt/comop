@@ -7,7 +7,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class RemoveCartCommand  extends AbstractCommand {
+public class RemoveCartCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 

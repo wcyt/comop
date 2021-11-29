@@ -10,7 +10,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class GetProductListCommand extends AbstractCommand {
+public class GetProductListCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
@@ -31,7 +31,7 @@ class GetProductListCommand extends AbstractCommand {
 		List prolist = proddao.getProductsList(promap);
 
 		resc.setResult(prolist);
-		resc.setTarget("/WEB-INF/jsp/productsList.jsp");
+		resc.setTarget("productsList");
 
 
 

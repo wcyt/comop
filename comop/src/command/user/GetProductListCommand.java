@@ -4,7 +4,7 @@ import command.AbstractCommand;
 import dao.product.ProductDAO;
 import tera.ResponseContext;
 
-class GetProductListCommand  extends AbstractCommand {
+public class GetProductListCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 

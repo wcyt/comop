@@ -2,6 +2,7 @@ package command.user;
 
 import bean.UserBean;
 import command.AbstractCommand;
+import dao.user.MySQLUserDAO;
 import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -29,13 +30,11 @@ public class EditUserInfoCommand extends AbstractCommand{
 		u.setPostal_code(postalCode);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-<<<<<<< HEAD
 		MySQLUserDAO msud = factory.getMySQLUserDAO();
 		msud.editUserInfo(u);
-=======
+
 		UserDAO ud = factory.getUserDAO();
 		ud.editUserInfo(u);
->>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 
 //		reqc.setAttribute("mess","ユーザー情報を変更しました");
 

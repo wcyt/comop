@@ -2,12 +2,16 @@ package command.cart;
 
 import bean.CartBean;
 import command.AbstractCommand;
+<<<<<<< HEAD
+import dao.cart.MySQLCartDAO;
+=======
 import dao.cart.CartDAO;
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-class AddCartCommand  extends AbstractCommand {
+public class AddCartCommand  extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
