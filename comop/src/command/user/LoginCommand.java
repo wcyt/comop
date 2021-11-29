@@ -11,7 +11,7 @@ public class LoginCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
 
-		String mail = reqc.getParameter("mail")[0];
+		String mail = reqc.getParameter("mailAddress")[0];
 		String password = reqc.getParameter("password")[0];
 
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
