@@ -3,25 +3,25 @@ package command.admin;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.admin.MySQLProductManagementDAO;
+import dao.admin.MySQLUserManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-public class GetProductsListCommand extends AbstractCommand {
+public class GetUserListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLProductManagementDAO mspmd = factory.getMySQLProductManagemantDAO();
+		MySQLUserManagementDAO msumd = factory.getMySQLUserManagemantDAO();
 
-		List products = mspmd.getProductList();
+		List users = msumd.getUserList();
 
 
-		resc.setResult(products);
-		resc.setTarget("productManagement");
+		resc.setResult(users);
+		resc.setTarget("userManagement");
 
 		return resc;
 	}
