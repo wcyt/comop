@@ -78,7 +78,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="password" id="" class="w-full">
+                    <input type="password" name="password" id="" class="w-full">
                 </div>
             </div>
             <!-- Password End -->
