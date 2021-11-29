@@ -16,7 +16,6 @@ class SortFavoriteCountCommand extends AbstractCommand {
 		List favsort = pdao.sortFavoriteCount();
 
 		resc.setResult(favsort);
-		resc.setTarget("/WEB-INF/jsp/productsList.jsp");
 
 		return resc;
 	}
