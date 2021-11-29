@@ -3,7 +3,7 @@ package command.admin;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.admin.MySQLUserManagementDAO;
+import dao.admin.UserManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -15,7 +15,7 @@ public class GetUserListCommand extends AbstractCommand {
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserManagementDAO msumd = factory.getMySQLUserManagemantDAO();
+		UserManagementDAO msumd = factory.getUserManagementDAO();
 
 		List users = msumd.getUserList();
 

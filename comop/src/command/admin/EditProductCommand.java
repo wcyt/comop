@@ -2,7 +2,7 @@ package command.admin;
 
 import bean.ProductBean;
 import command.AbstractCommand;
-import dao.admin.MySQLProductManagementDAO;
+import dao.admin.ProductManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -46,9 +46,9 @@ public class EditProductCommand extends AbstractCommand {
 		pb.setSize(size);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLProductManagementDAO mspm = factory.getMySQLProductManagementDAO();
+		ProductManagementDAO pmd = factory.getProductManagementDAO();
 
-		mspm.editProduct(pb);
+		pmd.editProduct(pb);
 
 		resc.setTarget("productManagement");
 

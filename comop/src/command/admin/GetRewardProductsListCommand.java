@@ -3,7 +3,7 @@ package command.admin;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.admin.MySQLPointProductManagementDAO;
+import dao.admin.PointProductManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -15,7 +15,7 @@ public class GetRewardProductsListCommand extends AbstractCommand {
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLPointProductManagementDAO msppmd = factory.getMySQLPointProductManagemantDAO();
+		PointProductManagementDAO msppmd = factory.getPointProductManagementDAO();
 
 		List pointProducts = msppmd.getRewardProductsList();
 

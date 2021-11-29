@@ -3,7 +3,7 @@ package command.admin;
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.admin.MySQLColorManagementDAO;
+import dao.admin.ColorManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -15,7 +15,7 @@ public class GetColorListCommand extends AbstractCommand {
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLColorManagementDAO mscmd = factory.getMySQLColorManagemantDAO();
+		ColorManagementDAO mscmd = factory.getColorManagementDAO();
 
 		List colors = mscmd.getColorList();
 
