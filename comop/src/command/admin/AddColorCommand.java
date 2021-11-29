@@ -1,6 +1,5 @@
 package command.admin;
 
-import bean.ColorBean;
 import command.AbstractCommand;
 import dao.admin.ColorManagementDAO;
 import daofactory.AbstractDaoFactory;
@@ -17,13 +16,10 @@ public class AddColorCommand extends AbstractCommand {
 
 		String color_name = color_names[0];
 
-		ColorBean cb = new ColorBean();
-
-		cb.setColor_name(color_name);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ColorManagementDAO cmd = factory.getColorManagementDAO();
-		cmd.addColor(cb);
+		cmd.addColor(color_name);
 
 
 		resc.setTarget("colorManagement");
