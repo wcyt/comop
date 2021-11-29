@@ -1,4 +1,3 @@
-
 package command.favorite;
 
 import command.AbstractCommand;
