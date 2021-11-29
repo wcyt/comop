@@ -2,7 +2,6 @@ package command.user;
 
 import bean.UserBean;
 import command.AbstractCommand;
-import dao.user.MySQLUserDAO;
 import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -15,21 +14,16 @@ public class LoginCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 
 
-		String[] mails = reqc.getParameter("mail");
-		String[] passwords = reqc.getParameter("password");
-
 		String mail = reqc.getParameter("mailAddress")[0];
 		String password = reqc.getParameter("password")[0];
 
-		String mail = mails[0];
-		String password = passwords[0];
 
 		UserBean ub = new UserBean();
 		ub.setMail(mail);
 		ub.setPassword(password);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getMySQLUserDAO();
+		UserDAO msud = factory.getUserDAO();
 
 		resc.setResult(msud.login(ub));
 
