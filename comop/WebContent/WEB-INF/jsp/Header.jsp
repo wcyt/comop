@@ -3,11 +3,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<!-- Header -->
-	<header class="fixed z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row md:px-32">
+	<header class="fixed z-50 flex flex-col items-center justify-between w-full sm:px-4 bg-gray-100 lg:flex-row lg:px-32">
 		<!-- SiteName And Search Input -->
 		<form class="flex flex-row sm:my-1">
 			<!-- SiteName -->
