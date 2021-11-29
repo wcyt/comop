@@ -8,7 +8,6 @@ import tera.RequestContext;
 import tera.ResponseContext;
 
 public class LoginCommand extends AbstractCommand {
-	boolean isRegist=false;
 
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
@@ -19,8 +18,6 @@ public class LoginCommand extends AbstractCommand {
 		UserBean ub = new UserBean();
 		ub.setMail(mail);
 		ub.setPassword(password);
-
-		System.out.println("beanまでは北");
 
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		UserDAO userDAO = daoFactory.getUserDAO();
