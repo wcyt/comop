@@ -99,6 +99,8 @@ public class MySQLProductDAO implements ProductDAO {
 
 			ResultSet rs = st.executeQuery();
 
+			rs.next();
+
 			ProductBean p = new ProductBean();
 
 			p.setProduct_name(rs.getString(1));
