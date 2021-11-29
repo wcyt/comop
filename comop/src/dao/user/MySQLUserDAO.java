@@ -32,7 +32,7 @@ public class MySQLUserDAO implements UserDAO {
 	}
 
 	//パスワードを変更(ログイン前)
-	public void changePassword(String user_id,String pass) {
+	public void changePassword(int user_id,String pass) {
 		try {
 			Connection cn = Connector.connect();
 
@@ -40,7 +40,7 @@ public class MySQLUserDAO implements UserDAO {
 
 			st = cn.prepareStatement(sql);
 
-			st.setString(1, user_id);
+			st.setInt(1, user_id);
 			st.setString(2, pass);
 
 			st.executeUpdate();
@@ -182,7 +182,4 @@ public class MySQLUserDAO implements UserDAO {
 		return isRegist;
 	}
 
-	@Override
-	public void changePassword(int user_id, String pass) {
-	}
 }
