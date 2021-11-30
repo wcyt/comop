@@ -16,7 +16,7 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 	//色の追加
 	public void addColor(String color_name) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "INSERT into color_table(color_name) values(?)";
 
@@ -35,7 +35,7 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 	//色の削除
 	public void removeColor(String color_id) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "DELETE FROM color_table WHERE color_id=?";
 
@@ -55,7 +55,7 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 	public List<ColorBean> getColorList() {
 		ArrayList<ColorBean> colors = new ArrayList<ColorBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT color_id,color_name FROM comopdb.color_table ORDER BY color_id;";
 			st = cn.prepareStatement(sql);
