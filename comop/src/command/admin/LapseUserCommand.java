@@ -1,6 +1,7 @@
-package command.user;
+package command.admin;
 
 import command.AbstractCommand;
+import dao.admin.UserManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -15,7 +16,7 @@ public class LapseUserCommand extends AbstractCommand{
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		dao.admin.MySQLUserManagementDAO msud = factory.getMySQLUserManagementDAO();
+		UserManagementDAO msud = factory.getUserManagementDAO();
 
 		msud.lapseUser(user_id);
 

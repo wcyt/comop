@@ -16,7 +16,7 @@ public class MySQLStockDAO implements StockDAO {
 	//
 	public void addStock(StockBean s) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "INSERT into stock_table(user_id,product_id,old_stock,new_stock,stock_change) values(?,?,?,?,?)";
 
@@ -40,7 +40,7 @@ public class MySQLStockDAO implements StockDAO {
 	public List<StockBean> getStockList(){
 		ArrayList<StockBean> stocks = new ArrayList<StockBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT stock_change_id,user_id,product_id,old_stock,new_stock,stock_change FROM stock_table";
 			st = cn.prepareStatement(sql);

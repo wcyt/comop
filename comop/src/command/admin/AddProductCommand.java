@@ -2,7 +2,7 @@ package command.admin;
 
 import bean.ProductBean;
 import command.AbstractCommand;
-import dao.admin.MySQLProductManagementDAO;
+import dao.admin.ProductManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -13,42 +13,39 @@ public class AddProductCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
+		// パラメータの取得
+		String product_name = reqc.getParameter("product_name")[0];
+		String product_image = reqc.getParameter("product_image")[0];
+		String stock_quantity = reqc.getParameter("stock_quantity")[0];
+		String product_description = reqc.getParameter("product_description")[0];
+		String price = reqc.getParameter("price")[0];
+		String size = reqc.getParameter("size")[0];
+		String material = reqc.getParameter("material")[0];
+		String packing_type = reqc.getParameter("packing_type")[0];
+		String color_id = reqc.getParameter("color_id")[0];
 
-		String[] product_names = reqc.getParameter("product_name");
-		String[] product_images = reqc.getParameter("product_image");
-		String[] stock_quantites = reqc.getParameter("stock_quantity");
-		String[] product_descriptions = reqc.getParameter("product_decription");
-		String[] prices = reqc.getParameter("price");
-		String[] color_ids = reqc.getParameter("color_id");
-	  //String[] color_names = reqc.getParameter("color_name");
-		String[] sizes = reqc.getParameter("size");
-
-
-		String product_name = product_names[0];
-		String product_image = product_images[0];
-		String stock_quantity = stock_quantites[0];
-		String product_description = product_descriptions[0];
-		String price = prices[0];
-		String color_id = color_ids[0];
-	  //String color_name = color_names[0];
-		String size = sizes[0];
-
-
+		// Beanにセットする
 		ProductBean pb = new ProductBean();
 		pb.setProduct_name(product_name);
 		pb.setProduct_image(product_image);
-		pb.setStock_quantity(Integer.parseInt(stock_quantity));
 		pb.setProduct_description(product_description);
+		pb.setStock_quantity(Integer.parseInt(stock_quantity));
 		pb.setPrice(Integer.parseInt(price));
-		pb.setColor_id(Integer.parseInt(color_id));
-	  //pb.setColor_name(color_name);
 		pb.setSize(size);
+		pb.setMaterial(material);
+		pb.setPacking_type(packing_type);
+		pb.setColor_id(Integer.parseInt(color_id));
 
+		// DBに追加
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLProductManagementDAO mspm = factory.getMySQLProductManagementDAO();
+		ProductManagementDAO productManagementDAO = factory.getProductManagementDAO();
+		productManagementDAO.addProduct(pb);
 
-		mspm.addProduct(pb);
+		// 商品一覧を取得
+		GetProductsListCommand getProductsListCommand = new GetProductsListCommand();
+		getProductsListCommand.execute(resc);
 
+		// productManagement.jspに移動
 		resc.setTarget("productManagement");
 
 		return resc;

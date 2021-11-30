@@ -19,11 +19,11 @@ public class MySQLProductDAO implements ProductDAO {
 	public List<ProductBean> getProductsList(Map<String,String[]> parameters) {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String where="";	//sql文のWHERE句以降を格納
 
-			Iterator it = parameters.keySet().iterator();
+			Iterator<String> it = parameters.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String)it.next();
 				String[] val = (String[])parameters.get(key);
@@ -79,10 +79,18 @@ public class MySQLProductDAO implements ProductDAO {
 
 			}
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return products;
 	}
@@ -91,7 +99,7 @@ public class MySQLProductDAO implements ProductDAO {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT p.product_name,p.product_image,p.stock_quantity,p.product_description,p.price,c.color_name,p.size,p.material,p.packing_type FROM product_table p JOIN color_table c USING(color_id) WHERE p.product_id="+product_id;
 
@@ -133,11 +141,18 @@ public class MySQLProductDAO implements ProductDAO {
 
 			}
 
-			cn.commit();
-			cn.close();
-
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return products;
 	}
@@ -145,7 +160,7 @@ public class MySQLProductDAO implements ProductDAO {
 	public List<ProductBean> searchProducts(String key) {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE product_name LIKE '%"+key+"%' || product_description LIKE '%"+key+"%'";
 			st = cn.prepareStatement(sql);
@@ -161,9 +176,18 @@ public class MySQLProductDAO implements ProductDAO {
 
 				products.add(p);
 			}
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return products;
 	}
@@ -171,7 +195,7 @@ public class MySQLProductDAO implements ProductDAO {
 	public int getStock_quantity(String product_id) {
 		int stock=0;
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT stock_quantity FROM product_table WHERE product_id=?";
 			st = cn.prepareStatement(sql);
@@ -182,11 +206,19 @@ public class MySQLProductDAO implements ProductDAO {
 
 			stock=rs.getInt(1);
 
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
 		return stock;
 	}
 

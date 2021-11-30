@@ -17,7 +17,7 @@ public class MySQLCartDAO implements CartDAO {
 	//カートに追加
 	public void addCart(CartBean c) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String select  = "SELECT * FROM cart_table WHERE user_id=? AND item_id=?";
 			st = cn.prepareStatement(select);
@@ -58,16 +58,24 @@ public class MySQLCartDAO implements CartDAO {
 				st.executeUpdate();
 			}
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//カートの中身を削除
 	public void removeCart(String user_id,String product_id) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "DELETE FROM cart_table WHERE user_id=? AND product_id=?";
 
@@ -78,18 +86,25 @@ public class MySQLCartDAO implements CartDAO {
 
 			st.executeUpdate();
 
-
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//自分のカートの一覧を取得
 	public List<CartBean> getCartList(String user_id) {
 		ArrayList<CartBean> carts = new ArrayList<CartBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT product_id,p.product_name,p.product_image,p.price,c.buy_count FROM cart_table c JOIN product_table p USING(product_id) WHERE c.user_id=?";
 			st = cn.prepareStatement(sql);
@@ -108,9 +123,18 @@ public class MySQLCartDAO implements CartDAO {
 
 				carts.add(c);
 			}
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return carts;

@@ -17,7 +17,7 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 	public List<ProductBean> getProductList(){
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT product_id,color_id,color_name,product_name,product_image,product_description,stock_quantity,price,size,material,packing_type,favorite_count FROM product_table JOIN color_table USING(color_id)";
 			st = cn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 	//商品を編集
 	public void editProduct(ProductBean p) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE product_table SET color_id=?,product_name=?,product_image=?,product_description=?,stock_quantity=?,price=?,size=?,material=?,packing_type=? WHERE product_id=?";
 
@@ -70,7 +70,6 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 			st.executeUpdate();
 
-
 			cn.commit();
 			cn.close();
 		}catch(SQLException e) {
@@ -80,21 +79,21 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 	//商品を追加
 	public void addProduct(ProductBean p) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
-			String sql = "INSERT into product_table(color_id,product_name,product_image,product_description,stock_quantity,price,size,material,packing_type) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into product_table(product_name,product_image,product_description,stock_quantity,price,size,material,packing_type,color_id) values(?,?,?,?,?,?,?,?,?)";
 
 			st = cn.prepareStatement(sql);
 
-			st.setInt(1, p.getColor_id());
-			st.setString(2, p.getProduct_name());
-			st.setString(3, p.getProduct_image());
-			st.setString(4, p.getProduct_description());
-			st.setInt(5, p.getStock_quantity());
-			st.setInt(6, p.getPrice());
-			st.setString(7, p.getSize());
-			st.setString(8, p.getMaterial());
-			st.setString(9, p.getPacking_type());
+			st.setString(1, p.getProduct_name());
+			st.setString(2, p.getProduct_image());
+			st.setString(3, p.getProduct_description());
+			st.setInt(4, p.getStock_quantity());
+			st.setInt(5, p.getPrice());
+			st.setString(6, p.getSize());
+			st.setString(7, p.getMaterial());
+			st.setString(8, p.getPacking_type());
+			st.setInt(9, p.getColor_id());
 
 			st.executeUpdate();
 
@@ -107,7 +106,7 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 	//商品を削除
 	public void removeProduct(String product_id) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "DELETE FROM product_table WHERE product_id=?";
 

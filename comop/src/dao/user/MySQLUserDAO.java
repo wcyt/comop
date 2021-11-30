@@ -14,7 +14,7 @@ public class MySQLUserDAO implements UserDAO {
 	//アカウントを作成
 	public void createAccount(UserBean u) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "insert into user_table(name,mail,password) values(?,?,?)";
 
@@ -24,17 +24,25 @@ public class MySQLUserDAO implements UserDAO {
 			st.setString(3, u.getPassword());
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	//パスワードを変更(ログイン前)
 	public void changePassword(int user_id,String pass) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET password=? WHERE user_id=?";
 
@@ -45,17 +53,25 @@ public class MySQLUserDAO implements UserDAO {
 
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
 	//ユーザー情報の編集
 	public void editUserInfo(UserBean u) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET name=?,mail=?,address=?,first_name=?,first_name_kana=?,last_name=?,last_name_kana=?,tel=?,postal_code=?,password=? WHERE user_id=?";
 
@@ -75,16 +91,24 @@ public class MySQLUserDAO implements UserDAO {
 
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//ユーザーの退会
 	public void lapseUser(String user_id) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET user_lapse=1 WHERE user_id=?";
 
@@ -96,16 +120,24 @@ public class MySQLUserDAO implements UserDAO {
 
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//ポイントの更新
 	public void updatePoint(String user_id,String point) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET point=? WHERE user_id=?";
 
@@ -118,17 +150,25 @@ public class MySQLUserDAO implements UserDAO {
 
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//自分のユーザー情報の取得
 	public UserBean getMyUserInfo(String user_id) {
 		UserBean u = new UserBean();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point FROM user_table WHERE user_id=?";
 
@@ -153,9 +193,18 @@ public class MySQLUserDAO implements UserDAO {
 				u.setPoint(rs.getInt(12));
 			}
 
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return u;
 	}
@@ -163,7 +212,7 @@ public class MySQLUserDAO implements UserDAO {
 	public boolean login(String mail,String password) {
 		boolean isRegist=false;
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT password FROM user_table WHERE mail = ?";
 			st = cn.prepareStatement(sql);
@@ -177,12 +226,20 @@ public class MySQLUserDAO implements UserDAO {
 					isRegist=true;
 				}
 			}
-			cn.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
 
-		System.out.println("ここまでは来ている");
+		}catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 		return isRegist;
 	}

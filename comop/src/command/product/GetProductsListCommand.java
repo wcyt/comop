@@ -10,7 +10,7 @@ import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-public class GetProductListCommand extends AbstractCommand {
+public class GetProductsListCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 

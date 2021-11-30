@@ -1,15 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- js -->
-    <!-- <script src="./js/headerAndFooter.js"></script> -->
-    <!-- js -->
     <!-- font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.js" defer></script>
     <!-- alpine.js tailwind css -->
-    <title>Document</title>
+    <title>管理ページ</title>
 </head>
 
 <body>
@@ -29,15 +25,14 @@
     <main id="main" class="grid grid-cols-12 gap-6 py-16 bg-white sm:px-4 lg:px-32">
         <div class="flex flex-col items-center col-span-12 gap-3">
             <h1 class="text-2xl font-bold text-center">管理ページ</h1>
-            <a href="" class="max-w-lg px-32 py-2 text-center text-white bg-blue-400 rounded-full">トップページへ</a>
+            <a href="top" class="max-w-lg px-32 py-2 text-center text-white bg-blue-400 rounded-full">トップページへ</a>
         </div>
         <!-- Product Management -->
         <div class="col-span-6">
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">商品管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">商品一覧</a>
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">商品登録</a>
+                    <a href="productManagement" class="w-full py-2 bg-gray-300 rounded-full">商品一覧・登録</a>
                 </div>
             </div>
         </div>
@@ -47,8 +42,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">ポイント商品管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">ポイント商品一覧</a>
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">ポイント商品登録</a>
+                    <a href="rewardProductManagement" class="w-full py-2 bg-gray-300 rounded-full">ポイント商品一覧・登録</a>
                 </div>
             </div>
         </div>
@@ -58,8 +52,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">カラー管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">カラー一覧</a>
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">カラー登録</a>
+                    <a href="getColorList" class="w-full py-2 bg-gray-300 rounded-full">カラー一覧・登録</a>
                 </div>
             </div>
         </div>
@@ -69,8 +62,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">ユーザー管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">ユーザー一覧</a>
-                    <a href="" class="w-full py-2 bg-gray-300 rounded-full">ユーザー登録</a>
+                    <a href="getUserList" class="w-full py-2 bg-gray-300 rounded-full">ユーザー一覧・登録</a>
                 </div>
             </div>
         </div>

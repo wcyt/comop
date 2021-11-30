@@ -18,7 +18,7 @@ public class MySQLPointProductDAO implements PointProductDAO{
 
 		ArrayList<PointRewardBean> point_rewards = new ArrayList<PointRewardBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price,reward_product_id FROM point_reward_table";
 			st = cn.prepareStatement(sql);
@@ -36,9 +36,18 @@ public class MySQLPointProductDAO implements PointProductDAO{
 
 				point_rewards.add(pr);
 			}
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return point_rewards;
@@ -47,7 +56,7 @@ public class MySQLPointProductDAO implements PointProductDAO{
 	public List<PointRewardBean> searchRewardProducts(String key) {
 		ArrayList<PointRewardBean> point_rewards = new ArrayList<PointRewardBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price,reward_product_id FROM point_reward_table WHERE  reward_product_name LIKE '%\"+key+\"%' || reward_product_description LIKE '%\"+key+\"%'";
 			st = cn.prepareStatement(sql);
@@ -65,9 +74,18 @@ public class MySQLPointProductDAO implements PointProductDAO{
 
 				point_rewards.add(pr);
 			}
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return point_rewards;

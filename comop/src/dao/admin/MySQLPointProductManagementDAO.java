@@ -17,7 +17,7 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 	public List<PointRewardBean> getRewardProductsList(){
 		ArrayList<PointRewardBean> pointrewards = new ArrayList<PointRewardBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT reward_product_id,reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price FROM point_reward_table";
 			st = cn.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 	//ポイント商品を編集
 	public void editRewardProduct(PointRewardBean p) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE point_reward_table SET reward_product_name=?,reward_product_image=?,reward_product_description=?,stock_quantity=?,point_price=? WHERE reward_product_id=?";
 
@@ -70,7 +70,7 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 	//ポイント商品を追加
 	public void addRewardProduct(PointRewardBean p) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "INSERT into point_reward_table(reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price) values(?,?,?,?,?)";
 			st = cn.prepareStatement(sql);
@@ -93,7 +93,7 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 	//ポイント商品を削除
 	public void removeRewardProduct(String reward_product_id) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "DELETE FROM point_reward_table WHERE reward_product_id=?";
 

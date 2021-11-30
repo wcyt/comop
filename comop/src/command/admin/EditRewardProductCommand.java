@@ -2,7 +2,7 @@ package command.admin;
 
 import bean.PointRewardBean;
 import command.AbstractCommand;
-import dao.admin.MySQLPointProductManagementDAO;
+import dao.admin.PointProductManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -38,7 +38,7 @@ public class EditRewardProductCommand  extends AbstractCommand {
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLPointProductManagementDAO msppm = factory.getMySQLPointProductManagementDAO();
+		PointProductManagementDAO msppm = factory.getPointProductManagementDAO();
 
 		msppm.editRewardProduct(prb);
 
