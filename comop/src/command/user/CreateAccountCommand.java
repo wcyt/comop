@@ -23,10 +23,13 @@ public class CreateAccountCommand extends AbstractCommand {
 		u.setMail(mail);
 		u.setPassword(password);
 
+
+		//アカウントを作成
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		UserDAO ud = factory.getUserDAO();
 		ud.createAccount(u);
 
+		//signUpComplete.jspに移動
 		resc.setTarget("signUpComplete");
 //		if (msud.getMail(mail).equals("nomail") == false) {
 //

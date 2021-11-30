@@ -12,13 +12,15 @@ public class LapseUserCommand extends AbstractCommand{
 
 		RequestContext rqsc = getRequestContext();
 
+		//パラメータを取得
 		String user_id = (String)rqsc.getParameter("user_id")[0];
 
-
+		//ユーザーを退会
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		UserDAO msud = factory.getUserDAO();
-
 		msud.lapseUser(user_id);
+
+		//default.jspに移動
 		resc.setTarget("default");
 
 		return resc;
