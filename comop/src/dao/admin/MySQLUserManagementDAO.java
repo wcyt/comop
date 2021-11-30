@@ -17,7 +17,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 	public List<UserBean> getUserList(){
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT * FROM user_table";
 			st = cn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 	//登録しているユーザーを削除
 	public void lapseUser(String user_id) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET user_lapse=1 WHERE user_id=?";
 

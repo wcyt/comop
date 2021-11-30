@@ -16,7 +16,7 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 	//ポイント注文テーブルに追加
 	public void addPointOrder(PointOrderBean po) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "INSERT into point_order_table(user_id,total_point_price,reward_product_id,buy_count) values(?,?,?,?)";
 
@@ -29,17 +29,25 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//自分のポイント注文テーブルの一覧を取得
 	public List<PointOrderBean> getPointOrderList(String user_id) {
 		ArrayList<PointOrderBean> point_orders = new ArrayList<PointOrderBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT po.order_date,po.total_point_price,reward_product_id,po.buy_count,pr.reward_product_name,pr.reward_product_image,pr.point_price FROM point_order_table JOIN point_reward_table USING(reward_product_id) WHERE user_id=?";
 			st = cn.prepareStatement(sql);
@@ -59,9 +67,18 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 
 				point_orders.add(po);
 			}
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return point_orders;

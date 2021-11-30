@@ -14,7 +14,7 @@ public class MySQLUserDAO implements UserDAO {
 	//アカウントを作成
 	public void createAccount(UserBean u) {
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "insert into user_table(name,mail,password) values(?,?,?)";
 
@@ -42,7 +42,7 @@ public class MySQLUserDAO implements UserDAO {
 	//パスワードを変更(ログイン前)
 	public void changePassword(int user_id,String pass) {
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET password=? WHERE user_id=?";
 
@@ -71,7 +71,7 @@ public class MySQLUserDAO implements UserDAO {
 	//ユーザー情報の編集
 	public void editUserInfo(UserBean u) {
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET name=?,mail=?,address=?,first_name=?,first_name_kana=?,last_name=?,last_name_kana=?,tel=?,postal_code=?,password=? WHERE user_id=?";
 
@@ -108,7 +108,7 @@ public class MySQLUserDAO implements UserDAO {
 	//ユーザーの退会
 	public void lapseUser(String user_id) {
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET user_lapse=1 WHERE user_id=?";
 
@@ -137,7 +137,7 @@ public class MySQLUserDAO implements UserDAO {
 	//ポイントの更新
 	public void updatePoint(String user_id,String point) {
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET point=? WHERE user_id=?";
 
@@ -168,7 +168,7 @@ public class MySQLUserDAO implements UserDAO {
 	public UserBean getMyUserInfo(String user_id) {
 		UserBean u = new UserBean();
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point FROM user_table WHERE user_id=?";
 
@@ -212,7 +212,7 @@ public class MySQLUserDAO implements UserDAO {
 	public boolean login(String mail,String password) {
 		boolean isRegist=false;
 		try {
-			Connection cn = Connector.getInstance().getConnection();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT password FROM user_table WHERE mail = ?";
 			st = cn.prepareStatement(sql);

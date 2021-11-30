@@ -19,7 +19,7 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 	public List<FavoriteBean> getFavoriteList(String user_id) {
 		ArrayList<FavoriteBean> favorites = new ArrayList<FavoriteBean>();
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 
 			String sql = "SELECT product_id,p.product_name,p.product_image,p.price FROM favorite_table f JOIN product_table p USING(product_id) WHERE f.user_id=?";
@@ -37,9 +37,18 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 
 				favorites.add(f);
 			}
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return favorites;
@@ -48,7 +57,7 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 	//お気に入りに追加
 	public void addFavorite(FavoriteBean f) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			String sql = "INSERT into favorite_table(user_id,product_id) values(?,?)";
 
@@ -59,17 +68,24 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 
 			st.executeUpdate();
 
-
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	//お気に入りを削除
 	public void removeFavorite(String user_id,Map<String,String[]> product_ids) {
 		try {
-			Connection cn = Connector.connect();
+			Connection cn = Connector.getInstance().connect();
 
 			Iterator<String> it=product_ids.keySet().iterator();
 
@@ -89,10 +105,18 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 				st.executeUpdate();
 			}
 
-			cn.commit();
-			cn.close();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
