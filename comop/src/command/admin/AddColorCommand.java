@@ -13,18 +13,19 @@ public class AddColorCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
-		String[] color_names = reqc.getParameter("color_name");
-
-		String color_name = color_names[0];
+		String color_name = reqc.getParameter("color_name")[0];
 
 		ColorBean cb = new ColorBean();
-
 		cb.setColor_name(color_name);
 
+		// 色の追加
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ColorManagementDAO cmd = factory.getColorManagementDAO();
-		cmd.addColor(cb);
+		cmd.addColor(color_name);
 
+		// カラーIDとカラー名を全て取得
+		GetColorListCommand getColorListCommand = new GetColorListCommand();
+		getColorListCommand.execute(resc);
 
 		resc.setTarget("colorManagement");
 

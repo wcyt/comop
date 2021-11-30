@@ -8,7 +8,6 @@ import tera.RequestContext;
 import tera.ResponseContext;
 
 public class LoginCommand extends AbstractCommand {
-
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
 
@@ -23,7 +22,9 @@ public class LoginCommand extends AbstractCommand {
 		UserDAO userDAO = daoFactory.getUserDAO();
 		userDAO.login(mail, password);
 
-		resc.setTarget("top");
+		// adminに飛ぶ場合
+		if (mail.equals("admin@admin") && password.equals("admin")) { resc.setTarget("admin"); }
+		else { resc.setTarget("top"); }
 
 		return resc;
 	}

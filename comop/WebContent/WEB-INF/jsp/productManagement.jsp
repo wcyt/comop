@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- js -->
-    <!-- <script src="./js/headerAndFooter.js"></script> -->
-    <!-- js -->
     <!-- font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,40 +18,30 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.js" defer></script>
     <!-- alpine.js tailwind css -->
-    <title>Document</title>
+    <title>商品の管理・追加</title>
 </head>
 
 <body>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 gap-6 py-16 bg-white sm:px-4 lg:px-16">
         <div class="flex justify-center col-span-12">
-            <button class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</button>
+            <a href="admin" class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</a>
         </div>
         <div class="flex flex-col items-center col-span-12 gap-3">
             <h1 class="text-2xl font-bold text-center">商品登録</h1>
         </div>
         <!-- Product Management -->
         <div class="col-span-12 lg:col-span-6">
-            <form action="" method="">
+            <form action="addProduct" method="post">
                 <div class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
                     <p class="py-3 text-xl text-center border-b-2 border-gray-300">商品管理</p>
-                    <!-- Product ID -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">商品ID</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Product ID End -->
                     <!-- Product Name -->
                     <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
                         <div class="flex items-center col-span-3 text-center">
                             <p class="font-bold text-right">商品名</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="product_name" id="" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Product Name End -->
@@ -64,7 +51,7 @@
                             <p class="font-bold text-right">商品画像</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="product_image" id="" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Product Image End -->
@@ -74,17 +61,17 @@
                             <p class="font-bold text-right">在庫数</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="stock_quantity" id="" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Stock End -->
                     <!-- Product Description -->
                     <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
                         <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">商品説明</p>
+                            <p class="font-bold text-right">ポイント商品説明</p>
                         </div>
                         <div class="col-span-9">
-                            <textarea class="w-full border-black textarea textarea-bordered" placeholder=""></textarea>
+                            <textarea name="product_description" class="w-full border-black textarea textarea-bordered" placeholder=""></textarea>
                         </div>
                     </div>
                     <!-- Product Description End -->
@@ -94,27 +81,17 @@
                             <p class="font-bold text-right">値段</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" inputmode="numeric" pattern="\d*" class="w-full rounded-xl">
+                            <input type="text" name="price" id="" inputmode="numeric" pattern="\d*" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Price End -->
-                    <!-- Color ID -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">カラーID</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Color ID End -->
                     <!-- Size -->
                     <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
                         <div class="flex items-center col-span-3 text-center">
                             <p class="font-bold text-right">サイズ</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="size" id="" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Size End -->
@@ -124,7 +101,7 @@
                             <p class="font-bold text-right">素材</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="material" id="" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Material End -->
@@ -134,23 +111,23 @@
                             <p class="font-bold text-right">包装タイプ</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="packing_type" id="" class="w-full rounded-xl">
                         </div>
                     </div>
                     <!-- Packing Type End -->
-                    <!-- Favorite Count -->
+                    <!-- Color ID -->
                     <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
                         <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">お気に入り数</p>
+                            <p class="font-bold text-right">カラーID</p>
                         </div>
                         <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
+                            <input type="text" name="color_id" id="" class="w-full rounded-xl">
                         </div>
                     </div>
-                    <!-- Favorite Count End -->
+                    <!-- Color ID End -->
                     <!-- Registration Button -->
                     <div class="flex justify-center my-4">
-                        <a href="" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</a>
+                        <button type="submit" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</a>
                     </div>
                     <!-- Registration Button End -->
                 </div>
@@ -212,58 +189,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover">
-                            <th>1</th>
-                            <td>Mask</td>
-                            <td>img.jpg</td>
-                            <td>1</td>
-                            <td>lorem</td>
-                            <td>4000</td>
-                            <td>C001</td>
-                            <td>S</td>
-                            <td>不織布</td>
-                            <td>個包装</td>
-                            <td>0</td>
-                        </tr>
-                        <tr class="hover">
-                            <th>2</th>
-                            <td>Mask</td>
-                            <td>img.jpg</td>
-                            <td>1</td>
-                            <td>lorem</td>
-                            <td>4000</td>
-                            <td>C001</td>
-                            <td>S</td>
-                            <td>不織布</td>
-                            <td>個包装</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Mask</td>
-                            <td>img.jpg</td>
-                            <td>1</td>
-                            <td>lorem</td>
-                            <td>4000</td>
-                            <td>C001</td>
-                            <td>S</td>
-                            <td>不織布</td>
-                            <td>個包装</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <th>4</th>
-                            <td>Mask</td>
-                            <td>img.jpg</td>
-                            <td>1</td>
-                            <td>lorem</td>
-                            <td>4000</td>
-                            <td>C001</td>
-                            <td>S</td>
-                            <td>不織布</td>
-                            <td>個包装</td>
-                            <td>0</td>
-                        </tr>
+                    	<c:forEach var="products" items="${data}">
+	                        <tr class="hover">
+	                            <th>${products.product_id}</th>
+	                            <td>${products.product_name}</td>
+	                            <td>${products.product_image}</td>
+	                            <td>${products.stock_quantity}</td>
+	                            <td>${products.product_description}</td>
+	                            <td>${products.price}</td>
+	                            <td>${products.color_id}</td>
+	                            <td>${products.size}</td>
+	                            <td>${products.material}</td>
+	                            <td>${products.packing_type}</td>
+	                            <td>${products.favorite_count}</td>
+	                        </tr>
+                    	</c:forEach>
                     </tbody>
                 </table>
             </div>

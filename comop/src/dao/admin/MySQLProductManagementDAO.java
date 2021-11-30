@@ -70,7 +70,6 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 			st.executeUpdate();
 
-
 			cn.commit();
 			cn.close();
 		}catch(SQLException e) {
@@ -82,19 +81,19 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "INSERT into product_table(color_id,product_name,product_image,product_description,stock_quantity,price,size,material,packing_type) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into product_table(product_name,product_image,product_description,stock_quantity,price,size,material,packing_type,color_id) values(?,?,?,?,?,?,?,?,?)";
 
 			st = cn.prepareStatement(sql);
 
-			st.setInt(1, p.getColor_id());
-			st.setString(2, p.getProduct_name());
-			st.setString(3, p.getProduct_image());
-			st.setString(4, p.getProduct_description());
-			st.setInt(5, p.getStock_quantity());
-			st.setInt(6, p.getPrice());
-			st.setString(7, p.getSize());
-			st.setString(8, p.getMaterial());
-			st.setString(9, p.getPacking_type());
+			st.setString(1, p.getProduct_name());
+			st.setString(2, p.getProduct_image());
+			st.setString(3, p.getProduct_description());
+			st.setInt(4, p.getStock_quantity());
+			st.setInt(5, p.getPrice());
+			st.setString(6, p.getSize());
+			st.setString(7, p.getMaterial());
+			st.setString(8, p.getPacking_type());
+			st.setInt(9, p.getColor_id());
 
 			st.executeUpdate();
 

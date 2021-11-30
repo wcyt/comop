@@ -57,7 +57,7 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "SELECT color_id,color_name FROM color_table";
+			String sql = "SELECT color_id,color_name FROM comopdb.color_table ORDER BY color_id;";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
@@ -66,7 +66,6 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 
 				c.setColor_id(rs.getInt(1));
 				c.setColor_name(rs.getString(2));
-
 
 				colors.add(c);
 			}

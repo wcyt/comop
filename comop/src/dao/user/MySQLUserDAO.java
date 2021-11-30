@@ -179,8 +179,6 @@ public class MySQLUserDAO implements UserDAO {
 			e.printStackTrace();
 		}
 
-		System.out.println("ここまでは来ている");
-
 		return isRegist;
 	}
 

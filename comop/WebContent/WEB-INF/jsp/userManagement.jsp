@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- js -->
-    <!-- <script src="./js/headerAndFooter.js"></script> -->
-    <!-- js -->
     <!-- font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,14 +25,14 @@
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 gap-6 py-16 bg-white sm:px-4 lg:px-16">
         <div class="flex justify-center col-span-12">
-            <button class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</button>
+            <a href="admin" class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</a>
         </div>
         <div class="flex flex-col items-center col-span-12 gap-3">
             <h1 class="text-2xl font-bold text-center">ユーザー登録</h1>
         </div>
         <!-- User Management -->
         <div class="col-span-12">
-            <form action="" method="">
+            <form action="" method="post">
                 <div class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
                     <p class="py-3 text-xl text-center border-b-2 border-gray-300">ユーザー管理</p>
                     <!-- User ID -->
