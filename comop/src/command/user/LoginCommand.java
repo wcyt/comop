@@ -18,9 +18,17 @@ public class LoginCommand extends AbstractCommand {
 		ub.setMail(mail);
 		ub.setPassword(password);
 
+
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		UserDAO userDAO = daoFactory.getUserDAO();
-		userDAO.login(mail, password);
+		String passwordHash = userDAO.getPasswordHash(mail);
+		if(password.equals(passwordHash)) {
+			resc.setTarget("top");
+		} else {
+			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
+
+			resc.setTarget("signIn");
+		}
 
 		// adminに飛ぶ場合
 		if (mail.equals("admin@admin") && password.equals("admin")) { resc.setTarget("admin"); }

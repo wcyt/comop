@@ -193,24 +193,24 @@ public class MySQLUserDAO implements UserDAO {
 				u.setPoint(rs.getInt(12));
 			}
 
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
 				if(st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return u;
 	}
 	//ログインできるかどうか
-	public boolean login(String mail,String password) {
-		boolean isRegist=false;
+	public String getPasswordHash(String mail) {
+		String password = null;
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -221,12 +221,8 @@ public class MySQLUserDAO implements UserDAO {
 			ResultSet rs = st.executeQuery();
 			//入力されたメールアドレスが登録されてるか
 			if(rs.next()) {
-				//パスワードがあってるか
-				if(password.equals(rs.getString(1))) {
-					isRegist=true;
-				}
+				password = rs.getString(1);
 			}
-
 		}catch(SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
@@ -240,8 +236,6 @@ public class MySQLUserDAO implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-
-		return isRegist;
+		return password;
 	}
-
 }
