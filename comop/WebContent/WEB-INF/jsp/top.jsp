@@ -14,7 +14,6 @@
     <!-- font  -->
     <!-- alpine.js tailwind css -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.1/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- alpine.js tailwind css -->
     <title>Document</title>
