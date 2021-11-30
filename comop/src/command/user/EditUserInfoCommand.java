@@ -28,15 +28,20 @@ public class EditUserInfoCommand extends AbstractCommand{
 		u.setAddress(address);
 		u.setPostal_code(postalCode);
 
+
+		//ユーザー情報の変更
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		UserDAO msud = factory.getUserDAO();
 		msud.editUserInfo(u);
 
+		//
 		UserDAO ud = factory.getUserDAO();
 		ud.editUserInfo(u);
 
 //		reqc.setAttribute("mess","ユーザー情報を変更しました");
 
+
+		//？？.jspに移動
 		resc.setTarget("トップに行くか、編集ページに戻るか選ぶページをはさむ");
 		return resc;
 	}

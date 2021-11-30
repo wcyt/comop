@@ -14,15 +14,19 @@ public class GetOrderHistoryCommand  extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
+
+		//パラメータを取得
 		String[] user_ids = reqc.getParameter("user_id");
 		String user_id = user_ids[0];
 
-
+		//注文リストを取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		OrderDAO msod = factory.getOrderDAO();
 		List orderList = msod.getOrderList(user_id);
 
 		resc.setResult(orderList);
+
+		//orderHistory.jspに移動
 		resc.setTarget("orderHistory");
 
 		return resc;

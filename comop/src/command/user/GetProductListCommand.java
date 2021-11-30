@@ -16,13 +16,17 @@ public class GetProductListCommand  extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
+		//パラメータを取得
 		parameters = reqc.getParameterMap();
 
+		//商品リストを取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductDAO pd = factory.getProductDAO();
 		List productsList = pd.getProductsList(parameters);
 
 		resc.setResult(productsList);
+
+		//productsList.jspに移動
 		resc.setTarget("productsList");
 
 		return resc;
