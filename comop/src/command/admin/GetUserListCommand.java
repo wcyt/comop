@@ -1,31 +1,32 @@
-package command.user;
+package command.admin;
 
 import java.util.List;
 
 import command.AbstractCommand;
-import dao.order.OrderDAO;
+import dao.admin.UserManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-public class GetOrderHistoryCommand  extends AbstractCommand {
-
+public class GetUserListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
 
-		String[] user_ids = reqc.getParameter("user_id");
-		String user_id = user_ids[0];
-
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		OrderDAO msod = factory.getOrderDAO();
-		List orderList = msod.getOrderList(user_id);
+		UserManagementDAO msumd = factory.getUserManagementDAO();
 
-		resc.setResult(orderList);
-		resc.setTarget("orderHistory");
+		List users = msumd.getUserList();
+
+
+		resc.setResult(users);
+		resc.setTarget("userManagement");
 
 		return resc;
 	}
 }
+
+
+
 

@@ -10,7 +10,6 @@ import tera.RequestContext;
 import tera.ResponseContext;
 
 public class GetProductsListCommand extends AbstractCommand {
-
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
@@ -20,7 +19,7 @@ public class GetProductsListCommand extends AbstractCommand {
 		ProductManagementDAO productManagementDAO = daoFactory.getProductManagementDAO();
 		List<ProductBean> productsList = productManagementDAO.getProductList();
 
-		resc.setResult(productsList);
+		resc.setResult(productsList);;
 		resc.setTarget("productManagement");
 
 		return resc;

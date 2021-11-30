@@ -23,7 +23,7 @@ public class ChangePasswordCommand extends AbstractCommand{
 		UserDAO ud = factory.getUserDAO();
 		ud.changePassword(user_id, password);
 
-//		reqs.setAttribute("mess","パスワードを変更しました");
+//		reqc.setAttribute("mess","パスワードを変更しました");
 
 		resc.setTarget("index");
 		return resc;

@@ -1,8 +1,8 @@
 package command.user;
 
 import command.AbstractCommand;
-import dao.user.MySQLUserDAO;;
-import dao.AbstractDaoFactory;
+import dao.user.UserDAO;
+import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
@@ -12,19 +12,21 @@ public class LapseUserCommand extends AbstractCommand{
 
 		RequestContext rqsc = getRequestContext();
 
-		String user_id = (String)rqsc.getSessionAttribute("user_id");
+		String user_id = (String)rqsc.getParameter("user_id")[0];
 
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getFactory();
-		System.out.print(user_id+"を削除しました");
-		msud.lapseUser(user_id);
+		UserDAO msud = factory.getUserDAO();
 
-		rqsc.setAttribute("mess",user_id+"を削除しました")
+		msud.lapseUser(user_id);
+		resc.setTarget("default");
 
 		return resc;
 	}
 
 }
+
+
+
 
 

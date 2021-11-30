@@ -20,7 +20,7 @@ public class GetProductDetailCommand  extends AbstractCommand {
 		List detaillist = pdao.getProductDetail(product_id);
 
 		resc.setResult(detaillist);
-		resc.setTarget("WEB-INF/jsp/productDetail.jsp");
+		resc.setTarget("productDetail");
 
 		return resc;
 	}

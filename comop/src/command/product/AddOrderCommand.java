@@ -44,7 +44,7 @@ public class AddOrderCommand extends AbstractCommand {
 		OrderDAO odao = factory.getOrderDAO();
 
 		odao.addOrder(o, list);
-		resc.setTarget("/WEB-INF/jsp/cart.jsp");
+		resc.setTarget("cart");
 
 		return resc;
 	}

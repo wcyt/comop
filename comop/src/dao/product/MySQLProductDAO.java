@@ -23,7 +23,7 @@ public class MySQLProductDAO implements ProductDAO {
 
 			String where="";	//sql文のWHERE句以降を格納
 
-			Iterator it = parameters.keySet().iterator();
+			Iterator<String> it = parameters.keySet().iterator();
 			while (it.hasNext()) {
 				String key = (String)it.next();
 				String[] val = (String[])parameters.get(key);
@@ -98,6 +98,8 @@ public class MySQLProductDAO implements ProductDAO {
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
+
+			rs.next();
 
 			ProductBean p = new ProductBean();
 

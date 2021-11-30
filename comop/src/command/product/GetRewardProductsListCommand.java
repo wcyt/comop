@@ -16,7 +16,7 @@ public class GetRewardProductsListCommand extends AbstractCommand {
 		List pointlist = ppdao.getRewardProductsList();
 
 		resc.setResult(pointlist);
-		resc.setTarget("/WEB-INF/jsp/rewardProductsList.jsp");
+		resc.setTarget("rewardProductsList");
 
 		return resc;
 	}

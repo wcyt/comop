@@ -11,18 +11,18 @@ public class AddProductCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
-		RequestContext reqs = getRequestContext();
+		RequestContext reqc = getRequestContext();
 
 		// パラメータの取得
-		String product_name = reqs.getParameter("product_name")[0];
-		String product_image = reqs.getParameter("product_image")[0];
-		String stock_quantity = reqs.getParameter("stock_quantity")[0];
-		String product_description = reqs.getParameter("product_description")[0];
-		String price = reqs.getParameter("price")[0];
-		String size = reqs.getParameter("size")[0];
-		String material = reqs.getParameter("material")[0];
-		String packing_type = reqs.getParameter("packing_type")[0];
-		String color_id = reqs.getParameter("color_id")[0];
+		String product_name = reqc.getParameter("product_name")[0];
+		String product_image = reqc.getParameter("product_image")[0];
+		String stock_quantity = reqc.getParameter("stock_quantity")[0];
+		String product_description = reqc.getParameter("product_description")[0];
+		String price = reqc.getParameter("price")[0];
+		String size = reqc.getParameter("size")[0];
+		String material = reqc.getParameter("material")[0];
+		String packing_type = reqc.getParameter("packing_type")[0];
+		String color_id = reqc.getParameter("color_id")[0];
 
 		// Beanにセットする
 		ProductBean pb = new ProductBean();

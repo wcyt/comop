@@ -2,7 +2,6 @@ package command.user;
 
 import bean.UserBean;
 import command.AbstractCommand;
-import dao.user.MySQLUserDAO;
 import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -30,7 +29,7 @@ public class EditUserInfoCommand extends AbstractCommand{
 		u.setPostal_code(postalCode);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		MySQLUserDAO msud = factory.getMySQLUserDAO();
+		UserDAO msud = factory.getUserDAO();
 		msud.editUserInfo(u);
 
 		UserDAO ud = factory.getUserDAO();

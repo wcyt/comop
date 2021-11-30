@@ -16,7 +16,6 @@ public class GetColorListCommand extends AbstractCommand {
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ColorManagementDAO cmd = factory.getColorManagementDAO();
-
 		List<ColorBean> colors = cmd.getColorList();
 
 		resc.setResult(colors);
