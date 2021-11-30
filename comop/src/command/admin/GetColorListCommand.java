@@ -14,11 +14,14 @@ public class GetColorListCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
+		//カラー一覧を取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ColorManagementDAO cmd = factory.getColorManagementDAO();
 		List<ColorBean> colors = cmd.getColorList();
 
 		resc.setResult(colors);
+
+		//colorManagement.jspに移動
 		resc.setTarget("colorManagement");
 
 		return resc;

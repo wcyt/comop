@@ -13,7 +13,7 @@ public class EditRewardProductCommand  extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
-
+		//パラメータを取得
 		String[] reward_product_names = reqc.getParameter("reward_product_name");
 		String[] reward_product_images = reqc.getParameter("reward_product_image");
 		String[] stock_quantites = reqc.getParameter("stock_quantity");
@@ -30,18 +30,19 @@ public class EditRewardProductCommand  extends AbstractCommand {
 
 		PointRewardBean prb = new PointRewardBean();
 
+		//Beanにセット
 		prb.setReward_product_name(reward_product_name);
 		prb.setReward_product_image(reward_product_image);
 		prb.setStock_quantity(Integer.parseInt(stock_quantity));
 		prb.setReward_product_description(reward_product_description);
 		prb.setPoint_price(Integer.parseInt(point_price));
 
-
+		//ポイント商品情報の変更
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		PointProductManagementDAO msppm = factory.getPointProductManagementDAO();
-
 		msppm.editRewardProduct(prb);
 
+		//productManagement.jspに移動
 		resc.setTarget("productManagement");
 
 		return resc;

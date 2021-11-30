@@ -13,6 +13,7 @@ public class AddColorCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
+		//パラメータを取得
 		String color_name = reqc.getParameter("color_name")[0];
 
 		ColorBean cb = new ColorBean();
@@ -27,6 +28,7 @@ public class AddColorCommand extends AbstractCommand {
 		GetColorListCommand getColorListCommand = new GetColorListCommand();
 		getColorListCommand.execute(resc);
 
+		//colorManagement.jspに移動
 		resc.setTarget("colorManagement");
 
 		return resc;

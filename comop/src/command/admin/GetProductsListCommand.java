@@ -19,7 +19,9 @@ public class GetProductsListCommand extends AbstractCommand {
 		ProductManagementDAO productManagementDAO = daoFactory.getProductManagementDAO();
 		List<ProductBean> productsList = productManagementDAO.getProductList();
 
-		resc.setResult(productsList);;
+		resc.setResult(productsList);
+
+		//productManagement.jspに移動
 		resc.setTarget("productManagement");
 
 		return resc;

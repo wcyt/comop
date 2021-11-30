@@ -19,6 +19,8 @@ public class GetRewardProductsListCommand extends AbstractCommand {
 		List<PointRewardBean> pointRewardList = pointProductManagementDAO.getRewardProductsList();
 
 		resc.setResult(pointRewardList);
+
+		//rewardProductManagement.jspに移動
 		resc.setTarget("rewardProductManagement");
 
 		return resc;

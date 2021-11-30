@@ -14,6 +14,7 @@ public class EditProductCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
+		//パラメータの取得
 		String product_name = reqc.getParameter("product_name")[0];
 		String product_image = reqc.getParameter("product_image")[0];
 		String stock_quantity = reqc.getParameter("stock_quantity")[0];
@@ -22,6 +23,7 @@ public class EditProductCommand extends AbstractCommand {
 		String color_id = reqc.getParameter("color_id")[0];
 		String size = reqc.getParameter("size")[0];
 
+		//Beanにセット
 		ProductBean pb = new ProductBean();
 		pb.setProduct_name(product_name);
 		pb.setProduct_image(product_image);
@@ -31,13 +33,16 @@ public class EditProductCommand extends AbstractCommand {
 		pb.setColor_id(Integer.parseInt(color_id));
 		pb.setSize(size);
 
+		//商品情報を変更
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductManagementDAO pmDAO = factory.getProductManagementDAO();
 		pmDAO.editProduct(pb);
 
+		//商品一覧を取得
 		GetProductsListCommand getProductsListCommand = new GetProductsListCommand();
 		getProductsListCommand.execute(resc);
 
+		//productManagement.jspに移動
 		resc.setTarget("productManagement");
 
 		return resc;
