@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
@@ -45,8 +44,7 @@
 		<!-- Product Management -->
 		<div class="col-span-12 lg:col-span-6">
 			<form action="addRewardProduct" method="post">
-				<div
-					class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
+				<div class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
 					<p class="py-3 text-xl text-center border-b-2 border-gray-300">ポイント商品管理</p>
 					<!-- Product Name -->
 					<div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
@@ -54,8 +52,7 @@
 							<p class="font-bold text-right">ポイント商品名</p>
 						</div>
 						<div class="col-span-9">
-							<input type="text" name="reward_product_name" id=""
-								class="w-full rounded-xl">
+							<input type="text" name="reward_product_name" id="" class="w-full rounded-xl">
 						</div>
 					</div>
 					<!-- Product Name End -->
@@ -65,8 +62,7 @@
 							<p class="font-bold text-right">ポイント商品画像</p>
 						</div>
 						<div class="col-span-9">
-							<input type="text" name="reward_product_image" id=""
-								class="w-full rounded-xl">
+							<input type="text" name="reward_product_image" id="" class="w-full rounded-xl">
 						</div>
 					</div>
 					<!-- Product Image End -->
@@ -76,9 +72,7 @@
 							<p class="font-bold text-right">ポイント商品説明</p>
 						</div>
 						<div class="col-span-9">
-							<textarea name="reward_product_description"
-								class="w-full border-black textarea textarea-bordered"
-								placeholder=""></textarea>
+							<textarea name="reward_product_description"	class="w-full border-black textarea textarea-bordered" placeholder=""></textarea>
 						</div>
 					</div>
 					<!-- Product Description End -->
@@ -88,8 +82,7 @@
 							<p class="font-bold text-right">在庫数</p>
 						</div>
 						<div class="col-span-9">
-							<input type="text" name="stock_quantity" id=""
-								class="w-full rounded-xl">
+							<input type="text" name="stock_quantity" id="" class="w-full rounded-xl">
 						</div>
 					</div>
 					<!-- Stock End -->
@@ -99,15 +92,13 @@
 							<p class="font-bold text-right">交換ポイント数</p>
 						</div>
 						<div class="col-span-9">
-							<input type="text" name="point_price" id="" inputmode="numeric"
-								pattern="\d*" class="w-full rounded-xl">
+							<input type="text" name="point_price" id="" inputmode="numeric" pattern="\d*" class="w-full rounded-xl">
 						</div>
 					</div>
 					<!-- Point Price End -->
 					<!-- Registration Button -->
 					<div class="flex justify-center my-4">
-						<button type="submit"
-							class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</button>
+						<button type="submit" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</button>
 					</div>
 					<!-- Registration Button End -->
 				</div>

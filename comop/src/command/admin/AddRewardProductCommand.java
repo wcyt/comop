@@ -16,7 +16,7 @@ public class AddRewardProductCommand extends AbstractCommand {
 		// パラメータの取得
 		String reward_product_name = reqs.getParameter("reward_product_name")[0];
 		String reward_product_image = reqs.getParameter("reward_product_image")[0];
-		String reward_product_description = reqs.getParameter("reward_product_decription")[0];
+		String reward_product_description = reqs.getParameter("reward_product_description")[0];
 		String stock_quantity = reqs.getParameter("stock_quantity")[0];
 		String point_price = reqs.getParameter("point_price")[0];
 
@@ -38,7 +38,7 @@ public class AddRewardProductCommand extends AbstractCommand {
 		getRewardProductsListCommand.execute(resc);
 
 		// productManagement.jspに移動
-		resc.setTarget("productManagement");
+		resc.setTarget("rewardProductManagement");
 
 		return resc;
 	}

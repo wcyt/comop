@@ -15,7 +15,7 @@ public class UserBean implements Serializable {
 	private String postal_code;
 	private String password;
 	private int point;
-	private boolean user_lapse;
+	private int user_lapse;
 
 	public UserBean() {}
 
@@ -115,11 +115,13 @@ public class UserBean implements Serializable {
 		this.point = point;
 	}
 
-	public boolean isUser_lapse() {
+	public int getUser_lapse() {
 		return user_lapse;
 	}
 
-	public void setUser_lapse(boolean user_lapse) {
+	public void setUser_lapse(int user_lapse) {
 		this.user_lapse = user_lapse;
 	}
+
+
 }

@@ -25,7 +25,3 @@ public class GetUserListCommand extends AbstractCommand {
 		return resc;
 	}
 }
-
-
-
-

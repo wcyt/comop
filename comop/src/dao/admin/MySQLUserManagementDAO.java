@@ -19,7 +19,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 		try {
 			Connection cn = Connector.connect();
 
-			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point,user_lapse FROM user_table";
+			String sql = "SELECT * FROM user_table";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
@@ -37,7 +37,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 				u.setTel(rs.getString(9));
 				u.setPostal_code(rs.getString(10));
 				u.setPoint(rs.getInt(11));
-				u.setUser_lapse(rs.getBoolean(12));
+				u.setUser_lapse(rs.getInt(12));
 
 				users.add(u);
 			}

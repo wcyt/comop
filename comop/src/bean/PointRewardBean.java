@@ -7,6 +7,8 @@ public class PointRewardBean implements Serializable {
 	private String reward_product_name;
 	private String reward_product_image;
 	private String reward_product_description;
+	private int stock_quantity;
+	private int point_price;
 
 	public PointRewardBean() {}
 
@@ -57,7 +59,4 @@ public class PointRewardBean implements Serializable {
 	public void setPoint_price(int point_price) {
 		this.point_price = point_price;
 	}
-
-	private int stock_quantity;
-	private int point_price;
 }
