@@ -1,5 +1,8 @@
 package command.favorite;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import command.AbstractCommand;
 import dao.favorite.FavoriteDAO;
 import daofactory.AbstractDaoFactory;
@@ -12,13 +15,16 @@ public class RemoveFavoriteCommand extends AbstractCommand{
 		RequestContext rc = getRequestContext();
 
 		String user_id = (String)rc.getParameter("user_id")[0];
-
-		String product_id = (String)rc.getParameter("product_id")[0];
+		String[] product_id = rc.getParameter("product_id");
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favdao = factory.getFavoriteDAO();
 
-		favdao.removeFavorite(user_id, product_id);
+		Map<String, String[]> pid = new HashMap<String, String[]>();
+
+		pid.put("product_id", product_id);
+
+		favdao.removeFavorite(user_id, pid);
 
 		return resc;
 	}
