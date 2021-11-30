@@ -36,8 +36,9 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 				u.setLast_name_kana(rs.getString(8));
 				u.setTel(rs.getString(9));
 				u.setPostal_code(rs.getString(10));
-				u.setPoint(rs.getInt(11));
-				u.setUser_lapse(rs.getInt(12));
+				u.setPassword(rs.getString(11));
+				u.setPoint(rs.getInt(12));
+				u.setUser_lapse(rs.getInt(13));
 
 				users.add(u);
 			}

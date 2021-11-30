@@ -63,21 +63,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="UserBean" items="${data}">
+					<c:forEach var="users" items="${data}">
 						<tr class="hover">
-							<th>${UserBean.user_id}</th>
-							<td>${UserBean.name}</td>
-							<td>${UserBean.mail}</td>
-							<td>${UserBean.address}</td>
-							<td>${UserBean.first_name}</td>
-							<td>${UserBean.first_name_kana}</td>
-							<td>${UserBean.last_name}</td>
-							<td>${UserBean.last_name_kana}</td>
-							<td>${UserBean.tel}</td>
-							<td>${UserBean.postal_code}</td>
-							<td>${UserBean.password}</td>
-							<td>${UserBean.point}</td>
-							<td>${UserBean.user_lapse}</td>
+							<th>${users.user_id}</th>
+							<td>${users.name}</td>
+							<td>${users.mail}</td>
+							<td>${users.address}</td>
+							<td>${users.first_name}</td>
+							<td>${users.first_name_kana}</td>
+							<td>${users.last_name}</td>
+							<td>${users.last_name_kana}</td>
+							<td>${users.tel}</td>
+							<td>${users.postal_code}</td>
+							<td>${users.password}</td>
+							<td>${users.point}</td>
+							<td>${users.user_lapse}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
