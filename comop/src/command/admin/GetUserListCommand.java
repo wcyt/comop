@@ -2,6 +2,7 @@ package command.admin;
 
 import java.util.List;
 
+import bean.UserBean;
 import command.AbstractCommand;
 import dao.admin.UserManagementDAO;
 import daofactory.AbstractDaoFactory;
@@ -13,12 +14,10 @@ public class GetUserListCommand extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
-
+		// ユーザー一覧の取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		UserManagementDAO msumd = factory.getUserManagementDAO();
-
-		List users = msumd.getUserList();
-
+		UserManagementDAO umd = factory.getUserManagementDAO();
+		List<UserBean> users = umd.getUserList();
 
 		resc.setResult(users);
 		resc.setTarget("userManagement");
