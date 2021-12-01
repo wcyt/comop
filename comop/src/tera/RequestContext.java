@@ -8,4 +8,7 @@ public interface RequestContext {
 	public Object getRequest();
 	public void setRequest(Object request);
 	public Map getParameterMap();
+
+	public Object getAttribute(String key);
+	public void setAttribute(String key, Object object);
 }

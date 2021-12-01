@@ -38,4 +38,14 @@ public class WebRequestContext implements RequestContext {
 		return parameters;
 	}
 
+	@Override
+	public Object getAttribute(String key) {
+		return request.getAttribute(key);
+	}
+
+	@Override
+	public void setAttribute(String key, Object object) {
+		request.setAttribute(key, object);
+	}
+
 }
