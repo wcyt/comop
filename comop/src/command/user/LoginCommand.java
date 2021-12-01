@@ -26,7 +26,8 @@ public class LoginCommand extends AbstractCommand {
 			resc.setTarget("top");
 		} else {
 			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
-
+			System.out.println("login.else");
+			reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
 			resc.setTarget("signIn");
 		}
 

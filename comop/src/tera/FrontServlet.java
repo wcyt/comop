@@ -27,10 +27,10 @@ public class FrontServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("-- FrontServlet --");
+		System.out.println("-- FrontServletStart --");
 		request.setCharacterEncoding("UTF-8");
 
-		// ApplicationControllerの実装クラスのインスタンスを取得する
+		// ApplicationControllerの実装インスタンスを取得する
 		ApplicationController applicationController = new WebApplicationController();
 
 		// FactoryMethodを呼び出して、具象クラスのインスタンスを取得する
@@ -39,10 +39,10 @@ public class FrontServlet extends HttpServlet {
 		// FactoryMethodを呼び出し、RequestContextを渡してResponseContextを取得する
 		ResponseContext responseContext = applicationController.handleRequest(requestContext);
 
-		// ResponseContextにHttpServletResponseインターフェースを実装するくらすのインスタンスを格納する
+		// ResponseContextにHttpServletResponseインターフェースの実装インスタンスを格納する
 		responseContext.setResponse(response);
 
 		applicationController.handleResponse(requestContext, responseContext);
-		System.out.println("-- FrontServlet --");
+		System.out.println("-- FrontServletEnd --");
 	}
 }
