@@ -2,6 +2,7 @@ package command.user;
 
 import bean.UserBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -21,6 +22,9 @@ public class LoginCommand extends AbstractCommand {
 		ub.setMail(mail);
 		ub.setPassword(password);
 
+		//トランザクションを開始
+		Connector.getInstance().beginTransaction();
+
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		UserDAO userDAO = daoFactory.getUserDAO();
 		//TODO 未登録の場合に、未登録である旨のメッセージを出すならここいじる
@@ -28,6 +32,14 @@ public class LoginCommand extends AbstractCommand {
 		System.out.println("Login: passVal.input "+ password +" db "+ passwordHash);
 		if(password.equals(passwordHash)) {
 			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+
+			if(reqc.getSessionAttribute("user")==null) {
+				UserBean u=new UserBean();
+				u=userDAO.getMyUserInfo(mail);
+				reqc.setSessionAttribute("user", u);
+				System.out.println("Login: loginsuccess");
+			}
+
 			resc.setTarget("top");
 		} else {
 			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
@@ -35,6 +47,12 @@ public class LoginCommand extends AbstractCommand {
 			reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
 			resc.setTarget("signIn");
 		}
+
+		//トランザクションを終了
+		Connector.getInstance().commit();
+		//コネクションを切断
+		Connector.getInstance().close();
+
 		return resc;
 	}
 }
