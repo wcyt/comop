@@ -3,10 +3,12 @@ package tera;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class WebRequestContext implements RequestContext {
 	private Map parameters;
 	private HttpServletRequest request;
+	private HttpSession session;
 
 	public WebRequestContext() {
 	}
@@ -46,6 +48,24 @@ public class WebRequestContext implements RequestContext {
 	@Override
 	public void setAttribute(String key, Object object) {
 		request.setAttribute(key, object);
+	}
+
+	@Override
+	public Object getSessionAttribute(String key) {
+		session=request.getSession();
+		return session.getAttribute(key);
+	}
+
+	@Override
+	public void setSessionAttribute(String key, Object o) {
+		session = request.getSession();
+		session.setAttribute(key, o);
+	}
+
+	@Override
+	public void invalidateSession() {
+		session = request.getSession();
+		session.invalidate();
 	}
 
 }
