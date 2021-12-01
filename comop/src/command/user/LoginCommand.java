@@ -27,9 +27,17 @@ public class LoginCommand extends AbstractCommand {
 		String passwordHash = userDAO.getPasswordHash(mail);
 		System.out.println("Login: passVal.input "+ password +" db "+ passwordHash);
 		if(password.equals(passwordHash)) {
+<<<<<<< HEAD
 			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+=======
+			System.out.println("Login: passVal"+ password + passwordHash);
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 			resc.setTarget("top");
 		} else {
+<<<<<<< HEAD
+=======
+			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 			System.out.println("Login: passEquals.else");
 			reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
 			resc.setTarget("signIn");
