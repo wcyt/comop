@@ -169,48 +169,49 @@
         </div>
         <!-- Add Image End -->
         <!-- Product List -->
+        <h2 class="col-span-12 my-5 text-2xl font-bold flex justify-center">商品一覧</h2>
         <div class="col-span-12 overflow-x-auto">
-            <h2 class="my-5 text-2xl font-bold text-center">商品一覧</h2>
-            <div class="overflow-x-">
-                <table class="table w-full text-center table-auto">
-                    <thead>
-                        <tr>
-                            <th>商品ID</th>
-                            <th>商品名</th>
-                            <th>商品画像</th>
-                            <th>在庫数</th>
-                            <th>商品説明</th>
-                            <th>値段</th>
-                            <th>カラーID</th>
-                            <th>サイズ（普通・小さめ・キッズ）</th>
-                            <th>素材（不織布・布・ウレタン・ガーゼ）</th>
-                            <th>包装タイプ（個包装・大容量）</th>
-                            <th>お気に入り数</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach var="products" items="${data}">
-	                        <tr class="hover">
-	                            <th>${products.product_id}</th>
-	                            <td>${products.product_name}</td>
-	                            <td>${products.product_image}</td>
-	                            <td>${products.stock_quantity}</td>
-	                            <td>${products.product_description}</td>
-	                            <td>${products.price}</td>
-	                            <td>${products.color_id}</td>
-	                            <td>${products.size}</td>
-	                            <td>${products.material}</td>
-	                            <td>${products.packing_type}</td>
-	                            <td>${products.favorite_count}</td>
-	                        </tr>
-                    	</c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        	<table class="table w-full text-center table-auto">
+            	<thead>
+                	<tr>
+                    	<th>商品ID</th>
+                        <th>商品名</th>
+                        <th>商品画像</th>
+                        <th>在庫数</th>
+                        <th>商品説明</th>
+                        <th>値段</th>
+                        <th>カラーID</th>
+                        <th>サイズ（普通・小さめ・キッズ）</th>
+                        <th>素材（不織布・布・ウレタン・ガーゼ）</th>
+                        <th>包装タイプ（個包装・大容量）</th>
+                        <th>お気に入り数</th>
+					</tr>
+                </thead>
+                <tbody>
+                	<c:forEach var="products" items="${data}">
+	                	<tr class="hover truncate whitespace-pre-wrap">
+	                    	<th>${products.product_id}</th>
+	                        <td>${products.product_name}</td>
+	                        <td>${products.product_image}</td>
+	                        <td>${products.stock_quantity}</td>
+	                        <td>${products.product_description}</td>
+	                        <td>${products.price}</td>
+	                        <td>${products.color_id}</td>
+	                        <td>${products.size}</td>
+	                        <td>${products.material}</td>
+	                        <td>${products.packing_type}</td>
+	                        <td>${products.favorite_count}</td>
+	                    </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+         </div>
         <!-- Product List End -->
     </main>
     <!-- Main End -->
 </body>
+<script>
+
+</script>
 
 </html>
