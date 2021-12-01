@@ -12,7 +12,7 @@ public class LogoutCommand  extends AbstractCommand {
 
 		reqc.invalidateSession();
 
-		resc.setTarget("singIn");
+		resc.setTarget("signIn");
 
 		return resc;
 	}
