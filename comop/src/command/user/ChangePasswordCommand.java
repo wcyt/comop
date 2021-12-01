@@ -18,6 +18,7 @@ public class ChangePasswordCommand extends AbstractCommand{
 
 		UserBean u = new UserBean();
 		u.setUser_id(user_id);
+		//TODO パスワードのハッシュ化
 		u.setPassword(password);
 
 		//パスワードを変更

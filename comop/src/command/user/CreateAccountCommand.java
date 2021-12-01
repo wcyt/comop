@@ -21,6 +21,7 @@ public class CreateAccountCommand extends AbstractCommand {
 		UserBean u = new UserBean();
 		u.setName(name);
 		u.setMail(mail);
+		//TODO パスワードのハッシュ化
 		u.setPassword(password);
 
 
