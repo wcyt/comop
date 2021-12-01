@@ -8,6 +8,7 @@ public interface UserDAO {
 	public void editUserInfo(UserBean u);
 	public void lapseUser(String user_id);
 	public void updatePoint(String user_id,String point);
-	public UserBean getMyUserInfo(String user_id);
+	//user_idからユーザー情報を取得するものは使わなそうなので、mailからユーザ情報を取得するものに変えました
+	public UserBean getMyUserInfo(String mail);
 	public String getPasswordHash(String mail);
 }
