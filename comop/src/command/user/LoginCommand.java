@@ -23,10 +23,11 @@ public class LoginCommand extends AbstractCommand {
 		UserDAO userDAO = daoFactory.getUserDAO();
 		String passwordHash = userDAO.getPasswordHash(mail);
 		if(password.equals(passwordHash)) {
+			System.out.println("Login: passVal"+ password + passwordHash);
 			resc.setTarget("top");
 		} else {
 			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
-			System.out.println("login.else");
+			System.out.println("Login: passEquals.else");
 			reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
 			resc.setTarget("signIn");
 		}
