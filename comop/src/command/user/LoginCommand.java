@@ -12,10 +12,13 @@ public class LoginCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
 
+		// パラメータの取得
 		String mail = reqc.getParameter("mailAddress")[0];
 		String password = reqc.getParameter("password")[0];
+
 		//TODO パスワードをハッシュ化してからDBに登録されたハッシュと同じか比較
 
+		// Beanにセット
 		UserBean ub = new UserBean();
 		ub.setMail(mail);
 		ub.setPassword(password);
@@ -25,10 +28,11 @@ public class LoginCommand extends AbstractCommand {
 
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		UserDAO userDAO = daoFactory.getUserDAO();
+
 		//TODO 未登録の場合に、未登録である旨のメッセージを出すならここいじる
 		String passwordHash = userDAO.getPasswordHash(mail);
 		System.out.println("Login: passVal.input " + password + " db " + passwordHash);
-		// adminログイン用if
+		// メールアドレスがadmin@adminかつパスワードがadminの時にadmin.jspに移動する
 		if (mail.equals("admin@admin") && password.equals("admin")) {
 			resc.setTarget("admin");
 		} else if (password.equals(passwordHash) && reqc.getSessionAttribute("user") == null) {
