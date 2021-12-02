@@ -15,8 +15,6 @@ public class LoginCommand extends AbstractCommand {
 		String mail = reqc.getParameter("mailAddress")[0];
 		String password = reqc.getParameter("password")[0];
 		//TODO パスワードをハッシュ化してからDBに登録されたハッシュと同じか比較
-		// adminログイン用if
-			if (mail.equals("admin@admin") && password.equals("admin")) { resc.setTarget("admin"); }
 
 		UserBean ub = new UserBean();
 		ub.setMail(mail);
@@ -29,16 +27,16 @@ public class LoginCommand extends AbstractCommand {
 		UserDAO userDAO = daoFactory.getUserDAO();
 		//TODO 未登録の場合に、未登録である旨のメッセージを出すならここいじる
 		String passwordHash = userDAO.getPasswordHash(mail);
-		System.out.println("Login: passVal.input "+ password +" db "+ passwordHash);
-		if(password.equals(passwordHash)) {
+		System.out.println("Login: passVal.input " + password + " db " + passwordHash);
+		// adminログイン用if
+		if (mail.equals("admin@admin") && password.equals("admin")) {
+			resc.setTarget("admin");
+		} else if (password.equals(passwordHash) && reqc.getSessionAttribute("user") == null) {
 			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
-
-			if(reqc.getSessionAttribute("user")==null) {
-				UserBean u=new UserBean();
-				u=userDAO.getMyUserInfo(mail);
-				reqc.setSessionAttribute("user", u);
-				System.out.println("Login: loginsuccess");
-			}
+			UserBean u = new UserBean();
+			u = userDAO.getMyUserInfo(mail);
+			reqc.setSessionAttribute("user", u);
+			System.out.println("Login: loginsuccess");
 
 			resc.setTarget("top");
 		} else {
