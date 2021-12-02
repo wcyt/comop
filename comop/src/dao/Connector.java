@@ -18,12 +18,14 @@ public class Connector {
 	}
 
 	public  Connection connect() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		if(cn == null) {
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
 
-			cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/comopdb?characterEncoding=UTF-8&serverTimezone=JST","comop","comop");
-		} catch(Exception e){
-			e.printStackTrace();
+				cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/comopdb?characterEncoding=UTF-8&serverTimezone=JST","comop","comop");
+			} catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		return cn;
 	}
