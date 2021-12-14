@@ -26,7 +26,7 @@
     <header class="flex grid flex-col items-center justify-between w-full grid-cols-12 px-4 bg-gray-100 lg:flex-row md:px-32">
         <!-- SiteName -->
         <div class="flex flex-col col-span-12 lg:flex-row sm:mt-1">
-            <p class="inline mt-2 mb-3 font-bold text-center">サイト名予定地</p>
+            <a href="top" class="inline mt-2 mb-3 font-bold text-center">サイト名予定地</a>
         </div>
         <!-- SiteName End-->
     </header>

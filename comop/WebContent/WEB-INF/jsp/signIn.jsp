@@ -15,10 +15,11 @@
     <!-- alpine.js tailwind css -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/basscss@latest/css/basscss.min.css" rel="stylesheet" type="text/css" />
+  	<link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.5/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.js" defer></script>
     <!-- alpine.js tailwind css -->
-    <title>トップページ</title>
+    <title>comop - ログイン</title>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a>Home</a></li>
+                <li><a href="top">Home</a></li>
                 <li><a>Login</a></li>
             </ul>
         </nav>
@@ -42,7 +43,11 @@
             <p class="text-red-500 my-2">${message}</p>
             <input type="text" id="mailAddress" name="mailAddress"placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input" required>
             <input type="password" id="password" name="password"placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input" required>
-            <button id="loginButton" class="py-3 mt-10 text-xl font-bold text-white bg-blue-400 rounded-full focus:outline-none">ログインする</button>
+            <div class="flex flex-row mt-4">
+                <input type="checkbox" id="checkbox" onclick="changeInputType()" class="checkbox rounded-md h-5 w-5 mt-[0.4rem] mr-2">
+            	<span class="mt-1">パスワードを表示する</span>
+            </div>
+            <button id="loginButton" class="py-3 mt-6 text-xl font-bold text-white bg-blue-400 rounded-full focus:outline-none">ログインする</button>
             <a href="signUp" class="mt-4 text-sm font-bold text-center text-blue-400 hover:underline">はじめてご利用の方（新規会員登録）</a>
         </form>
         <!-- Login Form End -->
@@ -52,6 +57,13 @@
 </body>
 
 <script>
+	// checkboxをクリックしたらinputのtypeを変更する関数
+	function changeInputType() {
+	    const password = document.getElementById('password');
+	    const checkbox = document.getElementById('checkbox');
+	    if (checkbox.checked) password.type = 'text';
+	    else password.type = 'password';
+	}
 </script>
 
 </html>
