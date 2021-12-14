@@ -15,6 +15,8 @@ public class LogoutCommand  extends AbstractCommand {
 
 		resc.setTarget("signIn");
 
+		System.out.println("LogoutCommand: Logout");
+
 		return resc;
 	}
 }

@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.1/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- alpine.js tailwind css -->
-    <title>Document</title>
+    <title>comop</title>
 </head>
 
 
