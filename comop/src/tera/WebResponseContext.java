@@ -11,7 +11,7 @@ public class WebResponseContext implements ResponseContext {
 
 	@Override
 	public void setTarget(String transferInfo) {
-		target = "/WEB-INF/jsp/" + transferInfo + ".jsp";
+		target = "/WEB-INF/JSP/" + transferInfo + ".jsp";
 	}
 
 	// 転送先のViewに関する情報を返す

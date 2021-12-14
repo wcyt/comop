@@ -44,7 +44,7 @@
 					<div class="dropdown dropdown-hover">
 						<p tabindex="0" class="flex items-center px-5 py-3 font-medium transition text-md duration-400 hover:bg-gray-300 hover:text-black">${sessionScope.user.name} 様</p>
 						<ul tabindex="0" class="w-48 p-2 shadow menu dropdown-content bg-base-100 rounded-box">
-							<li class="hover:underline"><a href="${default}">登録情報</a></li>
+							<li class="hover:underline"><a href="default">登録情報</a></li>
 							<li class="hover:underline"><a href="/WEB-INF/jsp/orderHistory.jsp">注文履歴・発送状況</a></li>
 							<li class="hover:underline"><a href="logout">ログアウト</a></li>
 						</ul>
