@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -18,26 +18,26 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.js" defer></script>
     <!-- alpine.js tailwind css -->
-    <title>トップページ</title>
+    <title>お気に入りアイテム - comop</title>
 </head>
 
 <body>
 	<%@include file="Header.jsp" %>
     <!-- Main -->
-    <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
+    <main id="main" class="grid grid-cols-12 bg-white mb-10 sm:px-4 lg:px-32">
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a>Home</a></li>
+                <li><a href="top">Home</a></li>
                 <li><a>お気に入りアイテム</a></li>
             </ul>
         </nav>
         <!-- Breadcrumbs End -->
         <!-- Dropdowns -->
         <div class="col-span-12">
-            <h1 class="my-5 text-3xl font-bold">ユーザ名さんのお気に入り</h1>
+            <h1 class="my-5 text-3xl font-bold">${sessionScope.user.name}さんのお気に入り</h1>
             <div class="flex flex-row">
-                <p class="text-3xl">2</p>
+                <p class="text-3xl">3</p>
                 <p class="px-1 pr-5 mt-3 border-r-2">件</p>
                 <div class="dropdown dropdown-hover">
                     <div tabindex="0" class="pt-2 m-1 mx-5 font-bold text-center text-black bg-white text-md">すべてのショップ</div>
@@ -68,31 +68,17 @@
         <!-- Dropdowns End -->
         <!-- Products -->
         <div class="col-span-12 mt-6">
-            <ul class="flex flex-row flex-wrap gap-7">
-                <li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
+        	<ul class="flex flex-row flex-wrap gap-7">
+	        	<!-- お気に入りがある -->
+	        	<c:forEach var="product" items="${data}">
+		        	<li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
+			    		<img src="../image/${product.product_image}" alt="商品の画像">
+			            <div class="p-4 ">
+			            	<p class="mb-2 font-medium">${product.product_name}</p>
+			            	<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
+			            </div>
+		            </li>
+				</c:forEach>
             </ul>
         </div>
         <!-- Products End -->

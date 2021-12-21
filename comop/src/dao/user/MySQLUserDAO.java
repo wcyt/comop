@@ -179,7 +179,6 @@ public class MySQLUserDAO implements UserDAO {
 			ResultSet rs = st.executeQuery();
 
 			if(rs.next()) {
-
 				u.setUser_id(rs.getInt(1));
 				u.setName(rs.getString(2));
 				u.setMail(rs.getString(3));
