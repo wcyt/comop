@@ -28,10 +28,22 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//色の削除
 	public void removeColor(String color_id) {
 		try {
@@ -47,10 +59,22 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//色の一覧を取得
 	public List<ColorBean> getColorList() {
 		ArrayList<ColorBean> colors = new ArrayList<ColorBean>();
@@ -61,8 +85,8 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				ColorBean c=new ColorBean();
+			while (rs.next()) {
+				ColorBean c = new ColorBean();
 
 				c.setColor_id(rs.getInt(1));
 				c.setColor_name(rs.getString(2));
@@ -70,11 +94,21 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 				colors.add(c);
 			}
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return colors;
 	}
 }
-

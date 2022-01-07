@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +22,7 @@
 <body>
 	<%@include file="Header.jsp" %>
     <!-- Main -->
-    <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
+    <main id="main" class="grid grid-cols-12 py-16 bg-white flex flex-col min-h-screen sm:px-4">
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>

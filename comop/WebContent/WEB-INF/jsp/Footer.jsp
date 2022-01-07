@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-</head>
 <body>
 	<!-- Footer -->
-	<footer class="bottom-0 py-1 bg-gray-200 lg:px-32 sm:px-4">
-		<div class="flex flex-row md:my-10 sm:my-5">
+	<footer class="bottom-0 py-1 bg-gray-200 mt-auto">
+		<div class="flex flex-row justify-center md:my-10 sm:my-5">
 			<ul class="md:pr-8 sm:pr-0">
 				<li>ZOZOTOWN</li>
 				<li>ZOZOSHOES</li>

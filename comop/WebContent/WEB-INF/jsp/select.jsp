@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +24,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
         <h1 class="col-span-12 text-2xl font-bold">COMOP</h1>
@@ -53,7 +52,7 @@
                 <!-- Name(kana) -->
                 <div class="grid grid-cols-12 py-5 border-gray-400">
                     <div class="flex flex-row items-center col-span-4 lg:col-span-3">
-                        <div class="flex flex-col lg:flex-row">
+                        <div class="flex flex-col md:flex-row">
                             <span class="text-lg">お名前</span>
                             <span class="text-lg">（カナ）</span>
                         </div>
@@ -74,10 +73,10 @@
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
                         <div class="flex flex-col w-1/2">
                             <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" class="w-full" required>
-                            <p id="error" class="text-sm text-red-500 ml-2"></p>
+                            <p id="error" class="ml-2 text-sm text-red-500"></p>
                         </div>
                         <a href="https://www.post.japanpost.jp/zipcode/index.html" class="text-blue-400 hover:underline">郵便番号を調べる<i class="ml-3 bi bi-box-arrow-up-right"></i></a>
-                        <button id="searchAddress" type="button" class="bg-blue-500 text-white px-3 py-1">住所検索</button>
+                        <button type="button" class="px-3 py-1 text-white bg-blue-500" onclick="searchAddress()">住所検索</button>
                     </div>
                 </div>
                 <!-- Postal Code End -->
@@ -132,6 +131,7 @@
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">有効期限</p>
                             <select name="" id="expirationMonth" autocomplete="cc-exp-month" class="col-span-3 lg:col-span-2">
+                                <option hidden></option>
                                 <option value="1">01</option>
                                 <option value="2">02</option>
                                 <option value="3">03</option>
@@ -147,6 +147,7 @@
                             </select>
                             <p class="mx-4">月</p>
                             <select name="" id="expirationYear" autocomplete="cc-exp-year" class="col-span-3 lg:col-span-2">
+                                <option hidden></option>
                                 <option value="21">21</option>
                                 <option value="22">22</option>
                                 <option value="23">23</option>
@@ -175,10 +176,10 @@
                 <div class="modal">
                     <div class="modal-box">
                         <!-- Modal Contents -->
-                        <div id="inputValues"></div>
+                        <div id="modal-contents"></div>
                         <div class="modal-action ">
                             <label for="my-modal-2">
-                                <button type="submit" id="submit" class="btn btn-primary">送信</button>
+                                <button type="submit" id="modalSubmitButton" class="btn btn-primary">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteOrder()">キャンセル</label>
                         </div>
@@ -212,7 +213,7 @@
     </main>
     <!-- Main End -->
     <!-- Footer -->
-    <footer class="py-10 bg-gray-200 ">
+    <footer class="py-10 bg-gray-200 mt-auto">
         <p class="flex justify-center text-gray-400 ">© COMOP , Inc.</p>
     </footer>
     <!-- Footer End -->
@@ -228,44 +229,57 @@
     });
 
     function checkOrder() {
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const firstNameKana = document.getElementById('firstNameKana').value;
-        const lastNameKana = document.getElementById('lastNameKana').value;
-        const postalCode = document.getElementById('postalCode').value;
-        const address = document.getElementById('address').value;
-        const tel = document.getElementById('tel').value;
-        const creditNumber = document.getElementById('creditNumber').value;
-        const securityNumber = document.getElementById('securityNumber').value;
-        const cardHolder = document.getElementById('cardHolder').value;
-        const expirationMonth = document.getElementById('expirationMonth').value;
-        const expirationYear = document.getElementById('expirationYear').value;
-        const submit = document.getElementById('submit');
-        if (firstName == '' || lastName == '' || firstNameKana == '' || lastNameKana == '' || postalCode == '' || address == '' || tel == '' || creditNumber == '' || securityNumber == '' || cardHolder == '' || expirationMonth == '' || expirationYear == '') {
-            return;
-        }
-        const output =
+        const modalSubmitButton = document.getElementById('modalSubmitButton');
+        const inputElementValues = getInputElementValues();
+        const inputLists = createInputLists(inputElementValues);
+
+        Object.keys(inputElementValues).forEach(function(key) {
+            inputElementValues[key] === '' ? modalSubmitButton.style.display = 'none' : modalSubmitButton.style.display = 'block';
+        });
+
+        document.getElementById('modal-contents').insertAdjacentHTML('beforeend', inputLists);
+    }
+
+    function getInputElementValues() {
+        const inputElementValues = {
+            firstName: document.getElementById('firstName').value,
+            firstNameKana: document.getElementById('firstNameKana').value,
+            lastName: document.getElementById('lastName').value,
+            lastNameKana: document.getElementById('lastNameKana').value,
+            postalCode: document.getElementById('postalCode').value,
+            address: document.getElementById('address').value,
+            tel: document.getElementById('tel').value,
+            creditNumber: document.getElementById('creditNumber').value,
+            securityNumber: document.getElementById('securityNumber').value,
+            cardHolder: document.getElementById('cardHolder').value,
+            expirationMonth: document.getElementById('expirationMonth').value,
+            expirationYear: document.getElementById('expirationYear').value,
+        };
+        return inputElementValues;
+    }
+
+    function createInputLists(inputElementValues) {
+        const inputLists =
             `
                 <div id="inputLists" class="text-lg">
                     <p class="mb-4 text-2xl font-bold">注文内容の確認</p>
-                    <p class="my-2">お名前 : ${firstName} ${lastName}</p>
-                    <p class="my-2">お名前（カナ）: ${firstNameKana} ${lastNameKana}</p>
-                    <p class="my-2">郵便番号 : ${postalCode}</p>
-                    <p class="my-2">住所 : ${address}</p>
-                    <p class="my-2">電話番号 : ${tel}</p>
-                    <p class="my-2">クレジット番号 : ${creditNumber}</p>
-                    <p class="my-2">セキュリティ番号 : ${securityNumber}</p>
-                    <p class="my-2">カード名義 : ${cardHolder}</p>
-                    <p class="my-2">有効期限 : ${expirationMonth}月 ${expirationYear}年</p>
+                    <p class="my-2">お名前 : ${inputElementValues.firstName} ${inputElementValues.lastName}</p>
+                    <p class="my-2">お名前（カナ）: ${inputElementValues.firstNameKana} ${inputElementValues.lastNameKana}</p>
+                    <p class="my-2">郵便番号 : ${inputElementValues.postalCode}</p>
+                    <p class="my-2">住所 : ${inputElementValues.address}</p>
+                    <p class="my-2">電話番号 : ${inputElementValues.tel}</p>
+                    <p class="my-2">クレジット番号 : ${inputElementValues.creditNumber}</p>
+                    <p class="my-2">セキュリティ番号 : ${inputElementValues.securityNumber}</p>
+                    <p class="my-2">カード名義 : ${inputElementValues.cardHolder}</p>
+                    <p class="my-2">有効期限 : ${inputElementValues.expirationMonth}月 ${inputElementValues.expirationYear}年</p>
                 </div>
             `;
-        document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
+        return inputLists;
     }
 
     function deleteOrder() {
         const inputLists = document.getElementById('inputLists');
         inputLists.remove();
-        console.log(inputLists);
     }
 
     // enterでsubmitさせない
@@ -275,14 +289,14 @@
         }
     });
 
-    let searchAddress = document.getElementById('searchAddress').addEventListener('click', () => {
-        let error = document.getElementById('error');
-        let postalCode = document.getElementById('postalCode');
-        let address = document.getElementById('address');
+    function searchAddress() {
+        const error = document.getElementById('error');
+        const postalCode = document.getElementById('postalCode');
+        const address = document.getElementById('address');
 
-        let api = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=';
-        let param = postalCode.value.replace("-", ""); //入力された郵便番号から「-」を削除
-        let url = api + param;
+        const api = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=';
+        const param = postalCode.value.replace("-", ""); //入力された郵便番号から「-」を削除
+        const url = api + param;
 
         fetchJsonp(url, {
                 timeout: 10000, //タイムアウト時間
@@ -292,7 +306,8 @@
                 return response.json();
             })
             .then((data) => {
-                if (data.status === 400) { //エラー時
+                //エラー時
+                if (data.status === 400) {
                     error.textContent = data.message;
                 }
                 if (data.results === null) {
@@ -304,7 +319,7 @@
             .catch((ex) => { //例外処理
                 console.log(ex);
             });
-    }, false);
+    }
 </script>
 
 </html>

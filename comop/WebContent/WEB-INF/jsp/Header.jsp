@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +6,7 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${sessionScope.user.name == null}">
+		<c:when test="${user.name == null}">
 			<!-- ログイン前 -->
 			<header class="fixed top-0 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->
@@ -77,7 +75,7 @@
 		    </header>
 			<!-- ログイン前 -->
 		</c:when>
-		<c:when test="${sessionScope.user.name != null}">
+		<c:when test="${user.name != null}">
 			<!-- ログイン後 -->
 			<header class="sticky top-0 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->

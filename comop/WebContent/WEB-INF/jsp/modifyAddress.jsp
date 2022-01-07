@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +17,6 @@
     <!-- alpine.js tailwind css -->
     <title>基本情報の変更</title>
 </head>
-
 <body>
 	<%@include file="Header.jsp" %>
     <!-- Main -->
