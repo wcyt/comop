@@ -69,7 +69,7 @@
 			<ul class="flex flex-row flex-wrap gap-7">
 				<c:forEach var="product" items="${data}">
 					<li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
-					<img src="../images/${product.product_image}" alt="商品の画像" class="w-full">
+					<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
 						<div class="p-4">
 							<p class="mb-2 font-medium">${product.product_name}</p>
 							<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
