@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.ProductBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.admin.ProductManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -13,6 +14,9 @@ public class GetProductsListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
+
+		//トランザクションを開始
+		Connector.getInstance().beginTransaction();
 
 		// 商品一覧を取得
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();

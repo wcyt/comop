@@ -18,7 +18,13 @@
     <!-- alpine.js tailwind css -->
     <title>登録情報</title>
 </head>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const password = document.getElementById('password').innerHTML;
+        const asterisk = '*'.repeat(password.length);
+        document.getElementById('password').innerHTML = asterisk;
+    }, false);
+</script>
 <body>
 	<%@include file="Header.jsp" %>
     <!-- Main -->
@@ -91,7 +97,7 @@
                 <div class="grid grid-cols-12 py-5 border-b border-gray-400">
                     <p class="flex items-center col-span-3 text-lg text-gray-500 lg:col-span-3">パスワード</p>
                     <div class="col-span-7 flex items-center gap-3 lg:col-span-6">
-                        <p class="text-2xl">${sessionScope.user.password}</p>
+                        <p id="password" class="text-2xl">${sessionScope.user.password}</p>
                     </div>
                     <div class="flex items-center col-span-2 lg:col-span-3">
                         <a href="" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>

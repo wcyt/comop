@@ -34,27 +34,27 @@ public class LoginCommand extends AbstractCommand {
 		System.out.println("Login: passVal.input " + password + " db " + passwordHash);
 
 		// メールアドレスがadmin@adminかつパスワードがadminの時にadmin.jspに移動する
-		if (mail.equals("admin@admin") && password.equals("admin")) { resc.setTarget("admin"); }
-
-		if (password.equals(passwordHash)) {
-			System.out.println("MailAddress: " + mail + " Password: " + password + " PasswordHash:" + passwordHash);
-
-			if (reqc.getSessionAttribute("user") == null) {
-				//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
-				UserBean u = new UserBean();
-				u = userDAO.getMyUserInfo(mail);
-				reqc.setSessionAttribute("user", u);
-				System.out.println("Login: loginsuccess");
-				resc.setTarget("top");
-			}
+		if (mail.equals("admin@admin") && password.equals("admin")) {
+			resc.setTarget("admin");
 		} else {
+			if (password.equals(passwordHash)) {
+				System.out.println("MailAddress: " + mail + " Password: " + password + " PasswordHash:" + passwordHash);
 
-			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
-			System.out.println("Login: passEquals.else");
-			reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
-			resc.setTarget("signIn");
+				if (reqc.getSessionAttribute("user") == null) {
+					//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+					UserBean u = new UserBean();
+					u = userDAO.getMyUserInfo(mail);
+					reqc.setSessionAttribute("user", u);
+					System.out.println("Login: loginsuccess");
+					resc.setTarget("top");
+				}
+			} else {
+				//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
+				System.out.println("Login: passEquals.else");
+				reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
+				resc.setTarget("signIn");
+			}
 		}
-
 		return resc;
 	}
 }

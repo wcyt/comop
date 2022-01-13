@@ -24,7 +24,7 @@
     <main id="main" class="grid grid-cols-12 gap-6 py-16 bg-white sm:px-4 lg:px-32">
         <div class="flex flex-col items-center col-span-12 gap-3">
             <h1 class="text-2xl font-bold text-center">管理ページ</h1>
-            <a href="top" class="max-w-lg px-32 py-2 text-center text-white bg-blue-400 rounded-full">トップページへ</a>
+            <a href="logout" class="max-w-lg px-32 py-2 text-center text-white bg-blue-400 rounded-full">トップページへ</a>
         </div>
         <!-- Product Management -->
         <div class="col-span-6">
