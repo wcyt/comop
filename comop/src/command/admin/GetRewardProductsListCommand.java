@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.PointRewardBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.admin.PointProductManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -12,6 +13,9 @@ import tera.ResponseContext;
 public class GetRewardProductsListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
+
+		//トランザクションを開始
+		Connector.getInstance().beginTransaction();
 
 		// ポイント商品一覧を取得
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();

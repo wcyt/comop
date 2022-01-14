@@ -32,12 +32,24 @@ public class MySQLStockDAO implements StockDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//
-	public List<StockBean> getStockList(){
+	public List<StockBean> getStockList() {
 		ArrayList<StockBean> stocks = new ArrayList<StockBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();
@@ -46,8 +58,8 @@ public class MySQLStockDAO implements StockDAO {
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				StockBean s=new StockBean();
+			while (rs.next()) {
+				StockBean s = new StockBean();
 
 				s.setStock_change_id(rs.getInt(1));
 				s.setUser_id(rs.getInt(2));
@@ -59,8 +71,19 @@ public class MySQLStockDAO implements StockDAO {
 				stocks.add(s);
 			}
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return stocks;

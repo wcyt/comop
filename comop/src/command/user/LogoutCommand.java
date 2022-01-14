@@ -11,8 +11,11 @@ public class LogoutCommand  extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 
 		reqc.invalidateSession();
+		reqc.setAttribute("message", "ログアウトしました。");
 
 		resc.setTarget("signIn");
+
+		System.out.println("LogoutCommand: Logout");
 
 		return resc;
 	}

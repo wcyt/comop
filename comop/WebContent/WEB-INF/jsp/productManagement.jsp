@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -25,7 +23,7 @@
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 gap-6 py-16 bg-white sm:px-4 lg:px-16">
         <div class="flex justify-center col-span-12">
-            <a href="admin" class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</a>
+            <a href="WEB-INF/jsp/admin.jsp" class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</a>
         </div>
         <div class="flex flex-col items-center col-span-12 gap-3">
             <h1 class="text-2xl font-bold text-center">商品登録</h1>

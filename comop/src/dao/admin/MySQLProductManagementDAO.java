@@ -14,7 +14,7 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 	private PreparedStatement st = null;
 
 	//商品の一覧を取得
-	public List<ProductBean> getProductList(){
+	public List<ProductBean> getProductList() {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();
@@ -23,8 +23,8 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				ProductBean p=new ProductBean();
+			while (rs.next()) {
+				ProductBean p = new ProductBean();
 
 				p.setProduct_id(rs.getInt(1));
 				p.setColor_id(rs.getInt(2));
@@ -42,12 +42,24 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 				products.add(p);
 			}
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return products;
 	}
+
 	//商品を編集
 	public void editProduct(ProductBean p) {
 		try {
@@ -72,10 +84,22 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//商品を追加
 	public void addProduct(ProductBean p) {
 		try {
@@ -99,10 +123,22 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//商品を削除
 	public void removeProduct(String product_id) {
 		try {
@@ -118,8 +154,19 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

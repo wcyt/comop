@@ -12,19 +12,14 @@ public class RemoveCartCommand  extends AbstractCommand {
 
 		RequestContext reqc = getRequestContext();
 
-
 		//パラメータを取得
-		String[] user_ids = reqc.getParameter("user_id");
-		String user_id = user_ids[0];
-
-		String[] product_ids = reqc.getParameter("product_id");
-		String product_id = product_ids[0];
+		String user_id = reqc.getParameter("user_id")[0];
+		String product_id = reqc.getParameter("product_id")[0];
 
 		//カートの中身を削除
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		CartDAO cd = factory.getCartDAO();
-		cd.removeCart(user_id,product_id);
-
+		CartDAO cartDAO = factory.getCartDAO();
+		cartDAO.removeCart(user_id,product_id);
 
 		//cart.jspに移動
 		resc.setTarget("cart");

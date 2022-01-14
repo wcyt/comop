@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.ColorBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.admin.ColorManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -13,6 +14,9 @@ public class GetColorListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
+
+		//トランザクションを開始
+		Connector.getInstance().beginTransaction();
 
 		//カラー一覧を取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
