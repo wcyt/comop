@@ -63,7 +63,7 @@
                             <div class="p-4 bg-white">
                                 <p class="mb-1 font-bold text-md">NIKE</p>
                                 <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
+                                <p class="text-xl font-bold">\12,000</p>
                             </div>
                         </div>
                     </li>
