@@ -41,7 +41,7 @@
         <div class="col-span-12 lg:col-span-8">
             <!-- Product -->
             <c:forEach var="product" items="${data}">
-	            <div class="flex grid flex-row grid-cols-10 py-8 border-b-2">
+	            <div class="grid grid-cols-10 py-8 border-b-2">
 	                <img class="w-full col-span-2 h-44" src="images/${product.product_image}" alt="">
 	                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
 	                    <p class="font-light">${product.product_name}</p>

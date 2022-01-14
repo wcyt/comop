@@ -18,6 +18,8 @@ public class MySQLUserDAO implements UserDAO {
 
 			String sql = "insert into user_table(name,mail,password) values(?,?,?)";
 
+			System.out.println("CREATE ACCOUNT");
+
 			st = cn.prepareStatement(sql);
 			st.setString(1, u.getName());
 			st.setString(2, u.getMail());
