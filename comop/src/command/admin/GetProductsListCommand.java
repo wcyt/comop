@@ -22,8 +22,10 @@ public class GetProductsListCommand extends AbstractCommand {
 		AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory();
 		ProductManagementDAO productManagementDAO = daoFactory.getProductManagementDAO();
 		List<ProductBean> productsList = productManagementDAO.getProductList();
-
 		resc.setResult(productsList);
+
+		//トランザクションを終了する
+		Connector.getInstance().commit();
 
 		//productManagement.jspに移動
 		resc.setTarget("productManagement");

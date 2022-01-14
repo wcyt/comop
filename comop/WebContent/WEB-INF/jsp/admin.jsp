@@ -31,7 +31,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">商品管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="productManagement" class="w-full py-2 bg-gray-300 rounded-full">商品一覧・登録</a>
+                    <a href="getAdminProductsList" class="w-full py-2 bg-gray-300 rounded-full">商品一覧・登録</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">ポイント商品管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="rewardProductManagement" class="w-full py-2 bg-gray-300 rounded-full">ポイント商品一覧・登録</a>
+                    <a href="getAdminRewardProductsList" class="w-full py-2 bg-gray-300 rounded-full">ポイント商品一覧・登録</a>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">カラー管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="getColorList" class="w-full py-2 bg-gray-300 rounded-full">カラー一覧・登録</a>
+                    <a href="getAdminColorList" class="w-full py-2 bg-gray-300 rounded-full">カラー一覧・登録</a>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
             <div class="flex flex-col gap-2 px-4 font-normal text-center border-2 border-gray-300 rounded-xl">
                 <p class="py-3 text-xl border-b-2 border-gray-300">ユーザー管理</p>
                 <div class="flex flex-col gap-4 my-4 text-lg">
-                    <a href="getUserList" class="w-full py-2 bg-gray-300 rounded-full">ユーザー一覧・登録</a>
+                    <a href="getAdminUserList" class="w-full py-2 bg-gray-300 rounded-full">ユーザー一覧・登録</a>
                 </div>
             </div>
         </div>
