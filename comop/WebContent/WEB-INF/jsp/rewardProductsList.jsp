@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- js -->
-    <script src="./js/headerAndFooter.js"></script>
-    <!-- js -->
     <!-- font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -239,7 +236,7 @@
             <ul class="flex flex-row flex-wrap gap-6 mt-5 ml-4">
             	<c:forEach var="reward" items="${data}">
 	                <li class="flex flex-col w-64 transition duration-400 hover:bg-gray-100">
-	                    <img class="images/${reward.reward_product_image}" src="" alt="">
+	                    <img class="" src="images/${reward.reward_product_image}" alt="">
 	                    <div class="p-4 ">
 	                        <p class="pl-4 mb-2 font-light">${reward.reward_product_name}</p>
 	                        <p class="pl-4 text-xl font-bold">${reward.point_price}</p>
