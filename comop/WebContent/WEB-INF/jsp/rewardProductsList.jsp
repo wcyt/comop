@@ -236,7 +236,7 @@
             <ul class="flex flex-row flex-wrap gap-6 mt-5 ml-4">
             	<c:forEach var="reward" items="${data}">
 	                <li class="flex flex-col w-64 transition duration-400 hover:bg-gray-100">
-	                    <img class="" src="images/${reward.reward_product_image}" alt="">
+	                    <img class="h-40" src="images/${reward.reward_product_image}" alt="">
 	                    <div class="p-4 ">
 	                        <p class="pl-4 mb-2 font-light">${reward.reward_product_name}</p>
 	                        <p class="pl-4 text-xl font-bold">${reward.point_price}</p>
