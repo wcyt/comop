@@ -130,7 +130,7 @@
 		            <!-- Heart End -->
 		            <!-- Cart -->
 		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a href="" tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
+		                <a href="getCartList?user_id=${sessionScope.user.user_id}" tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
 		                <div tabindex="2" class="flex justify-center px-10 py-4 -mr-32 text-center text-gray-400 shadow w-80 menu dropdown-content bg-base-100 rounded-box">
 		                    <i class="mt-3 mb-5 text-5xl font-light bi bi-cart"></i>
 		                    <p class="">カートに商品がありません</p>

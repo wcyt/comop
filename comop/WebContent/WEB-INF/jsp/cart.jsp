@@ -40,89 +40,34 @@
         <!-- Products -->
         <div class="col-span-12 lg:col-span-8">
             <!-- Product -->
-            <div class="flex grid flex-row grid-cols-10 py-8 border-b-2">
-                <img class="w-full col-span-2 h-44" src="https://i.picsum.photos/id/109/200/300.jpg?hmac=wtAwGwuVC3CUO3okhkSJZKm-wZY_evzXIo1F46OtKKo" alt="">
-                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
-                    <p class="font-light">マスク</p>
-                    <p class="my-3">カラー：カーキ</p>
-                    <p>サイズ：FREE</p>
-                </div>
-                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
-                    <span>\</span>
-                    <span>11,000</span>
-                </div>
-                <div class="flex flex-row items-center col-span-2">
-                    <div class="relative flex flex-row w-24 h-10 ">
-                        <div class="flex items-center justify-center w-24 text-xs bg-white border cursor-default md:text-base">
-                            <span>1</span>
-                        </div>
-                        <button class="flex w-20 h-full font-semibold text-white bg-blue-700 border-l border-gray-400 cursor-pointer hover:bg-blue-600 focus:outline-none">
-                            <span class="m-auto">+</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="flex items-center col-span-1">
-                    <a href="" class="">削除</a>
-                </div>
-            </div>
-            <!-- Product End -->
-            <!-- Product -->
-            <div class="flex grid flex-row grid-cols-10 py-8 border-b-2">
-                <img class="w-full col-span-2 h-44" src="https://i.picsum.photos/id/109/200/300.jpg?hmac=wtAwGwuVC3CUO3okhkSJZKm-wZY_evzXIo1F46OtKKo" alt="">
-                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
-                    <p class="font-light">マスク</p>
-                    <p class="my-3">カラー：カーキ</p>
-                    <p>サイズ：FREE</p>
-                </div>
-                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
-                    <span>\</span>
-                    <span>11,000</span>
-                </div>
-                <div class="flex flex-row items-center col-span-2">
-                    <div class="relative flex flex-row w-24 h-10 ">
-                        <div class="flex items-center justify-center w-24 text-xs bg-white border cursor-default md:text-base">
-                            <span>1</span>
-                        </div>
-                        <button class="flex w-20 h-full font-semibold text-white bg-blue-700 border-l border-gray-400 cursor-pointer hover:bg-blue-600 focus:outline-none">
-                            <span class="m-auto">+</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="flex items-center col-span-1">
-                    <a href="" class="">削除</a>
-                </div>
-            </div>
-            <!-- Product End -->
-            <!-- Product -->
-            <div class="flex grid flex-row grid-cols-10 py-8 border-b-2">
-                <img class="w-full col-span-2 h-44" src="https://i.picsum.photos/id/109/200/300.jpg?hmac=wtAwGwuVC3CUO3okhkSJZKm-wZY_evzXIo1F46OtKKo" alt="">
-                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
-                    <p class="font-light">マスク</p>
-                    <p class="my-3">カラー：カーキ</p>
-                    <p>サイズ：FREE</p>
-                </div>
-                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
-                    <span>\</span>
-                    <span>11,000</span>
-                </div>
-                <div class="flex flex-row items-center col-span-2">
-                    <div class="relative flex flex-row w-24 h-10 ">
-                        <div class="flex items-center justify-center w-24 text-xs bg-white border cursor-default md:text-base">
-                            <span>1</span>
-                        </div>
-                        <button class="flex w-20 h-full font-semibold text-white bg-blue-700 border-l border-gray-400 cursor-pointer hover:bg-blue-600 focus:outline-none">
-                            <span class="m-auto">+</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="flex items-center col-span-1">
-                    <a href="" class="">削除</a>
-                </div>
-            </div>
+            <c:forEach var="product" items="${data}">
+	            <div class="flex grid flex-row grid-cols-10 py-8 border-b-2">
+	                <img class="w-full col-span-2 h-44" src="images/${product.product_image}" alt="">
+	                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
+	                    <p class="font-light">${product.product_name}</p>
+	                </div>
+	                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
+	                    <span>\</span>
+	                    <span>${product.price}</span>
+	                </div>
+	                <div class="flex flex-row items-center col-span-2">
+	                    <div class="relative flex flex-row w-24 h-10 ">
+	                        <div class="flex items-center justify-center w-24 text-xs bg-white border cursor-default md:text-base">
+	                            <span>1</span>
+	                        </div>
+	                        <button class="flex w-20 h-full font-semibold text-white bg-blue-700 border-l border-gray-400 cursor-pointer hover:bg-blue-600 focus:outline-none">
+	                            <span class="m-auto">+</span>
+	                        </button>
+	                    </div>
+	                </div>
+	                <div class="flex items-center col-span-1">
+	                    <a href="removeCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}" class="">削除</a>
+	                </div>
+	            </div>
+            </c:forEach>
             <!-- Product End -->
         </div>
         <!-- Products End -->
-        <!--  -->
         <div class="col-span-12 mt-8 lg:mt-0 lg:ml-10 lg:col-span-4">
             <div class="px-6 bg-gray-100 border-2 border-blue-300 rounded-lg shadow">
                 <button class="w-full py-3 my-4 text-xl font-bold text-white bg-blue-400 rounded-md">レジへ進む</button>

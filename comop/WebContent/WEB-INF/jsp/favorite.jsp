@@ -69,11 +69,17 @@
 			<ul class="flex flex-row flex-wrap gap-7">
 				<c:forEach var="product" items="${data}">
 					<li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
-					<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
-						<div class="p-4">
-							<p class="mb-2 font-medium">${product.product_name}</p>
-							<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
-						</div></li>
+						<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
+						<div class="p-4 flex flex-row justify-between">
+							<div>
+								<p class="mb-2 font-medium">${product.product_name}</p>
+								<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
+							</div>
+							<div class="bottom-0 right-0 mt-10">
+								<a href="addCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}"><i class="bi bi-cart text-white bg-blue-300 text-xl px-3 py-2 rounded-full"></i></a>
+							</div>
+						</div>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
