@@ -21,10 +21,6 @@ public class RemoveCartCommand  extends AbstractCommand {
 		CartDAO cartDAO = factory.getCartDAO();
 		cartDAO.removeCart(user_id,product_id);
 
-		//カートの一覧を取得
-		GetCartListCommand getCartListCommand = new GetCartListCommand();
-		getCartListCommand.execute(resc);
-
 		//cart.jspに移動
 		resc.setTarget("cart");
 
