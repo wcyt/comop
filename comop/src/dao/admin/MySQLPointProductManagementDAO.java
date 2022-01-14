@@ -35,7 +35,6 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 
 				pointrewards.add(p);
 			}
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする

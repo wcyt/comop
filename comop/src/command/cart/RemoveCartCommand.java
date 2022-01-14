@@ -1,25 +1,52 @@
 package command.cart;
 
+import java.util.List;
+
+import bean.CartBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.cart.CartDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
 
-public class RemoveCartCommand  extends AbstractCommand {
+public class RemoveCartCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
 		RequestContext reqc = getRequestContext();
 
 		//パラメータを取得
-		String user_id = reqc.getParameter("user_id")[0];
-		String product_id = reqc.getParameter("product_id")[0];
+		int user_id = Integer.parseInt(reqc.getParameter("user_id")[0]);
+		int product_id = Integer.parseInt(reqc.getParameter("product_id")[0]);
+
+		//トランザクションを開始する
+		Connector.getInstance().beginTransaction();
 
 		//カートの中身を削除
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		CartDAO cartDAO = factory.getCartDAO();
-		cartDAO.removeCart(user_id,product_id);
+		cartDAO.removeCart(user_id, product_id);
+
+		//トランザクションを終了する
+		Connector.getInstance().commit();
+
+		//したのがあると、DBとのコネクションが切れる
+		//コネクションを切断する
+		Connector.getInstance().close();
+
+		//トランザクションを開始する
+		Connector.getInstance().beginTransaction();
+
+		//カートの中身を取得
+		List<CartBean> carts = cartDAO.getCartList(user_id);
+		resc.setResult(carts);
+
+		//トランザクションを終了する
+		Connector.getInstance().commit();
+
+		//コネクションを切断する
+		Connector.getInstance().close();
 
 		//cart.jspに移動
 		resc.setTarget("cart");

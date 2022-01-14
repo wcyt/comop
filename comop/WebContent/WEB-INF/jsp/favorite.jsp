@@ -72,7 +72,7 @@
 						<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
 						<div class="p-4 flex flex-row justify-between">
 							<div>
-								<p class="mb-2 font-medium">${product.product_name}</p>
+								<p class="mb-2 font-medium place-content-center">${product.product_name}</p>
 								<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
 							</div>
 							<div class="bottom-0 right-0 mt-10">

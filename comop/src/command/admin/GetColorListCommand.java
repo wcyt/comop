@@ -25,6 +25,9 @@ public class GetColorListCommand extends AbstractCommand {
 
 		resc.setResult(colors);
 
+		//トランザクションを終了する
+		Connector.getInstance().commit();
+
 		//colorManagement.jspに移動
 		resc.setTarget("colorManagement");
 

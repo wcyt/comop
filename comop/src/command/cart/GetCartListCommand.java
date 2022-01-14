@@ -28,6 +28,9 @@ public class GetCartListCommand extends AbstractCommand {
 		List<CartBean> carts = cd.getCartList(user_id);
 		resc.setResult(carts);
 
+		//トランザクションを終了する
+		Connector.getInstance().commit();
+
 		//cart.jspに移動
 		resc.setTarget("cart");
 

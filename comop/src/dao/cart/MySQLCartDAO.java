@@ -73,7 +73,7 @@ public class MySQLCartDAO implements CartDAO {
 	}
 
 	//カートの中身を削除
-	public void removeCart(String user_id, String product_id) {
+	public void removeCart(int user_id, int product_id) {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -81,8 +81,8 @@ public class MySQLCartDAO implements CartDAO {
 
 			st = cn.prepareStatement(sql);
 
-			st.setString(1, user_id);
-			st.setString(2, product_id);
+			st.setInt(1, user_id);
+			st.setInt(2, product_id);
 
 			st.executeUpdate();
 
@@ -124,6 +124,7 @@ public class MySQLCartDAO implements CartDAO {
 				carts.add(c);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			//ロールバックする
 			Connector.getInstance().rollback();
 		} finally {

@@ -7,6 +7,6 @@ import bean.CartBean;
 
 public interface CartDAO {
 	public void addCart(CartBean c);
-	public void removeCart(String user_id,String product_id);
+	public void removeCart(int user_id,int product_id);
 	public List<CartBean> getCartList(int user_id);
 }

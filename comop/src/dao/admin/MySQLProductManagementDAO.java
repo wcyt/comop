@@ -15,7 +15,7 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 	//商品の一覧を取得
 	public List<ProductBean> getProductList() {
-		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
+		List<ProductBean> products = new ArrayList<ProductBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -41,7 +41,6 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 
 				products.add(p);
 			}
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする

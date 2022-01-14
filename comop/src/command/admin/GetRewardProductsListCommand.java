@@ -24,6 +24,9 @@ public class GetRewardProductsListCommand extends AbstractCommand {
 
 		resc.setResult(pointRewardList);
 
+		//トランザクションを終了する
+		Connector.getInstance().commit();
+
 		//rewardProductManagement.jspに移動
 		resc.setTarget("rewardProductManagement");
 

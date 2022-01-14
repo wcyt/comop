@@ -93,7 +93,6 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 
 				colors.add(c);
 			}
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
