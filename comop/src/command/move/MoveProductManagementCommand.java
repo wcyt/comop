@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.ProductBean;
 import command.AbstractCommand;
+import command.admin.GetProductsListCommand;
 import dao.Connector;
 import dao.admin.ProductManagementDAO;
 import daofactory.AbstractDaoFactory;
