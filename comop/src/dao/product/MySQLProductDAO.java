@@ -15,8 +15,43 @@ import dao.Connector;
 public class MySQLProductDAO implements ProductDAO {
 	private PreparedStatement st = null;
 
-	//商品一覧の取得
-	public List<ProductBean> getProductsList(Map<String,String[]> parameters) {
+	public List<ProductBean> getProductsList() {
+		List<ProductBean> products = new ArrayList<ProductBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE";
+			st = cn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				ProductBean p = new ProductBean();
+
+				p.setProduct_id(rs.getInt(1));
+				p.setProduct_name(rs.getString(2));
+				p.setProduct_image(rs.getString(3));
+				p.setPrice(rs.getInt(4));
+
+				products.add(p);
+			}
+		}catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+	}
+
+	//絞り込み検索
+	public List<ProductBean> refineSearch(Map<String,String[]> parameters) {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();

@@ -42,7 +42,6 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 
 				users.add(u);
 			}
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする

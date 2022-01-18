@@ -1,8 +1,6 @@
 package command.product;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import command.AbstractCommand;
 import dao.product.ProductDAO;
@@ -16,19 +14,13 @@ public class GetProductsListCommand extends AbstractCommand {
 
 		RequestContext rc = getRequestContext();
 
-		Map<String, String[]> promap = new HashMap<>();
-		promap.put("size", rc.getParameter("size"));
-		promap.put("material", rc.getParameter("material"));
-		promap.put("packing_type", rc.getParameter("packing_type"));
-		promap.put("pmin", rc.getParameter("pmin"));
-		promap.put("pmax", rc.getParameter("pmax"));
-		promap.put("color_id", rc.getParameter("color_id"));
-
+		//商品一覧を取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductDAO proddao = factory.getProductDAO();
-		List prolist = proddao.getProductsList(promap);
-
+		List prolist = proddao.getProductsList();
 		resc.setResult(prolist);
+
+		//productsList.jspに移動
 		resc.setTarget("productsList");
 
 		return resc;

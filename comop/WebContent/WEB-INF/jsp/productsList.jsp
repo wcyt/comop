@@ -24,7 +24,7 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a>Home</a></li>
+                <li><a href="top">Home</a></li>
                 <li>Products List</li>
             </ul>
         </nav>
@@ -220,86 +220,15 @@
             <!-- Dropdowns End -->
             <!-- Products List -->
             <ul class="flex flex-row flex-wrap gap-4 mt-5 sm:ml-5 lg:ml-0 lg:justify-center">
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
-                <li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
-                    <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                    <div class="p-4 ">
-                        <p class="mb-1 font-bold text-md">NIKE</p>
-                        <p class="mb-2 font-light">スニーカー</p>
-                        <p class="text-xl font-bold">\11,000</p>
-                    </div>
-                </li>
+                <c:forEach var="product" items="${data}">
+                	<li class="flex flex-col w-40 transition duration-400 hover:bg-gray-100">
+	                    <img class="" src="images/${reward.reward_product_image}" alt="${product.product_name}">
+	                    <div class="p-4 ">
+	                        <p class="mb-1 font-bold text-md">${product.product_name}</p>
+	                        <p class="text-xl font-bold">\ ${product.price}</p>
+	                    </div>
+                	</li>
+                </c:forEach>
             </ul>
             <!-- Products List End -->
             <!-- Pagination -->
