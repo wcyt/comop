@@ -4,6 +4,11 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>comop</display-name>
+
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/jsp/top.jsp</welcome-file>
+	</welcome-file-list>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -11,10 +16,6 @@
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-
-	<welcome-file-list>
-		<welcome-file>/WEB-INF/jsp/top.jsp</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
@@ -25,4 +26,18 @@
 		<servlet-name>FrontServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/images/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 複数のJSPで共通する宣言をまとめるやつ -->
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+			<include-prelude>taglib.jsp</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
 </web-app>

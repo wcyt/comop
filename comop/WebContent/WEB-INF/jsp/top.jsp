@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -12,11 +10,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     <!-- font  -->
-    <!-- alpine.js tailwind css -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.1/dist/full.css" rel="stylesheet" type="text/css" />
-    <!-- alpine.js tailwind css -->
-    <title>Document</title>
+    <!-- tailwind css -->
+    <title>comop</title>
 </head>
 
 
@@ -26,27 +24,13 @@
     <main id="main" class="grid grid-cols-12 py-16 bg-gray-100 sm:px-4 lg:px-32">
         <!-- Search List -->
         <aside class="col-span-3 lg:col-span-2">
-            <ul class="">
-                <p class="mb-4 text-xl font-bold">探す</p>
-                <li class="my-3 font-normal">ブランドから探す</li>
-                <li class="my-3 font-normal">公式ショップから探す</li>
-                <li class="my-3 font-normal">ランキングから探す</li>
-                <li class="my-3 font-normal">セール対象から探す</li>
-                <li class="my-3 font-normal">クーポン対象から探す</li>
-                <li class="my-3 font-normal">古着から探す</li>
-                <li class="my-3 font-normal">コーディネートから探す</li>
-                <li class="my-3 font-normal">こだわり条件から探す</li>
-            </ul>
             <ul class="pt-6">
                 <p class="my-4 text-xl font-bold">カテゴリから探す</p>
-                <li class="my-3 font-normal">ブランドから探す</li>
-                <li class="my-3 font-normal">公式ショップから探す</li>
-                <li class="my-3 font-normal">ランキングから探す</li>
-                <li class="my-3 font-normal">セール対象から探す</li>
-                <li class="my-3 font-normal">クーポン対象から探す</li>
-                <li class="my-3 font-normal">古着から探す</li>
-                <li class="my-3 font-normal">コーディネートから探す</li>
-                <li class="my-3 font-normal">こだわり条件から探す</li>
+                <li class="my-3 font-normal">サイズで探す</li>
+                <li class="my-3 font-normal">素材で探す</li>
+                <li class="my-3 font-normal">梱包方法で探す</li>
+                <li class="my-3 font-normal"><a href="getProductList">商品一覧を見る</a></li>
+                <li class="my-3 font-normal"><a href="getRewardProductsList">ポイント商品を見る</a></li>
             </ul>
             <ul class="flex flex-col pt-6">
                 <p class="my-4 text-2xl font-bold">お気に入り</p>
@@ -71,32 +55,9 @@
         <!-- Search List End -->
         <!-- Article -->
         <article class="col-span-9 lg:col-span-10">
-            <!-- checked Item -->
-            <section>
-                <p class="text-2xl font-bold">チェックしたアイテム</p>
-                <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-                    <li class="flex flex-col w-52">
-                        <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                        <div class="p-4 bg-white">
-                            <p class="mb-1 font-bold text-md">NIKE</p>
-                            <p class="mb-2 font-light">スニーカー</p>
-                            <p class="text-xl font-bold">\11,000</p>
-                        </div>
-                    </li>
-                    <li class="flex flex-col w-52">
-                        <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                        <div class="p-4 bg-white">
-                            <p class="mb-1 font-bold text-md">NIKE</p>
-                            <p class="mb-2 font-light">スニーカー</p>
-                            <p class="text-xl font-bold">\11,000</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-            <!-- checked Item End -->
             <!-- Generation Item Ranking -->
             <section class="mt-10">
-                <p class="pt-6 text-2xl font-bold">世代別アイテムランキング</p>
+                <p class="pt-6 text-2xl font-bold">閲覧数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
                     <li class="">
                         <div class="flex flex-col w-52">
@@ -151,9 +112,9 @@
                 </ul>
             </section>
             <!-- Generation Item Ranking End -->
-            <!-- Multi Size Item -->
+            <!-- Item Line-Up -->
             <section class="mt-10">
-                <p class="pt-6 text-2xl font-bold">マルチサイズアイテム</p>
+                <p class="pt-6 text-2xl font-bold">商品ラインナップ</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
                     <li class="">
                         <div class="flex flex-col w-52">
@@ -207,7 +168,7 @@
                     </li>
                 </ul>
             </section>
-            <!-- Multi Size Item End -->
+            <!-- Item Line-Up End -->
         </article>
         <!-- Article End -->
     </main>

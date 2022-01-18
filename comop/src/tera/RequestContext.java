@@ -11,4 +11,8 @@ public interface RequestContext {
 
 	public Object getAttribute(String key);
 	public void setAttribute(String key, Object object);
+
+	public Object getSessionAttribute(String key);
+	public void setSessionAttribute(String key,Object o);
+	public void invalidateSession();
 }

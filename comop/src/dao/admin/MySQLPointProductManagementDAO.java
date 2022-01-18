@@ -14,7 +14,7 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 	private PreparedStatement st = null;
 
 	//ポイント商品の一覧を取得
-	public List<PointRewardBean> getRewardProductsList(){
+	public List<PointRewardBean> getRewardProductsList() {
 		ArrayList<PointRewardBean> pointrewards = new ArrayList<PointRewardBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();
@@ -23,8 +23,8 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				PointRewardBean p=new PointRewardBean();
+			while (rs.next()) {
+				PointRewardBean p = new PointRewardBean();
 
 				p.setReward_product_id(rs.getInt(1));
 				p.setReward_product_name(rs.getString(2));
@@ -35,13 +35,24 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 
 				pointrewards.add(p);
 			}
-			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return pointrewards;
 	}
+
 	//ポイント商品を編集
 	public void editRewardProduct(PointRewardBean p) {
 		try {
@@ -60,13 +71,24 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 
 			st.executeUpdate();
 
-
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//ポイント商品を追加
 	public void addRewardProduct(PointRewardBean p) {
 		try {
@@ -83,13 +105,24 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 
 			st.executeUpdate();
 
-
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
 	//ポイント商品を削除
 	public void removeRewardProduct(String reward_product_id) {
 		try {
@@ -105,8 +138,19 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

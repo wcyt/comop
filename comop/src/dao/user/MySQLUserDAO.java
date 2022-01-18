@@ -18,6 +18,8 @@ public class MySQLUserDAO implements UserDAO {
 
 			String sql = "insert into user_table(name,mail,password) values(?,?,?)";
 
+			System.out.println("CREATE ACCOUNT");
+
 			st = cn.prepareStatement(sql);
 			st.setString(1, u.getName());
 			st.setString(2, u.getMail());
@@ -164,20 +166,20 @@ public class MySQLUserDAO implements UserDAO {
 		}
 	}
 	//自分のユーザー情報の取得
-	public UserBean getMyUserInfo(String user_id) {
+	//user_idからユーザー情報を取得するものは使わなそうなので、mailからユーザ情報を取得するものに変えました
+	public UserBean getMyUserInfo(String mail) {
 		UserBean u = new UserBean();
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point FROM user_table WHERE user_id=?";
+			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point FROM user_table WHERE mail=?";
 
 			st = cn.prepareStatement(sql);
-			st.setString(1, user_id);
+			st.setString(1, mail);
 
 			ResultSet rs = st.executeQuery();
 
 			if(rs.next()) {
-
 				u.setUser_id(rs.getInt(1));
 				u.setName(rs.getString(2));
 				u.setMail(rs.getString(3));

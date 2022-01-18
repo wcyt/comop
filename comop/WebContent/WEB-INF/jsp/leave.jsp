@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -13,8 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     <!-- font  -->
     <!-- alpine.js tailwind css -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.js" defer></script>
     <!-- alpine.js tailwind css -->
@@ -24,7 +21,7 @@
 <body>
 	<%@include file="Header.jsp" %>
     <!-- Main -->
-    <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
+    <main id="main" class="grid grid-cols-12 py-16 bg-white flex flex-col min-h-screen sm:px-4">
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>

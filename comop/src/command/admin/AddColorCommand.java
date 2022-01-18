@@ -28,9 +28,6 @@ public class AddColorCommand extends AbstractCommand {
 		GetColorListCommand getColorListCommand = new GetColorListCommand();
 		getColorListCommand.execute(resc);
 
-		//colorManagement.jspに移動
-		resc.setTarget("colorManagement");
-
 		return resc;
 	}
 }

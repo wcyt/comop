@@ -14,7 +14,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 	private PreparedStatement st = null;
 
 	//ユーザーの一覧を取得
-	public List<UserBean> getUserList(){
+	public List<UserBean> getUserList() {
 		ArrayList<UserBean> users = new ArrayList<UserBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();
@@ -23,7 +23,7 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				UserBean u = new UserBean();
 
 				u.setUser_id(rs.getInt(1));
@@ -43,12 +43,24 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 				users.add(u);
 			}
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return users;
 	}
+
 	//登録しているユーザーを削除
 	public void lapseUser(String user_id) {
 		try {
@@ -64,8 +76,19 @@ public class MySQLUserManagementDAO implements UserManagementDAO {
 
 			cn.commit();
 			cn.close();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
