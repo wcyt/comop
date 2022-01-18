@@ -14,13 +14,9 @@ public class GetProductsListCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) {
 
-		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		ProductDAO proddao = factory.getProductDAO();
-
 		RequestContext rc = getRequestContext();
 
 		Map<String, String[]> promap = new HashMap<>();
-
 		promap.put("size", rc.getParameter("size"));
 		promap.put("material", rc.getParameter("material"));
 		promap.put("packing_type", rc.getParameter("packing_type"));
@@ -28,12 +24,12 @@ public class GetProductsListCommand extends AbstractCommand {
 		promap.put("pmax", rc.getParameter("pmax"));
 		promap.put("color_id", rc.getParameter("color_id"));
 
+		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
+		ProductDAO proddao = factory.getProductDAO();
 		List prolist = proddao.getProductsList(promap);
 
 		resc.setResult(prolist);
 		resc.setTarget("productsList");
-
-
 
 		return resc;
 	}
