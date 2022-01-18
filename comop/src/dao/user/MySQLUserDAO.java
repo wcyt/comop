@@ -66,7 +66,6 @@ public class MySQLUserDAO implements UserDAO {
 				e.printStackTrace();
 			}
 		}
-
 	}
 	//ユーザー情報の編集
 	public void editUserInfo(UserBean u) {
