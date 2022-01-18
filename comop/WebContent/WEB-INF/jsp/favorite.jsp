@@ -19,12 +19,12 @@
 <title>お気に入りアイテム - comop</title>
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp"%>
 	<!-- Main -->
 	<main id="main" class="grid grid-cols-12 bg-white mb-10 sm:px-4 lg:px-32">
 		<!-- Breadcrumbs -->
-		<nav class="col-span-12 text-lg font-light breadcrumbs">
+		<nav class="col-span-12 mt-20 text-lg font-light breadcrumbs">
 			<ul>
 				<li><a href="top">Home</a></li>
 				<li><a>お気に入りアイテム</a></li>
@@ -68,22 +68,28 @@
 		<div class="col-span-12 mt-6">
 			<ul class="flex flex-row flex-wrap gap-7">
 				<c:forEach var="product" items="${data}">
-					<li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
-						<div class="indicator">
-							<div class="indicator-item rounded-full border border-gray-400 bg-white"><i class="bi bi-x text-red-500 text-2xl px-1"></i></div>
-							<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
-						</div>
-
+						<li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
+							<div class="indicator">
+								<div class="indicator-item rounded-full border border-gray-400 bg-white">
+									<a href="removeFavorite?user_id=${user.user_id}&product_id=${product.product_id}">
+										<i class="bi bi-x text-red-500 text-2xl px-1"></i>
+									</a>
+								</div>
+								<a href="getProductDetail?product_id=${product.product_id}">
+									<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
+								</a>
+							</div>
 							<div class="p-4 flex flex-row justify-between">
 								<div>
 									<p class="mb-2 font-medium place-content-center">${product.product_name}</p>
 									<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
 								</div>
 								<div data-tip="カートへ入れる" class="tooltip mt-10">
-									<a href="addCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}"><i class="bi bi-cart text-white bg-blue-400 text-xl px-2 py-1 rounded-full"></i></a>
+									<a href="addCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}"> <i class="bi bi-cart text-white bg-blue-400 text-xl px-2 py-1 rounded-full"></i>
+									</a>
 								</div>
 							</div>
-					</li>
+						</li>
 				</c:forEach>
 			</ul>
 		</div>

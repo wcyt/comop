@@ -20,7 +20,7 @@
     <title>comop - ログイン</title>
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 pt-16 mb-8 lg:px-32 sm:px-4">

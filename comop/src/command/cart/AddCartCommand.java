@@ -32,6 +32,7 @@ public class AddCartCommand extends AbstractCommand {
 		CartDAO cartDAO = factory.getCartDAO();
 		cartDAO.addCart(cartBean);
 
+		//カートに入れた商品一覧を取得
 		List<CartBean> carts = cartDAO.getCartList(user_id);
 		resc.setResult(carts);
 

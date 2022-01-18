@@ -8,9 +8,9 @@
 	<c:choose>
 		<c:when test="${user.name == null}">
 			<!-- ログイン前 -->
-			<header class="fixed top-0 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
+			<header class="fixed top-0 z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->
-		        <form class="flex flex-col lg:flex-row sm:my-1">
+		        <form class="flex flex-row sm:my-1">
 		            <!-- SiteName -->
 		            <a href="top" class="inline mt-3 mb-3 font-bold text-center">comop</a>
 		            <!-- SiteName End -->
@@ -47,7 +47,7 @@
 		            <!-- Cart End -->
 		            <!--  -->
 		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a href="" tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-list"></i></a>
+		                <a tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-list"></i></a>
 		                <div tabindex="2" class="flex justify-center p-8 shadow w-96 menu dropdown-content bg-base-100 rounded-box">
 		                    <div class="flex flex-row">
 		                        <div class="flex flex-col w-full gap-2 mr-10">
@@ -65,7 +65,8 @@
 		                            <h2 class="mb-4 text-xl font-bold">ヘルプ・その他</h2>
 		                            <a href="">よくある質問</a>
 		                            <a href="">はじめての方へ</a>
-		                            <a href="">新規会員登録</a>
+		                            <a href="signUp">新規会員登録</a>
+		                            <a href="getRewardProductsList">ポイント商品を見る</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -77,9 +78,9 @@
 		</c:when>
 		<c:when test="${user.name != null}">
 			<!-- ログイン後 -->
-			<header class="sticky top-0 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
+			<header class="fixed top-0 z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->
-		        <form class="flex flex-col lg:flex-row sm:my-1">
+		        <form class="flex flex-row sm:my-1">
 		            <!-- SiteName -->
 		            <a href="top" class="inline mt-3 mb-3 font-bold text-center">comop</a>
 		            <!-- SiteName End -->
@@ -157,7 +158,8 @@
 		                            <h2 class="mb-4 text-xl font-bold">ヘルプ・その他</h2>
 		                            <a href="">よくある質問</a>
 		                            <a href="">はじめての方へ</a>
-		                            <a href="">新規会員登録</a>
+		                            <a href="signUp">新規会員登録</a>
+		                            <a href="getRewardProductsList">ポイント商品を見る</a>
 		                        </div>
 		                    </div>
 		                </div>
