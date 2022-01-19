@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', function() {
         <nav class="col-span-12 text-lg font-light md:py-8 sm:py-4 sm:mt-24 md:mt-0 breadcrumbs">
             <ul>
                 <li><a href="top">ホーム</a></li>
-                <li><a href="getProductsList">商品詳細</a></li>
+                <li><a href="getProductsList">商品一覧</a></li>
                 <li id="breadcrumbs"></li>
             </ul>
         </nav>
@@ -55,27 +55,19 @@ window.addEventListener('DOMContentLoaded', function() {
 	                <!-- ProductName And Price End -->
 	                <!-- Inventory -->
 	                <section>
-	                    <div class="flex flex-row justify-between py-5 border-t border-b border-gray-300">
+	                    <div class="flex flex-row items-center justify-between py-5 border-t border-b border-gray-300">
 	                        <div class="mt-3 font-extrabold text-md">
-	                            <span>S</span>
-	                            <span>/</span>
-	                            <span>在庫あり</span>
+	                            <p>サイズ: ${product.size}</p>
+	                            <p>素材: ${product.material}</p>
+	                            <p>包装タイプ: ${product.packing_type}</p>
+	                            <p>在庫数: ${product.stock_quantity}</p>
 	                        </div>
-	                        <button class="px-5 py-2 font-extrabold text-white transition duration-100 bg-blue-400 rounded-lg hover:bg-blue-500"><i class="pr-3 text-xl bi bi-cart"></i>カートに入れる</button>
-	                        <i class="mt-1 text-3xl text-gray-400 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i>
-	                    </div>
-	                    <div class="flex flex-row justify-between py-5 border-b border-gray-300">
-	                        <div class="mt-3 font-extrabold text-md">
-	                            <span>M</span>
-	                            <span>/</span>
-	                            <span>在庫あり</span>
-	                        </div>
-	                        <button class="px-5 py-2 font-extrabold text-white transition duration-100 bg-blue-400 rounded-lg hover:bg-blue-500"><i class="pr-3 text-xl bi bi-cart"></i>カートに入れる</button>
-	                        <i class="mt-1 text-3xl text-gray-400 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i>
+	                        <a href="addCart?user_id=${user.user_id}&product_id=${product.product_id}" class="px-5 py-2 my-5 font-extrabold text-white transition duration-100 bg-blue-400 rounded-lg hover:bg-blue-500"><i class="pr-3 text-xl bi bi-cart"></i>カートに入れる</a>
+	                        <a href="addFavorite?user_id=${user.user_id}&product_id=${product.product_id}"><i class="text-3xl text-gray-400 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i></a>
 	                    </div>
 	                    <div class="flex flex-row justify-between py-5 border-b border-gray-300">
 	                        <div class="mt-3 font-extrabold text-gray-400 text-md">
-	                            <span>L</span>
+	                            <span>${product.size}</span>
 	                            <span>/</span>
 	                            <span>在庫なし</span>
 	                        </div>

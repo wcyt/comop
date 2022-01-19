@@ -1,5 +1,7 @@
 package command.favorite;
 
+import java.util.List;
+
 import bean.FavoriteBean;
 import command.AbstractCommand;
 import dao.favorite.FavoriteDAO;
@@ -12,8 +14,8 @@ public class AddFavoriteCommand extends AbstractCommand{
 		RequestContext rc = getRequestContext();
 
 		//パラメータを取得
-		int user_id = Integer.parseInt(rc.getParameter("user_id")[0]);
-		int product_id = Integer.parseInt(rc.getParameter("product_id")[0]);
+		String user_id = rc.getParameter("user_id")[0];
+		String product_id = rc.getParameter("product_id")[0];
 
 		//Beanにセット
 		FavoriteBean f = new FavoriteBean();
@@ -24,6 +26,17 @@ public class AddFavoriteCommand extends AbstractCommand{
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favdao = factory.getFavoriteDAO();
 		favdao.addFavorite(f);
+
+		//お気に入りリストを取得
+		List<FavoriteBean> favlist = favdao.getFavoriteList(user_id);
+		resc.setResult(favlist);
+
+		//お気に入り数を取得
+		rc.setAttribute("favorites", favlist.size());
+		rc.setAttribute("addedFavorite", "お気に入りに追加しました。");
+
+		//favorite.jspに移動
+		resc.setTarget("favorite");
 
 		return resc;
 	}

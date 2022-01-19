@@ -25,7 +25,7 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a>Home</a></li>
+                <li><a href="top">ホーム</a></li>
                 <li>登録情報</li>
             </ul>
         </nav>
@@ -33,7 +33,7 @@
         <div class="col-span-12">
             <div class="flex flex-row pb-8 mt-5 text-4xl">
                 <i class="mr-4 text-blue-300 bi bi-pencil"></i>
-                <h1 class="">ユーザー名様の登録情報</h1>
+                <h1 class="">${sessionScope.user.name}様の登録情報</h1>
             </div>
         </div>
         <aside class="col-span-2">

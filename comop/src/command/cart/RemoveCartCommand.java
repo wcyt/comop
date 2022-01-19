@@ -28,16 +28,6 @@ public class RemoveCartCommand extends AbstractCommand {
 		CartDAO cartDAO = factory.getCartDAO();
 		cartDAO.removeCart(user_id, product_id);
 
-		//トランザクションを終了する
-		Connector.getInstance().commit();
-
-		//したのがあると、DBとのコネクションが切れる
-		//コネクションを切断する
-		Connector.getInstance().close();
-
-		//トランザクションを開始する
-		Connector.getInstance().beginTransaction();
-
 		//カートの中身を取得
 		List<CartBean> carts = cartDAO.getCartList(user_id);
 		resc.setResult(carts);
@@ -45,8 +35,7 @@ public class RemoveCartCommand extends AbstractCommand {
 		//トランザクションを終了する
 		Connector.getInstance().commit();
 
-		//コネクションを切断する
-		Connector.getInstance().close();
+		reqc.setAttribute("cartInfo", "カートから削除しました。");
 
 		//cart.jspに移動
 		resc.setTarget("cart");

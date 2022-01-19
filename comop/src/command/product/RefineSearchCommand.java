@@ -23,7 +23,7 @@ public class RefineSearchCommand extends AbstractCommand {
 		promap.put("packing_type", rc.getParameter("packing_type"));
 		promap.put("pmin", rc.getParameter("pmin"));
 		promap.put("pmax", rc.getParameter("pmax"));
-		promap.put("color_id", rc.getParameter("color_id"));
+		promap.put("color_id", rc.getParameter("color"));
 
 		//絞り込み検索結果を取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();

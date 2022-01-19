@@ -36,26 +36,26 @@
                 <p class="inline text-4xl font-bold">${targetProducts}</p>
                 <span class="">件</span>
             </div>
-            <form>
+            <form method="post" action="refineSearch">
             	<!-- Size -->
             	<div class="my-8">
 	            	<p class="pb-2 ml-3 text-xl font-bold">サイズ</p>
 	            	<ul class="list-none">
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
 		                        <span class="ml-2 text-lg">キッズ</span>
 		                    </label>
 	               		</li>
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
 		                        <span class="ml-2 text-lg">小さめ</span>
 		                    </label>
 	               		</li>
 	               		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
 		                        <span class="ml-2 text-lg">ふつう</span>
 		                    </label>
 	               		</li>
@@ -292,6 +292,7 @@
 <script>
     function uncheckAll() {
         const checkbox = document.getElementsByName("color");
+
         for (i = 0; i < checkbox.length; i++) {
             checkbox[i].checked = false;
         }

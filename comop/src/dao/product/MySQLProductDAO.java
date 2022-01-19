@@ -136,7 +136,7 @@ public class MySQLProductDAO implements ProductDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT p.product_name,p.product_image,p.stock_quantity,p.product_description,p.price,c.color_name,p.size,p.material,p.packing_type FROM product_table p JOIN color_table c USING(color_id) WHERE p.product_id="+product_id;
+			String sql = "SELECT p.product_name,p.product_image,p.stock_quantity,p.product_description,p.price,c.color_name,p.size,p.material,p.packing_type, p.product_id FROM product_table p JOIN color_table c USING(color_id) WHERE p.product_id="+product_id;
 
 			st = cn.prepareStatement(sql);
 
@@ -151,10 +151,11 @@ public class MySQLProductDAO implements ProductDAO {
 			p.setStock_quantity(rs.getInt(3));
 			p.setProduct_description(rs.getString(4));
 			p.setPrice(rs.getInt(5));
-			p.setColor_name(rs.getString(5));
-			p.setSize(rs.getString(6));
-			p.setMaterial(rs.getString(7));
-			p.setPacking_type(rs.getString(8));
+			p.setColor_name(rs.getString(6));
+			p.setSize(rs.getString(7));
+			p.setMaterial(rs.getString(8));
+			p.setPacking_type(rs.getString(9));
+			p.setProduct_id(Integer.parseInt(rs.getString(10)));
 
 			products.add(p);
 

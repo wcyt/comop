@@ -30,7 +30,7 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a href="top">Home</a></li>
+                <li><a href="top">ホーム</a></li>
                 <li>登録情報</li>
             </ul>
         </nav>
@@ -38,7 +38,7 @@
         <div class="col-span-12">
             <div class="flex flex-row pb-8 mt-5 text-4xl">
                 <i class="mr-4 text-blue-300 bi bi-pencil"></i>
-                <h1 class="">ユーザー名様の登録情報</h1>
+                <h1 class="">${user.name}様の登録情報</h1>
             </div>
         </div>
         <aside class="col-span-2">
@@ -68,37 +68,37 @@
             <div class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
                 <h2 class="pb-4 text-2xl border-b-2">会員登録情報</h2>
                 <!-- Basic Information -->
-                <div class="grid grid-cols-12 py-5 border-t border-b border-gray-400">
-                    <p class="flex items-center col-span-3 text-lg text-gray-500 lg:col-span-3">基本情報</p>
+                <div class="grid grid-cols-12 items-center py-5 border-t border-b border-gray-400">
+                    <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">基本情報</p>
                     <div class="col-span-7 gap-3 lg:col-span-6">
-                        <p>${sessionScope.user.name}</p>
-                        <p>${sessionScope.user.address}</p>
-                        <p>${sessionScope.user.postal_code}</p>
+                        <p>${user.name}</p>
+                        <p>${user.address}</p>
+                        <p>${user.postal_code}</p>
                     </div>
-                    <div class="flex items-center col-span-2 lg:col-span-3">
-                        <a href="" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
+                    <div class="col-span-2 lg:col-span-3">
+                        <a href="modifyBasicInfo" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
                     </div>
                 </div>
                 <!-- Basic Information End -->
                 <!-- Mail Address -->
-                <div class="grid grid-cols-12 py-5 border-b border-gray-400">
-                    <p class="flex items-center col-span-3 text-lg text-gray-500 lg:col-span-3">メールアドレス</p>
+                <div class="grid grid-cols-12 items-center py-5 border-b border-gray-400">
+                    <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">メールアドレス</p>
                     <div class="col-span-7 gap-3 lg:col-span-6">
-                        <p>${sessionScope.user.mail}</p>
+                        <p>${user.mail}</p>
                     </div>
-                    <div class="flex items-center col-span-2 lg:col-span-3">
-                        <a href="" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
+                    <div class="col-span-2 lg:col-span-3">
+                        <a href="modifyAddress" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
                     </div>
                 </div>
                 <!-- Mail Address End -->
                 <!-- Password -->
-                <div class="grid grid-cols-12 py-5 border-b border-gray-400">
-                    <p class="flex items-center col-span-3 text-lg text-gray-500 lg:col-span-3">パスワード</p>
-                    <div class="col-span-7 flex items-center gap-3 lg:col-span-6">
-                        <p id="password" class="text-2xl">${sessionScope.user.password}</p>
+                <div class="grid grid-cols-12 items-center py-5 border-b border-gray-400">
+                    <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">パスワード</p>
+                    <div class="col-span-7 gap-3 lg:col-span-6">
+                        <p id="password" class="text-2xl">${user.password}</p>
                     </div>
-                    <div class="flex items-center col-span-2 lg:col-span-3">
-                        <a href="" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
+                    <div class="col-span-2 lg:col-span-3">
+                        <a href="modifyPassword" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
                     </div>
                 </div>
             </div>

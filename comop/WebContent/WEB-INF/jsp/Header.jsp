@@ -9,14 +9,14 @@
 			<!-- ログイン前 -->
 			<header class="fixed top-0 z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->
-		        <form method="post" action="searchProducts" onsubmit="" id="searchForm" class="flex flex-row sm:my-1">
+		        <form method="post" action="searchProducts" id="searchForm" class="flex flex-row sm:my-1">
 		            <!-- SiteName -->
 		            <a href="top" class="inline mt-3 mb-3 font-bold text-center">comop</a>
 		            <!-- SiteName End -->
 		            <!-- Search Input -->
 		            <div class="flex flex-row ml-10 bg-white rounded-lg">
-		                <button onsubmit="checkInput" class="focus:outline-none focus:ring-white"><i class="ml-5 mr-3 bi bi-search"></i></button>
-		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 lg:w-72 rounded-2xl focus:outline-none focus:ring-white">
+		                <button class="focus:outline-none focus:ring-white"><i class="ml-5 mr-3 bi bi-search"></i></button>
+		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 lg:w-72 rounded-lg focus:bg-white focus:outline-none focus:ring-white">
 		            </div>
 		            <!-- Search Input End -->
 		        </form>

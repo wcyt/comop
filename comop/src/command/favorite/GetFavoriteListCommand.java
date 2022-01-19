@@ -14,15 +14,19 @@ public class GetFavoriteListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext rc = getRequestContext();
 
+		//パラメータを取得
 		String user_id = rc.getParameter("user_id")[0];
 
+		//user_idに合致したお気に入りリストを取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favdao = factory.getFavoriteDAO();
 		List<FavoriteBean> favlist = favdao.getFavoriteList(user_id);
-
-		System.out.println("SIZE: "+ favlist.size());
-
 		resc.setResult(favlist);
+
+		//お気に入り数を取得
+		rc.setAttribute("favorites", favlist.size());
+
+		// favorite.jspに移動
 		resc.setTarget("favorite");
 
 		return resc;

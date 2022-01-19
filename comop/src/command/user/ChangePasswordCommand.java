@@ -28,8 +28,8 @@ public class ChangePasswordCommand extends AbstractCommand{
 
 		//reqc.setAttribute("mess","パスワードを変更しました");
 
-		//index.jspに移動
-		resc.setTarget("index");
+		//top.jspに移動
+		resc.setTarget("top");
 		return resc;
 	}
 }

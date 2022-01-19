@@ -25,16 +25,18 @@
 		<!-- Breadcrumbs -->
 		<nav class="col-span-12 mt-20 text-lg font-light breadcrumbs">
 			<ul>
-				<li><a href="top">Home</a></li>
-				<li><a>お気に入りアイテム</a></li>
+				<li><a href="top">ホーム</a></li>
+				<li>お気に入りアイテム</li>
 			</ul>
 		</nav>
 		<!-- Breadcrumbs End -->
 		<!-- Dropdowns -->
 		<div class="col-span-12">
 			<h1 class="my-5 text-3xl font-bold">${user.name}さんのお気に入り</h1>
+			<p class="text-red-500 text-lg mb-5">${addedFavorite}</p>
+			<p class="text-red-500 text-lg mb-5">${removedFavorite}</p>
 			<div class="flex flex-row">
-				<p class="text-3xl">3</p>
+				<p class="text-3xl">${favorites}</p>
 				<p class="px-1 pr-5 mt-3 border-r-2">件</p>
 				<div class="dropdown dropdown-hover">
 					<div tabindex="0" class="pt-2 m-1 mx-5 font-bold text-center text-black bg-white text-md">すべてのショップ</div>

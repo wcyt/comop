@@ -24,23 +24,26 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a>Home</a></li>
-                <li><a>カート</a></li>
+                <li><a href="top">ホーム</a></li>
+                <li>カート</li>
             </ul>
         </nav>
         <div class="col-span-12 lg:col-span-8">
-            <div class="flex flex-row pb-8 mt-5 text-4xl border-b-2">
+            <div class="flex flex-row pb-8 mt-5 text-4xl ">
                 <i class="mr-4 text-blue-300 bi bi-cart"></i>
                 <h1 class="">ショッピングカート</h1>
             </div>
+			<p class="pb-8 text-red-500 text-xl border-b-2">${cartInfo}</p>
         </div>
         <!-- Breadcrumbs End -->
         <!-- Products -->
         <div class="col-span-12 lg:col-span-8">
             <!-- Product -->
             <c:forEach var="product" items="${data}">
-	            <div class="grid grid-cols-10 py-8 border-b-2">
-	                <img class="w-full col-span-2 h-44" src="images/${product.product_image}" alt="">
+	            <div class="grid grid-cols-10 flex items-center py-8 border-b-2">
+	            	<a href="getProductDetail?product_id=${product.product_id}" class="col-span-2">
+	            		<img class="w-full h-44" src="images/${product.product_image}" alt="">
+	            	</a>
 	                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
 	                    <p class="font-light">${product.product_name}</p>
 	                </div>

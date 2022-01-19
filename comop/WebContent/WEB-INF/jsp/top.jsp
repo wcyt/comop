@@ -30,7 +30,6 @@
                 <li class="my-3 font-normal">素材で探す</li>
                 <li class="my-3 font-normal">梱包方法で探す</li>
                 <li class="my-3 font-normal"><a href="getProductsList">商品一覧を見る</a></li>
-                <li class="my-3 font-normal"><a href="sortProducts">価格順で見る</a></li>
                 <li class="my-3 font-normal"><a href="getRewardProductsList">ポイント商品を見る</a></li>
             </ul>
             <ul class="flex flex-col pt-6">

@@ -30,7 +30,7 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 			while(rs.next()) {
 				FavoriteBean f=new FavoriteBean();
 
-				f.setProduct_id(rs.getInt(1));
+				f.setProduct_id(rs.getString(1));
 				f.setProduct_name(rs.getString(2));
 				f.setProduct_image(rs.getString(3));
 				f.setPrice(rs.getInt(4));
@@ -63,8 +63,8 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 
 			st = cn.prepareStatement(sql);
 
-			st.setInt(1, f.getUser_id());
-			st.setInt(2, f.getProduct_id());
+			st.setString(1, f.getUser_id());
+			st.setString(2, f.getProduct_id());
 
 			st.executeUpdate();
 

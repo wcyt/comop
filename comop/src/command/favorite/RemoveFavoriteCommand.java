@@ -40,6 +40,10 @@ public class RemoveFavoriteCommand extends AbstractCommand{
 		//トランザクションを終了する
 		Connector.getInstance().commit();
 
+		//お気に入り数を取得
+		rc.setAttribute("favorites", favoriteList.size());
+		rc.setAttribute("removedFavorite", "お気に入りを削除しました。");
+
 		//favorite.jspに移動
 		resc.setTarget("favorite");
 

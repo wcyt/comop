@@ -25,8 +25,8 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a href="top">Home</a></li>
-                <li><a>Login</a></li>
+                <li><a href="top">ホーム</a></li>
+                <li>ログイン</li>
             </ul>
         </nav>
         <!-- Breadcrumbs End -->

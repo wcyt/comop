@@ -24,8 +24,8 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs ">
             <ul>
-                <li><a href="top">Home</a></li>
-                <li><a>新規会員登録</a></li>
+                <li><a href="top">ホーム</a></li>
+                <li>新規会員登録</li>
             </ul>
         </nav>
         <!-- Breadcrumbs End -->
