@@ -20,6 +20,9 @@ public class GetProductsListCommand extends AbstractCommand {
 		List prolist = proddao.getProductsList();
 		resc.setResult(prolist);
 
+		//商品の取得件数を取得
+		rc.setAttribute("targetProducts", prolist.size());
+
 		//productsList.jspに移動
 		resc.setTarget("productsList");
 

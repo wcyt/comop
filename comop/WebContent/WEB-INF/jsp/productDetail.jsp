@@ -14,9 +14,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind css -->
-    <title>商品名</title>
+    <title id="title"></title>
 </head>
-
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    const product_name = document.getElementById("product_name").textContent;
+    const title = document.getElementById("title").textContent = product_name;
+    const breadcrumbs = document.getElementById("breadcrumbs").textContent = product_name;
+});
+</script>
 <body>
 	<%@include file="Header.jsp" %>
     <!-- Main -->
@@ -25,7 +31,8 @@
         <nav class="col-span-12 text-lg font-light md:py-8 sm:py-4 sm:mt-24 md:mt-0 breadcrumbs">
             <ul>
                 <li><a href="top">ホーム</a></li>
-                <li>商品詳細</li>
+                <li><a href="getProductsList">商品詳細</a></li>
+                <li id="breadcrumbs"></li>
             </ul>
         </nav>
         <!-- Breadcrumbs End -->
@@ -42,7 +49,7 @@
 	            <div class="md:w-5/12">
 	                <!-- ProductName And Price -->
 	                <section class="font-bold md:mt-0 sm:mt-4">
-	                    <h1 class="text-2xl">${product.product_name}</h1>
+	                    <h1 id="product_name" class="text-2xl">${product.product_name}</h1>
 	                    <p class="mt-3 mb-8 text-3xl text-red-500">\ ${product.price}</p>
 	                </section>
 	                <!-- ProductName And Price End -->
