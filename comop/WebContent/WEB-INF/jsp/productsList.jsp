@@ -43,19 +43,19 @@
 	            	<ul class="list-none">
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="キッズ">
 		                        <span class="ml-2 text-lg">キッズ</span>
 		                    </label>
 	               		</li>
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="小さめ">
 		                        <span class="ml-2 text-lg">小さめ</span>
 		                    </label>
 	               		</li>
 	               		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="ふつう">
 		                        <span class="ml-2 text-lg">ふつう</span>
 		                    </label>
 	               		</li>
@@ -68,25 +68,25 @@
 	            	<ul class="list-none">
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="不織布">
 		                        <span class="ml-2 text-lg">不織布</span>
 		                    </label>
 	               		</li>
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="ウレタン">
 		                        <span class="ml-2 text-lg">ウレタン</span>
 		                    </label>
 	               		</li>
 	               		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="布">
 		                        <span class="ml-2 text-lg">布</span>
 		                    </label>
 	               		</li>
 	               		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="ポリウレタン">
 		                        <span class="ml-2 text-lg">ポリウレタン</span>
 		                    </label>
 	               		</li>
@@ -97,8 +97,8 @@
 	            <div class="my-8">
 	            	<p class="pb-2 ml-3 text-xl font-bold">価格</p>
 	            	<div class="flex flex-row mt-2 ml-2">
-	                    <input type="text" name="pmin" id="" class="w-1/3 h-6 border-none"><span class="ml-2">円</span>
-	                    <input type="text" name="pmax" id="" class="w-1/3 h-6 ml-3 border-none"><span class="ml-2">円</span>
+	                    <input type="text" name="pmin" id="" class="w-1/3 h-6 border-none" required><span class="ml-2">円</span>
+	                    <input type="text" name="pmax" id="" class="w-1/3 h-6 ml-3 border-none" required><span class="ml-2">円</span>
 	                </div>
 	            </div>
 	            <!-- Price End -->

@@ -28,15 +28,21 @@ public class RefineSearchCommand extends AbstractCommand {
 //		promap.put("pmax", rc.getParameter("pmax"));
 //		promap.put("color_id", rc.getParameter("color"));
 
+		Connector.getInstance().beginTransaction();
 
 		//絞り込み検索結果を取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductDAO proddao = factory.getProductDAO();
 		List prolist = proddao.refineSearch(promap);
 
-		Connector.getInstance().close();
+		Connector.getInstance().commit();
+
+		//Connector.getInstance().close();
 
 		resc.setResult(prolist);
+
+		rc.setAttribute("targetProducts", prolist.size());
+
 		resc.setTarget("productsList");
 
 		return resc;
