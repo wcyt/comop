@@ -69,11 +69,11 @@
 		<div class="col-span-12 mt-6">
 			<ul class="flex flex-row flex-wrap gap-7">
 				<c:forEach var="product" items="${data}">
-						<li class="flex flex-col transition w-52 duration-400 hover:bg-gray-100">
+						<li class="flex flex-col transition border border-gray-200 w-52 duration-400 hover:bg-gray-100">
 							<div class="indicator">
-								<div class="indicator-item rounded-full border border-gray-400 bg-white">
+								<div class="indicator-item rounded-full bg-red-500">
 									<a href="removeFavorite?user_id=${user.user_id}&product_id=${product.product_id}">
-										<i class="bi bi-x text-red-500 text-2xl px-1"></i>
+										<i class="bi bi-x text-white text-xl px-1"></i>
 									</a>
 								</div>
 								<a href="getProductDetail?product_id=${product.product_id}">

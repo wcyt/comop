@@ -14,9 +14,9 @@
 		            <a href="top" class="inline mt-3 mb-3 font-bold text-center">comop</a>
 		            <!-- SiteName End -->
 		            <!-- Search Input -->
-		            <div class="flex flex-row ml-10 bg-white rounded-lg">
+		            <div class="flex flex-row items-center ml-10 bg-white rounded-lg">
 		                <button class="focus:outline-none focus:ring-white"><i class="ml-5 mr-3 bi bi-search"></i></button>
-		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 lg:w-72 rounded-lg focus:bg-white focus:outline-none focus:ring-white">
+		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 lg:w-72 rounded-lg focus:bg-white focus:outline-none focus:border-sky-500">
 		            </div>
 		            <!-- Search Input End -->
 		        </form>

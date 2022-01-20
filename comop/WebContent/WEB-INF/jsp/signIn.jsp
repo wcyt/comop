@@ -40,7 +40,7 @@
             <input type="text" id="mailAddress" name="mailAddress"placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input" required>
             <input type="password" id="password" name="password"placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input" required>
             <div class="flex flex-row mt-4">
-                <input type="checkbox" id="checkbox" onclick="changeInputType()" class="checkbox rounded-md h-5 w-5 mt-[0.4rem] mr-2">
+                <input type="checkbox" id="checkbox" onclick="changeInputType()" class="accent-blue-400 text-white rounded-md h-5 w-5 mt-[0.4rem] mr-2">
             	<span class="mt-1">パスワードを表示する</span>
             </div>
             <button id="loginButton" class="py-3 mt-6 text-xl font-bold text-white bg-blue-400 rounded-full focus:outline-none">ログインする</button>

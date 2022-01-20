@@ -72,7 +72,7 @@
         <div class="col-span-12 mt-8 lg:mt-0 lg:ml-10 lg:col-span-4">
             <div class="px-6 bg-gray-100 border-2 border-blue-300 rounded-lg shadow">
                 <button class="w-full py-3 my-4 text-xl font-bold text-white bg-blue-400 rounded-md">レジへ進む</button>
-                <a href="" class="flex justify-center pb-4 text-blue-400">ショッピングを続ける</a>
+                <a href="getProductsList" class="flex justify-center pb-4 text-blue-400">ショッピングを続ける</a>
             </div>
         </div>
     </main>
