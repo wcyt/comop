@@ -18,7 +18,7 @@ public class MySQLCartDAO implements CartDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String select = "SELECT * FROM cart_table WHERE user_id=? AND product_id=?";
+			String select = "SELECT user_id, product_id, buy_count FROM cart_table WHERE user_id=? AND product_id=?";
 			st = cn.prepareStatement(select);
 			st.setInt(1, c.getUser_id());
 			st.setInt(2, c.getProduct_id());

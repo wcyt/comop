@@ -39,30 +39,30 @@
         <!-- Products -->
         <div class="col-span-12 lg:col-span-8">
             <!-- Product -->
-            <c:forEach var="product" items="${data}">
+            <c:forEach var="cart" items="${data}">
 	            <div class="grid grid-cols-10 flex items-center py-8 border-b-2">
-	            	<a href="getProductDetail?product_id=${product.product_id}" class="col-span-2">
-	            		<img class="w-full h-44" src="images/${product.product_image}" alt="">
+	            	<a href="getProductDetail?product_id=${cart.product_id}" class="col-span-2">
+	            		<img class="w-full h-44" src="images/${cart.product_image}" alt="">
 	            	</a>
 	                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
-	                    <p class="font-light">${product.product_name}</p>
+	                    <p class="font-light">${cart.product_name}</p>
 	                </div>
 	                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
 	                    <span>\</span>
-	                    <span>${product.price}</span>
+	                    <span>${cart.price}</span>
 	                </div>
 	                <div class="flex flex-row items-center col-span-2">
 	                    <div class="relative flex flex-row w-24 h-10 ">
 	                        <div class="flex items-center justify-center w-24 text-xs bg-white border cursor-default md:text-base">
-	                            <span>1</span>
+	                            <span>${cart.buy_count}</span>
 	                        </div>
 	                        <button class="flex w-20 h-full font-semibold text-white bg-blue-700 border-l border-gray-400 cursor-pointer hover:bg-blue-600 focus:outline-none">
-	                            <span class="m-auto">+</span>
+	                            <a href="addCart?user_id=${user.user_id}&product_id=${cart.product_id}" class="m-auto text-lg">+</span>
 	                        </button>
 	                    </div>
 	                </div>
 	                <div class="flex items-center col-span-1">
-	                    <a href="removeCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}" class="">削除</a>
+	                    <a href="removeCart?user_id=${user.user_id}&product_id=${cart.product_id}" class="">削除</a>
 	                </div>
 	            </div>
             </c:forEach>
@@ -71,7 +71,7 @@
         <!-- Products End -->
         <div class="col-span-12 mt-8 lg:mt-0 lg:ml-10 lg:col-span-4">
             <div class="px-6 bg-gray-100 border-2 border-blue-300 rounded-lg shadow">
-                <button class="w-full py-3 my-4 text-xl font-bold text-white bg-blue-400 rounded-md">レジへ進む</button>
+                <a href="select?user_id=${user.user_id}" class="w-full py-3 my-4 text-xl font-bold text-white bg-blue-400 rounded-md">レジへ進む</a>
                 <a href="getProductsList" class="flex justify-center pb-4 text-blue-400">ショッピングを続ける</a>
             </div>
         </div>

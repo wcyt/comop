@@ -169,6 +169,25 @@
                     </div>
                 </div>
                 <!-- Payment Method Group End -->
+                <!-- Cart Lists -->
+                <div class="border-b-2">
+	                <c:forEach var="product" items="${data}">
+			            <div class="grid grid-cols-12 justify-center flex items-center py-8">
+			            	<div class="col-span-3"></div>
+			            	<a href="getProductDetail?product_id=${product.product_id}" class="col-span-3">
+			            		<img class="w-full h-44" src="images/${product.product_image}" alt="">
+			            	</a>
+			                <div class="flex flex-col col-span-4 py-10 ml-5 text-left">
+			                    <p class="font-light">${product.product_name}</p>
+			                </div>
+			                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
+			                    <span>\</span>
+			                    <span>${product.price}</span>
+			                </div>
+			            </div>
+		            </c:forEach>
+                </div>
+                <!-- Cart Lists End -->
                 <!-- Modal -->
                 <input type="checkbox" id="my-modal-2" class="modal-toggle">
                 <div class="modal">
