@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.FavoriteBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.favorite.FavoriteDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -22,6 +23,8 @@ public class AddFavoriteCommand extends AbstractCommand{
 		f.setUser_id(user_id);
 		f.setProduct_id(product_id);
 
+		Connector.getInstance().beginTransaction();
+
 		//お気に入りに追加
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favdao = factory.getFavoriteDAO();
@@ -30,6 +33,8 @@ public class AddFavoriteCommand extends AbstractCommand{
 		//お気に入りリストを取得
 		List<FavoriteBean> favlist = favdao.getFavoriteList(user_id);
 		resc.setResult(favlist);
+
+		Connector.getInstance().commit();
 
 		//お気に入り数を取得
 		rc.setAttribute("favorites", favlist.size());

@@ -58,7 +58,8 @@ public class MySQLPointProductDAO implements PointProductDAO{
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price,reward_product_id FROM point_reward_table WHERE  reward_product_name LIKE '%\"+key+\"%' || reward_product_description LIKE '%\"+key+\"%'";
+			String sql = "SELECT reward_product_name,reward_product_image,reward_product_description,stock_quantity,point_price,reward_product_id FROM point_reward_table WHERE reward_product_name LIKE '%" + key + "%' || reward_product_description LIKE '%\"+key+\"%'";
+			System.out.println(sql);
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
