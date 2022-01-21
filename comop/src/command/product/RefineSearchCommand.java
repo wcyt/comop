@@ -1,8 +1,10 @@
 package command.product;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import bean.ProductBean;
 import command.AbstractCommand;
 import dao.Connector;
 import dao.product.ProductDAO;
@@ -16,30 +18,22 @@ public class RefineSearchCommand extends AbstractCommand {
 
 		RequestContext rc = getRequestContext();
 
-
 		//パラメータを取得
 		Map<String, String[]> promap = rc.getParameterMap();
 
-
-//		promap.put("size", rc.getParameter("size"));
-//		promap.put("material", rc.getParameter("material"));
-//		promap.put("packing_type", rc.getParameter("packing_type"));
-//		promap.put("pmin", rc.getParameter("pmin"));
-//		promap.put("pmax", rc.getParameter("pmax"));
-//		promap.put("color_id", rc.getParameter("color"));
+		for (String key : promap.keySet()) {
+	        System.out.println(key + ":" + Arrays.deepToString(promap.get(key)));
+	    }
 
 		Connector.getInstance().beginTransaction();
 
 		//絞り込み検索結果を取得
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ProductDAO proddao = factory.getProductDAO();
-		List prolist = proddao.refineSearch(promap);
+		List<ProductBean> prolist = proddao.refineSearch(promap);
+		resc.setResult(prolist);
 
 		Connector.getInstance().commit();
-
-		//Connector.getInstance().close();
-
-		resc.setResult(prolist);
 
 		rc.setAttribute("targetProducts", prolist.size());
 

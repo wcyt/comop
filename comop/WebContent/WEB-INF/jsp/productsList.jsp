@@ -43,19 +43,19 @@
 	            	<ul class="list-none">
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="キッズ">
+		                    	<input type="checkbox" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="キッズ">
 		                        <span class="ml-2 text-lg">キッズ</span>
 		                    </label>
 	               		</li>
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="小さめ">
+		                    	<input type="checkbox" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="小さめ">
 		                        <span class="ml-2 text-lg">小さめ</span>
 		                    </label>
 	               		</li>
 	               		<li class="my-1">
 		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="ふつう">
+		                    	<input type="checkbox" name="size" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="ふつう">
 		                        <span class="ml-2 text-lg">ふつう</span>
 		                    </label>
 	               		</li>
@@ -102,125 +102,144 @@
 	                </div>
 	            </div>
 	            <!-- Price End -->
-	            <!-- Colors -->
+	                        	<!-- Packing Type -->
+            	<div class="my-8">
+	            	<p class="pb-2 ml-3 text-xl font-bold">サイズ</p>
+	            	<ul class="list-none">
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
+		                    	<input type="checkbox" name="packing_type" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="個別包装">
+		                        <span class="ml-2 text-lg">個別包装</span>
+		                    </label>
+	               		</li>
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
+		                    	<input type="checkbox" name="packing_type" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="大容量">
+		                        <span class="ml-2 text-lg">大容量</span>
+		                    </label>
+	               		</li>
+	            	</ul>
+            	</div>
+            	<!-- Packing Type End-->
+	            	            <!-- Colors -->
 	            <div class="my-8">
 	                <p class="pb-2 ml-3 text-xl font-bold">カラー</p>
 	                <ul class="flex flex-col">
 	                    	<li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="1">
 	                                <span class="p-2 bg-white border rounded-full"> </span>
 	                                <span class="ml-2">ホワイト</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full focus:outline-none">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="2">
 	                                <span class="p-2 bg-black rounded-full"> </span>
 	                                <span class="ml-2">ブラック</span>
 	                            </label>
 	                        </li>
 	                       <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="3">
 	                                <span class="p-2 bg-red-400 rounded-full"> </span>
 	                                <span class="ml-2">レッド</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="4">
 	                                <span class="p-2 bg-green-400 rounded-full"> </span>
 	                                <span class="ml-2">グリーン</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="5">
 	                                <span class="p-2 bg-blue-400 rounded-full"> </span>
 	                                <span class="ml-2">ブルー</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="6">
 	                                <span class="p-2 bg-yellow-300 rounded-full"> </span>
 	                                <span class="ml-2">イエロー</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="7">
 	                                <span class="p-2 bg-orange-400 rounded-full"> </span>
 	                                <span class="ml-2">オレンジ</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="8">
 	                                <span class="p-2 bg-yellow-800 rounded-full"> </span>
 	                                <span class="ml-2">ブラウン</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="9">
 	                                <span class="p-2 bg-orange-100 rounded-full"> </span>
 	                                <span class="ml-2">ベージュ</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="10">
 	                                <span class="p-2 bg-gray-400 rounded-full"> </span>
 	                                <span class="ml-2">グレー</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="11">
 	                                <span class="p-2 bg-pink-400 rounded-full"> </span>
 	                                <span class="ml-2">ピンク</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="12">
 	                                <span class="p-2 bg-lime-700 rounded-full"> </span>
 	                                <span class="ml-2">カーキ</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="13">
 	                                <span class="p-2 bg-indigo-800 rounded-full"> </span>
 	                                <span class="ml-2">ネイビー</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="14">
 	                                <span class="p-2 bg-purple-400 rounded-full"> </span>
 	                                <span class="ml-2">パープル</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="15">
 	                                <span class="p-2 bg-teal-200 rounded-full"> </span>
 	                                <span class="ml-2">パステルグリーン</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="16">
 	                                <span class="p-2 bg-cyan-200 rounded-full"> </span>
 	                                <span class="ml-2">パステルブルー</span>
 	                            </label>
 	                        </li>
 	                        <li class="my-1">
 	                            <label class="inline-flex items-center">
-	                                <input type="checkbox" name="color" class="mx-3 text-blue-400 rounded-full">
+	                                <input type="checkbox" name="color_id" class="mx-3 text-blue-400 rounded-full" value="17">
 	                                <span >その他</span>
 	                            </label>
 	                        </li>
@@ -231,25 +250,6 @@
 	                </div>
 	            </div>
             	<!-- Colors End -->
-            	<!-- Packing Type -->
-            	<div class="my-8">
-	            	<p class="pb-2 ml-3 text-xl font-bold">サイズ</p>
-	            	<ul class="list-none">
-	            		<li class="my-1">
-		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="packing_type" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="個別包装">
-		                        <span class="ml-2 text-lg">個別包装</span>
-		                    </label>
-	               		</li>
-	            		<li class="my-1">
-		            		<label class="inline-flex items-center">
-		                    	<input type="radio" name="packing_type" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="大容量">
-		                        <span class="ml-2 text-lg">大容量</span>
-		                    </label>
-	               		</li>
-	            	</ul>
-            	</div>
-            	<!-- Packing Type End-->
             </form>
         </aside>
         <!-- Side Bar End -->
