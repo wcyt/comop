@@ -28,6 +28,7 @@ public class MySQLCartDAO implements CartDAO {
 			String sql = null;
 
 			//既にカートに追加されていたらbuy_countを増やす
+			//カートに追加したときに動く
 			if (rs.next()) {
 				int buy_count = rs.getInt(3);
 
@@ -46,13 +47,13 @@ public class MySQLCartDAO implements CartDAO {
 			} else {
 				rs.close();
 
-				sql = "INSERT into cart_table(user_id,product_id,buy_count) values(?,?,?)";
+				sql = "INSERT into cart_table(user_id,product_id,buy_count) values(?,?,1)";
 
 				st = cn.prepareStatement(sql);
 
 				st.setInt(1, c.getUser_id());
 				st.setInt(2, c.getProduct_id());
-				st.setInt(3, c.getBuy_count());
+//				st.setInt(3, c.getBuy_count());
 
 				st.executeUpdate();
 			}

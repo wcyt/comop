@@ -231,6 +231,25 @@
 	                </div>
 	            </div>
             	<!-- Colors End -->
+            	<!-- Packing Type -->
+            	<div class="my-8">
+	            	<p class="pb-2 ml-3 text-xl font-bold">サイズ</p>
+	            	<ul class="list-none">
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
+		                    	<input type="radio" name="packing_type" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="個別包装">
+		                        <span class="ml-2 text-lg">個別包装</span>
+		                    </label>
+	               		</li>
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
+		                    	<input type="radio" name="packing_type" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="大容量">
+		                        <span class="ml-2 text-lg">大容量</span>
+		                    </label>
+	               		</li>
+	            	</ul>
+            	</div>
+            	<!-- Packing Type End-->
             </form>
         </aside>
         <!-- Side Bar End -->
