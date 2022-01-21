@@ -15,6 +15,7 @@ import dao.Connector;
 public class MySQLProductDAO implements ProductDAO {
 	private PreparedStatement st = null;
 
+	//商品一覧を取得
 	public List<ProductBean> getProductsList() {
 		List<ProductBean> products = new ArrayList<ProductBean>();
 		try {
@@ -108,14 +109,13 @@ public class MySQLProductDAO implements ProductDAO {
 			while(rs.next()) {
 				ProductBean p = new ProductBean();
 
-				p.setProduct_name(rs.getString(1));
-				p.setProduct_image(rs.getString(2));
-				p.setPrice(rs.getInt(3));
+				p.setProduct_id(Integer.parseInt(rs.getString(1)));
+				p.setProduct_name(rs.getString(2));
+				p.setProduct_image(rs.getString(3));
+				p.setPrice(rs.getInt(4));
 
 				products.add(p);
-
 			}
-
 		}catch(SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
