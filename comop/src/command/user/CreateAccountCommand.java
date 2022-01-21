@@ -1,5 +1,9 @@
 package command.user;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import bean.UserBean;
 import command.AbstractCommand;
 import dao.Connector;
@@ -25,8 +29,18 @@ public class CreateAccountCommand extends AbstractCommand {
 		UserBean u = new UserBean();
 		u.setName(name);
 		u.setMail(mail);
-		//TODO パスワードのハッシュ化
-		u.setPassword(password);
+		//パスワードのハッシュ化
+		// MD5
+		MessageDigest md5 = null;
+		try {
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		byte[] md5_result = md5.digest(password.getBytes());
+		String hashedPassword = String.format("%020x", new BigInteger(1, md5_result));
+		System.out.println("CreateAccount MD5：" + hashedPassword);
+		u.setPassword(hashedPassword);
 
 		//アカウントを作成
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
@@ -36,7 +50,7 @@ public class CreateAccountCommand extends AbstractCommand {
 		//トランザクションを終了する
 		Connector.getInstance().commit();
 
-		System.out.println(name + " " + mail + " " + password);
+		System.out.println(name + " " + mail + " " + hashedPassword);
 
 		//signUpComplete.jspに移動
 		resc.setTarget("signUpComplete");
