@@ -91,7 +91,7 @@
                         <div id="inputValues"></div>
                         <div class="modal-action">
                             <label for="my-modal-2">
-                                <button type="submit" class="btn btn-primary">送信</button>
+                                <button type="submit" class="px-5 py-3 bg-blue-500 text-white font-bold rounded-lg">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deletePassword()">キャンセル</label>
                         </div>

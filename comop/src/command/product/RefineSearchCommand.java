@@ -21,6 +21,7 @@ public class RefineSearchCommand extends AbstractCommand {
 		//パラメータを取得
 		Map<String, String[]> promap = rc.getParameterMap();
 
+		//パラメータの値を表示している（後で消す）
 		for (String key : promap.keySet()) {
 	        System.out.println(key + ":" + Arrays.deepToString(promap.get(key)));
 	    }

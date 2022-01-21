@@ -60,6 +60,9 @@
 		                    </label>
 	               		</li>
 	            	</ul>
+	            	<div class="mt-3 ml-3">
+	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckSizeAll()">クリア</button>
+	                </div>
             	</div>
             	<!-- Size End-->
 	            <!-- Material -->
@@ -91,20 +94,23 @@
 		                    </label>
 	               		</li>
 	            	</ul>
+	            	<div class="mt-3 ml-3">
+	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckMaterialAll()">クリア</button>
+	                </div>
 	            </div>
 	            <!-- Material End -->
 	            <!-- Price -->
 	            <div class="my-8">
 	            	<p class="pb-2 ml-3 text-xl font-bold">価格</p>
 	            	<div class="flex flex-row mt-2 ml-2">
-	                    <input type="text" name="pmin" id="" class="w-1/3 h-6 border-none" required><span class="ml-2">円</span>
-	                    <input type="text" name="pmax" id="" class="w-1/3 h-6 ml-3 border-none" required><span class="ml-2">円</span>
+	                    <input type="text" name="pmin" value="0" class="w-1/3 h-6 border-none" required><span class="ml-2">円</span>
+	                    <input type="text" name="pmax" class="w-1/3 h-6 ml-3 border-none" required><span class="ml-2">円</span>
 	                </div>
 	            </div>
 	            <!-- Price End -->
-	                        	<!-- Packing Type -->
+	            <!-- Packing Type -->
             	<div class="my-8">
-	            	<p class="pb-2 ml-3 text-xl font-bold">サイズ</p>
+	            	<p class="pb-2 ml-3 text-xl font-bold">包装タイプ</p>
 	            	<ul class="list-none">
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
@@ -119,9 +125,12 @@
 		                    </label>
 	               		</li>
 	            	</ul>
+	            	<div class="mt-3 ml-3">
+	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckPackingTypeAll()">クリア</button>
+	                </div>
             	</div>
             	<!-- Packing Type End-->
-	            	            <!-- Colors -->
+	            <!-- Colors -->
 	            <div class="my-8">
 	                <p class="pb-2 ml-3 text-xl font-bold">カラー</p>
 	                <ul class="flex flex-col">
@@ -245,8 +254,8 @@
 	                        </li>
 	                    </ul>
 	                <div class="flex justify-end mt-3">
-	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckAll()">クリア</button>
-	                    <button type="submit" class="px-3 mr-3 font-semibold text-white bg-blue-400 border rounded-full focus:outline-none">OK</button>
+	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckColorAll()">クリア</button>
+	                    <button type="submit" class="px-3 mr-3 font-semibold text-white bg-blue-400 border rounded-full focus:outline-none">検索する</button>
 	                </div>
 	            </div>
             	<!-- Colors End -->
@@ -296,7 +305,7 @@
                 		</a>
 	                    <div class="p-4">
 	                        <p class="mb-1 font-bold text-md">${product.product_name}</p>
-	                        <p class="text-xl font-bold">\ ${product.price}</p>
+	                        <p class="text-xl text-red-500 font-bold">\ ${product.price}</p>
 	                    </div>
                 	</li>
                 </c:forEach>
@@ -309,9 +318,30 @@
     <%@include file="Footer.jsp" %>
 </body>
 <script>
-    function uncheckAll() {
-        const checkbox = document.getElementsByName("color");
+	//カラーのチェックボックスをすべて外す
+    function uncheckColorAll() {
+        const checkbox = document.getElementsByName("color_id");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
 
+    function uncheckPackingTypeAll() {
+        const checkbox = document.getElementsByName("packing_type");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+
+    function uncheckMaterialAll() {
+        const checkbox = document.getElementsByName("material");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+
+    function uncheckSizeAll() {
+        const checkbox = document.getElementsByName("size");
         for (i = 0; i < checkbox.length; i++) {
             checkbox[i].checked = false;
         }
