@@ -18,9 +18,7 @@
 </head>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const password = document.getElementById('password').innerHTML;
-        const asterisk = '*'.repeat(password.length);
-        document.getElementById('password').innerHTML = asterisk;
+        const password = document.getElementById('password').innerHTML = '*'.repeat(10);
     }, false);
 </script>
 <body>
@@ -36,10 +34,11 @@
         </nav>
         <!-- Breadcrumbs End -->
         <div class="col-span-12">
-            <div class="flex flex-row pb-8 mt-5 text-4xl">
+            <div class="flex flex-row mt-5 text-4xl">
                 <i class="mr-4 text-blue-300 bi bi-pencil"></i>
-                <h1 class="">${user.name}様の登録情報</h1>
+                <h1>${user.name}様の登録情報</h1>
             </div>
+            <p class="text-xl text-red-500 my-8">${message}</p>
         </div>
         <aside class="col-span-2">
             <!-- Member Registration Information -->
@@ -80,17 +79,6 @@
                     </div>
                 </div>
                 <!-- Basic Information End -->
-                <!-- Mail Address -->
-                <div class="grid grid-cols-12 items-center py-5 border-b border-gray-400">
-                    <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">メールアドレス</p>
-                    <div class="col-span-7 gap-3 lg:col-span-6">
-                        <p>${user.mail}</p>
-                    </div>
-                    <div class="col-span-2 lg:col-span-3">
-                        <a href="modifyAddress" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
-                    </div>
-                </div>
-                <!-- Mail Address End -->
                 <!-- Password -->
                 <div class="grid grid-cols-12 items-center py-5 border-b border-gray-400">
                     <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">パスワード</p>

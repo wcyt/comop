@@ -18,13 +18,13 @@ public class MySQLUserDAO implements UserDAO {
 
 			String sql = "insert into user_table(name,mail,password) values(?,?,?)";
 
-			System.out.println("CREATE ACCOUNT");
-
 			st = cn.prepareStatement(sql);
 			st.setString(1, u.getName());
 			st.setString(2, u.getMail());
 			st.setString(3, u.getPassword());
-			st.executeUpdate();
+
+			ResultSet rs = st.executeQuery();
+			rs.next();
 
 		}catch(SQLException e) {
 			//ロールバックする
@@ -74,8 +74,7 @@ public class MySQLUserDAO implements UserDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "UPDATE user_table SET name=?,mail=?,address=?,first_name=?,first_name_kana=?,last_name=?,last_name_kana=?,tel=?,postal_code=?,password=? WHERE user_id=?";
-
+			String sql = "UPDATE user_table SET name=?, mail=?, address=?, first_name=?, first_name_kana=?, last_name=?, last_name_kana=?, tel=?, postal_code=? WHERE user_id=?";
 			st = cn.prepareStatement(sql);
 
 			st.setString(1, u.getName());
@@ -87,10 +86,11 @@ public class MySQLUserDAO implements UserDAO {
 			st.setString(7, u.getLast_name_kana());
 			st.setString(8, u.getTel());
 			st.setString(9, u.getPostal_code());
-			st.setString(10, u.getPassword());
-			st.setInt(11, u.getUser_id());
+			st.setInt(10, u.getUser_id());
 
 			st.executeUpdate();
+
+			System.out.println(sql);
 
 		}catch(SQLException e) {
 			//ロールバックする
@@ -112,10 +112,7 @@ public class MySQLUserDAO implements UserDAO {
 			Connection cn = Connector.getInstance().connect();
 
 			String sql = "UPDATE user_table SET user_lapse=1 WHERE user_id=?";
-
 			st = cn.prepareStatement(sql);
-
-			st.executeUpdate();
 
 			st.setString(1,user_id);
 

@@ -59,8 +59,10 @@
         </aside>
         <article class="col-span-10 ml-14">
             <!-- Member Registration Information -->
-            <form method="" action="" id="memberRegistInfo" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
+            <form method="post" action="editUserInfo" id="memberRegistInfo" class="flex flex-col p-10 bg-gray-200 border border-2 border-gray-300 rounded-lg">
                 <h2 class="pb-4 text-2xl border-b border-gray-400">基本情報の変更</h2>
+                <input type="hidden" name="user_id" value="${user.user_id}">
+                <input type="hidden" name="name" value="${user.name}">
                 <!-- Name -->
                 <div class="grid grid-cols-12 py-5 border-t border-b border-gray-400">
                     <div class="flex flex-row items-center col-span-4 lg:col-span-3">
@@ -88,6 +90,28 @@
                     </div>
                 </div>
                 <!-- Name(kana) End -->
+                <!-- Mail Address -->
+                <div class="grid grid-cols-12 py-5 border-b border-gray-400">
+                    <div class="flex flex-row items-center col-span-4 lg:col-span-3">
+                        <span class="text-lg">メールアドレス</span>
+                        <span class="ml-4 font-bold text-red-600">必須</span>
+                    </div>
+                    <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
+                        <input type="email" name="mail" id="mail" placeholder="XXX.gmail.com" class="w-1/2">
+                    </div>
+                </div>
+                <!-- Mail Address End -->
+                <!-- Tel -->
+                <div class="grid grid-cols-12 py-5 border-b border-gray-400">
+                    <div class="flex flex-row items-center col-span-4 lg:col-span-3">
+                        <span class="text-lg">電話番号</span>
+                        <span class="ml-4 font-bold text-red-600">必須</span>
+                    </div>
+                    <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
+                        <input type="text" name="tel" id="tel" class="w-1/2" required>
+                    </div>
+                </div>
+                <!-- Tel End -->
                 <!-- Postal Code -->
                 <div class="grid grid-cols-12 py-5 border-b border-gray-400">
                     <div class="flex flex-row items-center col-span-4 lg:col-span-3">
@@ -119,7 +143,7 @@
                         <div id="inputValues"></div>
                         <div class="modal-action">
                             <label for="my-modal-2">
-                                <button type="submit" class="btn btn-primary">送信</button>
+                                <button type="submit" class="px-5 py-3 bg-blue-500 text-white font-bold rounded-lg">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteBasicInfo()">キャンセル</label>
                         </div>
@@ -146,14 +170,17 @@
         const lastNameKana = document.getElementById('lastNameKana').value;
         const postalCode = document.getElementById('postalCode').value;
         const address = document.getElementById('address').value;
+        const mail = document.getElementById('mail').value;
+        const tel = document.getElementById('tel').value;
         const output =
             `
             <div id="inputLists" class="text-lg">
                 <p class="mb-4 text-2xl font-bold">変更内容の確認</p>
-                <p class="my-2">お名前：${firstName} ${lastName}</p>
-                <p class="my-2">お名前（カナ）：${firstNameKana} ${lastNameKana}</p>
-                <p class="my-2">郵便番号：${postalCode}</p>
-                <p class="my-2">住所：${address}</p>
+                <p class="my-2">お名前：\${firstName} \${lastName}</p>
+                <p class="my-2">お名前（カナ）：\${firstNameKana} \${lastNameKana}</p>
+                <p class="my-2">電話番号：\${tel}</p>
+                <p class="my-2">郵便番号：\${postalCode}</p>
+                <p class="my-2">住所：\${address}</p>
             </div>
         `;
         document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
