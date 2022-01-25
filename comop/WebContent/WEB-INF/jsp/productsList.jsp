@@ -130,6 +130,28 @@
 	                </div>
             	</div>
             	<!-- Packing Type End-->
+            	<!-- sort -->
+            	<div class="my-8">
+	            	<p class="pb-2 ml-3 text-xl font-bold">並べ替え</p>
+	            	<ul class="list-none">
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
+		                    	<input type="radio" name="sort" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="asc">
+		                        <span class="ml-2 text-lg">価格が低い順</span>
+		                    </label>
+	               		</li>
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
+		                    	<input type="radio" name="sort" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="desc">
+		                        <span class="ml-2 text-lg">価格が高い順</span>
+		                    </label>
+	               		</li>
+	            	</ul>
+	            	<div class="mt-3 ml-3">
+	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckSortAll()">クリア</button>
+	                </div>
+            	</div>
+            	<!-- sort End-->
 	            <!-- Colors -->
 	            <div class="my-8">
 	                <p class="pb-2 ml-3 text-xl font-bold">カラー</p>
@@ -342,6 +364,12 @@
 
     function uncheckSizeAll() {
         const checkbox = document.getElementsByName("size");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+    function uncheckSortAll() {
+    	const checkbox = document.getElementsByName("sort");
         for (i = 0; i < checkbox.length; i++) {
             checkbox[i].checked = false;
         }

@@ -12,5 +12,7 @@ public interface ProductDAO {
 	 public List<ProductBean> getProductDetail(String product_id);
 	 public List<ProductBean> searchProducts(String key);
 	 public int getStock_quantity(String product_id);
+	 public List<ProductBean> sortProducts();
+	 public List<ProductBean> sortFavoriteCount();
 
 }

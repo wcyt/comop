@@ -58,6 +58,7 @@ public class MySQLProductDAO implements ProductDAO {
 			Connection cn = Connector.getInstance().connect();
 
 			String where="";	//sql文のWHERE句以降を格納
+			String orderby="";	//sql文のORDER BY句以降を格納
 
 			Iterator<String> it = parameters.keySet().iterator();
 			while (it.hasNext()) {
@@ -76,10 +77,10 @@ public class MySQLProductDAO implements ProductDAO {
 					}
 					where += ")";
 				//何円以上
-				}else if(key.equals("pmin")){
+				}else if(key.equals("pmin") && val[0]!=""){
 					where += "(price >=" + val[0] + ")";
 				//何円以下
-				}else if(key.equals("pmax")){
+				}else if(key.equals("pmax") && val[0]!=""){
 					where += "(price <=" + val[0] + ")";
 				//カラーの絞り込み
 				}else if(key.equals("color_id")){
@@ -92,13 +93,21 @@ public class MySQLProductDAO implements ProductDAO {
 						}
 					}
 					where += ")";
+				//ソート	※Map内でソートが一番上あると動かない(今のところ価格より下にあればいい)
+				}else if(key.equals("sort")) {
+					where=where.substring(0,where.length()-2);
+					if(val[0].equals("asc"))
+						orderby+=" ORDER BY price";
+					else
+						orderby+=" ORDER BY price DESC";
 				}
 				where += "&&";
 			}
 			//最後の&&を消す
 			where=where.substring(0,where.length()-2);
 
-			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE "+where;
+
+			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE "+where+orderby;
 
 			System.out.println("MySQLProductDAO,select文:"+sql);
 
@@ -258,6 +267,78 @@ public class MySQLProductDAO implements ProductDAO {
 			}
 		}
 		return stock;
+	}
+
+	//価格でソート(価格が低い順)
+	public List<ProductBean> sortProducts() {
+		List<ProductBean> products = new ArrayList<ProductBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE ORDER BY PRICE";
+			st = cn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				ProductBean p = new ProductBean();
+
+				p.setProduct_id(rs.getInt(1));
+				p.setProduct_name(rs.getString(2));
+				p.setProduct_image(rs.getString(3));
+				p.setPrice(rs.getInt(4));
+
+				products.add(p);
+			}
+		}catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+	}
+
+	//お気に入り数でソート
+	public List<ProductBean> sortFavoriteCount() {
+		List<ProductBean> products = new ArrayList<ProductBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE ORDER BY FAVORITE_COUNT DESC";
+			st = cn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				ProductBean p = new ProductBean();
+
+				p.setProduct_id(rs.getInt(1));
+				p.setProduct_name(rs.getString(2));
+				p.setProduct_image(rs.getString(3));
+				p.setPrice(rs.getInt(4));
+
+				products.add(p);
+			}
+		}catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
 	}
 
 
