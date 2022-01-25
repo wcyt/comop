@@ -62,8 +62,15 @@ window.addEventListener('DOMContentLoaded', function() {
 	                            <p>包装タイプ: ${product.packing_type}</p>
 	                            <p>在庫数: ${product.stock_quantity}</p>
 	                        </div>
-	                        <a href="addCart?user_id=${user.user_id}&product_id=${product.product_id}" class="px-5 py-2 my-5 font-extrabold text-white transition duration-100 bg-blue-400 rounded-lg hover:bg-blue-500"><i class="pr-3 text-xl bi bi-cart"></i>カートに入れる</a>
-	                        <a href="addFavorite?user_id=${user.user_id}&product_id=${product.product_id}"><i class="text-3xl text-gray-400 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i></a>
+	                        <c:if test="${user.user_id == null}">
+	                        	<a href="addCart?user_id=${user.user_id}&product_id=${product.product_id}" class="px-5 py-2 my-5 font-extrabold text-white transition duration-100 bg-blue-200 rounded-lg hover:bg-blue-500 pointer-events-none"><i class="pr-3 text-xl bi bi-cart"></i>カートに入れる</a>
+	                        	<a href="addFavorite?user_id=${user.user_id}&product_id=${product.product_id}" class="pointer-events-none"><i class="text-3xl text-gray-200 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i></a>
+	                        </c:if>
+	                        <c:if test="${user.user_id != null}">
+	                        	<a href="addCart?user_id=${user.user_id}&product_id=${product.product_id}" class="px-5 py-2 my-5 font-extrabold text-white transition duration-100 bg-blue-400 rounded-lg hover:bg-blue-500"><i class="pr-3 text-xl bi bi-cart"></i>カートに入れる</a>
+	                        	<a href="addFavorite?user_id=${user.user_id}&product_id=${product.product_id}"><i class="text-3xl text-gray-400 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i></a>
+	                        </c:if>
+
 	                    </div>
 	                    <div class="flex flex-row justify-between py-5 border-b border-gray-300">
 	                        <div class="mt-3 font-extrabold text-gray-400 text-md">

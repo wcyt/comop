@@ -13,6 +13,7 @@
     <!-- tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- tailwind css -->
     <title>基本情報の変更</title>
 </head>
@@ -24,7 +25,7 @@
         <!-- Breadcrumbs -->
         <nav class="col-span-12 text-lg font-light breadcrumbs">
             <ul>
-                <li><a>Home</a></li>
+                <li><a href="top">ホーム</a></li>
                 <li>登録情報</li>
             </ul>
         </nav>
@@ -32,7 +33,7 @@
         <div class="col-span-12">
             <div class="flex flex-row pb-8 mt-5 text-4xl">
                 <i class="mr-4 text-blue-300 bi bi-pencil"></i>
-                <h1 class="">ユーザー名様の登録情報</h1>
+                <h1 class="">${user.name}様の登録情報</h1>
             </div>
         </div>
         <aside class="col-span-2">
@@ -63,16 +64,30 @@
                     <a href="#option-1" class="px-8 py-3 border-t-2 border-l-2 border-r-2 rounded-t-md" x-bind:class="{ 'bg-gray-100': selected === 'option-1' }" x-on:click="selected = 'option-1'">発送前商品</a>
                     <a href="#option-2" class="px-8 py-3 border-t-2 border-l-2 border-r-2 rounded-t-md" x-bind:class="{ 'bg-gray-100': selected === 'option-2' }" x-on:click="selected = 'option-2'">発送済み商品</a>
                 </nav>
-                <div x-show="selected === 'option-1'" class="p-4 bg-gray-100 border-2 rounded-b-md">
-                    <div class="text-center">
-                        <p class="my-10 text-xl">発送前商品はありません。</p>
-                        <div class="my-10">
-                            <p>注文履歴への反映には、お時間がかかる場合があります。</p>
-                            <p>ログインせずにご注文いただいた場合、こちらの注文履歴には反映されません。</p>
-                            <p>配信される「注文確定メール」より、内容をご確認ください。</p>
-                        </div>
-                    </div>
-                </div>
+                <c:if test="${order_list_size} == 0">
+	                <div x-show="selected === 'option-1'" class="p-4 bg-gray-100 border-2 rounded-b-md">
+	                    <div class="text-center">
+	                        <p class="my-10 text-xl">発送前商品はありません。</p>
+	                        <div class="my-10">
+	                            <p>注文履歴への反映には、お時間がかかる場合があります。</p>
+	                            <p>ログインせずにご注文いただいた場合、こちらの注文履歴には反映されません。</p>
+	                            <p>配信される「注文確定メール」より、内容をご確認ください。</p>
+	                        </div>
+	                    </div>
+	                </div>
+                </c:if>
+                <c:if test="${order_list_size} != 0">
+	                <div x-show="selected === 'option-1'" class="p-4 bg-gray-100 border-2 rounded-b-md">
+	                    <div class="text-center">
+	                        <p class="my-10 text-xl">発送前商品はありません。</p>
+	                        <div class="my-10">
+	                            <p>注文履歴への反映には、お時間がかかる場合があります。</p>
+	                            <p>ログインせずにご注文いただいた場合、こちらの注文履歴には反映されません。</p>
+	                            <p>配信される「注文確定メール」より、内容をご確認ください。</p>
+	                        </div>
+	                    </div>
+	                </div>
+                </c:if>
                 <div x-show="selected === 'option-2'" class="px-6 bg-gray-100 border-2">
                     <p class="my-8">お客様の注文一覧と、発送済み商品の確認が可能です。</p>
                     <div class="my-4 font-bold text-md">

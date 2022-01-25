@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.CreditBean;
 import bean.OrderBean;
 import bean.OrderDetailBean;
 import dao.Connector;
@@ -15,7 +16,7 @@ public class MySQLOrderDAO implements OrderDAO {
 	private PreparedStatement st = null;
 
 	//注文テーブルに追加
-	public void addOrder(OrderBean o,List<OrderDetailBean> order_details) {
+	public void addOrder(OrderBean o, List<OrderDetailBean> order_details) {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -30,9 +31,8 @@ public class MySQLOrderDAO implements OrderDAO {
 
 			String sql2 = "INSERT into order_detail(order_id,product_id,buy_count) values(last_insert_id(),?,?)";
 
-
-			for(int i=0; i<order_details.size(); i++) {
-				OrderDetailBean od=(OrderDetailBean)order_details.get(i);
+			for (int i = 0; i < order_details.size(); i++) {
+				OrderDetailBean od = (OrderDetailBean) order_details.get(i);
 
 				st = cn.prepareStatement(sql2);
 
@@ -42,33 +42,34 @@ public class MySQLOrderDAO implements OrderDAO {
 				st.executeUpdate();
 			}
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 	//自分の注文テーブルの一覧の取得
-	public List<OrderBean> getOrderList(String user_id) {
+	public List<OrderBean> getOrderList(int user_id) {
 		ArrayList<OrderBean> orders = new ArrayList<OrderBean>();
 		try {
 			Connection cn = Connector.getInstance().connect();
 
 			String sql = "SELECT o.order_date,o.total_price,o.shipped,product_id,od.buy_count,p.product_name,p.product_image,p.price FROM order_table o JOIN order_detail od USING(order_id) JOIN product_table p USING(prodct_id) WHERE o.user_id=?";
 			st = cn.prepareStatement(sql);
-			st.setString(1, user_id);
+			st.setInt(1, user_id);
 
 			ResultSet rs = st.executeQuery();
-			while(rs.next()) {
-				OrderBean o=new OrderBean();
+			while (rs.next()) {
+				OrderBean o = new OrderBean();
 
 				o.setOrder_date(rs.getString(1));
 				o.setTotal_price(rs.getInt(2));
@@ -81,16 +82,16 @@ public class MySQLOrderDAO implements OrderDAO {
 
 				orders.add(o);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -98,4 +99,34 @@ public class MySQLOrderDAO implements OrderDAO {
 		return orders;
 	}
 
+	public void addCreditInfo(CreditBean creditBean) {
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "insert into credit_table(user_id, credit_number, card_hoolder, security_code, expiration_date) values(?,?,?,?,?)";
+
+			st = cn.prepareStatement(sql);
+
+			st.setInt(1, creditBean.getUser_id());
+			st.setString(2, creditBean.getCredit_number());
+			st.setString(3, creditBean.getCard_holder());
+			st.setString(4, creditBean.getSecurity_code());
+			st.setString(5, creditBean.getExpiration_date());
+
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

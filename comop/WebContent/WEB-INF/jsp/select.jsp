@@ -13,7 +13,7 @@
     <!-- tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="../../js/autokana.js" defer></script>
+    <script src="js/autokana.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
     <!-- tailwind css -->
     <title>Document</title>
@@ -31,7 +31,7 @@
         <!-- Breadcrumbs End -->
         <!-- Shipping address, delivery method, and payment method -->
         <div class="col-span-12 lg:col-span-8">
-            <form method="" action="" class="flex flex-col">
+            <form method="post" action="addOrder" class="flex flex-col">
                 <!-- Name -->
                 <div class="grid grid-cols-12 py-5 border-gray-400">
                     <div class="flex flex-row items-center col-span-4 lg:col-span-3">
@@ -39,8 +39,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstName" id="firstName" placeholder="例）上尾" autocomplete="given-name" class="w-1/2" required>
-                        <input type="text" name="lastName" id="lastName" placeholder="太郎" autocomplete="family-name" class="w-1/2" required>
+                        <input type="text" name="firstName" id="firstName" placeholder="例）上尾" autocomplete="given-name" class="w-1/2" value="${user.first_name}" required>
+                        <input type="text" name="lastName" id="lastName" placeholder="太郎" autocomplete="family-name" class="w-1/2" value="${user.last_name}" required>
                     </div>
                 </div>
                 <!-- Name End -->
@@ -54,8 +54,8 @@
                         <span class="ml-3 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" autocomplete="given-name" class="w-1/2" required>
-                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" autocomplete="family-name" class="w-1/2" required>
+                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" autocomplete="given-name" class="w-1/2" value="${user.first_name_kana}" required>
+                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" autocomplete="family-name" class="w-1/2" value="${user.last_name_kana}" required>
                     </div>
                 </div>
                 <!-- Name(kana) End -->
@@ -67,7 +67,7 @@
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
                         <div class="flex flex-col w-1/2">
-                            <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" class="w-full" required>
+                            <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" class="w-full" value="${user.postal_code}" required>
                             <p id="error" class="ml-2 text-sm text-red-500"></p>
                         </div>
                         <a href="https://www.post.japanpost.jp/zipcode/index.html" class="text-blue-400 hover:underline">郵便番号を調べる<i class="ml-3 bi bi-box-arrow-up-right"></i></a>
@@ -82,7 +82,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" class="w-1/2" required>
+                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" class="w-1/2" value="${user.address}" required>
                     </div>
                 </div>
                 <!-- Address End -->
@@ -93,7 +93,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="tel" id="tel" placeholder="09012345678（ハイフンなし）" autocomplete="tel" class="w-1/2" required>
+                        <input type="text" name="tel" id="tel" placeholder="09012345678（ハイフンなし）" autocomplete="tel" class="w-1/2" value="${user.tel}" required>
                     </div>
                 </div>
                 <!-- Tel End -->
@@ -113,7 +113,7 @@
                         <!-- Security Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">セキュリティ番号</p>
-                            <input type="text" name="securityNumber" id="securityNumber" autocomplete="cc-csc" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="securityCode" id="securityNumber" autocomplete="cc-csc" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
                         </div>
                         <!-- Security Number -->
                         <!-- Card Holder -->
@@ -125,7 +125,7 @@
                         <!-- Expiration Date -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">有効期限</p>
-                            <select name="" id="expirationMonth" autocomplete="cc-exp-month" class="col-span-3 lg:col-span-2">
+                            <select name="expirationMonth" id="expirationMonth" autocomplete="cc-exp-month" class="col-span-3 lg:col-span-2">
                                 <option hidden></option>
                                 <option value="1">01</option>
                                 <option value="2">02</option>
@@ -141,7 +141,7 @@
                                 <option value="12">12</option>
                             </select>
                             <p class="mx-4">月</p>
-                            <select name="" id="expirationYear" autocomplete="cc-exp-year" class="col-span-3 lg:col-span-2">
+                            <select name="expirationYear" id="expirationYear" autocomplete="cc-exp-year" class="col-span-3 lg:col-span-2">
                                 <option hidden></option>
                                 <option value="21">21</option>
                                 <option value="22">22</option>
@@ -176,8 +176,11 @@
 			            	</a>
 			                <div class="flex flex-col col-span-4 py-10 ml-5 text-left">
 			                    <p class="font-light">${product.product_name}</p>
+			                    <p class="font-light mt-5">数量: ${product.buy_count}</p>
+			                    <input type="hidden" name="buy_count" value="${product.buy_count}">
+			                    <input type="hidden" name="product_id" value="${product.product_id}">
 			                </div>
-			                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
+			                <div class="flex items-center col-span-2 mx-5 text-xl font-light ">
 			                    <span>\</span>
 			                    <span>${product.price}</span>
 			                </div>
@@ -193,7 +196,11 @@
                         <div id="modal-contents"></div>
                         <div class="modal-action ">
                             <label for="my-modal-2">
-                                <button type="submit" id="modalSubmitButton" class="btn btn-primary">送信</button>
+                            <input type="hidden" name="user_id" value="${user.user_id}">
+                            <input type="hidden" name="name" value="${user.name}">
+                            <input type="hidden" name="mail" value="${user.mail}">
+                            <input type="hidden" name="total_price" value="${total_price}">
+                                <button type="submit" id="modalSubmitButton" class="text-white bg-blue-400">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteOrder()">キャンセル</label>
                         </div>
@@ -212,14 +219,14 @@
                 </div>
                 <div class="flex justify-between py-5 text-lg border-b border-gray-400 ">
                     <span>商品合計</span>
-                    <span>\4241</span>
+                    <span>\ ${total_price}</span>
                 </div>
                 <div class="flex justify-between py-5">
                     <div>
                         <span class="text-xl font-bold ">合計</span>
                         <span class="font-light text-md ">(税込)</span>
                     </div>
-                    <span class="text-2xl font-bold text-red-600 ">\4241</span>
+                    <span class="text-2xl font-bold text-red-600 ">\ ${total_price}</span>
                 </div>
             </div>
         </div>
@@ -277,15 +284,15 @@
             `
                 <div id="inputLists" class="text-lg">
                     <p class="mb-4 text-2xl font-bold">注文内容の確認</p>
-                    <p class="my-2">お名前 : ${inputElementValues.firstName} ${inputElementValues.lastName}</p>
-                    <p class="my-2">お名前（カナ）: ${inputElementValues.firstNameKana} ${inputElementValues.lastNameKana}</p>
-                    <p class="my-2">郵便番号 : ${inputElementValues.postalCode}</p>
-                    <p class="my-2">住所 : ${inputElementValues.address}</p>
-                    <p class="my-2">電話番号 : ${inputElementValues.tel}</p>
-                    <p class="my-2">クレジット番号 : ${inputElementValues.creditNumber}</p>
-                    <p class="my-2">セキュリティ番号 : ${inputElementValues.securityNumber}</p>
-                    <p class="my-2">カード名義 : ${inputElementValues.cardHolder}</p>
-                    <p class="my-2">有効期限 : ${inputElementValues.expirationMonth}月 ${inputElementValues.expirationYear}年</p>
+                    <p class="my-2">お名前 : \${inputElementValues.firstName} \${inputElementValues.lastName}</p>
+                    <p class="my-2">お名前（カナ）: \${inputElementValues.firstNameKana} \${inputElementValues.lastNameKana}</p>
+                    <p class="my-2">郵便番号 : \${inputElementValues.postalCode}</p>
+                    <p class="my-2">住所 : \${inputElementValues.address}</p>
+                    <p class="my-2">電話番号 : \${inputElementValues.tel}</p>
+                    <p class="my-2">クレジット番号 : \${inputElementValues.creditNumber}</p>
+                    <p class="my-2">セキュリティ番号 : \${inputElementValues.securityNumber}</p>
+                    <p class="my-2">カード名義 : \${inputElementValues.cardHolder}</p>
+                    <p class="my-2">有効期限 : \${inputElementValues.expirationMonth}月 \${inputElementValues.expirationYear}年</p>
                 </div>
             `;
         return inputLists;

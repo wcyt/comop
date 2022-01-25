@@ -16,6 +16,24 @@
 <!-- tailwind css -->
 <title>色の管理・追加</title>
 </head>
+<script>
+const fetchAddColor = () => {
+    const url = location.href;
+    const colorName = document.getElementById("colorName").value;
+    let formData = new FormData();
+    formData.append("colorName", colorName);
+    console.log(formData);
+    console.log(url);
+    fetch('url', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.FormData())
+        .then(data => {
+            console.log(data);
+        })
+};
+</script>
 
 <body>
 	<!-- Main -->
@@ -25,7 +43,7 @@
 		</div>
 		<!-- Add Color -->
 		<div class="col-span-12">
-			<form action="addColor" method="post">
+			<form>
 				<div class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
 					<p class="py-3 text-xl text-center border-b-2 border-gray-300">色の追加</p>
 					<!-- Color Name -->
@@ -34,13 +52,13 @@
 							<p class="font-bold text-right">カラー名</p>
 						</div>
 						<div class="col-span-9">
-							<input type="text" name="color_name" id="" class="w-full rounded-xl">
+							<input type="text" name="color_name" id="colorName" class="w-full rounded-xl">
 						</div>
 					</div>
 					<!-- Color Name End -->
 					<!-- Registration Button -->
 					<div class="flex justify-center my-4">
-						<button type="submit" onclick="fetchPostData()" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</button>
+						<button type="submit" onclick="fetchAddColor()" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</button>
 					</div>
 					<!-- Registration Button End -->
 				</div>

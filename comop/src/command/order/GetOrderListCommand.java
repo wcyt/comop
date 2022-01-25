@@ -1,7 +1,8 @@
-package command.product;
+package command.order;
 
 import java.util.List;
 
+import bean.OrderBean;
 import command.AbstractCommand;
 import dao.order.OrderDAO;
 import daofactory.AbstractDaoFactory;
@@ -13,11 +14,11 @@ public class GetOrderListCommand extends AbstractCommand {
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext rc = getRequestContext();
 
-		String user_id = (String)rc.getParameter("user_id")[0];
+		int user_id = Integer.parseInt(rc.getParameter("user_id")[0]);
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
-		OrderDAO odao = factory.getOrderDAO();
-		List orderlist = odao.getOrderList(user_id);
+		OrderDAO orderDAO = factory.getOrderDAO();
+		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);
 
 		resc.setResult(orderlist);
 		resc.setTarget("orderHistory");
