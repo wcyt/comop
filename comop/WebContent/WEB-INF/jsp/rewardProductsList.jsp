@@ -16,6 +16,14 @@
     <!-- tailwind css -->
     <title>トップページ</title>
 </head>
+<script>
+function r_check(){
+	const inputValue = document.search_reward_form.key.value;
+	if(inputValue == "" || !inputValue.match(/\S/g)){
+		return false;
+	}
+}
+</script>
 
 <body>
 	<%@include file="Header.jsp"%>
@@ -38,7 +46,7 @@
             </section>
             <!-- Product Description End -->
             <!-- Search Input -->
-            <form method="post" action="searchRewardProducts" id="searchForm" class="w-1/3  sm:my-1">
+            <form method="get" action="searchRewardProducts" name="search_reward_form" onsubmit="return check()" class="w-1/3  sm:my-1">
 		         <!-- Search Input -->
 		         	<div class="bg-gray-100 rounded border border-gray-200 flex items-center justify-between">
 		         		<input type="search" name="key" placeholder="ポイント商品を検索" class="bg-transparent py-1 text-gray-600 font-bold px-4 focus:outline-none w-full" />

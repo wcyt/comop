@@ -3,13 +3,21 @@
 <head>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<script>
+function check(){
+	const inputValue = document.search_form.key.value;
+	if(inputValue == "" || !inputValue.match(/\S/g)){
+		return false;
+	}
+}
+</script>
 <body>
 	<c:choose>
 		<c:when test="${user.name == null}">
 			<!-- ログイン前 -->
 			<header class="fixed top-0 z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->
-		        <form method="post" action="searchProducts" id="searchForm" class="flex flex-row sm:my-1">
+		        <form method="get" action="searchProducts" name="search_form" onsubmit="return check()" class="flex flex-row sm:my-1">
 		            <!-- SiteName -->
 		            <a href="top" class="inline mt-3 mb-3 font-bold text-center">comop</a>
 		            <!-- SiteName End -->
@@ -79,7 +87,7 @@
 			<!-- ログイン後 -->
 			<header class="fixed top-0 z-50 flex flex-col items-center justify-between w-full px-4 bg-gray-100 lg:flex-row lg:px-32">
 		        <!-- SiteName And Search Input -->
-		        <form method="post" action="searchProducts" class="flex flex-row sm:my-1">
+		        <form method="get" action="searchProducts" name="search_form" onsubmit="return check()" class="flex flex-row sm:my-1">
 		            <!-- SiteName -->
 		            <a href="top" class="inline mt-3 mb-3 font-bold text-center">comop</a>
 		            <!-- SiteName End -->
