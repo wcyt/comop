@@ -64,7 +64,7 @@
                     <a href="#option-1" class="px-8 py-3 border-t-2 border-l-2 border-r-2 rounded-t-md" x-bind:class="{ 'bg-gray-100': selected === 'option-1' }" x-on:click="selected = 'option-1'">発送前商品</a>
                     <a href="#option-2" class="px-8 py-3 border-t-2 border-l-2 border-r-2 rounded-t-md" x-bind:class="{ 'bg-gray-100': selected === 'option-2' }" x-on:click="selected = 'option-2'">発送済み商品</a>
                 </nav>
-                <c:if test="${order_list_size} == 0">
+                <c:if test="${order_list_size == 0}">
 	                <div x-show="selected === 'option-1'" class="p-4 bg-gray-100 border-2 rounded-b-md">
 	                    <div class="text-center">
 	                        <p class="my-10 text-xl">発送前商品はありません。</p>
@@ -75,28 +75,59 @@
 	                        </div>
 	                    </div>
 	                </div>
+	                <div x-show="selected === 'option-2'" class="px-6 bg-gray-100 border-2">
+	                    <p class="my-8">お客様の注文一覧と、発送済み商品の確認が可能です。</p>
+	                    <div class="my-4 font-bold text-md">
+	                        <span>件数</span>
+	                        <span>0</span>
+	                        <span>件</span>
+	                    </div>
+                    	<p class="my-10 text-xl text-center">発送済み商品はありません</p>
+                	</div>
                 </c:if>
-                <c:if test="${order_list_size} != 0">
+                <c:if test="${order_list_size != 0}">
 	                <div x-show="selected === 'option-1'" class="p-4 bg-gray-100 border-2 rounded-b-md">
-	                    <div class="text-center">
-	                        <p class="my-10 text-xl">発送前商品はありません。</p>
-	                        <div class="my-10">
-	                            <p>注文履歴への反映には、お時間がかかる場合があります。</p>
-	                            <p>ログインせずにご注文いただいた場合、こちらの注文履歴には反映されません。</p>
-	                            <p>配信される「注文確定メール」より、内容をご確認ください。</p>
-	                        </div>
+		                <span>件数：</span>
+	                    <span class="text-xl">${order_list_size}</span>
+	                    <span>件</span>
+	                    <c:forEach var="order" items="${data}">
+		                    <div class="bg-white rounded-md mt-4 px-6 py-4">
+		                        <p class="text-lg text-red-600">発送準備中</p>
+		                        <div class="grid grid-cols-12 mt-5">
+		                            <div class="col-span-3">
+		                            	<a href="getProductDetail?product_id=${order.product_id}">
+		                            		<img src="images/${order.product_image}" alt="${order.product_name}" class="w-full h-44">
+		                            	</a>
+		                            </div>
+		                            <div class="col-span-5 ml-5 border-r-2 border-gray-200">
+		                            	<a href="getProductDetail?product_id=${order.product_id}">
+		                            		<p class="text-blue-500">${order.product_name}</p>
+		                            	</a>
+		                                <p class="my-2">数量：${order.buy_count}</p>
+		                                <p class="text-lg font-bold">\ ${order.price}</p>
+		                            </div>
+		                            <div class="col-span-4 ml-4">
+		                                <p>注文日：${order.order_date}</p>
+		                                <p>注文番号：${order.order_id}</p>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </c:forEach>
+	                    <div class="bg-white rounded-md px-4 py-6 mt-4">
+	                        <span class="text-gray-400">支払い金額：</span>
+	                        <span class="font-bold text-lg">\ ${total_price}</span>
 	                    </div>
 	                </div>
+	                <div x-show="selected === 'option-2'" class="px-6 bg-gray-100 border-2">
+	                    <p class="my-8">お客様の注文一覧と、発送済み商品の確認が可能です。</p>
+	                    <div class="my-4 font-bold text-md">
+	                        <span>件数</span>
+	                        <span>0</span>
+	                        <span>件</span>
+	                    </div>
+	                    <p class="my-10 text-xl text-center">発送済み商品はありません</p>
+                	</div>
                 </c:if>
-                <div x-show="selected === 'option-2'" class="px-6 bg-gray-100 border-2">
-                    <p class="my-8">お客様の注文一覧と、発送済み商品の確認が可能です。</p>
-                    <div class="my-4 font-bold text-md">
-                        <span>件数</span>
-                        <span>0</span>
-                        <span>件</span>
-                    </div>
-                    <p class="my-10 text-xl text-center">発送済み商品はありません</p>
-                </div>
             </div>
         </article>
     </main>

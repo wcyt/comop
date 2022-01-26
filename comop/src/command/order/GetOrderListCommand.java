@@ -15,12 +15,19 @@ public class GetOrderListCommand extends AbstractCommand {
 		RequestContext rc = getRequestContext();
 
 		int user_id = Integer.parseInt(rc.getParameter("user_id")[0]);
+		int total_price = 0;
 
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		OrderDAO orderDAO = factory.getOrderDAO();
 		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);
-
 		resc.setResult(orderlist);
+
+		for (OrderBean orderBean : orderlist) {
+			total_price += orderBean.getPrice();
+		}
+
+		rc.setAttribute("total_price", total_price);
+		rc.setAttribute("order_list_size", orderlist.size());
 		resc.setTarget("orderHistory");
 
 		return resc;
