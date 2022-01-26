@@ -23,8 +23,10 @@ public class MySQLUserDAO implements UserDAO {
 			st.setString(2, u.getMail());
 			st.setString(3, u.getPassword());
 
-			ResultSet rs = st.executeQuery();
-			rs.next();
+			st.executeUpdate();
+
+			//ResultSet rs = st.executeQuery();
+			//rs.next();
 
 		}catch(SQLException e) {
 			//ロールバックする
