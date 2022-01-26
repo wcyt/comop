@@ -59,14 +59,32 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "INSERT into favorite_table(user_id,product_id) values(?,?)";
-
-			st = cn.prepareStatement(sql);
-
+			String select = "SELECT user_id, product_id FROM favorite_table WHERE user_id=? AND product_id=?";
+			st = cn.prepareStatement(select);
 			st.setString(1, f.getUser_id());
 			st.setString(2, f.getProduct_id());
 
-			st.executeUpdate();
+			ResultSet rs = st.executeQuery();
+
+			if(!rs.next()) {
+
+				String insert = "INSERT into favorite_table(user_id,product_id) values(?,?)";
+
+				st = cn.prepareStatement(insert);
+
+				st.setString(1, f.getUser_id());
+				st.setString(2, f.getProduct_id());
+
+				st.executeUpdate();
+
+				String update = "UPDATE product_table SET favorite_count=favorite_count+1 WHERE product_id=?";
+
+				st = cn.prepareStatement(update);
+
+				st.setString(1, f.getProduct_id());
+
+				st.executeUpdate();
+			}
 
 		}catch(SQLException e) {
 			//ロールバックする
@@ -101,6 +119,14 @@ public class MySQLFavoriteDAO implements FavoriteDAO {
 
 				st.setString(1, user_id);
 				st.setString(2, val[i]);
+
+				st.executeUpdate();
+
+				String sql2 = "UPDATE product_table SET favorite_count=favorite_count-1 WHERE product_id=?";
+
+				st = cn.prepareStatement(sql2);
+
+				st.setString(1, val[i]);
 
 				st.executeUpdate();
 			}
