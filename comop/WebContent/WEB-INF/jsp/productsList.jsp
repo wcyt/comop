@@ -16,6 +16,73 @@
     <!-- tailwind css -->
     <title>商品一覧 - comop</title>
 </head>
+<script>
+	//カラーのチェックボックスをすべて外す
+    function uncheckColorAll() {
+        const checkbox = document.getElementsByName("color_id");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+
+    function uncheckPackingTypeAll() {
+        const checkbox = document.getElementsByName("packing_type");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+
+    function uncheckMaterialAll() {
+        const checkbox = document.getElementsByName("material");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+
+    function uncheckSizeAll() {
+        const checkbox = document.getElementsByName("size");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+    function uncheckSortAll() {
+    	const checkbox = document.getElementsByName("sort");
+        for (i = 0; i < checkbox.length; i++) {
+            checkbox[i].checked = false;
+        }
+    }
+
+    window.addEventListener('load', function() {
+    	const DURATION = 1800;
+    	const element = {
+    	  count: document.getElementById('count')
+    	};
+    	let isAnimating = false;
+
+    	if (isAnimating) {
+    		return;
+    	}
+
+		isAnimating = true;
+
+    	const from = parseInt(element.count.dataset.from, 10);
+    	const to = parseInt(element.count.dataset.to, 10);
+    	const startTime = Date.now();
+
+    	const timer = setInterval(() => {
+	    	const elapsedTime = Date.now() - startTime;
+	    	const progress = elapsedTime / DURATION;
+
+	    	if (progress < 1) {
+	    		element.count.textContent = Math.floor(from + progress * (to - from));
+	    	} else {
+	    		element.count.textContent = to;
+	    		isAnimating = false;
+	    		clearInterval(timer);
+	    	}
+    	}, 16);
+    });
+</script>
 
 <body>
 	<%@include file="Header.jsp" %>
@@ -33,10 +100,10 @@
         <aside class="col-span-3 bg-gray-100 rounded-lg lg:col-span-2">
             <div class="p-4 text-white bg-gray-400 rounded-t-lg">
                 <p class="mb-1 text-md">対象商品</p>
-                <p class="inline text-4xl font-bold">${targetProducts}</p>
+                <p class="inline text-4xl font-bold" id="count" data-from="0" data-to="${targetProducts}">${targetProducts}</p>
                 <span class="">件</span>
             </div>
-            <form method="post" action="refineSearch">
+            <form method="get" action="refineSearch">
             	<!-- Size -->
             	<div class="my-8">
 	            	<p class="pb-2 ml-3 text-xl font-bold">サイズ</p>
@@ -289,35 +356,19 @@
             <!-- Product Description -->
             <section class="ml-4">
                 <h1 class="text-4xl font-bold">マスク</h1>
-                <p class="my-8">マスクの一覧です。</p>
                 <p class="text-2xl mb-8">${message}</p>
+                <c:if test="${targetProducts == 0}">
+	                <p class="text-red-500 text-lg font-normal">条件に一致する商品は見つかりませんでした</p>
+	                <div class="rounded-lg bg-gray-300 p-6 mt-6">
+	                    <p class="font-bold text-lg text-gray-500">検索のヒント</p>
+	                    <div class="text-gray-600 mt-3">
+	                        <span>・条件に間違いがないか確認する</span>
+	                        <span class="ml-4">・条件の数を減らしてみる</span>
+	                    </div>
+	                </div>
+                </c:if>
             </section>
             <!-- Product Description End -->
-            <!-- Dropdowns -->
-            <div class="flex flex-row gap-8 ml-4">
-                <div class="dropdown dropdown-hover">
-                    <div tabindex="0" class="pt-2 m-1 font-bold text-center text-black bg-white text-md">すべてのショップ</div>
-                    <ul tabindex="0" class="w-40 py-2 bg-white rounded-2xl menu dropdown-content">
-                        <li><a>Item 2</a></li>
-                        <li><a>Item 3</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown dropdown-hover">
-                    <div tabindex="0" class="pt-2 m-1 font-bold text-center text-black bg-white text-md">すべてのカテゴリー</div>
-                    <ul tabindex="0" class="w-40 py-2 bg-white rounded-2xl menu dropdown-content">
-                        <li><a>Item 2</a></li>
-                        <li><a>Item 3</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown dropdown-hover">
-                    <div tabindex="0" class="pt-2 m-1 font-bold text-center text-black bg-white text-md">すべての価格タイプ</div>
-                    <ul tabindex="0" class="w-40 py-2 bg-white rounded-2xl menu dropdown-content">
-                        <li><a>Item 2</a></li>
-                        <li><a>Item 3</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Dropdowns End -->
             <!-- Products List -->
             <ul class="grid grid-cols-3 lg:grid-cols-5 gap-4 mt-5 sm:ml-5 lg:ml-0 lg:justify-center">
                 <c:forEach var="product" items="${data}">
@@ -339,41 +390,4 @@
     <!-- Main End -->
     <%@include file="Footer.jsp" %>
 </body>
-<script>
-	//カラーのチェックボックスをすべて外す
-    function uncheckColorAll() {
-        const checkbox = document.getElementsByName("color_id");
-        for (i = 0; i < checkbox.length; i++) {
-            checkbox[i].checked = false;
-        }
-    }
-
-    function uncheckPackingTypeAll() {
-        const checkbox = document.getElementsByName("packing_type");
-        for (i = 0; i < checkbox.length; i++) {
-            checkbox[i].checked = false;
-        }
-    }
-
-    function uncheckMaterialAll() {
-        const checkbox = document.getElementsByName("material");
-        for (i = 0; i < checkbox.length; i++) {
-            checkbox[i].checked = false;
-        }
-    }
-
-    function uncheckSizeAll() {
-        const checkbox = document.getElementsByName("size");
-        for (i = 0; i < checkbox.length; i++) {
-            checkbox[i].checked = false;
-        }
-    }
-    function uncheckSortAll() {
-    	const checkbox = document.getElementsByName("sort");
-        for (i = 0; i < checkbox.length; i++) {
-            checkbox[i].checked = false;
-        }
-    }
-</script>
-
 </html>
