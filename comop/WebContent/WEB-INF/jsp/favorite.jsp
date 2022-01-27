@@ -35,40 +35,24 @@
 			<h1 class="my-5 text-3xl font-bold">${user.name}さんのお気に入り</h1>
 			<p class="text-red-500 text-lg mb-5">${addedFavorite}</p>
 			<p class="text-red-500 text-lg mb-5">${removedFavorite}</p>
-			<div class="flex flex-row">
-				<p class="text-3xl">${favorites}</p>
-				<p class="px-1 pr-5 mt-3 border-r-2">件</p>
-				<div class="dropdown dropdown-hover">
-					<div tabindex="0" class="pt-2 m-1 mx-5 font-bold text-center text-black bg-white text-md">すべてのショップ</div>
-					<ul tabindex="0" class="w-40 py-2 bg-white rounded-2xl menu dropdown-content">
-						<li><a class="bg-gray-200">すべてのショップ</a></li>
-						<li><a>Item 2</a></li>
-						<li><a>Item 3</a></li>
-					</ul>
-				</div>
-				<div class="dropdown dropdown-hover">
-					<div tabindex="0" class="pt-2 m-1 mx-5 font-bold text-center text-black bg-white text-md">すべてのカテゴリー</div>
-					<ul tabindex="0" class="w-40 py-2 bg-white rounded-2xl menu dropdown-content">
-						<li><a class="bg-gray-200">すべてのカテゴリー</a></li>
-						<li><a>Item 2</a></li>
-						<li><a>Item 3</a></li>
-					</ul>
-				</div>
-				<div class="dropdown dropdown-hover">
-					<div tabindex="0" class="pt-2 m-1 mx-5 font-bold text-center text-black bg-white text-md">すべての価格タイプ</div>
-					<ul tabindex="0" class="w-40 py-2 bg-white rounded-2xl menu dropdown-content">
-						<li><a class="bg-gray-200">すべての価格タイプ</a></li>
-						<li><a>Item 2</a></li>
-						<li><a>Item 3</a></li>
-					</ul>
-				</div>
+			<div class="flex flex-row pb-5">
+				<p class="text-4xl">${favorites} </p>
+				<p class="px-1 pr-5 mt-3 text-lg">件</p>
 			</div>
 		</div>
 		<!-- Dropdowns End -->
 		<!-- Products -->
 		<div class="col-span-12 mt-6">
-			<ul class="flex flex-row flex-wrap gap-7">
-				<c:forEach var="product" items="${data}">
+			<c:if test="${favorites == 0}">
+				<div class="flex flex-col mt-10 text-center text-gray-400">
+					<i class="bi bi-suit-heart  text-8xl font-light"></i>
+					<p class="mt-8 text-2xl">お気に入りアイテムの登録はありません</p>
+					<p class="mt-6 text-lg">気になるアイテムを見つけよう！</p>
+				</div>
+			</c:if>
+			<c:if test="${favorites != 0}">
+				<ul class="flex flex-row flex-wrap gap-7">
+					<c:forEach var="product" items="${data}">
 						<li class="flex flex-col transition border border-gray-200 w-52 duration-400 hover:bg-gray-100">
 							<div class="indicator">
 								<div class="indicator-item rounded-full bg-red-500">
@@ -77,7 +61,7 @@
 									</a>
 								</div>
 								<a href="getProductDetail?product_id=${product.product_id}">
-									<img src="images/${product.product_image}" alt="${product.product_name}"  class="w-[206px] h-[206px]">
+									<img src="images/${product.product_image}" alt="${product.product_name}" class="w-[206px] h-[206px]">
 								</a>
 							</div>
 							<div class="p-4 flex flex-row justify-between">
@@ -92,8 +76,9 @@
 								</div>
 							</div>
 						</li>
-				</c:forEach>
-			</ul>
+					</c:forEach>
+				</ul>
+			</c:if>
 		</div>
 		<!-- Products End -->
 	</main>

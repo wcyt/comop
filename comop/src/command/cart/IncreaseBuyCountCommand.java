@@ -39,7 +39,7 @@ public class IncreaseBuyCountCommand extends AbstractCommand {
 		//トランザクションを終了する
 		Connector.getInstance().commit();
 
-		reqc.setAttribute("cartInfo", "カートに追加しました。");
+		reqc.setAttribute("cartInfo", "商品数量を変更しました。");
 
 		//cart.jspに移動
 		resc.setTarget("cart");

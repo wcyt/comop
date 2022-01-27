@@ -31,6 +31,8 @@ public class GetCartListCommand extends AbstractCommand {
 		//トランザクションを終了する
 		Connector.getInstance().commit();
 
+		reqc.setAttribute("cart_list_size", carts.size());
+
 		//cart.jspに移動
 		resc.setTarget("cart");
 

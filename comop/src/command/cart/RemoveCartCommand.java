@@ -36,6 +36,7 @@ public class RemoveCartCommand extends AbstractCommand {
 		Connector.getInstance().commit();
 
 		reqc.setAttribute("cartInfo", "カートから削除しました。");
+		reqc.setAttribute("cart_list_size", carts.size());
 
 		//cart.jspに移動
 		resc.setTarget("cart");

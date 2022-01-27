@@ -40,6 +40,7 @@ public class AddCartCommand extends AbstractCommand {
 		Connector.getInstance().commit();
 
 		reqc.setAttribute("cartInfo", "カートに追加しました。");
+		reqc.setAttribute("cart_list_size", carts.size());
 
 		//cart.jspに移動
 		resc.setTarget("cart");

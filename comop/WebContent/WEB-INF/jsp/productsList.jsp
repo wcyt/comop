@@ -356,7 +356,7 @@
             <!-- Product Description -->
             <section class="ml-4">
                 <h1 class="text-4xl font-bold">マスク</h1>
-                <p class="text-2xl mb-8">${message}</p>
+                <p class="text-2xl my-8">${message}</p>
                 <c:if test="${targetProducts == 0}">
 	                <p class="text-red-500 text-lg font-normal">条件に一致する商品は見つかりませんでした</p>
 	                <div class="rounded-lg bg-gray-300 p-6 mt-6">
