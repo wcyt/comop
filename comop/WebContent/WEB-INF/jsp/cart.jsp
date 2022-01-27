@@ -40,28 +40,31 @@
         <div class="col-span-12 lg:col-span-8">
             <!-- Product -->
             <c:forEach var="cart" items="${data}">
-	            <div class="grid grid-cols-10 flex items-center py-8 border-b-2">
-	            	<a href="getProductDetail?product_id=${cart.product_id}" class="col-span-2">
-	            		<img class="w-full h-44" src="images/${cart.product_image}" alt="">
+	            <div class="grid grid-cols-12 items-center justify-between py-8 border-b-2">
+	            	<a href="getProductDetail?product_id=${cart.product_id}" class="col-span-3">
+	            		<img class="w-full h-44" src="images/${cart.product_image}" alt="${cart.product_name}">
 	            	</a>
-	                <div class="flex flex-col col-span-2 py-10 ml-5 text-left">
+	                <div class="flex flex-col col-span-3 py-10 ml-5 text-left">
 	                    <p class="font-light">${cart.product_name}</p>
+	                    <div class=" text-xl font-bold text-red-400">
+                            <span>\</span>
+                            <span>${cart.price}</span>
+                        </div>
 	                </div>
-	                <div class="flex items-center col-span-2 mx-5 text-xl font-bold text-red-400">
-	                    <span>\</span>
-	                    <span>${cart.price}</span>
+	                <div class="flex flex-row items-center col-span-3 ml-10">
+	                	<!-- 購入個数が1個のとき -->
+	                    <c:if test="${cart.buy_count == 1}">
+			                <span class="bg-white border border-t-gray-300 border-b-gray-300 px-3 py-1 text-lg">${cart.buy_count}</span>
+			                <a href="increaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}" class="bg-blue-400 px-3 py-1 text-white text-xl">+</a>
+	                    </c:if>
+	                    <!-- 購入個数が2個以上 -->
+	                    <c:if test="${cart.buy_count >= 2}">
+		                    <a href="decreaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}" class="bg-blue-400 px-3 py-1 text-white text-xl">-</a>
+			                <span class="bg-white border border-t-gray-300 border-b-gray-300 px-3 py-1 text-lg">${cart.buy_count}</span>
+			                <a href="increaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}" class="bg-blue-400 px-3 py-1 text-white text-xl">+</a>
+	                    </c:if>
 	                </div>
-	                <div class="flex flex-row items-center col-span-2">
-	                    <div class="relative flex flex-row w-24 h-10 ">
-	                        <div class="flex items-center justify-center w-24 text-xs bg-white border cursor-default md:text-base">
-	                            <span>${cart.buy_count}</span>
-	                        </div>
-	                        <button class="flex w-20 h-full font-semibold text-white bg-blue-700 border-l border-gray-400 cursor-pointer hover:bg-blue-600 focus:outline-none">
-	                            <a href="addCart?user_id=${user.user_id}&product_id=${cart.product_id}" class="m-auto text-lg">+</span>
-	                        </button>
-	                    </div>
-	                </div>
-	                <div class="flex items-center col-span-1">
+	                <div class="flex items-center col-span-3 ml-10">
 	                    <a href="removeCart?user_id=${user.user_id}&product_id=${cart.product_id}" class="">削除</a>
 	                </div>
 	            </div>

@@ -77,7 +77,7 @@
 									</a>
 								</div>
 								<a href="getProductDetail?product_id=${product.product_id}">
-									<img src="images/${product.product_image}" alt="商品の画像" class="w-full">
+									<img src="images/${product.product_image}" alt="${product.product_name}"  class="w-[206px] h-[206px]">
 								</a>
 							</div>
 							<div class="p-4 flex flex-row justify-between">
@@ -86,7 +86,8 @@
 									<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
 								</div>
 								<div data-tip="カートへ入れる" class="tooltip mt-10">
-									<a href="addCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}"> <i class="bi bi-cart text-white bg-blue-400 text-xl px-2 py-1 rounded-full"></i>
+									<a href="addCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}">
+										<i class="bi bi-cart text-white bg-blue-400 text-xl px-2 py-1 rounded-full"></i>
 									</a>
 								</div>
 							</div>

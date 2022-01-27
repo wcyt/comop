@@ -53,7 +53,7 @@ public class MySQLCartDAO implements CartDAO {
 
 				st.setInt(1, c.getUser_id());
 				st.setInt(2, c.getProduct_id());
-//				st.setInt(3, c.getBuy_count());
+				//				st.setInt(3, c.getBuy_count());
 
 				st.executeUpdate();
 			}
@@ -140,5 +140,62 @@ public class MySQLCartDAO implements CartDAO {
 		}
 
 		return carts;
+	}
+
+	//buy_countを増加
+	public void increaseBuyCount(CartBean cartBean) {
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT + 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+
+			st = cn.prepareStatement(sql);
+
+			st.setInt(1, cartBean.getUser_id());
+			st.setInt(2, cartBean.getProduct_id());
+
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	//buy_countを減少
+	public void decreaseBuyCount(CartBean cartBean) {
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT - 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+
+			st = cn.prepareStatement(sql);
+
+			st.setInt(1, cartBean.getUser_id());
+			st.setInt(2, cartBean.getProduct_id());
+
+			st.executeUpdate();
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
