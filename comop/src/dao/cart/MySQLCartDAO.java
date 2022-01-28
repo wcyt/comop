@@ -34,13 +34,12 @@ public class MySQLCartDAO implements CartDAO {
 
 				rs.close();
 
-				sql = "UPDATE cart_table SET buy_count=? WHERE user_id=? AND product_id=?";
+				sql = "UPDATE cart_table SET buy_count=buy_count+1 WHERE user_id=? AND product_id=?";
 
 				st = cn.prepareStatement(sql);
 
-				st.setInt(1, buy_count + c.getBuy_count());
-				st.setInt(2, c.getUser_id());
-				st.setInt(3, c.getProduct_id());
+				st.setInt(1, c.getUser_id());
+				st.setInt(2, c.getProduct_id());
 
 				st.executeUpdate();
 				//カートに追加されてなかったらinsertする
