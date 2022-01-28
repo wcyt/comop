@@ -58,7 +58,7 @@
             <!-- Withdrawal -->
             <div class="flex flex-col gap-3 py-5 border-b-2">
                 <h2 class="text-2xl">退会</h2>
-                <a href="">退会手続き</a>
+                <a href="leave">退会手続き</a>
             </div>
             <!-- Withdrawal End -->
         </aside>

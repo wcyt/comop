@@ -1,6 +1,7 @@
 package command.user;
 
 import command.AbstractCommand;
+import dao.Connector;
 import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -15,13 +16,17 @@ public class LapseUserCommand extends AbstractCommand{
 		//パラメータを取得
 		String user_id = (String)rqsc.getParameter("user_id")[0];
 
+		Connector.getInstance().beginTransaction();
+
 		//ユーザーを退会
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		UserDAO msud = factory.getUserDAO();
 		msud.lapseUser(user_id);
 
+		Connector.getInstance().commit();
+
 		//default.jspに移動
-		resc.setTarget("default");
+		resc.setTarget("top");
 
 		return resc;
 	}

@@ -179,16 +179,4 @@ function check(){
 		</c:when>
 	</c:choose>
 </body>
-<script>
-//inputが空白か何もない場合送信させない関数
-const key = document.getElementsByName("key");
-key.addEventListener("keypress", checkInput(key));
-
-function checkInput(key) {
-	if (e.keyCode === 13) {
-        key === "" || key === " " ? false : true;
-	}
-}
-
-</script>
 </html>
