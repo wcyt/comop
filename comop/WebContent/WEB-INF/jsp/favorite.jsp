@@ -47,21 +47,21 @@
 				<div class="flex flex-col mt-10 text-center text-gray-400">
 					<i class="bi bi-suit-heart  text-8xl font-light"></i>
 					<p class="mt-8 text-2xl">お気に入りアイテムの登録はありません</p>
-					<p class="mt-6 text-lg">気になるアイテムを見つけよう！</p>
+					<a href="getProductsList" class="mt-6 text-lg hover:underline">気になるアイテムを見つけよう！</a>
 				</div>
 			</c:if>
-			<c:if test="${favorites != 0}">
+			<c:if test="${favorites >= 1}">
 				<ul class="flex flex-row flex-wrap gap-7">
 					<c:forEach var="product" items="${data}">
-						<li class="flex flex-col transition border border-gray-200 w-52 duration-400 hover:bg-gray-100">
+						<li class="flex flex-col transition w-52 duration-400 shadow hover:bg-gray-100">
 							<div class="indicator">
 								<div class="indicator-item rounded-full bg-red-500">
-									<a href="removeFavorite?user_id=${user.user_id}&product_id=${product.product_id}">
+									<a href="removeFavorite?user_id=${user.user_id}&product_id=${product.product_id}" data-tip="削除する" class="tooltip">
 										<i class="bi bi-x text-white text-xl px-1"></i>
 									</a>
 								</div>
 								<a href="getProductDetail?product_id=${product.product_id}">
-									<img src="images/${product.product_image}" alt="${product.product_name}" class="w-[206px] h-[206px]">
+									<img src="images/${product.product_image}" alt="${product.product_name}" class="w-full h-[206px]">
 								</a>
 							</div>
 							<div class="p-4 flex flex-row justify-between">
@@ -69,7 +69,7 @@
 									<p class="mb-2 font-medium place-content-center">${product.product_name}</p>
 									<p class="text-xl font-bold text-red-600">\ ${product.price}</p>
 								</div>
-								<div data-tip="カートへ入れる" class="tooltip mt-10">
+								<div data-tip="カートへ入れる" class="tooltip mt-14">
 									<a href="addCart?user_id=${sessionScope.user.user_id}&product_id=${product.product_id}">
 										<i class="bi bi-cart text-white bg-blue-400 text-xl px-2 py-1 rounded-full"></i>
 									</a>

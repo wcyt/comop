@@ -1,5 +1,7 @@
 package command.admin;
 
+import java.util.List;
+
 import bean.ColorBean;
 import command.AbstractCommand;
 import dao.admin.ColorManagementDAO;
@@ -25,8 +27,8 @@ public class AddColorCommand extends AbstractCommand {
 		cmd.addColor(color_name);
 
 		// カラーIDとカラー名を全て取得
-		GetColorListCommand getColorListCommand = new GetColorListCommand();
-		getColorListCommand.execute(resc);
+		List<ColorBean> colors = cmd.getColorList();
+		resc.setResult(colors);
 
 		return resc;
 	}

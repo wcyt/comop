@@ -25,6 +25,9 @@ public class LapseUserCommand extends AbstractCommand{
 
 		Connector.getInstance().commit();
 
+		//セッションの切断
+		rqsc.invalidateSession();
+
 		//default.jspに移動
 		resc.setTarget("top");
 

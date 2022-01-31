@@ -41,7 +41,7 @@ public class AddFavoriteCommand extends AbstractCommand{
 		rc.setAttribute("addedFavorite", "お気に入りに追加しました。");
 
 		//favorite.jspに移動
-		resc.setTarget("favorite");
+//		resc.setTarget("favorite");
 
 		return resc;
 	}

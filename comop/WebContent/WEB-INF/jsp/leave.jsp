@@ -123,8 +123,8 @@
                         <div id="warning"></div>
                     </div>
                     <div class="flex justify-center col-span-12 gap-3 mt-7">
-                        <button onclick="location.href='getUserInfo?mail=${user.mail}'" class="px-16 py-2 font-bold border rounded-sm border-sky-500 text-sky-500">退会しない</button>
-                        <button onclick="checkAll()" id="leaveButton" class="px-16 py-2 font-bold text-white rounded-sm bg-sky-500">退会する</button>
+                        <button onclick="location.href='getUserInfo?mail=${user.mail}'" class="px-16 py-2 font-bold border rounded-sm border-sky-500 text-sky-500 focus:outline-none">退会しない</button>
+                        <button onclick="checkAll()" id="leaveButton" class="px-16 py-2 font-bold text-white rounded-sm bg-sky-500 focus:outline-none">退会する</button>
                     </div>
                 </div>
             </article>

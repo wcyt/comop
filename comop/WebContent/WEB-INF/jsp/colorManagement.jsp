@@ -17,22 +17,7 @@
 <title>色の管理・追加</title>
 </head>
 <script>
-const fetchAddColor = () => {
-    const url = location.href;
-    const colorName = document.getElementById("colorName").value;
-    let formData = new FormData();
-    formData.append("colorName", colorName);
-    console.log(formData);
-    console.log(url);
-    fetch('url', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.FormData())
-        .then(data => {
-            console.log(data);
-        })
-};
+
 </script>
 
 <body>
