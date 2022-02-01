@@ -14,7 +14,11 @@ import tera.ResponseContext;
 // 現在のパスワードと新しいパスワードを取得
 // ハッシュ化した現在のパスワードとDBのパスワードが一致したら
 // ハッシュ化した新しいパスワードでDBのパスワードを上書き
+<<<<<<< HEAD
+public class ChangePasswordCommand extends AbstractCommand{
+=======
 public class ChangePasswordCommand extends AbstractCommand {
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 
 	public ResponseContext execute(ResponseContext resc) {
 		RequestContext reqc = getRequestContext();
@@ -35,14 +39,42 @@ public class ChangePasswordCommand extends AbstractCommand {
 		byte[] md5_result = md5.digest(nowpassword.getBytes());
 		String hashedNowPassword = String.format("%020x", new BigInteger(1, md5_result));
 		System.out.println("nowPassword MD5：" + hashedNowPassword);
+<<<<<<< HEAD
+        //現在のパスワードのハッシュ化ここまで
+=======
 		//現在のパスワードのハッシュ化ここまで
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 
+<<<<<<< HEAD
+        //入力された現在のパスワードとDBのパスワードがあってるか UserDAOの取得上にもってきました
+        UserDAO ud = factory.getUserDAO();
+        if(ud.getPasswordHashByID(user_id) == hashedNowPassword) {
+            //新しいパスワードのハッシュ化
+            // MD5
+            MessageDigest md5 = null;
+            try {
+                md5 = MessageDigest.getInstance("MD5");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            byte[] md5_result = md5.digest(newpassword.getBytes());
+            String hashedNewPassword = String.format("%020x", new BigInteger(1, md5_result));
+            System.out.println("newPassword MD5：" + hashedNewPassword);
+=======
 		Connector.getInstance().beginTransaction();
 
 		//入力された現在のパスワードとDBのパスワードがあってるか UserDAOの取得上にもってきました
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		UserDAO ud = factory.getUserDAO();
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 
+<<<<<<< HEAD
+            //パスワードを変更
+		    AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
+		    ud.changePassword(user_id, newpassword);
+            //これは動くのでしょうか
+		    reqc.setAttribute("mess","パスワードを変更しました");
+=======
 		if (ud.getPasswordHashByID(user_id).equals(hashedNowPassword)) {
 			//新しいパスワードのハッシュ化
 			// MD5
@@ -55,7 +87,17 @@ public class ChangePasswordCommand extends AbstractCommand {
 			byte[] newMd5_result = newMd5.digest(newpassword.getBytes());
 			String hashedNewPassword = String.format("%020x", new BigInteger(1, newMd5_result));
 			System.out.println("newPassword MD5：" + hashedNewPassword);
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 
+<<<<<<< HEAD
+        } else {
+            //これは動くのでしょうか
+            reqc.setAttribute("mess","パスワードが間違っています");
+
+        }
+		//top.jspに移動
+		resc.setTarget("top");
+=======
 			//パスワードを変更
 			ud.changePassword(user_id, hashedNewPassword);
 
@@ -74,6 +116,7 @@ public class ChangePasswordCommand extends AbstractCommand {
 		}
 		Connector.getInstance().commit();
 
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 		return resc;
 	}
 }

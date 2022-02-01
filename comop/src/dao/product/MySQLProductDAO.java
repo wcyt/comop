@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import bean.OrderDetailBean;
 import bean.ProductBean;
 import dao.Connector;
 
@@ -339,6 +340,39 @@ public class MySQLProductDAO implements ProductDAO {
 			}
 		}
 		return products;
+	}
+	//在庫を減らす
+	public void reduceStock(List<OrderDetailBean> order_details) {
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "UPDATE product_table SET stock_quantity=stock_quantity-? WHERE product_id=?";
+
+			for (int i = 0; i < order_details.size(); i++) {
+				OrderDetailBean od = (OrderDetailBean) order_details.get(i);
+
+				st = cn.prepareStatement(sql);
+
+				st.setInt(1, od.getBuy_count());
+				st.setInt(2, od.getProduct_id());
+
+				st.executeUpdate();
+			}
+
+		}catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 

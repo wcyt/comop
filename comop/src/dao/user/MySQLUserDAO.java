@@ -213,7 +213,6 @@ public class MySQLUserDAO implements UserDAO {
 		return u;
 	}
 
-	//ログインできるかどうか
 	public String getPasswordHash(String mail) {
 		String password = null;
 		try {

@@ -4,6 +4,7 @@ package dao.product;
 import java.util.List;
 import java.util.Map;
 
+import bean.OrderDetailBean;
 import bean.ProductBean;
 
 public interface ProductDAO {
@@ -14,5 +15,6 @@ public interface ProductDAO {
 	 public int getStock_quantity(String product_id);
 	 public List<ProductBean> sortProducts();
 	 public List<ProductBean> sortFavoriteCount();
+	 public void reduceStock(List<OrderDetailBean> order_details);
 
 }
