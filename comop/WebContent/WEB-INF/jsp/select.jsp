@@ -107,19 +107,19 @@
                         <!-- Credit Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">クレジット番号</p>
-                            <input type="text" name="creditNumber" id="creditNumber" autocomplete="cc-number" placeholder="半角数字のみ（ハイフンなし）" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字のみ（ハイフンなし）" autocomplete="tel" class="col-span-9 w-72" required>
                         </div>
                         <!-- Credit Number End -->
                         <!-- Security Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">セキュリティ番号</p>
-                            <input type="text" name="securityCode" id="securityNumber" autocomplete="cc-csc" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="securityCode" id="securityNumber" value="${security_code}" autocomplete="cc-csc" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
                         </div>
                         <!-- Security Number -->
                         <!-- Card Holder -->
                         <div class="grid items-center grid-cols-12 ">
                             <p class="col-span-3">カード名義</p>
-                            <input type="text" name="cardHolder" id="cardHolder" placeholder="TARO AGEO" autocomplete="cc-name" class="col-span-9 w-72" required>
+                            <input type="text" name="cardHolder" id="cardHolder" value="${card_holder}" placeholder="TARO AGEO" autocomplete="cc-name" class="col-span-9 w-72" required>
                         </div>
                         <!-- Card Holder End -->
                         <!-- Expiration Date -->
@@ -127,15 +127,15 @@
                             <p class="col-span-3">有効期限</p>
                             <select name="expirationMonth" id="expirationMonth" autocomplete="cc-exp-month" class="col-span-3 lg:col-span-2">
                                 <option hidden></option>
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                                <option value="3">03</option>
-                                <option value="4">04</option>
-                                <option value="5">05</option>
-                                <option value="6">06</option>
-                                <option value="7">07</option>
-                                <option value="8">08</option>
-                                <option value="9">09</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -200,7 +200,7 @@
                             <input type="hidden" name="name" value="${user.name}">
                             <input type="hidden" name="mail" value="${user.mail}">
                             <input type="hidden" name="total_price" value="${total_price}">
-                                <button type="submit" id="modalSubmitButton" class="text-white bg-blue-400">送信</button>
+                                <button type="submit" id="modalSubmitButton" class="px-8 py-3 text-white bg-blue-400 rounded-lg font-bold">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteOrder()">キャンセル</label>
                         </div>

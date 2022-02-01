@@ -95,6 +95,7 @@ public class AddOrderCommand extends AbstractCommand {
 		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);
 		resc.setResult(orderlist);
 		rc.setAttribute("order_list_size", orderlist.size());
+		rc.setAttribute("total_price", total_price);
 
 		resc.setTarget("orderHistory");
 
