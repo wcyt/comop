@@ -142,7 +142,7 @@ public class MySQLUserDAO implements UserDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "UPDATE user_table SET point=point+? WHERE user_id=?";
+			String sql = "UPDATE user_table SET point=? WHERE user_id=?";
 
 			st = cn.prepareStatement(sql);
 
@@ -212,12 +212,12 @@ public class MySQLUserDAO implements UserDAO {
 		}
 		return u;
 	}
-<<<<<<< HEAD
+
 	//メールアドレスからパスワード取得
-=======
+
 
 	//ログインできるかどうか
->>>>>>> branch 'main' of git@github.com:wcyt/comop.git
+
 	public String getPasswordHash(String mail) {
 		String password = null;
 		try {
