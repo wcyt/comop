@@ -11,4 +11,5 @@ public interface UserDAO {
 	//user_idからユーザー情報を取得するものは使わなそうなので、mailからユーザ情報を取得するものに変えました
 	public UserBean getMyUserInfo(String mail);
 	public String getPasswordHash(String mail);
+	public String getPasswordHashByID(int user_id);
 }

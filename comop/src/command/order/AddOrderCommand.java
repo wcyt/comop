@@ -9,7 +9,10 @@ import bean.OrderDetailBean;
 import bean.UserBean;
 import command.AbstractCommand;
 import dao.Connector;
+import dao.cart.CartDAO;
 import dao.order.OrderDAO;
+import dao.product.ProductDAO;
+import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
 import tera.ResponseContext;
@@ -80,16 +83,34 @@ public class AddOrderCommand extends AbstractCommand {
 
 		Connector.getInstance().beginTransaction();
 
+
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		OrderDAO orderDAO = factory.getOrderDAO();
-		orderDAO.addOrder(o, list);
+		ProductDAO productDAO = factory.getProductDAO();
+		CartDAO cartDAO = factory.getCartDAO();
+		UserDAO userDAO = factory.getUserDAO();
 
+		//ユーザ情報を変更(動かない)
+		userDAO.editUserInfo(userBean);
+		Connector.getInstance().commit();//毎回コミットしないとなぜか動かなくなる
+
+		//注文テーブルに追加
+		orderDAO.addOrder(o, list);
 		Connector.getInstance().commit();
 
-		Connector.getInstance().beginTransaction();
+		//在庫を減らす
+		productDAO.reduceStock(list);
+		Connector.getInstance().commit();
 
+		//クレジットカード情報を登録(動かない)
 		orderDAO.addCreditInfo(creditBean);
+		Connector.getInstance().commit();
 
+		//カートの中身を空にする
+		for (int i = 0; i < list.size(); i++) {
+			OrderDetailBean od = (OrderDetailBean) list.get(i);
+			cartDAO.removeCart(user_id,od.getProduct_id());
+		}
 		Connector.getInstance().commit();
 
 		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);

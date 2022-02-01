@@ -24,7 +24,7 @@ function check(){
 		            <!-- Search Input -->
 		            <div class="flex flex-row items-center ml-10 bg-white rounded-lg">
 		                <button class="focus:outline-none focus:ring-white"><i class="ml-5 mr-3 bi bi-search"></i></button>
-		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 lg:w-72 rounded-lg focus:bg-white focus:outline-none focus:border-sky-500">
+		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="py-3 border-none outline-none w-96 lg:w-72 rounded-lg focus:bg-white focus:outline-none focus:border-sky-500">
 		            </div>
 		            <!-- Search Input End -->
 		        </form>
@@ -94,7 +94,7 @@ function check(){
 		            <!-- Search Input -->
 		            <div class="flex flex-row ml-10 bg-white rounded-lg">
 		                <button class="focus:outline-none focus:ring-white"><i class="ml-5 mr-3 bi bi-search"></i></button>
-		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="border-none outline-none w-96 lg:w-72 rounded-2xl focus:outline-none focus:ring-white">
+		                <input type="search" name="key" placeholder="すべてのアイテムから探す" class="py-3 border-none outline-none w-96 lg:w-72 rounded-lg focus:bg-white focus:outline-none focus:border-sky-500">
 		            </div>
 		            <!-- Search Input End -->
 		        </form>

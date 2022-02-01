@@ -28,16 +28,16 @@ public class MySQLUserDAO implements UserDAO {
 			//ResultSet rs = st.executeQuery();
 			//rs.next();
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -57,20 +57,21 @@ public class MySQLUserDAO implements UserDAO {
 
 			st.executeUpdate();
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 	//ユーザー情報の編集
 	public void editUserInfo(UserBean u) {
 		try {
@@ -94,20 +95,21 @@ public class MySQLUserDAO implements UserDAO {
 
 			System.out.println(sql);
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 	//ユーザーの退会
 	public void lapseUser(String user_id) {
 		try {
@@ -116,24 +118,25 @@ public class MySQLUserDAO implements UserDAO {
 			String sql = "UPDATE user_table SET user_lapse=1 WHERE user_id=?";
 			st = cn.prepareStatement(sql);
 
-			st.setString(1,user_id);
+			st.setString(1, user_id);
 
 			st.executeUpdate();
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 	//ポイントの更新
 	public void updatePoint(String user_id, int point) {
 		try {
@@ -150,20 +153,21 @@ public class MySQLUserDAO implements UserDAO {
 
 			st.executeUpdate();
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 	//自分のユーザー情報の取得
 	//user_idからユーザー情報を取得するものは使わなそうなので、mailからユーザ情報を取得するものに変えました
 	public UserBean getMyUserInfo(String mail) {
@@ -178,7 +182,7 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = st.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				u.setUser_id(rs.getInt(1));
 				u.setName(rs.getString(2));
 				u.setMail(rs.getString(3));
@@ -193,22 +197,27 @@ public class MySQLUserDAO implements UserDAO {
 				u.setPoint(rs.getInt(12));
 			}
 
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
 		} finally {
 			//リソースの解放処理
 			try {
-				if(st != null) {
+				if (st != null) {
 					st.close();
 				}
-			} catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return u;
 	}
+<<<<<<< HEAD
 	//メールアドレスからパスワード取得
+=======
+
+	//ログインできるかどうか
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 	public String getPasswordHash(String mail) {
 		String password = null;
 		try {
@@ -220,19 +229,51 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = st.executeQuery();
 			//入力されたメールアドレスが登録されてるか
+			if (rs.next()) {
+				password = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return password;
+	}
+
+	//IDからパスワード取得
+	//動く確証なし 動いたらこのコメントは消してください
+	public String getPasswordHashByID(int user_id) {
+		String password = null;
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT password FROM user_table WHERE user_id = ?";
+			st = cn.prepareStatement(sql);
+
+			st.setInt(1, user_id);
+
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				password = rs.getString(1);
 			}
-		}catch(SQLException e) {
+		} catch(SQLException e) {
 			//ロールバックする
 			Connector.getInstance().rollback();
-		}finally {
+		} finally {
 			//リソースの解放処理
 			try {
 				if(st != null) {
 					st.close();
 				}
-			}catch(SQLException e) {
+			} catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
