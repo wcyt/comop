@@ -44,7 +44,7 @@ public class MySQLUserDAO implements UserDAO {
 	}
 
 	//パスワードを変更(ログイン前)
-	public void changePassword(int user_id,String pass) {
+	public void changePassword(int user_id, String pass) {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -135,7 +135,7 @@ public class MySQLUserDAO implements UserDAO {
 		}
 	}
 	//ポイントの更新
-	public void updatePoint(String user_id,int point) {
+	public void updatePoint(String user_id, int point) {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -208,7 +208,7 @@ public class MySQLUserDAO implements UserDAO {
 		}
 		return u;
 	}
-	//ログインできるかどうか
+	//メールアドレスからパスワード取得
 	public String getPasswordHash(String mail) {
 		String password = null;
 		try {
@@ -238,4 +238,35 @@ public class MySQLUserDAO implements UserDAO {
 		}
 		return password;
 	}
+    //IDからパスワード取得
+    //動く確証なし 動いたらこのコメントは消してください
+    public String getPasswordHashByID(int user_id) {
+		String password = null;
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT password FROM user_table WHERE user_id = ?";
+			st = cn.prepareStatement(sql);
+			st.setString(1, user_id);
+
+			ResultSet rs = st.executeQuery();
+			if(rs.next()) {
+				password = rs.getString(1);
+			}
+		} catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return password;
+	}
+
 }

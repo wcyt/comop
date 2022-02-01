@@ -68,7 +68,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                        <input type="text" name="" id="nowPassword" class="w-full lg:w-1/2">
+                        <input type="text" name="nowPassword" id="nowPassword" class="w-full lg:w-1/2">
                     </div>
                 </div>
                 <!-- Now Password End -->
@@ -79,7 +79,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                        <input type="text" name="" id="afterPassword" class="w-full lg:w-1/2">
+                        <input type="text" name="newPassword" id="newPassword" class="w-full lg:w-1/2">
                     </div>
                 </div>
                 <!-- New Password End -->
@@ -114,24 +114,22 @@
 <script>
     function checkPassword() {
         const nowPassword = document.getElementById('nowPassword').value;
-        const afterPassword = document.getElementById('afterPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
         const output =
             `
                 <div id="inputLists" class="text-lg ">
                     <p class="mb-6 text-2xl font-bold ">変更内容の確認</p>
-                    <p class="my-2 ">現在のメールアドレス：${nowPassword}</p>
-                    <p class="my-2 ">新しいメールアドレス：${afterPassword}</p>
+                    <p class="my-2 ">現在のパスワード：${nowPassword}</p>
+                    <p class="my-2 ">新しいパスワード：${newPassword}</p>
                 </div>
             `;
         document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
     }
-
     function deletePassword() {
         const inputLists = document.getElementById('inputLists');
         inputLists.remove();
         console.log(inputLists);
     }
-
     document.getElementById("registMemberInfo").onkeypress = (e) => {
         // form1に入力されたキーを取得
         const key = e.keyCode || e.charCode || 0;
