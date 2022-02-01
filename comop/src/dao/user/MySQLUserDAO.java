@@ -213,11 +213,14 @@ public class MySQLUserDAO implements UserDAO {
 		return u;
 	}
 
+<<<<<<< HEAD
 	//メールアドレスからパスワード取得
 
 
 	//ログインできるかどうか
 
+=======
+>>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 	public String getPasswordHash(String mail) {
 		String password = null;
 		try {
@@ -279,35 +282,4 @@ public class MySQLUserDAO implements UserDAO {
 		}
 		return password;
 	}
-    //IDからパスワード取得
-    //動く確証なし 動いたらこのコメントは消してください
-    public String getPasswordHashByID(int user_id) {
-		String password = null;
-		try {
-			Connection cn = Connector.getInstance().connect();
-
-			String sql = "SELECT password FROM user_table WHERE user_id = ?";
-			st = cn.prepareStatement(sql);
-			st.setString(1, user_id);
-
-			ResultSet rs = st.executeQuery();
-			if(rs.next()) {
-				password = rs.getString(1);
-			}
-		} catch(SQLException e) {
-			//ロールバックする
-			Connector.getInstance().rollback();
-		} finally {
-			//リソースの解放処理
-			try {
-				if(st != null) {
-					st.close();
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return password;
-	}
-
 }

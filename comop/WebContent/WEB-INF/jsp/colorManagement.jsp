@@ -74,19 +74,4 @@
 	</main>
 	<!-- Main End -->
 </body>
-<script>
-function fetchPostData() {
-    const formData = new FormData();
-    formData.append('color_name', document.getElementById('color_name').value);
-    console.log(formData);
-    fetch('http://localhost:8080/comop/addColor', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: formData,
-    })
-};
-</script>
-
 </html>

@@ -100,11 +100,48 @@ public class MySQLOrderDAO implements OrderDAO {
 		return orders;
 	}
 
+	public List<CreditBean> getCreditInfo(int user_id) {
+		List<CreditBean> creditInfo = new ArrayList<CreditBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT CREDIT_NUMBER, CARD_HOLDER,SECURITY_CODE,EXPIRATION_DATE FROM CREDIT_TABLE WHERE USER_ID = ?";
+			st = cn.prepareStatement(sql);
+			st.setInt(1, user_id);
+
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				CreditBean creditBean = new CreditBean();
+
+				creditBean.setCredit_number(rs.getString(1));
+				creditBean.setCard_holder(rs.getString(2));
+				creditBean.setSecurity_code(rs.getString(3));
+				creditBean.setExpiration_date(rs.getString(4));
+
+				creditInfo.add(creditBean);
+			}
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return creditInfo;
+	}
+
 	public void addCreditInfo(CreditBean creditBean) {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "insert into credit_table(user_id, credit_number, card_hoolder, security_code, expiration_date) values(?,?,?,?,?)";
+			String sql = "insert into credit_table(user_id, credit_number, card_holder, security_code, expiration_date) values(?,?,?,?,?)";
 
 			st = cn.prepareStatement(sql);
 
