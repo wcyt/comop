@@ -80,6 +80,7 @@ public class AddOrderCommand extends AbstractCommand {
 		userBean.setTel(tel);
 		userBean.setPostal_code(postalCode);
 		userBean.setPoint(point);
+		userBean.setUser_id(user_id);
 
 		CreditBean creditBean = new CreditBean();
 		creditBean.setUser_id(user_id);
@@ -96,24 +97,19 @@ public class AddOrderCommand extends AbstractCommand {
 		CartDAO cartDAO = factory.getCartDAO();
 		UserDAO userDAO = factory.getUserDAO();
 
-		userDAO.updatePoint(user_id, point);
-		Connector.getInstance().commit();
+		//クレジットカード情報を登録
+		orderDAO.addCreditInfo(creditBean);
 
-		//ユーザ情報を変更(動かない)
+		//ユーザ情報を変更
 		userDAO.editUserInfo(userBean);
-		Connector.getInstance().commit();//毎回コミットしないとなぜか動かなくなる
+
+		userDAO.updatePoint(user_id, point);
 
 		//注文テーブルに追加
 		orderDAO.addOrder(o, list);
-		Connector.getInstance().commit();
 
 		//在庫を減らす
 		productDAO.reduceStock(list);
-		Connector.getInstance().commit();
-
-		//クレジットカード情報を登録
-		orderDAO.addCreditInfo(creditBean);
-		Connector.getInstance().commit();
 
 		//カートの中身を空にする
 		for (int i = 0; i < list.size(); i++) {
