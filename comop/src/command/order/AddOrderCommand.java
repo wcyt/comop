@@ -105,11 +105,11 @@ public class AddOrderCommand extends AbstractCommand {
 
 		userDAO.updatePoint(user_id, point);
 
-		//注文テーブルに追加
-		orderDAO.addOrder(o, list);
-
 		//在庫を減らす
 		productDAO.reduceStock(list);
+
+		//注文テーブルに追加
+		orderDAO.addOrder(o, list);
 
 		//カートの中身を空にする
 		for (int i = 0; i < list.size(); i++) {
@@ -119,6 +119,15 @@ public class AddOrderCommand extends AbstractCommand {
 		Connector.getInstance().commit();
 
 		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);
+
+		if (rc.getSessionAttribute("user") != null) {
+			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+			String smail = ((UserBean) rc.getSessionAttribute("user")).getMail();
+			UserBean u = new UserBean();
+			u = userDAO.getMyUserInfo(smail);
+			rc.setSessionAttribute("user", u);
+		}
+
 		resc.setResult(orderlist);
 		rc.setAttribute("order_list_size", orderlist.size());
 		rc.setAttribute("total_price", total_price);
