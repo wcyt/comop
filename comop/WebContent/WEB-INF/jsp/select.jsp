@@ -180,7 +180,7 @@
 			                    <input type="hidden" name="buy_count" value="${product.buy_count}">
 			                    <input type="hidden" name="product_id" value="${product.product_id}">
 			                </div>
-			                <div class="flex items-center col-span-2 mx-5 text-xl font-light ">
+		;	                <div class="flex items-center col-span-2 mx-5 text-xl font-light ">
 			                    <span>\</span>
 			                    <span>${product.price}</span>
 			                </div>
@@ -200,6 +200,7 @@
                             <input type="hidden" name="name" value="${user.name}">
                             <input type="hidden" name="mail" value="${user.mail}">
                             <input type="hidden" name="total_price" value="${total_price}">
+                            <input type="hidden" name="point" value="${total_price / 10}">
                                 <button type="submit" id="modalSubmitButton" class="px-8 py-3 text-white bg-blue-400 rounded-lg font-bold">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteOrder()">キャンセル</label>
@@ -217,9 +218,13 @@
                 <div class="flex justify-center mt-4 ">
                     <label for="my-modal-2" class="px-20 py-3 text-xl font-bold text-white bg-blue-400 rounded-md " onclick="checkOrder()">確認する</label>
                 </div>
-                <div class="flex justify-between py-5 text-lg border-b border-gray-400 ">
+                <div class="flex justify-between py-5 text-lg ">
                     <span>商品合計</span>
                     <span>\ ${total_price}</span>
+                </div>
+                <div class="flex justify-between py-5 text-lg border-b border-gray-400 ">
+                    <span>ポイント</span>
+                    <span class="text-red-600">\ ${total_price / 10}</span>
                 </div>
                 <div class="flex justify-between py-5">
                     <div>
@@ -227,6 +232,7 @@
                         <span class="font-light text-md ">(税込)</span>
                     </div>
                     <span class="text-2xl font-bold text-red-600 ">\ ${total_price}</span>
+
                 </div>
             </div>
         </div>

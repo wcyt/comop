@@ -18,7 +18,6 @@ public class UpdatePointCommand extends AbstractCommand{
 		String total_price = reqc.getParameter("total_price")[0];
 
 		//ポイントの計算
-		int totalPrice = Integer.parseInt(total_price);
 		int total_point = Integer.parseInt(pt);
 		int point = totalPrice / 10;
 		total_point += point;

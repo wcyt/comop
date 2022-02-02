@@ -138,7 +138,7 @@ public class MySQLUserDAO implements UserDAO {
 	}
 
 	//ポイントの更新
-	public void updatePoint(String user_id, int point) {
+	public void updatePoint(int user_id, int point) {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
@@ -146,10 +146,8 @@ public class MySQLUserDAO implements UserDAO {
 
 			st = cn.prepareStatement(sql);
 
-			st.executeUpdate();
-
 			st.setInt(1, point);
-			st.setString(2, user_id);
+			st.setInt(2, user_id);
 
 			st.executeUpdate();
 

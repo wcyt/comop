@@ -41,6 +41,12 @@ public class AddOrderCommand extends AbstractCommand {
 		String expirationYear = rc.getParameter("expirationYear")[0];
 		String expiration_date = expirationMonth + expirationYear;
 
+		//ポイント用
+		String stringpoint = rc.getParameter("point")[0]; // "207.0"
+		double doublepoint = Double.parseDouble(stringpoint);
+		int point = (int) doublepoint;
+		System.out.println("point: " + point);
+
 		//Order用
 		int user_id = Integer.parseInt(rc.getParameter("user_id")[0]);
 		int total_price = Integer.parseInt(rc.getParameter("total_price")[0]);
@@ -73,6 +79,7 @@ public class AddOrderCommand extends AbstractCommand {
 		userBean.setLast_name_kana(lastNameKana);
 		userBean.setTel(tel);
 		userBean.setPostal_code(postalCode);
+		userBean.setPoint(point);
 
 		CreditBean creditBean = new CreditBean();
 		creditBean.setUser_id(user_id);
@@ -83,12 +90,14 @@ public class AddOrderCommand extends AbstractCommand {
 
 		Connector.getInstance().beginTransaction();
 
-
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		OrderDAO orderDAO = factory.getOrderDAO();
 		ProductDAO productDAO = factory.getProductDAO();
 		CartDAO cartDAO = factory.getCartDAO();
 		UserDAO userDAO = factory.getUserDAO();
+
+		userDAO.updatePoint(user_id, point);
+		Connector.getInstance().commit();
 
 		//ユーザ情報を変更(動かない)
 		userDAO.editUserInfo(userBean);
@@ -102,7 +111,7 @@ public class AddOrderCommand extends AbstractCommand {
 		productDAO.reduceStock(list);
 		Connector.getInstance().commit();
 
-		//クレジットカード情報を登録(動かない)
+		//クレジットカード情報を登録
 		orderDAO.addCreditInfo(creditBean);
 		Connector.getInstance().commit();
 
