@@ -16,6 +16,21 @@
     <!-- tailwind css -->
     <title>カート</title>
 </head>
+<style>
+input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .custom-number-input input:focus {
+    outline: none !important;
+  }
+
+  .custom-number-input button:focus {
+    outline: none !important;
+  }
+</style>
 
 <body>
 	<%@include file="Header.jsp" %>
@@ -61,14 +76,14 @@
 		                <div class="flex flex-row items-center col-span-3 ml-10">
 		                	<!-- 購入個数が1個のとき -->
 		                    <c:if test="${cart.buy_count == 1}">
-				                <span class="bg-white border border-t-gray-300 border-b-gray-300 px-3 py-1 text-lg">${cart.buy_count}</span>
-				                <a href="increaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}" class="bg-blue-400 px-3 py-1 text-white text-xl">+</a>
+				                <input type="number" min="1" max="${cart.stock_quantity}" class="bg-white border border-t-gray-300 border-b-gray-300 text-center py-1 focus:outline-none" name="custom-input-number" value="${cart.buy_count}" readonly></input>
+				                <a href="increaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}&buy_count=${cart.buy_count}&stock_quantity=${cart.stock_quantity}" class="bg-blue-400 px-3 py-1 text-white text-xl">+</a>
 		                    </c:if>
 		                    <!-- 購入個数が2個以上 -->
 		                    <c:if test="${cart.buy_count >= 2}">
-			                    <a href="decreaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}" class="bg-blue-400 px-2 py-1 text-white text-xl font-bold">－</a>
-				                <span class="bg-white border border-t-gray-300 border-b-gray-300 px-3 py-1 text-lg">${cart.buy_count}</span>
-				                <a href="increaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}" class="bg-blue-400 px-3 py-1 text-white text-xl">+</a>
+			                    <a href="decreaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}&buy_count=${cart.buy_count}&stock_quantity=${cart.stock_quantity}" class="bg-blue-400 px-2 py-1 text-white text-xl font-bold">－</a>
+				                <input type="number" min="1" max="${cart.stock_quantity}" class="bg-white border border-t-gray-300 border-b-gray-300 text-center py-1 focus:outline-none" name="custom-input-number" value="${cart.buy_count}" readonly></input>
+				                <a href="increaseBuyCount?user_id=${user.user_id}&product_id=${cart.product_id}&buy_count=${cart.buy_count}&stock_quantity=${cart.stock_quantity}" class="bg-blue-400 px-3 py-1 text-white text-xl">+</a>
 		                    </c:if>
 		                </div>
 		                <div class="flex items-center col-span-3 ml-10">

@@ -61,7 +61,7 @@
 									</a>
 								</div>
 								<a href="getProductDetail?product_id=${product.product_id}">
-									<img src="images/${product.product_image}" alt="${product.product_name}" class="w-full h-[206px]">
+									<img src="images/${product.product_image}" alt="${product.product_name}" class="w-[206px] h-[206px]">
 								</a>
 							</div>
 							<div class="p-4 flex flex-row justify-between">

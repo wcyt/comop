@@ -19,10 +19,14 @@ public class IncreaseBuyCountCommand extends AbstractCommand {
 		//パラメータを取得
 		int user_id = Integer.parseInt(reqc.getParameter("user_id")[0]);
 		int product_id = Integer.parseInt(reqc.getParameter("product_id")[0]);
+		int buy_count = Integer.parseInt(reqc.getParameter("buy_count")[0]);
+		int stock_quantity = Integer.parseInt(reqc.getParameter("stock_quantity")[0]);
 
 		CartBean cartBean = new CartBean();
 		cartBean.setUser_id(user_id);
 		cartBean.setProduct_id(product_id);
+		cartBean.setBuy_count(buy_count);
+		cartBean.setStock_quantity(stock_quantity);
 
 		//トランザクションを開始
 		Connector.getInstance().beginTransaction();

@@ -107,7 +107,7 @@ public class MySQLCartDAO implements CartDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT product_id,p.product_name,p.product_image,p.price,c.buy_count FROM cart_table c JOIN product_table p USING(product_id) WHERE c.user_id=?";
+			String sql = "SELECT product_id,p.product_name,p.product_image,p.price,c.buy_count,p.stock_quantity FROM cart_table c JOIN product_table p USING(product_id) WHERE c.user_id=?";
 			st = cn.prepareStatement(sql);
 			st.setInt(1, user_id);
 
@@ -120,6 +120,7 @@ public class MySQLCartDAO implements CartDAO {
 				c.setProduct_image(rs.getString(3));
 				c.setPrice(rs.getInt(4));
 				c.setBuy_count(rs.getInt(5));
+				c.setStock_quantity(rs.getInt(6));
 
 				carts.add(c);
 			}
@@ -146,12 +147,23 @@ public class MySQLCartDAO implements CartDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT + 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+			//購入個数が在庫より多いとき
+			if (cartBean.getBuy_count() >= cartBean.getStock_quantity()) {
+				String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT + 0 WHERE USER_ID = ? AND PRODUCT_ID = ?";
 
-			st = cn.prepareStatement(sql);
+				st = cn.prepareStatement(sql);
 
-			st.setInt(1, cartBean.getUser_id());
-			st.setInt(2, cartBean.getProduct_id());
+				st.setInt(1, cartBean.getUser_id());
+				st.setInt(2, cartBean.getProduct_id());
+			} else {
+				//購入個数が在庫より多くないとき
+				String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT + 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+
+				st = cn.prepareStatement(sql);
+
+				st.setInt(1, cartBean.getUser_id());
+				st.setInt(2, cartBean.getProduct_id());
+			}
 
 			st.executeUpdate();
 
@@ -175,6 +187,7 @@ public class MySQLCartDAO implements CartDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
+			System.out.println("購入個数" + cartBean.getBuy_count());
 			String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT - 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
 
 			st = cn.prepareStatement(sql);
