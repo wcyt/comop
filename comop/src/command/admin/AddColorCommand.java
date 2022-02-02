@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.ColorBean;
 import command.AbstractCommand;
+import dao.Connector;
 import dao.admin.ColorManagementDAO;
 import daofactory.AbstractDaoFactory;
 import tera.RequestContext;
@@ -21,6 +22,8 @@ public class AddColorCommand extends AbstractCommand {
 		ColorBean cb = new ColorBean();
 		cb.setColor_name(color_name);
 
+		Connector.getInstance().beginTransaction();
+
 		// 色の追加
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		ColorManagementDAO cmd = factory.getColorManagementDAO();
@@ -29,6 +32,10 @@ public class AddColorCommand extends AbstractCommand {
 		// カラーIDとカラー名を全て取得
 		List<ColorBean> colors = cmd.getColorList();
 		resc.setResult(colors);
+
+		Connector.getInstance().commit();
+
+		resc.setTarget("colorManagement");
 
 		return resc;
 	}

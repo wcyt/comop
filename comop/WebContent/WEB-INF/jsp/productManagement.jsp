@@ -5,209 +5,248 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
-    <!-- font  -->
-    <!-- tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
-    <!-- tailwind css -->
-    <title>商品の管理・追加</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.24.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>商品管理</title>
 </head>
 
 <body>
-    <!-- Main -->
-    <main id="main" class="grid grid-cols-12 gap-6 py-16 bg-white sm:px-4 lg:px-16">
-        <div class="flex justify-center col-span-12">
-            <a href="/WEB-INF/jsp/admin.jsp" class="px-6 py-1 text-white bg-gray-400 rounded-full">管理ページTOP</a>
-        </div>
-        <div class="flex flex-col items-center col-span-12 gap-3">
-            <h1 class="text-2xl font-bold text-center">商品登録</h1>
-        </div>
-        <!-- Product Management -->
-        <div class="col-span-12 lg:col-span-6">
-            <form action="addProduct" method="post">
-                <div class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
-                    <p class="py-3 text-xl text-center border-b-2 border-gray-300">商品管理</p>
-                    <!-- Product Name -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">商品名</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="product_name" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Product Name End -->
-                    <!-- Product Image -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">商品画像</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="product_image" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Product Image End -->
-                    <!-- Stock -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">在庫数</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="stock_quantity" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Stock End -->
-                    <!-- Product Description -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">ポイント商品説明</p>
-                        </div>
-                        <div class="col-span-9">
-                            <textarea name="product_description" class="w-full border-black textarea textarea-bordered" placeholder=""></textarea>
-                        </div>
-                    </div>
-                    <!-- Product Description End -->
-                    <!-- Price -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">値段</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="price" id="" inputmode="numeric" pattern="\d*" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Price End -->
-                    <!-- Size -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">サイズ</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="size" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Size End -->
-                    <!-- Material -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">素材</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="material" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Material End -->
-                    <!-- Packing Type -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">包装タイプ</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="packing_type" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Packing Type End -->
-                    <!-- Color ID -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">カラーID</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="color_id" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Color ID End -->
-                    <!-- Registration Button -->
-                    <div class="flex justify-center my-4">
-                        <button type="submit" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</a>
-                    </div>
-                    <!-- Registration Button End -->
+    <main id="main" class="grid grid-cols-12">
+        <aside id="sidebar" class="grid h-full col-span-2 pt-12 text-lg bg-white text-slate-800 drop-shadow-xl">
+            <ul class="text-gray-300">
+                <li class="py-4 pl-4 hover:text-black">
+                    <a href="getAdminUserList">
+                        <i class="pr-3 text-xl bi bi-person-fill"></i>
+                        <span>User</span>
+                    </a>
+                </li>
+                <li class="py-4 pl-4 hover:text-black">
+                    <a href="getAdminColorList">
+                        <i class="pr-3 text-xl bi bi-palette-fill"></i>
+                        <span>Color</span>
+                    </a>
+                </li>
+                <li class="py-4 pl-4 text-black border-l-8 border-green-500">
+                    <i class="pr-3 text-xl bi bi-box-seam"></i>
+                    <span>Products</span>
+                </li>
+                <li class="py-4 pl-4 hover:text-black">
+                    <a href="getAdminRewardProductsList">
+                        <i class="pr-3 text-xl bi bi-gift-fill"></i>
+                        <span>RewardProducts</span>
+                    </a>
+                </li>
+                <li class="py-4 pl-4 hover:text-black">
+                    <a href="logout">
+                        <i class="pr-4 text-xl bi bi-box-arrow-left"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <div class="col-span-10 bg-gray-100">
+            <div class="grid-cols-12 px-8 py-4 text-base font-bold bg-white">
+                <p>ADMIN</p>
+            </div>
+            <p class="px-8 my-6 text-3xl font-light">Product Admin</p>
+            <div class="px-8" x-data="{ selected: 'option-1' }">
+                <nav class="flex gap-4">
+                    <a href="#option-1" class="px-4 py-3 font-bold" x-bind:class="{ 'border-b-4 border-green-500': selected === 'option-1' }" x-on:click="selected = 'option-1'">Products</a>
+                    <a href="#option-2" class="px-4 py-3 font-bold" x-bind:class="{ 'border-b-4 border-green-500': selected === 'option-2' }" x-on:click="selected = 'option-2'">Add Product</a>
+                    <a href="#option-3" class="px-4 py-3 font-bold" x-bind:class="{ 'border-b-4 border-green-500': selected === 'option-3' }" x-on:click="selected = 'option-3'">Edit Product</a>
+                </nav>
+                <div x-show="selected === 'option-1'" class="mt-4 overflow-x-auto rounded-lg h-full">
+                    <table class="table w-full text-center">
+                        <thead>
+                            <tr>
+                                <th>商品ID</th>
+                                <th>商品名</th>
+                                <th>商品画像</th>
+                                <th>在庫数</th>
+                                <th>商品説明</th>
+                                <th>値段</th>
+                                <th>カラーID</th>
+                                <th>サイズ（普通・小さめ・キッズ）</th>
+                                <th>素材（不織布・布・ウレタン・ガーゼ）</th>
+                                <th>包装タイプ（個包装・大容量）</th>
+                                <th>お気に入り数</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <c:forEach var="products" items="${data}">
+                            <tr class="truncate whitespace-pre-wrap hover">
+                                <th>${products.product_id}</th>
+                                <td>${products.product_name}</td>
+                                <td>${products.product_image}</td>
+                                <td>${products.stock_quantity}</td>
+                                <td>${products.product_description}</td>
+                                <td>${products.price}</td>
+                                <td>${products.color_id}</td>
+                                <td>${products.size}</td>
+                                <td>${products.material}</td>
+                                <td>${products.packing_type}</td>
+                                <td>${products.favorite_count}</td>
+                                <td><a href="removeProduct?product_id=${products.product_id}" class="hover:underline">Delete</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
                 </div>
-            </form>
-        </div>
-        <!-- Product Management End -->
-        <!-- Add Image -->
-        <div class="col-span-12 lg:col-span-6">
-            <form action="" method="">
-                <div class="flex flex-col gap-2 px-6 font-normal border-2 border-gray-300 rounded-xl">
-                    <p class="py-3 text-xl text-center border-b-2 border-gray-300">画像の追加</p>
-                    <!-- Product ID -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">画像のパス</p>
+                <div x-show="selected === 'option-2'" class="mt-4 rounded-lg h-full">
+                    <form action="addProduct" method="post" class="form-control">
+                        <div class="bg-white rounded-lg">
+                            <p class="py-3 font-mono text-xl text-center border-b-2">Add Product</p>
+                            <!-- Color Name -->
+                            <div class="grid grid-cols-12 gap-6 px-5 my-8 text-lg">
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product Name</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_name" placeholder="product name" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product Image</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_image" placeholder="product image path" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product Description</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_description" placeholder="product description" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Stock Quantity</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="stock_quantity" placeholder="stock quantity" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Price</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="price" placeholder="price" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Size</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="size" placeholder="size" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Material</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="material" placeholder="material" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Packing Type</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="packing_type" placeholder="packing type" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Color ID</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="color_id" placeholder="color_id" class="w-full input input-bordered">
+                                </div>
+                            </div>
+                            <!-- Color Name End -->
+                            <!-- Registration Button -->
+                            <div class="flex justify-center my-8">
+                                <button type="submit" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">REGISTER</button>
+                            </div>
+                            <!-- Registration Button End -->
                         </div>
-                        <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Product ID End -->
-                    <!-- Product Name -->
-                    <div class="grid grid-cols-12 gap-4 px-5 my-4 text-lg">
-                        <div class="flex items-center col-span-3 text-center">
-                            <p class="font-bold text-right">商品ID</p>
-                        </div>
-                        <div class="col-span-9">
-                            <input type="text" name="" id="" class="w-full rounded-xl">
-                        </div>
-                    </div>
-                    <!-- Product Name End -->
-                    <!-- Registration Button -->
-                    <div class="flex justify-center my-4">
-                        <a href="" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">登録する</a>
-                    </div>
-                    <!-- Registration Button End -->
+                    </form>
                 </div>
-            </form>
+                <div x-show="selected === 'option-3'" class="mt-4 rounded-lg h-full">
+                    <form action="editProduct" method="post" class="form-control">
+                        <div class="bg-white rounded-lg">
+                            <p class="py-3 font-mono text-xl text-center border-b-2">Edit Product</p>
+                            <!-- Color Name -->
+                            <div class="grid grid-cols-12 gap-6 px-5 my-8 text-lg">
+                            	<div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product ID</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_id" placeholder="product id" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product Name</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_name" placeholder="product name" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product Image</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_image" placeholder="product image path" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Product Description</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="product_description" placeholder="product description" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Stock Quantity</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="stock_quantity" placeholder="stock quantity" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Price</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="price" placeholder="price" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Size</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="size" placeholder="size" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Material</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="material" placeholder="material" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Packing Type</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="packing_type" placeholder="packing type" class="w-full input input-bordered">
+                                </div>
+                                <div class="flex items-center col-span-3">
+                                    <p class="pl-8 font-bold">Color ID</p>
+                                </div>
+                                <div class="col-span-9">
+                                    <input type="text" name="color_id" placeholder="color_id" class="w-full input input-bordered">
+                                </div>
+                            </div>
+                            <!-- Color Name End -->
+                            <!-- Registration Button -->
+                            <div class="flex justify-center my-8">
+                                <button type="submit" class="max-w-lg px-32 py-2 text-center text-white bg-gray-400 rounded-full">REGISTER</button>
+                            </div>
+                            <!-- Registration Button End -->
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!-- Add Image End -->
-        <!-- Product List -->
-        <h2 class="col-span-12 my-5 text-2xl font-bold flex justify-center">商品一覧</h2>
-        <div class="col-span-12 overflow-x-auto">
-        	<table class="table w-full text-center table-auto">
-            	<thead>
-                	<tr>
-                    	<th>商品ID</th>
-                        <th>商品名</th>
-                        <th>商品画像</th>
-                        <th>在庫数</th>
-                        <th>商品説明</th>
-                        <th>値段</th>
-                        <th>カラーID</th>
-                        <th>サイズ（普通・小さめ・キッズ）</th>
-                        <th>素材（不織布・布・ウレタン・ガーゼ）</th>
-                        <th>包装タイプ（個包装・大容量）</th>
-                        <th>お気に入り数</th>
-					</tr>
-                </thead>
-                <tbody>
-                	<c:forEach var="products" items="${data}">
-	                	<tr class="hover truncate whitespace-pre-wrap">
-	                    	<th>${products.product_id}</th>
-	                        <td>${products.product_name}</td>
-	                        <td>${products.product_image}</td>
-	                        <td>${products.stock_quantity}</td>
-	                        <td>${products.product_description}</td>
-	                        <td>${products.price}</td>
-	                        <td>${products.color_id}</td>
-	                        <td>${products.size}</td>
-	                        <td>${products.material}</td>
-	                        <td>${products.packing_type}</td>
-	                        <td>${products.favorite_count}</td>
-	                    </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-         </div>
-        <!-- Product List End -->
     </main>
-    <!-- Main End -->
 </body>
-<script>
-
-</script>
 
 </html>

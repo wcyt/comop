@@ -70,9 +70,6 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 			st.setInt(6, p.getReward_product_id());
 
 			st.executeUpdate();
-
-			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
@@ -104,9 +101,6 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 			st.setInt(5, p.getPoint_price());
 
 			st.executeUpdate();
-
-			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
@@ -136,8 +130,6 @@ public class MySQLPointProductManagementDAO implements PointProductManagementDAO
 
 			st.executeUpdate();
 
-			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする

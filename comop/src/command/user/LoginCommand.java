@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 import bean.UserBean;
 import command.AbstractCommand;
+import command.admin.GetUserListCommand;
 import dao.Connector;
 import dao.user.UserDAO;
 import daofactory.AbstractDaoFactory;
@@ -50,9 +51,11 @@ public class LoginCommand extends AbstractCommand {
 		String passwordHash = userDAO.getPasswordHash(mail);
 		System.out.println("Login: passVal.input " + password + " db " + passwordHash);
 
-		// メールアドレスがadmin@adminかつパスワードがadminの時にadmin.jspに移動する
+		// メールアドレスがadmin@adminかつパスワードがadminの時にuserManagement.jspに移動する
 		if (mail.equals("admin@admin") && password.equals("admin")) {
-			resc.setTarget("admin");
+			GetUserListCommand getUserListCommand = new GetUserListCommand();
+			getUserListCommand.execute(resc);
+			resc.setTarget("userManagement");
 		} else {
 			if (hashedPassword.equals(passwordHash)) {
 				System.out.println("MailAddress: " + mail + " Password: " + password + " PasswordHash:" + passwordHash);

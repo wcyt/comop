@@ -213,14 +213,7 @@ public class MySQLUserDAO implements UserDAO {
 		return u;
 	}
 
-<<<<<<< HEAD
 	//メールアドレスからパスワード取得
-
-
-	//ログインできるかどうか
-
-=======
->>>>>>> branch 'main' of git@github.com:wcyt/comop.git
 	public String getPasswordHash(String mail) {
 		String password = null;
 		try {

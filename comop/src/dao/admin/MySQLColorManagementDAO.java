@@ -27,7 +27,6 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 			st.executeUpdate();
 
 			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
@@ -58,7 +57,6 @@ public class MySQLColorManagementDAO implements ColorManagementDAO {
 			st.executeUpdate();
 
 			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする

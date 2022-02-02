@@ -1,5 +1,7 @@
 package command.admin;
 
+import java.util.List;
+
 import bean.PointRewardBean;
 import command.AbstractCommand;
 import dao.admin.PointProductManagementDAO;
@@ -34,8 +36,8 @@ public class AddRewardProductCommand extends AbstractCommand {
 		pointProductManagementDAO.addRewardProduct(prb);
 
 		// ポイント商品一覧を取得
-		GetRewardProductsListCommand getRewardProductsListCommand = new GetRewardProductsListCommand();
-		getRewardProductsListCommand.execute(resc);
+		List<PointRewardBean> pointRewardList = pointProductManagementDAO.getRewardProductsList();
+		resc.setResult(pointRewardList);
 
 		// productManagement.jspに移動
 		resc.setTarget("rewardProductManagement");

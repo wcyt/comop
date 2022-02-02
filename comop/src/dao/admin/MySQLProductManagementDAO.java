@@ -19,7 +19,7 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT product_id,color_id,color_name,product_name,product_image,product_description,stock_quantity,price,size,material,packing_type,favorite_count FROM product_table JOIN color_table USING(color_id)";
+			String sql = "SELECT product_id,color_id,color_name,product_name,product_image,product_description,stock_quantity,price,size,material,packing_type,favorite_count FROM product_table JOIN color_table USING(color_id) ORDER BY product_id";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
@@ -82,7 +82,6 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 			st.executeUpdate();
 
 			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
@@ -121,7 +120,6 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 			st.executeUpdate();
 
 			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
@@ -152,7 +150,6 @@ public class MySQLProductManagementDAO implements ProductManagementDAO {
 			st.executeUpdate();
 
 			cn.commit();
-			cn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//ロールバックする
