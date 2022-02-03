@@ -376,6 +376,7 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 
 	}
+
 	public List randomProduct() {
 		List<ProductBean> products = new ArrayList<ProductBean>();
 		try {

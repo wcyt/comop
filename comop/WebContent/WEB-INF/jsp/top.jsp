@@ -75,7 +75,6 @@
 
                 	</c:forEach>
 
-
                 </ul>
             </section>
             <!-- Generation Item Ranking End -->

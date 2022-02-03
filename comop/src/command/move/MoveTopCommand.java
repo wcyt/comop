@@ -26,7 +26,6 @@ public class MoveTopCommand extends AbstractCommand {
 
 		}else {
 			list.add(prodao.sortFavoriteCount());
-
 		}
 		*/
 		list.add(prodao.sortFavoriteCount());
