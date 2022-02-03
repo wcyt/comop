@@ -172,7 +172,7 @@ public class MySQLUserDAO implements UserDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point FROM user_table WHERE mail=?";
+			String sql = "SELECT user_id,name,mail,address,first_name,first_name_kana,last_name,last_name_kana,tel,postal_code,password,point, user_lapse FROM user_table WHERE mail=?";
 
 			st = cn.prepareStatement(sql);
 			st.setString(1, mail);
@@ -192,6 +192,7 @@ public class MySQLUserDAO implements UserDAO {
 				u.setPostal_code(rs.getString(10));
 				u.setPassword(rs.getString(11));
 				u.setPoint(rs.getInt(12));
+				u.setUser_lapse(rs.getInt(13));
 			}
 
 		} catch (SQLException e) {

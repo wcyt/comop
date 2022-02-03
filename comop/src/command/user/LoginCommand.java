@@ -64,9 +64,17 @@ public class LoginCommand extends AbstractCommand {
 					//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
 					UserBean u = new UserBean();
 					u = userDAO.getMyUserInfo(mail);
-					reqc.setSessionAttribute("user", u);
-					System.out.println("Login: loginsuccess");
-					resc.setTarget("top");
+					System.out.println(u.getUser_lapse());
+					if(u.getUser_lapse() == 1) {
+						//退会済みのユーザーのログインを拒否
+						System.out.println("Login: user_lapse");
+						reqc.setAttribute("message", "このユーザーは退会しています");
+						resc.setTarget("signIn");
+					}else {
+						reqc.setSessionAttribute("user", u);
+						System.out.println("Login: loginsuccess");
+						resc.setTarget("top");
+					}
 				}
 			} else {
 				//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
