@@ -99,8 +99,10 @@ public class MySQLProductDAO implements ProductDAO {
 					where=where.substring(0,where.length()-2);
 					if(val[0].equals("asc"))
 						orderby+=" ORDER BY price";
-					else
+					else if(val[0].equals("desc"))
 						orderby+=" ORDER BY price DESC";
+					else
+						orderby+=" ORDER BY favorite_count DESC";
 				}
 				where += "&&";
 			}
