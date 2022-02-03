@@ -17,6 +17,8 @@ public class SortFavoriteCountCommand extends AbstractCommand {
 
 		resc.setResult(favsort);
 
+		resc.setTarget("top");
+
 		return resc;
 	}
 }
