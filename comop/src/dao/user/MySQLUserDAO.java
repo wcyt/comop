@@ -51,10 +51,9 @@ public class MySQLUserDAO implements UserDAO {
 			String sql = "UPDATE user_table SET password=? WHERE user_id=?";
 
 			st = cn.prepareStatement(sql);
-
-			st.setInt(1, user_id);
-			st.setString(2, pass);
-
+			st.setString(1, pass);
+			st.setInt(2, user_id);
+			System.out.println("changePass.id"+ user_id + "pass"+ pass);
 			st.executeUpdate();
 
 		} catch (SQLException e) {
