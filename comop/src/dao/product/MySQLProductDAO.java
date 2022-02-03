@@ -377,6 +377,42 @@ public class MySQLProductDAO implements ProductDAO {
 
 	}
 
+	public List randomProduct() {
+		List<ProductBean> products = new ArrayList<ProductBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE ORDER BY RAND()";
+			st = cn.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				ProductBean p = new ProductBean();
+
+				p.setProduct_id(rs.getInt(1));
+				p.setProduct_name(rs.getString(2));
+				p.setProduct_image(rs.getString(3));
+				p.setPrice(rs.getInt(4));
+
+				products.add(p);
+			}
+
+		}catch(SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		}finally {
+			//リソースの解放処理
+			try {
+				if(st != null) {
+					st.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
+
+	}
 
 
 }

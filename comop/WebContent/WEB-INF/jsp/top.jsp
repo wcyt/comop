@@ -57,58 +57,24 @@
         <article class="col-span-9 lg:col-span-10">
             <!-- Generation Item Ranking -->
             <section class="mt-10">
-                <p class="pt-6 text-2xl font-bold">閲覧数ランキング</p>
+                <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
+                	<c:forEach begin="1" end="5" var="product" items="${data.get(0)}">
+
+	                	<li class="">
+	                        <div class="flex flex-col w-52">
+	                            <a href="getProductDetail?product_id=${product.product_id}">
+		                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
+		                		</a>
+	                            <div class="p-4 bg-white">
+	                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
+	                                <p class="text-xl font-bold">${product.price }</p>
+	                            </div>
+	                        </div>
+	                    </li>
+
+                	</c:forEach>
+
                 </ul>
             </section>
             <!-- Generation Item Ranking End -->
@@ -116,56 +82,21 @@
             <section class="mt-10">
                 <p class="pt-6 text-2xl font-bold">商品ラインナップ</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="flex flex-col w-52">
-                            <img class="" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-                            <div class="p-4 bg-white">
-                                <p class="mb-1 font-bold text-md">NIKE</p>
-                                <p class="mb-2 font-light">スニーカー</p>
-                                <p class="text-xl font-bold">\11,000</p>
-                            </div>
-                        </div>
-                    </li>
+                    <c:forEach begin="1" end="5" var="product" items="${data.get(1)}">
+
+	                	<li class="">
+	                        <div class="flex flex-col w-52">
+	                            <a href="getProductDetail?product_id=${product.product_id}">
+		                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
+		                		</a>
+	                            <div class="p-4 bg-white">
+	                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
+	                                <p class="text-xl font-bold">${product.price }</p>
+	                            </div>
+	                        </div>
+	                    </li>
+
+                	</c:forEach>
                 </ul>
             </section>
             <!-- Item Line-Up End -->

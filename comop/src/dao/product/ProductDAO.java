@@ -16,5 +16,6 @@ public interface ProductDAO {
 	 public List<ProductBean> sortProducts();
 	 public List<ProductBean> sortFavoriteCount();
 	 public void reduceStock(List<OrderDetailBean> order_details);
+	 public List randomProduct();
 
 }
