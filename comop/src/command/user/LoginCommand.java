@@ -66,7 +66,7 @@ public class LoginCommand extends AbstractCommand {
 					u = userDAO.getMyUserInfo(mail);
 					System.out.println(u.getUser_lapse());
 					if(u.getUser_lapse() == 1) {
-						//退会済みのユーザーのログインを拒否
+						//退会済みのユーザーのログイン拒否
 						System.out.println("Login: user_lapse");
 						reqc.setAttribute("message", "このユーザーは退会しています");
 						resc.setTarget("signIn");

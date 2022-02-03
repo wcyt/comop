@@ -166,7 +166,7 @@ public class MySQLUserDAO implements UserDAO {
 	}
 
 	//自分のユーザー情報の取得
-	//user_idからユーザー情報を取得するものは使わなそうなので、mailからユーザ情報を取得するものに変えました
+	//user_idからユーザー情報を取得するものは使わなそうなのでmailからユーザ情報を取得するものに変えました
 	public UserBean getMyUserInfo(String mail) {
 		UserBean u = new UserBean();
 		try {
