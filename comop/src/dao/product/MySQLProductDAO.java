@@ -142,6 +142,7 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 		return products;
 	}
+
 	//商品詳細の取得
 	public List<ProductBean> getProductDetail(String product_id) {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();
