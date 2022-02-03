@@ -142,7 +142,7 @@ public class MySQLUserDAO implements UserDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "UPDATE user_table SET point=? WHERE user_id=?";
+			String sql = "UPDATE user_table SET point = point + ? WHERE user_id=?";
 
 			st = cn.prepareStatement(sql);
 
