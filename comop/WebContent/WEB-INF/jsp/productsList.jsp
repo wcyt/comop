@@ -220,6 +220,7 @@
 		                    </label>
 	               		</li>
 	            	</ul>
+
 	            	<div class="mt-3 ml-3">
 	                	<button type="button" class="px-3 mr-3 font-semibold text-blue-400 border border-blue-400 rounded-full focus:outline-none" onclick="uncheckSortAll()">クリア</button>
 	                </div>

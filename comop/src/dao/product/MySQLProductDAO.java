@@ -109,7 +109,6 @@ public class MySQLProductDAO implements ProductDAO {
 			//最後の&&を消す
 			where=where.substring(0,where.length()-2);
 
-
 			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE "+where+orderby;
 
 			System.out.println("MySQLProductDAO,select文:"+sql);
