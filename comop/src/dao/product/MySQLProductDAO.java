@@ -99,14 +99,15 @@ public class MySQLProductDAO implements ProductDAO {
 					where=where.substring(0,where.length()-2);
 					if(val[0].equals("asc"))
 						orderby+=" ORDER BY price";
-					else
+					else if(val[0].equals("desc"))
 						orderby+=" ORDER BY price DESC";
+					else
+						orderby+=" ORDER BY favorite_count DESC";
 				}
 				where += "&&";
 			}
 			//最後の&&を消す
 			where=where.substring(0,where.length()-2);
-
 
 			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE "+where+orderby;
 
@@ -141,6 +142,7 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 		return products;
 	}
+
 	//商品詳細の取得
 	public List<ProductBean> getProductDetail(String product_id) {
 		ArrayList<ProductBean> products = new ArrayList<ProductBean>();

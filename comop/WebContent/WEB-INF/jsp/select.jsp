@@ -180,7 +180,7 @@
 			                    <input type="hidden" name="buy_count" value="${product.buy_count}">
 			                    <input type="hidden" name="product_id" value="${product.product_id}">
 			                </div>
-		;	                <div class="flex items-center col-span-2 mx-5 text-xl font-light ">
+			                <div class="flex items-center col-span-2 mx-5 text-xl font-light ">
 			                    <span>\</span>
 			                    <span>${product.price}</span>
 			                </div>

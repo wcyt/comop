@@ -80,6 +80,7 @@ public class AddOrderCommand extends AbstractCommand {
 		userBean.setTel(tel);
 		userBean.setPostal_code(postalCode);
 		userBean.setPoint(point);
+		userBean.setUser_id(user_id);
 
 		CreditBean creditBean = new CreditBean();
 		creditBean.setUser_id(user_id);
@@ -96,24 +97,19 @@ public class AddOrderCommand extends AbstractCommand {
 		CartDAO cartDAO = factory.getCartDAO();
 		UserDAO userDAO = factory.getUserDAO();
 
-		userDAO.updatePoint(user_id, point);
-		Connector.getInstance().commit();
+		//クレジットカード情報を登録
+		orderDAO.addCreditInfo(creditBean);
 
-		//ユーザ情報を変更(動かない)
+		//ユーザ情報を変更
 		userDAO.editUserInfo(userBean);
-		Connector.getInstance().commit();//毎回コミットしないとなぜか動かなくなる
 
-		//注文テーブルに追加
-		orderDAO.addOrder(o, list);
-		Connector.getInstance().commit();
+		userDAO.updatePoint(user_id, point);
 
 		//在庫を減らす
 		productDAO.reduceStock(list);
-		Connector.getInstance().commit();
 
-		//クレジットカード情報を登録
-		orderDAO.addCreditInfo(creditBean);
-		Connector.getInstance().commit();
+		//注文テーブルに追加
+		orderDAO.addOrder(o, list);
 
 		//カートの中身を空にする
 		for (int i = 0; i < list.size(); i++) {
@@ -123,6 +119,15 @@ public class AddOrderCommand extends AbstractCommand {
 		Connector.getInstance().commit();
 
 		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);
+
+		if (rc.getSessionAttribute("user") != null) {
+			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+			String smail = ((UserBean) rc.getSessionAttribute("user")).getMail();
+			UserBean u = new UserBean();
+			u = userDAO.getMyUserInfo(smail);
+			rc.setSessionAttribute("user", u);
+		}
+
 		resc.setResult(orderlist);
 		rc.setAttribute("order_list_size", orderlist.size());
 		rc.setAttribute("total_price", total_price);
