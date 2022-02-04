@@ -218,11 +218,11 @@
                 <div class="flex justify-center mt-4 ">
                     <label for="my-modal-2" class="px-20 py-3 text-xl font-bold text-white bg-blue-400 rounded-md " onclick="checkOrder()">確認する</label>
                 </div>
-                <div class="flex justify-between py-5 text-lg ">
+                <div class="flex justify-between pt-5 text-lg ">
                     <span>商品合計</span>
                     <span>\ ${total_price}</span>
                 </div>
-                <div class="flex justify-between py-5 text-lg border-b border-gray-400 ">
+                <div class="flex justify-between pb-5 text-lg border-b border-gray-400 ">
                     <span>ポイント</span>
                     <span class="text-red-600">\ ${total_price / 10}</span>
                 </div>

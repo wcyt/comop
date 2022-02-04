@@ -18,7 +18,7 @@
 </head>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const password = document.getElementById('password').innerHTML = '*'.repeat(10);
+        const password = document.getElementById('password').innerHTML = '*'.repeat(8);
     }, false);
 </script>
 <body>
@@ -52,7 +52,7 @@
             <!-- Point -->
             <div class="flex flex-col gap-3 py-5 border-b-2">
                 <h2 class="text-2xl">ポイント</h2>
-                <a href="">ポイント</a>
+                <a href="getPointOrderList?user_id=${user.user_id}">ポイント</a>
             </div>
             <!-- Point End -->
             <!-- Withdrawal -->

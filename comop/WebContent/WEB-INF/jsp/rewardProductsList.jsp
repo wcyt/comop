@@ -46,30 +46,51 @@ function r_check(){
             </section>
             <!-- Product Description End -->
             <!-- Search Input -->
-            <form method="get" action="searchRewardProducts" name="search_reward_form" onsubmit="return check()" class="w-1/3  sm:my-1">
+            <form method="get" action="searchRewardProducts" name="search_reward_form" onsubmit="return r_check()" class="w-1/3  sm:my-1">
 		         <!-- Search Input -->
 		         	<div class="bg-gray-100 rounded border border-gray-200 flex items-center justify-between">
-		         		<input type="search" name="key" placeholder="ポイント商品を検索" class="bg-transparent py-1 text-gray-600 font-bold px-4 focus:outline-none w-full" />
-		         		<button class="py-1 px-6 bg-white text-gray-600 rounded-r border-l border-gray-200 hover:bg-gray-50 active:bg-gray-200 disabled:opacity-50 inline-flex items-center focus:outline-none">検索</button>
+		         		<input type="search" name="key" placeholder="ポイント商品を検索" class="bg-transparent py-4 text-gray-600 font-bold px-4 focus:outline-none w-full" />
+		         		<button type="submit" class="py-1 px-6 bg-white text-gray-600 rounded-r border-l border-gray-200 hover:bg-gray-50 active:bg-gray-200 disabled:opacity-50 inline-flex items-center focus:outline-none">検索</button>
 		         	</div>
 		         <!-- Search Input End -->
 		    </form>
             <!-- Products List -->
-            <ul class="flex flex-row flex-wrap gap-6 mt-5">
-            	<c:forEach var="reward" items="${data}">
-	                <li class="flex flex-col w-64 transition duration-400 hover:bg-gray-100">
-	                    <img class="h-44" src="images/${reward.reward_product_image}" alt="">
-	                    <div class="p-4">
-	                        <p class="mb-2 text-xl">${reward.reward_product_name}</p>
-	                        <div class="my-4">
-	                        	<span class="text-2xl text-red-500 font-bold ">${reward.point_price}</span>
-	                        	<span class="text-md font-bold">ポイント</span>
-	                        </div>
-	                        <p class="text-lg">${reward.reward_product_description}</p>
-	                    </div>
-	                </li>
-                </c:forEach>
-            </ul>
+	            <ul class="flex flex-row flex-wrap gap-6 mt-5">
+					<c:forEach var="reward" items="${data}">
+						<li class="flex flex-col w-64 transition duration-400 hover:bg-gray-100">
+							<img class="h-44" src="images/${reward.reward_product_image}" alt="">
+							<div class="p-4">
+								<p class="px-3 mb-2 text-xl">${reward.reward_product_name}</p>
+								<div class="my-4 px-3">
+									<span class="text-2xl text-red-500 font-bold ">${reward.point_price}</span>
+									<span class="text-md font-bold">ポイント</span>
+								</div>
+								<div tabindex="0" class="w-full collapse">
+									<div class="font-medium text-md collapse-title">商品説明</div>
+									<div class="collapse-content">
+										<p class="text-lg">${reward.reward_product_description}</p>
+									</div>
+								</div>
+								<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg">交換する</label>
+								<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
+								<div class="modal">
+									<div class="modal-box">
+										<div class="text-lg">
+											<p>${reward.reward_product_name}を交換します。</p>
+											<p class="text-red-500">注文後、指定の住所に送られます。</p>
+											<p>それでもよろしいですか？</p>
+										</div>
+										<div class="modal-action">
+											<label for="my-modal-${reward.reward_product_id}" class="mt-3">
+												<a href="addPointOrder?user_id=${user.user_id}&reward_product_id=${reward.reward_product_id}&total_point_price=${reward.point_price}" class="p-3 px-5 mt-5 font-bold text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600">はい</a>
+											</label>
+											<label for="my-modal-${reward.reward_product_id}" class="btn">いいえ</label>
+										</div>
+									</div>
+								</div>
+							</div></li>
+					</c:forEach>
+	            </ul>
             <!-- Products List End -->
         </article>
         <!-- Products End -->
