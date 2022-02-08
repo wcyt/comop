@@ -63,6 +63,7 @@ window.addEventListener('DOMContentLoaded', function() {
         <!-- Search List End -->
         <!-- Article -->
         <article class="col-span-9 lg:col-span-10">
+
             <!-- Generation Item Ranking -->
             <section class="mt-10">
                 <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
@@ -103,6 +104,31 @@ window.addEventListener('DOMContentLoaded', function() {
                 </ul>
             </section>
             <!-- Item Line-Up End -->
+				<c:if test="${!empty user.name and !empty data.get(2)}">
+
+		        	<section class="mt-10">
+		                <p class="pt-6 text-2xl font-bold">お気に入り商品</p>
+		                <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
+		                	<c:forEach var="product" items="${data.get(2)}">
+
+			                	<li class="">
+			                        <div class="flex flex-col w-52">
+			                            <a href="getProductDetail?product_id=${product.product_id}">
+				                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
+				                		</a>
+			                            <div class="p-4 bg-white">
+			                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
+			                                <p class="text-xl font-bold">${product.price }</p>
+			                            </div>
+			                        </div>
+			                    </li>
+
+		                	</c:forEach>
+
+		                </ul>
+		            </section>
+				</c:if>
+
         </article>
         <!-- Article End -->
     </main>

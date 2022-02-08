@@ -2,6 +2,7 @@ package command.move;
 
 import java.util.ArrayList;
 
+import bean.UserBean;
 import command.AbstractCommand;
 import dao.favorite.FavoriteDAO;
 import dao.product.ProductDAO;
@@ -18,18 +19,17 @@ public class MoveTopCommand extends AbstractCommand {
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		FavoriteDAO favoritedao = factory.getFavoriteDAO();
 		ProductDAO prodao = factory.getProductDAO();
-/*
-		//ログインしてるときは自分のお気に入りを表示
-		if(rc.getSessionAttribute("user") != null) {
-			String user_id = String.valueOf(((UserBean) rc.getSessionAttribute("user")).getUser_id());
-			list.add(favoritedao.getFavoriteList(user_id));
 
-		}else {
-			list.add(prodao.sortFavoriteCount());
-		}
-		*/
+
 		list.add(prodao.sortFavoriteCount());
 		list.add(prodao.randomProduct());
+
+		//ログインしてるときは自分のお気に入りを表示
+			if(rc.getSessionAttribute("user") != null) {
+				String user_id = String.valueOf(( (UserBean) rc.getSessionAttribute("user")).getUser_id());
+				list.add(favoritedao.getFavoriteList(user_id));
+
+			}
 
 		resc.setResult(list);
 
