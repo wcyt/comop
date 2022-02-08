@@ -63,7 +63,7 @@ public class MySQLOrderDAO implements OrderDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT o.order_date,o.total_price,o.shipped,product_id,od.buy_count,p.product_name,p.product_image,p.price, o.order_id FROM order_table o JOIN order_detail od USING(order_id) JOIN product_table p USING(product_id) WHERE o.user_id=?";
+			String sql = "SELECT o.order_date,o.total_price,o.shipped,product_id,od.buy_count,p.product_name,p.product_image,p.price, o.order_id FROM order_table o JOIN order_detail od USING(order_id) JOIN product_table p USING(product_id) WHERE o.user_id=? AND shipped = 0";
 			st = cn.prepareStatement(sql);
 			st.setInt(1, user_id);
 
@@ -166,5 +166,74 @@ public class MySQLOrderDAO implements OrderDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public void updateShipped(int user_id, OrderBean orderBean) {
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "UPDATE ORDER_TABLE SET SHIPPED = 1 WHERE ORDER_ID = ? AND USER_ID = ?";
+
+			st = cn.prepareStatement(sql);
+
+			st.setInt(1, orderBean.getOrder_id());
+			st.setInt(2, user_id);
+
+			st.executeUpdate();
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public List<OrderBean> getShippedOrderList(int user_id) {
+		ArrayList<OrderBean> orders = new ArrayList<OrderBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT o.order_date,o.total_price,o.shipped,product_id,od.buy_count,p.product_name,p.product_image,p.price, o.order_id FROM order_table o JOIN order_detail od USING(order_id) JOIN product_table p USING(product_id) WHERE o.user_id=? AND SHIPPED = 1;";
+			st = cn.prepareStatement(sql);
+			st.setInt(1, user_id);
+
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				OrderBean o = new OrderBean();
+
+				o.setOrder_date(rs.getString(1));
+				o.setTotal_price(rs.getInt(2));
+				o.setShipped(rs.getBoolean(3));
+				o.setProduct_id(rs.getInt(4));
+				o.setBuy_count(rs.getInt(5));
+				o.setProduct_name(rs.getString(6));
+				o.setProduct_image(rs.getString(7));
+				o.setPrice(rs.getInt(8));
+				o.setOrder_id(rs.getInt(9));
+
+				orders.add(o);
+			}
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return orders;
 	}
 }

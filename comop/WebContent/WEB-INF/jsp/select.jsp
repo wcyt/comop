@@ -286,19 +286,20 @@
     }
 
     function createInputLists(inputElementValues) {
+        const {firstName, firstNameKana, lastName, lastNameKana, postalCode, address, tel, creditNumber, securityNumber, cardHolder, expirationMonth, expirationYear} = inputElementValues;
         const inputLists =
             `
                 <div id="inputLists" class="text-lg">
                     <p class="mb-4 text-2xl font-bold">注文内容の確認</p>
-                    <p class="my-2">お名前 : \${inputElementValues.firstName} \${inputElementValues.lastName}</p>
-                    <p class="my-2">お名前（カナ）: \${inputElementValues.firstNameKana} \${inputElementValues.lastNameKana}</p>
-                    <p class="my-2">郵便番号 : \${inputElementValues.postalCode}</p>
-                    <p class="my-2">住所 : \${inputElementValues.address}</p>
-                    <p class="my-2">電話番号 : \${inputElementValues.tel}</p>
-                    <p class="my-2">クレジット番号 : \${inputElementValues.creditNumber}</p>
-                    <p class="my-2">セキュリティ番号 : \${inputElementValues.securityNumber}</p>
-                    <p class="my-2">カード名義 : \${inputElementValues.cardHolder}</p>
-                    <p class="my-2">有効期限 : \${inputElementValues.expirationMonth}月 \${inputElementValues.expirationYear}年</p>
+                    <p class="my-2">お名前 : \${firstName} \${lastName}</p>
+                    <p class="my-2">お名前（カナ）: \${firstNameKana} \${lastNameKana}</p>
+                    <p class="my-2">郵便番号 : \${postalCode}</p>
+                    <p class="my-2">住所 : \${address}</p>
+                    <p class="my-2">電話番号 : \${tel}</p>
+                    <p class="my-2">クレジット番号 : \${creditNumber}</p>
+                    <p class="my-2">セキュリティ番号 : \${securityNumber}</p>
+                    <p class="my-2">カード名義 : \${cardHolder}</p>
+                    <p class="my-2">有効期限 : \${expirationMonth}月 \${expirationYear}年</p>
                 </div>
             `;
         return inputLists;
@@ -308,13 +309,6 @@
         const inputLists = document.getElementById('inputLists');
         inputLists.remove();
     }
-
-    // enterでsubmitさせない
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-        }
-    });
 
     function searchAddress() {
         const error = document.getElementById('error');

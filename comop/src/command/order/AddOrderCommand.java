@@ -1,5 +1,8 @@
 package command.order;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,8 +121,6 @@ public class AddOrderCommand extends AbstractCommand {
 		}
 		Connector.getInstance().commit();
 
-		List<OrderBean> orderlist = orderDAO.getOrderList(user_id);
-
 		if (rc.getSessionAttribute("user") != null) {
 			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
 			String smail = ((UserBean) rc.getSessionAttribute("user")).getMail();
@@ -128,16 +129,29 @@ public class AddOrderCommand extends AbstractCommand {
 			rc.setSessionAttribute("user", u);
 		}
 
-		resc.setResult(orderlist);
-		rc.setAttribute("order_list_size", orderlist.size());
+		List<OrderBean> orderList = orderDAO.getOrderList(user_id);
+		resc.setResult(orderList);
+
+		for (OrderBean orderBean : orderList) {
+			total_price += orderBean.getPrice();
+
+			LocalDate accessedDate = LocalDate.now(); // 注文履歴にアクセスした時の日付
+			LocalDate orderDate = LocalDate.parse(orderBean.getOrder_date(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); //注文日時
+			long dateDifference = ChronoUnit.DAYS.between(orderDate, accessedDate); // アクセスした時の日付と注文日の差分
+
+			//日付の差分が3日以上の場合、発送済みにする
+			if (dateDifference >= 3) orderDAO.updateShipped(user_id,orderBean);
+		}
+
+		List<OrderBean> shippedProductsList = orderDAO.getShippedOrderList(user_id);
+		rc.setAttribute("shipped_list", shippedProductsList);
+		rc.setAttribute("shipped_order_list_size", shippedProductsList.size());
+
 		rc.setAttribute("total_price", total_price);
+		rc.setAttribute("order_list_size", orderList.size());
 
 		resc.setTarget("orderHistory");
 
 		return resc;
 	}
 }
-
-
-
-

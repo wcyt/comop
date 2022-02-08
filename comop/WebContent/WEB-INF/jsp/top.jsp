@@ -68,42 +68,37 @@ window.addEventListener('DOMContentLoaded', function() {
                 <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
                 	<c:forEach begin="1" end="5" var="product" items="${data.get(0)}">
-
-	                	<li class="">
+	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">
 		                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
 		                		</a>
-	                            <div class="p-4 bg-white">
+	                            <div class="p-4">
 	                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
-	                                <p class="text-xl font-bold">${product.price }</p>
+	                                <p class="text-xl font-bold">\ ${product.price }</p>
 	                            </div>
 	                        </div>
 	                    </li>
-
                 	</c:forEach>
-
                 </ul>
             </section>
             <!-- Generation Item Ranking End -->
             <!-- Item Line-Up -->
             <section class="mt-10">
                 <p class="pt-6 text-2xl font-bold">商品ラインナップ</p>
-                <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
+                <ul class="flex w-full h-full mt-5 overflow-visible overflow-x-auto">
                     <c:forEach begin="1" end="5" var="product" items="${data.get(1)}">
-
-	                	<li class="">
+	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">
 		                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
 		                		</a>
-	                            <div class="p-4 bg-white">
-	                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
-	                                <p class="text-xl font-bold">${product.price }</p>
+	                            <div class="p-4">
+	                                <p class="mb-1 font-bold text-md">${product.product_name}</p>
+	                                <p class="text-xl font-bold">\ ${product.price}</p>
 	                            </div>
 	                        </div>
 	                    </li>
-
                 	</c:forEach>
                 </ul>
             </section>
