@@ -105,13 +105,11 @@ window.addEventListener('DOMContentLoaded', function() {
             </section>
             <!-- Item Line-Up End -->
 				<c:if test="${!empty user.name and !empty data.get(2)}">
-
 		        	<section class="mt-10">
 		                <p class="pt-6 text-2xl font-bold">お気に入り商品</p>
 		                <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
 		                	<c:forEach var="product" items="${data.get(2)}">
-
-			                	<li class="">
+			                	<li class="bg-white">
 			                        <div class="flex flex-col w-52">
 			                            <a href="getProductDetail?product_id=${product.product_id}">
 				                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
@@ -122,13 +120,10 @@ window.addEventListener('DOMContentLoaded', function() {
 			                            </div>
 			                        </div>
 			                    </li>
-
 		                	</c:forEach>
-
 		                </ul>
 		            </section>
 				</c:if>
-
         </article>
         <!-- Article End -->
     </main>
