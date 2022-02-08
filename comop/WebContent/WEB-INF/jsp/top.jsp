@@ -16,7 +16,15 @@
     <!-- tailwind css -->
     <title>comop</title>
 </head>
-
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+	const url = location.href;
+	const origin = location.origin + "/comop/";
+	if (url === origin || url === origin + "login") {
+		window.location.href = '/comop/top';
+	}
+});
+</script>
 
 <body>
 	<%@include file="Header.jsp" %>
