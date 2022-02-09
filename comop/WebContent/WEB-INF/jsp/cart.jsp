@@ -32,7 +32,7 @@ input[type='number']::-webkit-inner-spin-button,
   }
 </style>
 
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">

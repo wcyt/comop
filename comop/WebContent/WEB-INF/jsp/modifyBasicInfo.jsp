@@ -39,21 +39,19 @@
             <!-- Member Registration Information -->
             <div class="flex flex-col gap-3 pb-5 border-b-2">
                 <h2 class="text-2xl">会員登録情報</h2>
-                <a href="">会員登録情報</a>
-                <a href="">お届け先の追加・変更</a>
-                <a href="">クレジットカード情報</a>
+                <a href="getUserInfo?mail=${user.mail}">会員登録情報</a>
             </div>
             <!-- Member Registration Information End -->
             <!-- Point -->
             <div class="flex flex-col gap-3 py-5 border-b-2">
                 <h2 class="text-2xl">ポイント</h2>
-                <a href="">ポイント</a>
+                <a href="getPointOrderList?user_id=${user.user_id}">ポイント</a>
             </div>
             <!-- Point End -->
             <!-- Withdrawal -->
             <div class="flex flex-col gap-3 py-5 border-b-2">
                 <h2 class="text-2xl">退会</h2>
-                <a href="">退会手続き</a>
+                <a href="leave">退会手続き</a>
             </div>
             <!-- Withdrawal End -->
         </aside>
@@ -70,8 +68,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstName" id="firstName" placeholder="例）上尾" class="w-1/2">
-                        <input type="text" name="lastName" id="lastName" placeholder="太郎" class="w-1/2">
+                        <input type="text" name="firstName" id="firstName" autocomplete="given-name" placeholder="例）上尾" value="${user.first_name}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
+                        <input type="text" name="lastName" id="lastName" autocomplete="family-name" placeholder="太郎" value="${user.last_name}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
                     </div>
                 </div>
                 <!-- Name End -->
@@ -85,8 +83,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" class="w-1/2">
-                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" class="w-1/2">
+                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" value="${user.first_name_kana}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
+                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" value="${user.last_name_kana}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
                     </div>
                 </div>
                 <!-- Name(kana) End -->
@@ -97,7 +95,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="email" name="mail" id="mail" placeholder="XXX.gmail.com" class="w-1/2">
+                        <input type="email" name="mail" id="mail" placeholder="XXX.gmail.com" value="${user.mail}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
                     </div>
                 </div>
                 <!-- Mail Address End -->
@@ -108,7 +106,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="tel" id="tel" class="w-1/2" required>
+                        <input type="text" name="tel" id="tel" class="w-1/2 px-3 py-2 focus:outline-blue-400" value="${user.tel}" required>
                     </div>
                 </div>
                 <!-- Tel End -->
@@ -119,7 +117,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" class="w-1/2">
+                        <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" value="${user.postal_code}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
                         <a href="https://www.post.japanpost.jp/zipcode/index.html" class="text-blue-400 hover:underline">郵便番号を調べる<i class="ml-3 bi bi-box-arrow-up-right"></i></a>
                     </div>
                 </div>
@@ -131,7 +129,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" class="w-full lg:w-1/2">
+                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" value="${user.address}" class="w-full lg:w-1/2 px-3 py-2 focus:outline-blue-400">
                     </div>
                 </div>
                 <!-- Address End -->

@@ -37,8 +37,8 @@
         <form method="post" action="login" class="container col-span-12 px-12 py-8 mx-auto mt-4 bg-gray-200 w-96 form-control rounded-3xl">
             <p class="py-2 text-2xl font-bold text-center">ログイン</p>
             <p class="text-red-500 my-2">${message}</p>
-            <input type="text" id="mailAddress" name="mailAddress"placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input" required>
-            <input type="password" id="password" name="password"placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input" required>
+            <input type="text" id="mailAddress" name="mailAddress"placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input focus:outline-blue-400" required>
+            <input type="password" id="password" name="password"placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input focus:outline-blue-400" required>
             <div class="flex flex-row mt-4">
                 <input type="checkbox" id="checkbox" onclick="changeInputType()" class="accent-blue-400 text-white rounded-md h-5 w-5 mt-[0.4rem] mr-2">
             	<span class="mt-1">パスワードを表示する</span>

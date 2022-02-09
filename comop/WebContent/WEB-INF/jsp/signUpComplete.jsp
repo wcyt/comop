@@ -19,27 +19,27 @@
 </head>
 
 <body>
-    <!-- Grid -->
-    <div class="grid grid-cols-12">
-        <!-- Header -->
-        <header class="flex flex-col items-center justify-between w-full col-span-12 px-4 bg-gray-100 lg:flex-row md:px-32">
-            <!-- SiteName -->
-            <div class="flex flex-col lg:flex-row sm:mt-1">
-                <a href="top" class="inline mt-2 mb-3 font-bold text-center">サイト名予定地</a>
-            </div>
-            <!-- SiteName End-->
-        </header>
-        <!-- Header End -->
-        <!-- Main -->
-        <main class="col-span-12 mt-4 mb-8 lg:px-32 sm:px-4">
-            <!-- Breadcrumbs -->
-            <nav class="text-lg font-light breadcrumbs ">
-                <ul>
-                    <li><a>Home</a></li>
-                    <li><a>新規会員登録</a></li>
-                </ul>
-            </nav>
-            <!-- Breadcrumbs End -->
+	<!-- Header -->
+	<header class="flex items-center justify-between w-full col-span-12 px-4 bg-gray-100 lg:flex-row md:px-32">
+		<!-- SiteName -->
+		<div class="flex flex-col lg:flex-row sm:mt-1">
+			<a href="top" class="inline mt-2 mb-3 font-bold text-center">comop</a>
+		</div>
+		<!-- SiteName End-->
+	</header>
+	<!-- Header End -->
+	<!-- Grid -->
+    <div class="grid grid-cols-12 h-screen">
+		<!-- Breadcrumbs -->
+		<nav class="text-lg col-span-12 font-light breadcrumbs px-32 mt-4">
+			<ul>
+				<li><a href="top">ホーム</a></li>
+				<li><a>新規会員登録</a></li>
+			</ul>
+		</nav>
+		<!-- Breadcrumbs End -->
+		<!-- Main -->
+		<main class="col-span-12 mt-4 mb-8 lg:px-32 sm:px-4">
             <!-- Content -->
             <section class="my-24 text-center">
                 <p class="mb-5 text-3xl font-normal">会員登録が完了しました</p>
@@ -52,52 +52,10 @@
         </main>
         <!-- Main End -->
         <!-- Footer -->
-        <footer class="col-span-12 bg-gray-200 lg:px-32 sm:px-4">
-            <div class="flex flex-row md:my-10 sm:my-5">
-                <ul class="md:pr-8 sm:pr-0">
-                    <li>ZOZOTOWN</li>
-                    <li>ZOZOSHOES</li>
-                    <li>ZOZOCOSME</li>
-                    <li>ZOZOGOLF</li>
-                    <li>ZOZOUSED</li>
-                    <li>ZOZOVILLA</li>
-                    <li>YOUR BRAND PROJECT</li>
-                    <li>WEAR</li>
-                </ul>
-                <ul class="border-l border-gray-300 md:pl-8 sm:pl-4">
-                    <li>カテゴリー一覧</li>
-                    <li>ブランド一覧</li>
-                    <li>公式ショップ一覧</li>
-                    <li>ランキング一覧</li>
-                    <li>こだわり検索</li>
-                </ul>
-                <ul class="md:px-8 sm:px-4">
-                    <li>コーディネート一覧</li>
-                    <li>ショップニュース一覧</li>
-                    <li>ファッションまとめ一覧</li>
-                </ul>
-                <ul class="border-l border-gray-300 md:px-8 sm:px-4">
-                    <li>ZOZOGLASS</li>
-                    <li>ZOZOMAT</li>
-                    <li>ZOZOCARD</li>
-                    <li>マルチサイズ</li>
-                    <li>ギフトラッピング</li>
-                    <li>いつでも買い替え割</li>
-                    <li>メールマガジン購読</li>
-                </ul>
-                <ul class="border-r border-gray-300 md:pr-8 sm:pr-4">
-                    <li>ヘルプ</li>
-                    <li>はじめての方へ</li>
-                    <li>サイトマップ</li>
-                </ul>
-                <ul class="md:px-8 sm:px-4">
-                    <li>iPhoneアプリ</li>
-                    <li>Androidアプリ</li>
-                    <li>Twitter</li>
-                    <li>Facebook</li>
-                    <li>Instagram</li>
-                </ul>
-            </div>
+        <footer class="col-span-12 bottom-0 py-1 bg-gray-200 mt-auto bg-gray-200 lg:px-32 sm:px-4">
+			<div class="flex flex-row justify-center md:my-10 sm:my-5">
+				<p class="flex justify-center">© COMOP , Inc.</p>
+			</div>
         </footer>
         <!-- Footer End -->
     </div>

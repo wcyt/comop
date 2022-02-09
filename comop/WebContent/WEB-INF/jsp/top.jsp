@@ -32,40 +32,35 @@ window.addEventListener('DOMContentLoaded', function() {
     <main id="main" class="grid grid-cols-12 py-16 bg-gray-100 sm:px-4 lg:px-32">
         <!-- Search List -->
         <aside class="col-span-3 lg:col-span-2">
-            <ul class="pt-6">
-                <p class="my-4 text-xl font-bold">カテゴリから探す</p>
-                <li class="my-3 font-normal">サイズで探す</li>
-                <li class="my-3 font-normal">素材で探す</li>
-                <li class="my-3 font-normal">梱包方法で探す</li>
-                <li class="my-3 font-normal"><a href="getProductsList">商品一覧を見る</a></li>
-                <li class="my-3 font-normal"><a href="getRewardProductsList">ポイント商品を見る</a></li>
+        	<p class="my-4 pt-6 text-xl font-bold">サイズから探す</p>
+            <ul>
+                <li class="my-3 font-normal"><a href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a></li>
             </ul>
-            <ul class="flex flex-col pt-6">
-                <p class="my-4 text-2xl font-bold">お気に入り</p>
-                <div class="z-10 px-4 py-3 dropdown dropdown-right dropdown-hover hover:bg-gray-200">
-                    <p tabindex="0" class="font-normal">Item 0</p>
-                    <ul tabindex="0" class="bg-white shadow menu dropdown-content w-52">
-                        <li><a>Item 0</a></li>
-                        <li><a>Item 0</a></li>
-                        <li><a>Item 0</a></li>
-                    </ul>
-                </div>
-                <div class="z-10 px-4 py-3 dropdown dropdown-right dropdown-hover hover:bg-gray-200">
-                    <p tabindex="1" class="font-normal">Item 1</p>
-                    <ul tabindex="1" class="bg-white shadow menu dropdown-content w-52">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 1</a></li>
-                    </ul>
-                </div>
+            <p class="my-4 pt-6 text-xl font-bold">素材から探す</p>
+            <ul>
+                <li class="my-3 font-normal"><a href="refineSearch?size=不織布&pmin=0&pmax=10000">不織布で探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?size=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?size=ポリウレタン&pmin=0&pmax=10000">ポリウレタンで探す</a></li>
+            </ul>
+			<p class="my-4 pt-6 text-xl font-bold">包装タイプから探す</p>
+            <ul>
+            	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a></li>
+               	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a></li>
+            </ul>
+            <p class="my-4 pt-6 text-xl font-bold">価格・お気に入り数から探す</p>
+            <ul>
+            	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a></li>
+               	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が高いで探す</a></li>
+               	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a></li>
             </ul>
         </aside>
         <!-- Search List End -->
         <!-- Article -->
         <article class="col-span-9 lg:col-span-10">
-
             <!-- Generation Item Ranking -->
-            <section class="mt-10">
+            <section class="mt-3.5">
                 <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
                 	<c:forEach begin="1" end="5" var="product" items="${data.get(0)}">
@@ -116,7 +111,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				                		</a>
 			                            <div class="p-4 bg-white">
 			                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
-			                                <p class="text-xl font-bold">${product.price }</p>
+			                                <p class="text-xl font-bold">\ ${product.price }</p>
 			                            </div>
 			                        </div>
 			                    </li>

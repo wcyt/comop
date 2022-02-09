@@ -21,7 +21,7 @@
         const password = document.getElementById('password').innerHTML = '*'.repeat(8);
     }, false);
 </script>
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
@@ -44,9 +44,7 @@
             <!-- Member Registration Information -->
             <div class="flex flex-col gap-3 pb-5 border-b-2">
                 <h2 class="text-2xl">会員登録情報</h2>
-                <a href="">会員登録情報</a>
-                <a href="">お届け先の追加・変更</a>
-                <a href="">クレジットカード情報</a>
+                <a href="getUserInfo?mail=test@test">会員登録情報</a>
             </div>
             <!-- Member Registration Information End -->
             <!-- Point -->
@@ -92,7 +90,7 @@
             </div>
             <!-- Member Registration Information End -->
             <!-- Change credit card information -->
-            <div class="flex flex-col p-10 mt-8 bg-gray-200 border border-2 border-gray-300 rounded-lg">
+            <!-- <div class="flex flex-col p-10 mt-8 bg-gray-200 border border-2 border-gray-300 rounded-lg">
                 <h2 class="pb-4 text-2xl border-b-2">クレジットカード情報の変更</h2>
                 <div class="grid grid-cols-12 py-5 border-t border-b border-gray-400">
                     <div class="col-span-12 text-gray-400">
@@ -101,6 +99,7 @@
                     </div>
                 </div>
             </div>
+            -- >
             <!-- Change credit card information End -->
     </main>
     <!-- Main End -->

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -46,11 +46,11 @@ function r_check(){
             </section>
             <!-- Product Description End -->
             <!-- Search Input -->
-            <form method="get" action="searchRewardProducts" name="search_reward_form" onsubmit="return r_check()" class="w-1/3  sm:my-1">
+            <form method="get" action="searchRewardProducts" name="search_reward_form" onsubmit="return r_check()" class="w-1/2  sm:my-1">
 		         <!-- Search Input -->
-		         	<div class="bg-gray-100 rounded border border-gray-200 flex items-center justify-between">
+		         	<div class="flex flex-row bg-gray-100 rounded border border-gray-200">
 		         		<input type="search" name="key" placeholder="ポイント商品を検索" class="bg-transparent py-4 text-gray-600 font-bold px-4 focus:outline-none w-full" />
-		         		<button type="submit" class="py-1 px-6 bg-white text-gray-600 rounded-r border-l border-gray-200 hover:bg-gray-50 active:bg-gray-200 disabled:opacity-50 inline-flex items-center focus:outline-none">検索</button>
+		         		<button type="submit" class="py-1 px-6 bg-white text-gray-600 rounded-r border-l border-gray-200 hover:bg-gray-50 active:bg-gray-200 disabled:opacity-50  focus:outline-none"><i class="fa fa-search"></i></button>
 		         	</div>
 		         <!-- Search Input End -->
 		    </form>
@@ -71,24 +71,46 @@ function r_check(){
 										<p class="text-lg">${reward.reward_product_description}</p>
 									</div>
 								</div>
-								<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg">交換する</label>
-								<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
-								<div class="modal">
-									<div class="modal-box">
-										<div class="text-lg">
-											<p>${reward.reward_product_name}を交換します。</p>
-											<p class="text-red-500">注文後、指定の住所に送られます。</p>
-											<p>それでもよろしいですか？</p>
-										</div>
-										<div class="modal-action">
-											<label for="my-modal-${reward.reward_product_id}" class="mt-3">
-												<a href="addPointOrder?user_id=${user.user_id}&reward_product_id=${reward.reward_product_id}&total_point_price=${reward.point_price}" class="p-3 px-5 mt-5 font-bold text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600">はい</a>
-											</label>
-											<label for="my-modal-${reward.reward_product_id}" class="btn">いいえ</label>
+								<c:if test="${user.user_id == null}">
+									<label for="my-modal-${reward.reward_product_id}" class="btn bg-blue-300 modal-button mt-8 w-full text-lg pointer-events-none focus;outline-none border-none">交換する</label>
+									<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
+									<div class="modal">
+										<div class="modal-box">
+											<div class="text-lg">
+												<p>${reward.reward_product_name}を交換します。</p>
+												<p class="text-red-500">注文後、指定の住所に送られます。</p>
+												<p>それでもよろしいですか？</p>
+											</div>
+											<div class="modal-action">
+												<label for="my-modal-${reward.reward_product_id}" class="mt-3">
+													<a href="addPointOrder?user_id=${user.user_id}&reward_product_id=${reward.reward_product_id}&total_point_price=${reward.point_price}" class="p-3 px-5 mt-5 font-bold text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600">はい</a>
+												</label>
+												<label for="my-modal-${reward.reward_product_id}" class="btn">いいえ</label>
+											</div>
 										</div>
 									</div>
-								</div>
-							</div></li>
+								</c:if>
+								<c:if test="${user.user_id != null}">
+									<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg pointer-events-none">交換する</label>
+									<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
+									<div class="modal">
+										<div class="modal-box">
+											<div class="text-lg">
+												<p>${reward.reward_product_name}を交換します。</p>
+												<p class="text-red-500">注文後、指定の住所に送られます。</p>
+												<p>それでもよろしいですか？</p>
+											</div>
+											<div class="modal-action">
+												<label for="my-modal-${reward.reward_product_id}" class="mt-3">
+													<a href="addPointOrder?user_id=${user.user_id}&reward_product_id=${reward.reward_product_id}&total_point_price=${reward.point_price}" class="p-3 px-5 mt-5 font-bold text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600">はい</a>
+												</label>
+												<label for="my-modal-${reward.reward_product_id}" class="btn">いいえ</label>
+											</div>
+										</div>
+									</div>
+								</c:if>
+							</div>
+						</li>
 					</c:forEach>
 	            </ul>
             <!-- Products List End -->

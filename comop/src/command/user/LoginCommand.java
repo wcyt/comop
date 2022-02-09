@@ -56,32 +56,33 @@ public class LoginCommand extends AbstractCommand {
 			GetUserListCommand getUserListCommand = new GetUserListCommand();
 			getUserListCommand.execute(resc);
 			resc.setTarget("userManagement");
-		} else {
-			if (hashedPassword.equals(passwordHash)) {
-				System.out.println("MailAddress: " + mail + " Password: " + password + " PasswordHash:" + passwordHash);
+			return resc;
+		}
 
-				if (reqc.getSessionAttribute("user") == null) {
-					//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
-					UserBean u = new UserBean();
-					u = userDAO.getMyUserInfo(mail);
-					System.out.println(u.getUser_lapse());
-					if(u.getUser_lapse() == 1) {
-						//退会済みのユーザーのログイン拒否
-						System.out.println("Login: user_lapse");
-						reqc.setAttribute("message", "このユーザーは退会しています");
-						resc.setTarget("signIn");
-					}else {
-						reqc.setSessionAttribute("user", u);
-						System.out.println("Login: loginsuccess");
-						resc.setTarget("top");
-					}
+		if (hashedPassword.equals(passwordHash)) {
+			System.out.println("MailAddress: " + mail + " Password: " + password + " PasswordHash:" + passwordHash);
+
+			if (reqc.getSessionAttribute("user") == null) {
+				//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+				UserBean u = new UserBean();
+				u = userDAO.getMyUserInfo(mail);
+				System.out.println(u.getUser_lapse());
+				if(u.getUser_lapse() == 1) {
+					//退会済みのユーザーのログイン拒否
+					System.out.println("Login: user_lapse");
+					reqc.setAttribute("message", "このユーザーは退会しています");
+					resc.setTarget("signIn");
+				}else {
+					reqc.setSessionAttribute("user", u);
+					System.out.println("Login: loginsuccess");
+					resc.setTarget("top");
 				}
-			} else {
-				//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
-				System.out.println("Login: passEquals.else");
-				reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
-				resc.setTarget("signIn");
 			}
+		} else {
+			//TODO setAttribute("message", "まちがってるよ的なやつ") と ハッシュ化関連
+			System.out.println("Login: passEquals.else");
+			reqc.setAttribute("message", "メールアドレスまたはパスワードが一致しません");
+			resc.setTarget("signIn");
 		}
 		return resc;
 	}
