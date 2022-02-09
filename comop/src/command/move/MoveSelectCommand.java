@@ -28,12 +28,21 @@ public class MoveSelectCommand extends AbstractCommand {
 		List<CartBean> carts = cd.getCartList(user_id);
 		resc.setResult(carts);
 
+		//カートに何も入っていないとき
+		if (carts.size() == 0) {
+			reqc.setAttribute("cartInfo", "カートが空です。カートに商品を追加してください。");
+			reqc.setAttribute("cart_list_size", carts.size());
+			resc.setTarget("cart");
+			return resc;
+		}
+
 		//合計価格と購入点数をセット
 		for (CartBean cartBean : carts) {
 			total_price += cartBean.getPrice();
 			buy_count += cartBean.getBuy_count();
 		}
 
+		//DBからユーザーIDに合致するクレジット情報を持ってきて、セットする
 		OrderDAO orderDAO = factory.getOrderDAO();
 		List<CreditBean> creditInfo = orderDAO.getCreditInfo(user_id);
 		for (CreditBean creditBean : creditInfo) {
@@ -43,6 +52,7 @@ public class MoveSelectCommand extends AbstractCommand {
 			expiration_date = creditBean.getExpiration_date();
 		}
 
+		//有効期限がDBに存在しているとき
 		if (!expiration_date.equals("")) {
 			String expiration_month = expiration_date.substring(0,2);
 			String expiration_year = expiration_date.substring(2);
