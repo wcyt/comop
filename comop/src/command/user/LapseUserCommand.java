@@ -29,7 +29,7 @@ public class LapseUserCommand extends AbstractCommand{
 		rqsc.invalidateSession();
 
 		//default.jspに移動
-		resc.setTarget("top");
+		resc.setTarget("signIn");
 
 		return resc;
 	}

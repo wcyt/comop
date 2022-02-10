@@ -82,6 +82,12 @@
 	    	}
     	}, 16);
     });
+
+    function getRangeValue() {
+        const range = document.getElementById('range');
+        const pmax = document.getElementById('pmax');
+        pmax.value = range.value;
+    }
 </script>
 
 <body>
@@ -138,6 +144,12 @@
 	            	<ul class="list-none">
 	            		<li class="my-1">
 		            		<label class="inline-flex items-center">
+		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="布">
+		                        <span class="ml-2 text-lg">布</span>
+		                    </label>
+	               		</li>
+	            		<li class="my-1">
+		            		<label class="inline-flex items-center">
 		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="不織布">
 		                        <span class="ml-2 text-lg">不織布</span>
 		                    </label>
@@ -146,12 +158,6 @@
 		            		<label class="inline-flex items-center">
 		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="ウレタン">
 		                        <span class="ml-2 text-lg">ウレタン</span>
-		                    </label>
-	               		</li>
-	               		<li class="my-1">
-		            		<label class="inline-flex items-center">
-		                    	<input type="checkbox" name="material" class="mx-3 text-blue-400 rounded-full focus:outline-none" value="布">
-		                        <span class="ml-2 text-lg">布</span>
 		                    </label>
 	               		</li>
 	               		<li class="my-1">
@@ -170,9 +176,10 @@
 	            <div class="my-8">
 	            	<p class="pb-2 ml-3 text-xl font-bold">価格</p>
 	            	<div class="flex flex-row mt-2 ml-2">
-	                    <input type="text" name="pmin" value="0" class="w-1/3 h-6 border-none" required><span class="ml-2">円</span>
-	                    <input type="text" name="pmax" class="w-1/3 h-6 ml-3 border-none" required><span class="ml-2">円</span>
+	                    <input type="text" id="pmin" name="pmin" value="0" class="w-1/3 h-6 border-none text-right pointer-events-none focus:outline-none" readonly><span class="ml-2">円</span>
+	                    <input type="text" id="pmax" name="pmax" value="5000" class="w-1/3 h-6 ml-3 border-none focus:outline-blue-400" required><span class="ml-2">円</span>
 	                </div>
+	                <input id="range" type="range" max="10000" step="100" class="range range-primary px-2 mt-4" oninput="getRangeValue()">
 	            </div>
 	            <!-- Price End -->
 	            <!-- Packing Type -->

@@ -75,7 +75,7 @@ async function fetchAddFavorite() {
 									<p>在庫なし</p>
 								</div>
 								<p class="px-5 py-2 text-lg font-extrabold text-gray-400">完売しました</p>
-								<i class="mt-1 text-3xl text-gray-200 transition duration-100 bi bi-suit-heart-fill hover:text-red-400 pointer-events-none"></i>
+								<i id="favoriteHeart" onclick="fetchAddFavorite()" class="text-3xl text-gray-400 transition duration-100 bi bi-suit-heart-fill hover:text-red-400"></i>
 							</div>
 						</c:if>
 						<!-- 在庫数が1個以上のとき -->

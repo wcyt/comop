@@ -91,7 +91,7 @@ function r_check(){
 									</div>
 								</c:if>
 								<c:if test="${user.user_id != null}">
-									<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg pointer-events-none">交換する</label>
+									<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg">交換する</label>
 									<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
 									<div class="modal">
 										<div class="modal-box">

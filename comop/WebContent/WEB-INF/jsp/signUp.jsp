@@ -13,6 +13,8 @@
     <!-- tailwind css -->
     <link href="https://cdn.jsdelivr.net/npm/basscss@latest/css/basscss.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.25.4/dist/full.css" rel="stylesheet" type="text/css" />
+  	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <!-- tailwind css -->
     <title>新規会員登録</title>
 </head>
@@ -66,8 +68,16 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="password" name="password" id="" class="w-full px-3 py-2 focus:outline-blue-400" required>
+                    <input type="password" name="password" id="password" class="w-full px-3 py-2 focus:outline-blue-400" required>
+				</div>
+				<div class="flex flex-row items-center col-span-5 lg:col-span-4">
                 </div>
+                <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
+					<div class="flex flex-row mt-2">
+						<input type="checkbox" id="checkbox" onclick="changeInputType()" class="checkbox accent-blue-400 text-white rounded-md h-5 w-5 mt-[0.4rem] mr-2">
+						<span class="mt-1">パスワードを表示する</span>
+					</div>
+				</div>
             </div>
             <!-- Password End -->
             <!-- Submit Button -->
@@ -79,5 +89,13 @@
     <!-- Main End -->
     <%@include file="Footer.jsp" %>
 </body>
-
+<script>
+	// checkboxをクリックしたらinputのtypeを変更する関数
+	function changeInputType() {
+	    const password = document.getElementById('password');
+	    const checkbox = document.getElementById('checkbox');
+	    if (checkbox.checked) password.type = 'text';
+	    else password.type = 'password';
+	}
+</script>
 </html>
