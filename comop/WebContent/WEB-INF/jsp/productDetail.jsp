@@ -33,7 +33,7 @@ async function fetchAddFavorite() {
     const response = await fetch(url);
 };
 </script>
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 py-16 lg:px-32 sm:px-4">

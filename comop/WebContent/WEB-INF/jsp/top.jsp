@@ -32,6 +32,11 @@ window.addEventListener('DOMContentLoaded', function() {
     <main id="main" class="grid grid-cols-12 py-16 bg-gray-100 sm:px-4 lg:px-32">
         <!-- Search List -->
         <aside class="col-span-3 lg:col-span-2">
+        	<p class="my-4 pt-6 text-xl font-bold">商品一覧から探す</p>
+            <ul>
+            	<li class="my-3 font-normal"><a href="getProductsList">商品一覧から探す</a></li>
+               	<li class="my-3 font-normal"><a href="getRewardProductsList">ポイント商品一覧から探す</a></li>
+            </ul>
         	<p class="my-4 pt-6 text-xl font-bold">サイズから探す</p>
             <ul>
                 <li class="my-3 font-normal"><a href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a></li>
@@ -40,9 +45,10 @@ window.addEventListener('DOMContentLoaded', function() {
             </ul>
             <p class="my-4 pt-6 text-xl font-bold">素材から探す</p>
             <ul>
-                <li class="my-3 font-normal"><a href="refineSearch?size=不織布&pmin=0&pmax=10000">不織布で探す</a></li>
-                <li class="my-3 font-normal"><a href="refineSearch?size=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a></li>
-                <li class="my-3 font-normal"><a href="refineSearch?size=ポリウレタン&pmin=0&pmax=10000">ポリウレタンで探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a></li>
+                <li class="my-3 font-normal"><a href="refineSearch?material=ポリウレタン&pmin=0&pmax=10000">ポリウレタンで探す</a></li>
             </ul>
 			<p class="my-4 pt-6 text-xl font-bold">包装タイプから探す</p>
             <ul>
