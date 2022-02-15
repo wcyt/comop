@@ -45,10 +45,9 @@ window.addEventListener('DOMContentLoaded', function() {
             </ul>
             <p class="my-4 pt-6 text-xl font-bold">素材から探す</p>
             <ul>
+                <li class="my-3 font-normal"><a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a></li>
                 <li class="my-3 font-normal"><a href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a></li>
                 <li class="my-3 font-normal"><a href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a></li>
-                <li class="my-3 font-normal"><a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a></li>
-                <li class="my-3 font-normal"><a href="refineSearch?material=ポリウレタン&pmin=0&pmax=10000">ポリウレタンで探す</a></li>
             </ul>
 			<p class="my-4 pt-6 text-xl font-bold">包装タイプから探す</p>
             <ul>
