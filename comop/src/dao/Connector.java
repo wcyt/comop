@@ -21,8 +21,8 @@ public class Connector {
 		if(cn == null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-
-				cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/comopdb?characterEncoding=UTF-8&serverTimezone=JST","comop","comop");
+				//cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/comopdb?characterEncoding=UTF-8&serverTimezone=JST","comop","comop");
+				cn = DriverManager.getConnection("jdbc:mysql://comop-db.cppu9iuxooqv.ap-northeast-1.rds.amazonaws.com:3306/comopdb?characterEncoding=UTF-8&serverTimezone=JST","comop","comop");
 			} catch(Exception e){
 				e.printStackTrace();
 			}
