@@ -37,6 +37,7 @@
 		<url-pattern>/js/*</url-pattern>
 	</servlet-mapping>
 
+
 	<!-- 複数のJSPで共通する宣言をまとめるやつ -->
 	<jsp-config>
 		<jsp-property-group>
