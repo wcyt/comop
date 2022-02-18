@@ -1,5 +1,7 @@
 package tera;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
 
 public class WebResponseContext implements ResponseContext {
@@ -39,5 +41,9 @@ public class WebResponseContext implements ResponseContext {
 	@Override
 	public void setResponse(Object object) {
 		response = (HttpServletResponse) object;
+	}
+
+	public void sendRedirect(String url) throws IOException {
+		response.sendRedirect(url);
 	}
 }

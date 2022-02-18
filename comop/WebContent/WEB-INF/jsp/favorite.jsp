@@ -48,7 +48,7 @@
 				<div class="flex flex-col mt-10 text-center text-gray-400">
 					<i class="bi bi-suit-heart  text-8xl font-light"></i>
 					<p class="mt-8 text-2xl">お気に入りアイテムの登録はありません</p>
-					<a href="getProductsList" class="mt-6 text-lg hover:underline">気になるアイテムを見つけよう！</a>
+					<a href="refineSearch?pmin=0&pmax=5000" class="mt-6 text-lg hover:underline">気になるアイテムを見つけよう！</a>
 				</div>
 			</c:if>
 			<c:if test="${favorites >= 1}">

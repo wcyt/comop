@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function() {
             <p class="my-4 pt-6 text-xl font-bold">価格・お気に入り数から探す</p>
             <ul>
             	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a></li>
-               	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が高いで探す</a></li>
+               	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a></li>
                	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a></li>
             </ul>
         </aside>

@@ -31,7 +31,7 @@ public class IncreaseBuyCountCommand extends AbstractCommand {
 		//トランザクションを開始
 		Connector.getInstance().beginTransaction();
 
-		//カートに追加
+		//購入個数の加算
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		CartDAO cartDAO = factory.getCartDAO();
 		cartDAO.increaseBuyCount(cartBean);

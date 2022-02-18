@@ -31,7 +31,7 @@ public class DecreaseBuyCountCommand extends AbstractCommand {
 		//トランザクションを開始
 		Connector.getInstance().beginTransaction();
 
-		//カートに追加
+		//	購入個数を1個減らす
 		AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 		CartDAO cartDAO = factory.getCartDAO();
 		cartDAO.decreaseBuyCount(cartBean);
