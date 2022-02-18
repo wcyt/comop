@@ -90,7 +90,7 @@ function r_check(){
 										</div>
 									</div>
 								</c:if>
-								<c:if test="${user.user_id != null}">
+								<c:if test="${user.user_id != null and user.point >= reward.point_price }">
 									<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg">交換する</label>
 									<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
 									<div class="modal">
@@ -105,6 +105,20 @@ function r_check(){
 													<a href="addPointOrder?user_id=${user.user_id}&reward_product_id=${reward.reward_product_id}&total_point_price=${reward.point_price}" class="p-3 px-5 mt-5 font-bold text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600">はい</a>
 												</label>
 												<label for="my-modal-${reward.reward_product_id}" class="btn">いいえ</label>
+											</div>
+										</div>
+									</div>
+								</c:if>
+								<c:if test="${user.user_id != null and user.point < reward.point_price }">
+									<label for="my-modal-${reward.reward_product_id}" class="btn btn-info modal-button mt-8 w-full text-lg">交換する</label>
+									<input type="checkbox" id="my-modal-${reward.reward_product_id}" class="modal-toggle">
+									<div class="modal">
+										<div class="modal-box">
+											<div class="text-lg">
+												<p>ポイントが足りません</p>
+											</div>
+											<div class="modal-action">
+												<label for="my-modal-${reward.reward_product_id}" class="btn">もどる</label>
 											</div>
 										</div>
 									</div>
