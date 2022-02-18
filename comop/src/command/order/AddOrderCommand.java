@@ -106,6 +106,7 @@ public class AddOrderCommand extends AbstractCommand {
 		//ユーザ情報を変更
 		userDAO.editUserInfo(userBean);
 
+		//ポイントを更新
 		userDAO.updatePoint(user_id, point);
 
 		//在庫を減らす
@@ -133,8 +134,6 @@ public class AddOrderCommand extends AbstractCommand {
 		resc.setResult(orderList);
 
 		for (OrderBean orderBean : orderList) {
-			total_price += orderBean.getPrice();
-
 			LocalDate accessedDate = LocalDate.now(); // 注文履歴にアクセスした時の日付
 			LocalDate orderDate = LocalDate.parse(orderBean.getOrder_date(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); //注文日時
 			long dateDifference = ChronoUnit.DAYS.between(orderDate, accessedDate); // アクセスした時の日付と注文日の差分

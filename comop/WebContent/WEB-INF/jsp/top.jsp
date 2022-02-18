@@ -19,7 +19,9 @@
 <script>
 window.addEventListener('DOMContentLoaded', function() {
 	const url = location.href;
+	console.log(url);
 	const origin = location.origin + "/comop/";
+	console.log(origin);
 	if (url === origin || url === origin + "login") {
 		window.location.href = '/comop/top';
 	}
@@ -34,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
         <aside class="col-span-3 lg:col-span-2">
         	<p class="my-4 pt-6 text-xl font-bold">商品一覧から探す</p>
             <ul>
-            	<li class="my-3 font-normal"><a href="getProductsList">商品一覧から探す</a></li>
+            	<li class="my-3 font-normal"><a href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a></li>
                	<li class="my-3 font-normal"><a href="getRewardProductsList">ポイント商品一覧から探す</a></li>
             </ul>
         	<p class="my-4 pt-6 text-xl font-bold">サイズから探す</p>
@@ -68,7 +70,7 @@ window.addEventListener('DOMContentLoaded', function() {
             <section class="mt-3.5">
                 <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-                	<c:forEach begin="1" end="5" var="product" items="${data.get(0)}">
+                	<c:forEach begin="1" end="5" var="product" items="${favoriteCountList}">
 	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">
@@ -87,8 +89,8 @@ window.addEventListener('DOMContentLoaded', function() {
             <!-- Item Line-Up -->
             <section class="mt-10">
                 <p class="pt-6 text-2xl font-bold">商品ラインナップ</p>
-                <ul class="flex w-full h-full mt-5 overflow-visible overflow-x-auto">
-                    <c:forEach begin="1" end="5" var="product" items="${data.get(1)}">
+                <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
+                    <c:forEach begin="1" end="5" var="product" items="${randomProductList}">
 	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">
@@ -104,11 +106,11 @@ window.addEventListener('DOMContentLoaded', function() {
                 </ul>
             </section>
             <!-- Item Line-Up End -->
-				<c:if test="${!empty user.name and !empty data.get(2)}">
+				<c:if test="${!empty user.name and !empty favoriteList}">
 		        	<section class="mt-10">
 		                <p class="pt-6 text-2xl font-bold">お気に入り商品</p>
 		                <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-		                	<c:forEach var="product" items="${data.get(2)}">
+		                	<c:forEach var="product" items="${favoriteList}">
 			                	<li class="bg-white">
 			                        <div class="flex flex-col w-52">
 			                            <a href="getProductDetail?product_id=${product.product_id}">

@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/basscss@latest/css/basscss.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.1/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind css -->
-    <title>404</title>
+    <title>404 NOT FOUND 指定されたファイルまたはディレクトリは存在いたしません。</title>
 </head>
 
 <body>

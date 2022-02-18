@@ -34,24 +34,6 @@ function check(){
 		            <!-- User -->
 		            <a href="signIn" class="flex items-center px-5 py-3 font-medium transition text-md duration-400 hover:bg-gray-300 hover:text-black">ログイン</a>
 		            <!-- User End -->
-		            <!-- Heart -->
-		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a href="" tabindex="0" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-suit-heart"></i></a>
-		                <div tabindex="0" class="flex justify-center px-10 py-4 -mr-32 shadow w-80 menu dropdown-content bg-base-100 rounded-box">
-		                    <i class="mt-3 mb-5 text-5xl font-light text-center bi bi-suit-heart"></i>
-		                    <p class="">会員でない方でも「お気に入り」が 使えるようになりました。</p>
-		                </div>
-		            </div>
-		            <!-- Heart End -->
-		            <!-- Cart -->
-		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a href="" tabindex="1" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
-		                <div tabindex="1" class="flex justify-center px-10 py-4 -mr-32 text-center text-gray-400 shadow w-80 menu dropdown-content bg-base-100 rounded-box">
-		                    <i class="mt-3 mb-5 text-5xl font-light bi bi-cart"></i>
-		                    <p class="">カートに商品がありません</p>
-		                </div>
-		            </div>
-		            <!-- Cart End -->
 		            <!--  -->
 		            <div class="dropdown dropdown-end dropdown-hover">
 		                <a tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-list"></i></a>
@@ -114,35 +96,11 @@ function check(){
 		            <!-- Heart -->
 		            <div class="dropdown dropdown-end dropdown-hover">
 		                <a href="getFavoriteList?user_id=${sessionScope.user.user_id}" tabindex="1" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-suit-heart"></i></a>
-		                <div tabindex="1" class="flex justify-center p-8 -mr-32 shadow w-[36rem] menu dropdown-content bg-base-100 rounded-box">
-		                    <a href="favorite" class="text-2xl font-bold">お気に入り</a>
-		                    <div class="flex flex-row my-4 font-bold text-blue-400">
-		                        <a href="" class="pr-3">アイテム一覧</a>
-		                        <a href="" class="px-3 border-l-2 border-r-2">ブランド一覧</a>
-		                        <a href="" class="pl-3">ショップ一覧</a>
-		                    </div>
-		                    <div class="flex flex-row">
-		                        <div class="w-1/2 font-bold border-r-2">
-		                            <p class="text-lg">ブランド</p>
-		                            <i class="flex justify-center my-6 mt-3 text-xl text-5xl text-gray-400 bi bi-suit-heart"></i>
-		                            <p class="text-center text-gray-400">お気に入りブランドを 見つけよう！</p>
-		                        </div>
-		                        <div class="w-1/2 pl-4 font-bold">
-		                            <p class="text-lg">ショップ</p>
-		                            <i class="flex justify-center my-6 mt-3 text-xl text-5xl text-gray-400 bi bi-suit-heart"></i>
-		                            <p class="text-center text-gray-400">お気に入りショップを 見つけよう！</p>
-		                        </div>
-		                    </div>
-		                </div>
 		            </div>
 		            <!-- Heart End -->
 		            <!-- Cart -->
 		            <div class="dropdown dropdown-end dropdown-hover">
 		                <a href="getCartList?user_id=${sessionScope.user.user_id}" tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
-		                <div tabindex="2" class="flex justify-center px-10 py-4 -mr-32 text-center text-gray-400 shadow w-80 menu dropdown-content bg-base-100 rounded-box">
-		                    <i class="mt-3 mb-5 text-5xl font-light bi bi-cart"></i>
-		                    <p class="">カートに商品がありません</p>
-		                </div>
 		            </div>
 		            <!-- Cart End -->
 		            <!-- Humbuger Menu -->

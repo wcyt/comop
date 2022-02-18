@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/basscss@latest/css/basscss.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.1/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind css -->
-    <title>500</title>
+    <title>500  Internal Server Error アクセスしようとしたページは表示できませんでした。</title>
 </head>
 
 <body>

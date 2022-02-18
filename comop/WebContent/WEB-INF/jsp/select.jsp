@@ -16,7 +16,7 @@
     <script src="js/autokana.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
     <!-- tailwind css -->
-    <title>Document</title>
+    <title>お届け先・配送方法・お支払い方法 - comop</title>
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -107,7 +107,7 @@
                         <!-- Credit Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">クレジット番号</p>
-                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字のみ（ハイフンなし）" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
                         </div>
                         <!-- Credit Number End -->
                         <!-- Security Number -->
@@ -140,7 +140,6 @@
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>
-                            <p class="mx-4">月</p>
                             <select name="expirationYear" id="expirationYear" autocomplete="cc-exp-year" class="col-span-3 lg:col-span-2">
                                 <option hidden></option>
                                 <option value="21">21</option>
@@ -155,7 +154,6 @@
                                 <option value="30">30</option>
                                 <option value="31">31</option>
                             </select>
-                            <p class="mx-4">年</p>
                         </div>
                         <!-- Expiration Date End -->
                     </div>
@@ -224,7 +222,7 @@
                 </div>
                 <div class="flex justify-between pb-5 text-lg border-b border-gray-400 ">
                     <span>ポイント</span>
-                    <span class="text-red-600">\ ${total_price / 10}</span>
+                    <span class="text-red-600">${total_price / 10}ポイント</span>
                 </div>
                 <div class="flex justify-between py-5">
                     <div>

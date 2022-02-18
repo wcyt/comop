@@ -44,7 +44,6 @@
             <section class="my-24 text-center">
                 <p class="mb-5 text-3xl font-normal">会員登録が完了しました</p>
                 <p class="text-gray-500">登録いただき、ありがとうございます</p>
-                <p class="text-gray-500">ご登録いただいた内容をメールにてお送りしましたので、ご確認ください。</p>
                 <p class="text-gray-500">この後も、お買い物をどうぞお楽しみください。</p>
             </section>
             <!-- Content End -->
