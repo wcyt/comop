@@ -37,27 +37,25 @@
                 </div>
             </div>
             <aside class="col-span-2">
-                <!-- Member Registration Information -->
-                <div class="flex flex-col gap-3 pb-5 border-b-2">
-                    <h2 class="text-2xl">会員登録情報</h2>
-                    <a href="">会員登録情報</a>
-                    <a href="">お届け先の追加・変更</a>
-                    <a href="">クレジットカード情報</a>
-                </div>
-                <!-- Member Registration Information End -->
-                <!-- Point -->
-                <div class="flex flex-col gap-3 py-5 border-b-2">
-                    <h2 class="text-2xl">ポイント</h2>
-                    <a href="">ポイント</a>
-                </div>
-                <!-- Point End -->
-                <!-- Withdrawal -->
-                <div class="flex flex-col gap-3 py-5 border-b-2">
-                    <h2 class="text-2xl">退会</h2>
-                    <a href="">退会手続き</a>
-                </div>
-                <!-- Withdrawal End -->
-            </aside>
+	            <!-- Member Registration Information -->
+	            <div class="flex flex-col gap-3 pb-5 border-b-2">
+	                <h2 class="text-2xl">会員登録情報</h2>
+	                <a href="getUserInfo?mail=test@test">会員登録情報</a>
+	            </div>
+	            <!-- Member Registration Information End -->
+	            <!-- Point -->
+	            <div class="flex flex-col gap-3 py-5 border-b-2">
+	                <h2 class="text-2xl">ポイント</h2>
+	                <a href="getPointOrderList?user_id=${user.user_id}">ポイント</a>
+	            </div>
+	            <!-- Point End -->
+	            <!-- Withdrawal -->
+	            <div class="flex flex-col gap-3 py-5 border-b-2">
+	                <h2 class="text-2xl">退会</h2>
+	                <a href="leave">退会手続き</a>
+	            </div>
+	            <!-- Withdrawal End -->
+       		</aside>
             <article class="col-span-10 ml-14">
                 <div class="text-gray-800" x-data="{ selected: 'option-1' }">
                     <div class="px-4 py-6 my-4 bg-gray-100 rounded-md">

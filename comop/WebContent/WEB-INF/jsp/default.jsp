@@ -38,7 +38,7 @@
                 <i class="mr-4 text-blue-300 bi bi-pencil"></i>
                 <h1>${user.name}様の登録情報</h1>
             </div>
-            <p class="text-xl text-red-500 my-8">${message}</p>
+            <p class="text-xl text-red-500 my-8"><c:out value="${message}" /></p>
         </div>
         <aside class="col-span-2">
             <!-- Member Registration Information -->
@@ -68,9 +68,9 @@
                 <div class="grid grid-cols-12 items-center py-5 border-t border-b border-gray-400">
                     <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">基本情報</p>
                     <div class="col-span-7 gap-3 lg:col-span-6">
-                        <p>${user.name}</p>
-                        <p>${user.address}</p>
-                        <p>${user.postal_code}</p>
+                        <p><c:out value="${user.name}" /></p>
+                        <p><c:out value="${user.address}" /></p>
+                        <p><c:out value="${user.postal_code}" /></p>
                     </div>
                     <div class="col-span-2 lg:col-span-3">
                         <a href="modifyBasicInfo" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>
@@ -81,7 +81,7 @@
                 <div class="grid grid-cols-12 items-center py-5 border-b border-gray-400">
                     <p class="col-span-3 text-lg text-gray-500 lg:col-span-3">パスワード</p>
                     <div class="col-span-7 gap-3 lg:col-span-6">
-                        <p id="password" class="text-2xl">${user.password}</p>
+                        <p id="password" class="text-2xl"><c:out value="${user.password}" /></p>
                     </div>
                     <div class="col-span-2 lg:col-span-3">
                         <a href="modifyPassword" class="px-3 py-1 hover:bg-white text-blue-500 border border-blue-500 rounded-sm">変更</a>

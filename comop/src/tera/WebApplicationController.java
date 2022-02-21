@@ -52,6 +52,7 @@ public class WebApplicationController implements ApplicationController {
 		httpServletRequest.setAttribute("data", responseContext.getResult());
 
 		String uri = httpServletRequest.getRequestURI();
+		System.out.println(uri);
 		if (uri.equals("/comop/top")) {
 			AbstractDaoFactory factory = AbstractDaoFactory.getFactory();
 			FavoriteDAO favoritedao = factory.getFavoriteDAO();

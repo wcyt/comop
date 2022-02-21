@@ -52,7 +52,7 @@ public class LoginCommand extends AbstractCommand {
 		System.out.println("Login: passVal.input " + password + " db " + passwordHash);
 
 		// メールアドレスがadmin@adminかつパスワードがadminの時にuserManagement.jspに移動する
-		if (mail.equals("admin@admin") && password.equals("admin")) {
+		if (mail.equals("admin@admin.com") && password.equals("admin")) {
 			GetUserListCommand getUserListCommand = new GetUserListCommand();
 			getUserListCommand.execute(resc);
 			resc.setTarget("userManagement");

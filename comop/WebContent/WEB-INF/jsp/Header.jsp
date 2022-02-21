@@ -41,21 +41,22 @@ function check(){
 		                    <div class="flex flex-row">
 		                        <div class="flex flex-col w-full gap-2 mr-10">
 		                            <h2 class="mb-4 text-xl font-bold">アイテムを探す</h2>
-		                            <a href="">カテゴリーから探す</p>
-		                            <a href="">ブランドから探す</p>
-		                            <a href="">公式ショップから探す</p>
-		                            <a href="">ランキングから探す</p>
-		                            <a href="">セール対象から探す</p>
-		                            <a href="">クーポン対象から探す</p>
-		                            <a href="">コーディネートから探す</p>
-		                            <a href="">こだわり条件から探す</p>
-		                        </div>
+									<a href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a>
+									<a href="getRewardProductsList">ポイント商品一覧から探す</a>
+									<a href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a>
+									<a href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a>
+									<a href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a>
+									<a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a>
+									<a href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a>
+									<a href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a>
+								</div>
 		                        <div class="flex flex-col w-full gap-2 ">
-		                            <h2 class="mb-4 text-xl font-bold">ヘルプ・その他</h2>
-		                            <a href="">よくある質問</a>
-		                            <a href="">はじめての方へ</a>
-		                            <a href="signUp">新規会員登録</a>
-		                            <a href="getRewardProductsList">ポイント商品を見る</a>
+		                        	<h2 class="mb-10 text-xl font-bold"> </h2>
+									<a href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -82,10 +83,10 @@ function check(){
 		        </form>
 		        <!-- Site Name And Search Input End-->
 		        <!-- Menu -->
-		        <div class="flex flex-row">
+		        <div class="flex flex-row items-center">
 		            <!-- User -->
 		            <div class="dropdown dropdown-end dropdown-hover">
-		                <p tabindex="0" class="flex items-center px-5 py-3 font-medium transition text-md duration-400 hover:bg-gray-300 hover:text-black">${sessionScope.user.name} 様</p>
+		                <p tabindex="0" class="px-5 py-4 font-medium transition text-md duration-400 hover:bg-gray-300 hover:text-black">${sessionScope.user.name} 様</p>
 		                <ul tabindex="0" class="w-48 p-2 shadow -mr-7 menu dropdown-content bg-base-100 rounded-box">
 		                    <li class="hover:underline"><a href="getUserInfo?mail=${sessionScope.user.mail}">登録情報</a></li>
 		                    <li class="hover:underline"><a href="getOrderHistory?user_id=${user.user_id}">注文履歴・発送状況</a></li>
@@ -95,36 +96,37 @@ function check(){
 		            <!-- User End -->
 		            <!-- Heart -->
 		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a href="getFavoriteList?user_id=${sessionScope.user.user_id}" tabindex="1" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-suit-heart"></i></a>
+		                <a href="getFavoriteList?user_id=${sessionScope.user.user_id}" tabindex="1" class="px-5 py-4 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-suit-heart"></i></a>
 		            </div>
 		            <!-- Heart End -->
 		            <!-- Cart -->
 		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a href="getCartList?user_id=${sessionScope.user.user_id}" tabindex="2" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
+		                <a href="getCartList?user_id=${sessionScope.user.user_id}" tabindex="2" class="px-5 py-4 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-cart"></i></a>
 		            </div>
 		            <!-- Cart End -->
 		            <!-- Humbuger Menu -->
 		            <div class="dropdown dropdown-end dropdown-hover">
-		                <a tabindex="3" class="flex items-center px-5 py-3 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-list"></i></a>
+		                <a tabindex="3" class="px-5 py-4 transition duration-400 hover:bg-gray-300 hover:text-black"><i class="text-xl bi bi-list"></i></a>
 		                <div tabindex="3" class="flex justify-center p-8 shadow w-96 menu dropdown-content bg-base-100 rounded-box">
 		                    <div class="flex flex-row">
 		                        <div class="flex flex-col w-full gap-2 mr-10">
 		                            <h2 class="mb-4 text-xl font-bold">アイテムを探す</h2>
-		                            <a href="">カテゴリーから探す</p>
-		                            <a href="">ブランドから探す</p>
-		                            <a href="">公式ショップから探す</p>
-		                            <a href="">ランキングから探す</p>
-		                            <a href="">セール対象から探す</p>
-		                            <a href="">クーポン対象から探す</p>
-		                            <a href="">コーディネートから探す</p>
-		                            <a href="">こだわり条件から探す</p>
-		                        </div>
+									<a href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a>
+									<a href="getRewardProductsList">ポイント商品一覧から探す</a>
+									<a href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a>
+									<a href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a>
+									<a href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a>
+									<a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a>
+									<a href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a>
+									<a href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a>
+								</div>
 		                        <div class="flex flex-col w-full gap-2 ">
-		                            <h2 class="mb-4 text-xl font-bold">ヘルプ・その他</h2>
-		                            <a href="">よくある質問</a>
-		                            <a href="">はじめての方へ</a>
-		                            <a href="signUp">新規会員登録</a>
-		                            <a href="getRewardProductsList">ポイント商品を見る</a>
+		                        	<h2 class="mb-10 text-xl font-bold"> </h2>
+									<a href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a>
+									<a href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a>
 		                        </div>
 		                    </div>
 		                </div>

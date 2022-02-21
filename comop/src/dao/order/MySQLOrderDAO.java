@@ -141,7 +141,7 @@ public class MySQLOrderDAO implements OrderDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "insert into credit_table(user_id, credit_number, card_holder, security_code, expiration_date) values(?,?,?,?,?) ON DUPLICATE KEY UPDATE user_id = values(user_id)";
+			String sql = "insert into credit_table(user_id, credit_number, card_holder, security_code, expiration_date) values(?,?,?,?,?) ON DUPLICATE KEY UPDATE credit_number = VALUES(credit_number), card_holder = VALUES(card_holder), security_code = VALUES(security_code), expiration_date = VALUES(expiration_date)";
 
 			st = cn.prepareStatement(sql);
 
@@ -150,11 +150,6 @@ public class MySQLOrderDAO implements OrderDAO {
 			st.setString(3, creditBean.getCard_holder());
 			st.setString(4, creditBean.getSecurity_code());
 			st.setString(5, creditBean.getExpiration_date());
-			st.setInt(6, creditBean.getUser_id());
-			st.setString(7, creditBean.getCredit_number());
-			st.setString(8, creditBean.getCard_holder());
-			st.setString(9, creditBean.getSecurity_code());
-			st.setString(10, creditBean.getExpiration_date());
 
 			st.executeUpdate();
 

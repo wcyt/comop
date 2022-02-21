@@ -39,8 +39,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstName" id="firstName" placeholder="例）上尾" autocomplete="given-name" class="w-1/2" value="${user.first_name}" required>
-                        <input type="text" name="lastName" id="lastName" placeholder="太郎" autocomplete="family-name" class="w-1/2" value="${user.last_name}" required>
+                        <input type="text" name="firstName" id="firstName" placeholder="例）上尾" autocomplete="given-name" class="w-1/2" value="${user.first_name}" pattern="[^\x20-\x7E]*"  required>
+                        <input type="text" name="lastName" id="lastName" placeholder="太郎" autocomplete="family-name" class="w-1/2" value="${user.last_name}"  pattern="[^\x20-\x7E]*"  required>
                     </div>
                 </div>
                 <!-- Name End -->
@@ -54,8 +54,8 @@
                         <span class="ml-3 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" autocomplete="given-name" class="w-1/2" value="${user.first_name_kana}" required>
-                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" autocomplete="family-name" class="w-1/2" value="${user.last_name_kana}" required>
+                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" autocomplete="given-name" class="w-1/2" value="${user.first_name_kana}" pattern="[ァ-ヴー\s　]+" title="カタカナ 半角スペース 全角スペース 以外入力しないでください" required>
+                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" autocomplete="family-name" class="w-1/2" value="${user.last_name_kana}" pattern="[ァ-ヴー\s　]+" title="カタカナ 半角スペース 全角スペース 以外入力しないでください" required>
                     </div>
                 </div>
                 <!-- Name(kana) End -->
@@ -67,7 +67,7 @@
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
                         <div class="flex flex-col w-1/2">
-                            <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" class="w-full" value="${user.postal_code}" required>
+                            <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="" class="w-full" pattern="\d{3}-?\d{4}" title="000-0000の形式で入力してください" value="${user.postal_code}" required>
                             <p id="error" class="ml-2 text-sm text-red-500"></p>
                         </div>
                         <a href="https://www.post.japanpost.jp/zipcode/index.html" class="text-blue-400 hover:underline">郵便番号を調べる<i class="ml-3 bi bi-box-arrow-up-right"></i></a>
@@ -82,7 +82,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" class="w-1/2" value="${user.address}" required>
+                        <input type="text" name="address" id="address" placeholder="東京都千代田区千代田" autocomplete="address" class="w-1/2" value="${user.address}" data-formrun-type="postal-code-jp"  required>
                     </div>
                 </div>
                 <!-- Address End -->
@@ -93,7 +93,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="tel" id="tel" placeholder="09012345678（ハイフンなし）" autocomplete="tel" class="w-1/2" value="${user.tel}" required>
+                        <input type="text" name="tel" id="tel" placeholder="例）090-1234-5678" autocomplete="tel" class="w-1/2" value="${user.tel}" pattern="\d{2,4}-?\d{3,4}-?\d{3,4}" title="090-1234-5678の形式で入力してください" data-formrun-type="tel" required>
                     </div>
                 </div>
                 <!-- Tel End -->
@@ -107,19 +107,19 @@
                         <!-- Credit Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">クレジット番号</p>
-                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字を入力してください" autocomplete="tel" class="col-span-9 w-72" pattern="^(4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|^(?:2131|1800|35\d{3})\d{11}$)$" title="半角数字を入力してください" required>
                         </div>
                         <!-- Credit Number End -->
                         <!-- Security Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">セキュリティ番号</p>
-                            <input type="text" name="securityCode" id="securityNumber" value="${security_code}" autocomplete="cc-csc" placeholder="半角数字のみ" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="securityCode" id="securityNumber" value="${security_code}" autocomplete="cc-csc" placeholder="半角数字を入力してください" autocomplete="tel" class="col-span-9 w-72" pattern="^[0-9]{3,4}\z" title="半角数字を入力してください" required>
                         </div>
                         <!-- Security Number -->
                         <!-- Card Holder -->
                         <div class="grid items-center grid-cols-12 ">
                             <p class="col-span-3">カード名義</p>
-                            <input type="text" name="cardHolder" id="cardHolder" value="${card_holder}" placeholder="TARO AGEO" autocomplete="cc-name" class="col-span-9 w-72" required>
+                            <input type="text" name="cardHolder" id="cardHolder" value="${card_holder}" placeholder="TARO AGEO" autocomplete="cc-name" class="col-span-9 w-72" pattern="^[A-Z]+\s[A-Z]+\z" title="" required>
                         </div>
                         <!-- Card Holder End -->
                         <!-- Expiration Date -->

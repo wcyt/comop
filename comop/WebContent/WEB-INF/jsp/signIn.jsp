@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/basscss@latest/css/basscss.min.css" rel="stylesheet" type="text/css" />
   	<link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.5/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind css -->
-    <title>comop - ログイン</title>
+    <title>ログイン - comop</title>
 </head>
 
 <body class="flex flex-col h-screen">

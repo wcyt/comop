@@ -18,7 +18,7 @@
     <title>基本情報の変更</title>
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
@@ -40,21 +40,19 @@
             <!-- Member Registration Information -->
             <div class="flex flex-col gap-3 pb-5 border-b-2">
                 <h2 class="text-2xl">会員登録情報</h2>
-                <a href="">会員登録情報</a>
-                <a href="">お届け先の追加・変更</a>
-                <a href="">クレジットカード情報</a>
+                <a href="getUserInfo?mail=test@test">会員登録情報</a>
             </div>
             <!-- Member Registration Information End -->
             <!-- Point -->
             <div class="flex flex-col gap-3 py-5 border-b-2">
                 <h2 class="text-2xl">ポイント</h2>
-                <a href="">ポイント</a>
+                <a href="getPointOrderList?user_id=${user.user_id}">ポイント</a>
             </div>
             <!-- Point End -->
             <!-- Withdrawal -->
             <div class="flex flex-col gap-3 py-5 border-b-2">
                 <h2 class="text-2xl">退会</h2>
-                <a href="">退会手続き</a>
+                <a href="leave">退会手続き</a>
             </div>
             <!-- Withdrawal End -->
         </aside>
@@ -101,9 +99,6 @@
 								</div>
 							</div>
 						</c:forEach>
-						<div class="bg-white rounded-md px-4 py-6 mt-4">
-							<span class="text-gray-400">支払い金額：</span> <span class="font-bold text-lg">\ ${total_price}</span>
-						</div>
 					</div>
 				</c:if>
 				<c:if test="${shipped_order_list_size == 0}">
