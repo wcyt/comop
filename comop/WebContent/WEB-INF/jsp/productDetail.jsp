@@ -41,7 +41,7 @@ async function fetchAddFavorite() {
         <nav class="col-span-12 text-lg font-light md:py-8 sm:py-4 sm:mt-24 md:mt-0 breadcrumbs">
             <ul>
                 <li><a href="top">ホーム</a></li>
-                <li><a href="getProductsList">商品一覧</a></li>
+                <li><a href="refineSearch?pmin=0&pmax=5000">商品一覧</a></li>
                 <li id="breadcrumbs"></li>
             </ul>
         </nav>
