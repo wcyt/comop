@@ -27,10 +27,6 @@ public class MoveTopCommand extends AbstractCommand {
 		List<ProductBean> sortFavoriteCountList = prodao.sortFavoriteCount();
 		rc.setAttribute("favoriteCountList", sortFavoriteCountList);
 
-		for (ProductBean productBean : sortFavoriteCountList) {
-			System.out.println(productBean.getProduct_id());
-		}
-
 		List randomProductList = prodao.randomProduct();
 		rc.setAttribute("randomProductList", randomProductList);
 
@@ -38,7 +34,7 @@ public class MoveTopCommand extends AbstractCommand {
 		if (rc.getSessionAttribute("user") != null) {
 			String user_id = String.valueOf(((UserBean) rc.getSessionAttribute("user")).getUser_id());
 			List<FavoriteBean> favoriteList = favoritedao.getFavoriteList(user_id);
-			//rc.setAttribute("favoriteList", favoriteList);
+			rc.setAttribute("favoriteList", favoriteList);
 		}
 
 		Connector.getInstance().commit();
