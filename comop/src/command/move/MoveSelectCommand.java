@@ -18,7 +18,6 @@ public class MoveSelectCommand extends AbstractCommand {
 		//パラメータを取得
 		int user_id = Integer.parseInt(reqc.getParameter("user_id")[0]);
 		int total_price = 0;
-		int buy_count = 0;
 
 		String credit_number = "", card_holder = "", security_code = "", expiration_date = "";
 
@@ -28,7 +27,7 @@ public class MoveSelectCommand extends AbstractCommand {
 		List<CartBean> carts = cd.getCartList(user_id);
 		resc.setResult(carts);
 
-		//カートに何も入っていないとき
+		//カートに何も入っていないとき、カートページに戻す
 		if (carts.size() == 0) {
 			reqc.setAttribute("cartInfo", "カートが空です。カートに商品を追加してください。");
 			reqc.setAttribute("cart_list_size", carts.size());
@@ -36,10 +35,9 @@ public class MoveSelectCommand extends AbstractCommand {
 			return resc;
 		}
 
-		//合計価格と購入点数をセット
+		//商品の値段と購入個数を合計金額に加算
 		for (CartBean cartBean : carts) {
-			total_price += cartBean.getPrice();
-			buy_count += cartBean.getBuy_count();
+			total_price += cartBean.getPrice() * cartBean.getBuy_count();
 		}
 
 		//DBからユーザーIDに合致するクレジット情報を持ってきて、セットする
@@ -61,7 +59,6 @@ public class MoveSelectCommand extends AbstractCommand {
 		}
 
 		reqc.setAttribute("total_price", total_price);
-		reqc.setAttribute("buy_count", buy_count);
 		reqc.setAttribute("credit_number", credit_number);
 		reqc.setAttribute("card_holder", card_holder);
 		reqc.setAttribute("security_code", security_code);

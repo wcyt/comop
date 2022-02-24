@@ -105,7 +105,7 @@ public class MySQLOrderDAO implements OrderDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT CREDIT_NUMBER, CARD_HOLDER,SECURITY_CODE,EXPIRATION_DATE FROM CREDIT_TABLE WHERE USER_ID = ?";
+			String sql = "SELECT credit_number, card_holder,security_code,expiration_date FROM credit_table WHERE user_id = ?";
 			st = cn.prepareStatement(sql);
 			st.setInt(1, user_id);
 
@@ -172,7 +172,7 @@ public class MySQLOrderDAO implements OrderDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "UPDATE ORDER_TABLE SET SHIPPED = 1 WHERE ORDER_ID = ? AND USER_ID = ?";
+			String sql = "UPDATE order_table SET shipped = 1 WHERE order_id = ? and user_id = ?";
 
 			st = cn.prepareStatement(sql);
 
