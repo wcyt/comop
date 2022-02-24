@@ -125,7 +125,7 @@
                 <!-- Address -->
                 <div class="grid grid-cols-12 py-5 border-b border-gray-400">
                     <div class="flex flex-row items-center col-span-4 lg:col-span-3">
-                        <span class="text-lg">住所1</span>
+                        <span class="text-lg">住所</span>
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
