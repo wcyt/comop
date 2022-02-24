@@ -19,12 +19,8 @@
 <script>
 window.addEventListener('DOMContentLoaded', function() {
 	const url = location.href;
-	console.log(url);
 	const origin = location.origin + "/comop/";
-	console.log(origin);
-	if (url === origin || url === origin + "login") {
-		window.location.href = '/comop/top';
-	}
+	if (url === origin || url === origin + "login") { window.location.href = '/comop/top'; }
 });
 </script>
 
@@ -70,7 +66,7 @@ window.addEventListener('DOMContentLoaded', function() {
             <section class="mt-3.5">
                 <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-                	<c:forEach begin="1" end="5" var="product" items="${favoriteCountList}">
+                	<c:forEach begin="1" end="10" var="product" items="${favoriteCountList}">
 	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">
@@ -90,7 +86,7 @@ window.addEventListener('DOMContentLoaded', function() {
             <section class="mt-10">
                 <p class="pt-6 text-2xl font-bold">商品ラインナップ</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
-                    <c:forEach begin="1" end="5" var="product" items="${randomProductList}">
+                    <c:forEach begin="1" end="10" var="product" items="${randomProductList}">
 	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">

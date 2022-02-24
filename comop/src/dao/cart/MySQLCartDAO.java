@@ -34,7 +34,7 @@ public class MySQLCartDAO implements CartDAO {
 
 				rs.close();
 
-				sql = "UPDATE cart_table SET buy_count=buy_count+1 WHERE user_id=? AND product_id=?";
+				sql = "UPDATE cart_table SET buy_count=buy_count+0 WHERE user_id=? AND product_id=?";
 
 				st = cn.prepareStatement(sql);
 
