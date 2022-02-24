@@ -67,6 +67,7 @@ window.addEventListener('DOMContentLoaded', function() {
         <!-- Article -->
         <article class="col-span-9 lg:col-span-10">
             <!-- Generation Item Ranking -->
+            <c:if test="${!empty user.name and !empty favoriteCountList}">
             <section class="mt-3.5">
                 <p class="pt-6 text-2xl font-bold">お気に入り数ランキング</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
@@ -85,8 +86,10 @@ window.addEventListener('DOMContentLoaded', function() {
                 	</c:forEach>
                 </ul>
             </section>
+            </c:if>
             <!-- Generation Item Ranking End -->
             <!-- Item Line-Up -->
+            <c:if test="${!empty user.name and !empty randomProductList}">
             <section class="mt-10">
                 <p class="pt-6 text-2xl font-bold">商品ラインナップ</p>
                 <ul class="flex w-full mt-5 overflow-visible overflow-x-auto">
@@ -105,6 +108,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 	</c:forEach>
                 </ul>
             </section>
+            </c:if>
             <!-- Item Line-Up End -->
 				<c:if test="${!empty user.name and !empty favoriteList}">
 		        	<section class="mt-10">

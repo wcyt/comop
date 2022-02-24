@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     <!-- font  -->
     <!-- tailwind css -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.2.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/basscss@latest/css/basscss.min.css" rel="stylesheet" type="text/css" />
-  	<link href="https://cdn.jsdelivr.net/npm/daisyui@1.16.5/dist/full.css" rel="stylesheet" type="text/css" />
     <!-- tailwind css -->
     <title>ログイン - comop</title>
 </head>
@@ -40,7 +40,7 @@
             <input type="email" id="mailAddress" name="mailAddress"placeholder="メールアドレス" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input focus:outline-blue-400"  pattern="^[a-zA-Z0-9.!#$&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$" title="メールアドレスは、aaa@example.com のような形式で記入してください。" required>
             <input type="password" id="password" name="password"placeholder="パスワード" class="mt-5 font-bold placeholder-gray-400 border-none rounded-lg input focus:outline-blue-400" required>
             <div class="flex flex-row mt-4">
-                <input type="checkbox" id="checkbox" onclick="changeInputType()" class="accent-blue-400 text-white rounded-md h-5 w-5 mt-[0.4rem] mr-2">
+                <input type="checkbox" id="checkbox" onclick="changeInputType()" class="checkbox checkbox-primary accent-blue-400 text-white rounded-md h-5 w-5 mt-[0.4rem] mr-2">
             	<span class="mt-1">パスワードを表示する</span>
             </div>
             <button id="loginButton" class="py-3 mt-6 text-xl font-bold text-white bg-blue-400 rounded-full focus:outline-none">ログインする</button>
