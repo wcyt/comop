@@ -22,7 +22,7 @@ public class MySQLProductDAO implements ProductDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE";
+			String sql = "SELECT product_id, product_name, product_image, price FROM product_table";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
@@ -278,7 +278,7 @@ public class MySQLProductDAO implements ProductDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE ORDER BY PRICE";
+			String sql = "SELECT product_id, product_name, product_image, price FROM product_table ORDER BY price";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
@@ -314,7 +314,7 @@ public class MySQLProductDAO implements ProductDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE, FAVORITE_COUNT FROM PRODUCT_TABLE ORDER BY FAVORITE_COUNT DESC";
+			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE (price >=0)&&(price <=10000) ORDER BY favorite_count DESC";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
@@ -382,7 +382,7 @@ public class MySQLProductDAO implements ProductDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE ORDER BY RAND()";
+			String sql = "SELECT product_id,product_name,product_image,price FROM product_table WHERE (price >=0)&&(price <=10000) ORDER BY RAND();";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();

@@ -149,7 +149,7 @@ public class MySQLCartDAO implements CartDAO {
 
 			//購入個数が在庫より多いとき
 			if (cartBean.getBuy_count() >= cartBean.getStock_quantity()) {
-				String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT + 0 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+				String sql = "update cart_table set buy_count = buy_count + 0 where user_id = ? && product_id = ?";
 
 				st = cn.prepareStatement(sql);
 
@@ -157,7 +157,7 @@ public class MySQLCartDAO implements CartDAO {
 				st.setInt(2, cartBean.getProduct_id());
 			} else {
 				//購入個数が在庫より多くないとき
-				String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT + 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+				String sql = "update cart_table set buy_count = buy_count + 1 where user_id = ? && product_id = ?";
 
 				st = cn.prepareStatement(sql);
 
@@ -188,7 +188,7 @@ public class MySQLCartDAO implements CartDAO {
 			Connection cn = Connector.getInstance().connect();
 
 			System.out.println("購入個数" + cartBean.getBuy_count());
-			String sql = "UPDATE CART_TABLE SET BUY_COUNT = BUY_COUNT - 1 WHERE USER_ID = ? AND PRODUCT_ID = ?";
+			String sql = "update cart_table set buy_count = buy_count - 1 where user_id = ? and product_id = ?";
 
 			st = cn.prepareStatement(sql);
 
