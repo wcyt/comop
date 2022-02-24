@@ -68,7 +68,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="password" name="password" id="password" class="w-full px-3 py-2 focus:outline-blue-400"  pattern="^[a-zA-Z0-9.!#$&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$" title="メールアドレスは、aaa@example.com のような形式で記入してください。" required>
+                    <input type="password" name="password" id="password" class="w-full px-3 py-2 focus:outline-blue-400" required>
 				</div>
 				<div class="flex flex-row items-center col-span-5 lg:col-span-4">
                 </div>

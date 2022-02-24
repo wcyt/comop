@@ -38,7 +38,7 @@ public class MoveTopCommand extends AbstractCommand {
 		if (rc.getSessionAttribute("user") != null) {
 			String user_id = String.valueOf(((UserBean) rc.getSessionAttribute("user")).getUser_id());
 			List<FavoriteBean> favoriteList = favoritedao.getFavoriteList(user_id);
-			rc.setAttribute("favoriteList", favoriteList);
+			//rc.setAttribute("favoriteList", favoriteList);
 		}
 
 		Connector.getInstance().commit();
