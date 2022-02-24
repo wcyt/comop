@@ -314,7 +314,7 @@ public class MySQLProductDAO implements ProductDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE FROM PRODUCT_TABLE ORDER BY FAVORITE_COUNT DESC";
+			String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_IMAGE, PRICE, FAVORITE_COUNT FROM PRODUCT_TABLE ORDER BY FAVORITE_COUNT DESC";
 			st = cn.prepareStatement(sql);
 
 			ResultSet rs = st.executeQuery();
