@@ -77,18 +77,6 @@
                     <h2 class="text-2xl">退会</h2>
                     <a href="leave">退会手続き</a>
                 </div>
-                <!-- Member Registration Information End -->
-                <!-- Point -->
-                <div class="flex flex-col gap-3 py-5 border-b-2">
-                    <h2 class="text-2xl">ポイント</h2>
-                    <a href="">ポイント</a>
-                </div>
-                <!-- Point End -->
-                <!-- Withdrawal -->
-                <div class="flex flex-col gap-3 py-5 border-b-2">
-                    <h2 class="text-2xl">退会</h2>
-                    <a href="">退会手続き</a>
-                </div>
                 <!-- Withdrawal End -->
             </aside>
             <article class="col-span-10 ml-14">
