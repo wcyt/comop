@@ -49,7 +49,7 @@
             <nav class="col-span-12 text-lg font-light breadcrumbs">
                 <ul>
                     <li><a href="top">ホーム</a></li>
-                    <li>登録情報</li>
+                    <li>登録情報1</li>
                 </ul>
             </nav>
             <!-- Breadcrumbs End -->
