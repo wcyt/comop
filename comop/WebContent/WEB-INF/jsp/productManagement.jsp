@@ -17,9 +17,9 @@
     <title>商品管理</title>
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
     <main id="main" class="grid grid-cols-12">
-        <aside id="sidebar" class="grid h-full col-span-2 pt-12 text-lg bg-white text-slate-800 drop-shadow-xl">
+        <aside id="sidebar" class="grid col-span-2 pt-12 text-lg bg-white text-slate-800 drop-shadow-xl">
             <ul class="text-gray-300">
                 <li class="py-4 pl-4 hover:text-black">
                     <a href="getAdminUserList">
@@ -62,7 +62,7 @@
                     <a href="#option-2" class="px-4 py-3 font-bold" x-bind:class="{ 'border-b-4 border-green-500': selected === 'option-2' }" x-on:click="selected = 'option-2'">Add Product</a>
                     <a href="#option-3" class="px-4 py-3 font-bold" x-bind:class="{ 'border-b-4 border-green-500': selected === 'option-3' }" x-on:click="selected = 'option-3'">Edit Product</a>
                 </nav>
-                <div x-show="selected === 'option-1'" class="mt-4 overflow-x-auto rounded-lg h-full">
+                <div x-show="selected === 'option-1'" class="mt-4 overflow-x-auto rounded-lg">
                     <table class="table w-full text-center">
                         <thead>
                             <tr>
@@ -98,7 +98,7 @@
                         </c:forEach>
                     </table>
                 </div>
-                <div x-show="selected === 'option-2'" class="mt-4 rounded-lg h-full">
+                <div x-show="selected === 'option-2'" class="mt-4 rounded-lg">
                     <form action="addProduct" method="post" class="form-control">
                         <div class="bg-white rounded-lg">
                             <p class="py-3 font-mono text-xl text-center border-b-2">Add Product</p>
@@ -168,7 +168,7 @@
                         </div>
                     </form>
                 </div>
-                <div x-show="selected === 'option-3'" class="mt-4 rounded-lg h-full">
+                <div x-show="selected === 'option-3'" class="mt-4 rounded-lg">
                     <form action="editProduct" method="post" class="form-control">
                         <div class="bg-white rounded-lg">
                             <p class="py-3 font-mono text-xl text-center border-b-2">Edit Product</p>
