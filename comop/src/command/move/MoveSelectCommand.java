@@ -18,6 +18,7 @@ public class MoveSelectCommand extends AbstractCommand {
 		//パラメータを取得
 		int user_id = Integer.parseInt(reqc.getParameter("user_id")[0]);
 		int total_price = 0;
+		int point = 0;
 
 		String credit_number = "", card_holder = "", security_code = "", expiration_date = "";
 
@@ -38,6 +39,7 @@ public class MoveSelectCommand extends AbstractCommand {
 		//商品の値段と購入個数を合計金額に加算
 		for (CartBean cartBean : carts) {
 			total_price += cartBean.getPrice() * cartBean.getBuy_count();
+			point += total_price * 0.05;
 		}
 
 		//DBからユーザーIDに合致するクレジット情報を持ってきて、セットする
@@ -58,10 +60,12 @@ public class MoveSelectCommand extends AbstractCommand {
 			reqc.setAttribute("expiration_year", expiration_year);
 		}
 
+		reqc.setAttribute("point", point);
 		reqc.setAttribute("total_price", total_price);
 		reqc.setAttribute("credit_number", credit_number);
 		reqc.setAttribute("card_holder", card_holder);
 		reqc.setAttribute("security_code", security_code);
+		System.out.println("point" + point);
 
 		resc.setTarget("select");
 

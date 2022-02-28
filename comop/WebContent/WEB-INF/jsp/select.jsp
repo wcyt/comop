@@ -222,7 +222,7 @@
                 </div>
                 <div class="flex justify-between pb-5 text-lg border-b border-gray-400 ">
                     <span>ポイント</span>
-                    <span class="text-red-600">${total_price / 10}ポイント</span>
+                    <span class="text-red-600">${point} ポイント</span>
                 </div>
                 <div class="flex justify-between py-5">
                     <div>
