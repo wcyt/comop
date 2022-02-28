@@ -82,19 +82,19 @@
                         <tbody>
                             <c:forEach var="users" items="${data}">
                                 <tr class="hover">
-                                    <th>${users.user_id}</th>
-                                    <td>${users.name}</td>
-                                    <td>${users.mail}</td>
-                                    <td>${users.address}</td>
-                                    <td>${users.first_name}</td>
-                                    <td>${users.first_name_kana}</td>
-                                    <td>${users.last_name}</td>
-                                    <td>${users.last_name_kana}</td>
-                                    <td>${users.tel}</td>
-                                    <td>${users.postal_code}</td>
-                                    <td>${users.password}</td>
-                                    <td>${users.point}</td>
-                                    <td>${users.user_lapse}</td>
+                                    <th><c:out value="${users.user_id}" /></th>
+                                    <td><c:out value="${users.name}" /></td>
+                                    <td><c:out value="${users.mail}" /></td>
+                                    <td><c:out value="${users.address}" /></td>
+                                    <td><c:out value="${users.first_name}" /></td>
+                                    <td><c:out value="${users.first_name_kana}" /></td>
+                                    <td><c:out value="${users.last_name}" /></td>
+                                    <td><c:out value="${users.last_name_kana}" /></td>
+                                    <td><c:out value="${users.tel}" /></td>
+                                    <td><c:out value="${users.postal_code}" /></td>
+                                    <td><c:out value="${users.password}" /></td>
+                                    <td><c:out value="${users.point}" /></td>
+                                    <td><c:out value="${users.user_lapse}" /></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

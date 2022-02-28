@@ -18,7 +18,7 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = "INSERT into point_order_table(user_id,total_point_price,reward_product_id,buy_count) values(?,?,?,1)";
+			String sql = "INSERT INTO point_order_table(user_id,total_point_price,reward_product_id,buy_count) VALUES(?,?,?,1)";
 
 			st = cn.prepareStatement(sql);
 
@@ -89,7 +89,7 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 			Connection cn = Connector.getInstance().connect();
 
 			//ユーザーのポイントを減らす
-			String sql = "UPDATE USER_TABLE SET POINT = POINT - ? WHERE USER_ID = ?";
+			String sql = "UPDATE user_table SET point = point - ? WHERE user_id = ?";
 
 			st = cn.prepareStatement(sql);
 
