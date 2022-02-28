@@ -5,7 +5,6 @@
 - Language: Java 8, HTML, CSS, javaScript
 - DB: MySQL 8.0.20
 - Server: Tomcat 8.5
-- GitHub: https://github.com/wcyt/comop
 
 ## フォルダ構成
 
