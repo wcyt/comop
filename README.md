@@ -44,7 +44,7 @@
 │   │   │   │   └── userManagement.jsp                      // ユーザー管理ページ（Admin）
 │   │   │   ├── lib
 │   │   │   │   ├── jstl.jar                                // タグライブラリ
-│   │   │   │   ├── mysql-connector-java-8.0.22.jar　　　　 // MySQL接続用
+│   │   │   │   ├── mysql-connector-java-8.0.22.jar　　　　  // MySQL接続用
 │   │   │   │   ├── ojdbc7.jar                              // Oracle JDBCドライバ
 │   │   │   │   ├── servlet-api.jar
 │   │   │   │   └── standard.jar
@@ -67,9 +67,9 @@
 │       │   ├── StockBean.java                                // stock_tableのBean
 │       │   └── UserBean.java                                 // user_tableのBean
 │       ├── command
-│       │   ├── AbstractCommand.java                          //
-│       │   ├── CommandFactory.java                           // プロパティファイルの読み込み・インスタンス化
-│       │   ├── admin                                         // 管理者関係
+│       │   ├── AbstractCommand.java                         //
+│       │   ├── CommandFactory.java                          // プロパティファイルの読み込み・インスタンス化
+│       │   ├── admin                                        // 管理者関係
 │       │   │   ├── AddColorCommand.java                     // 色の追加
 │       │   │   ├── AddProductCommand.java                   // 商品の追加
 │       │   │   ├── AddRewardProductCommand.java             // ポイント商品の追加
@@ -83,17 +83,17 @@
 │       │   │   ├── RemoveColorCommand.java                  // 色の削除
 │       │   │   ├── RemoveProductCommand.java                // 商品の削除
 │       │   │   └── RemoveRewardProductCommand.java          // ポイント商品の削除
-│       │   ├── cart                                          // カート関係
+│       │   ├── cart                                         // カート関係
 │       │   │   ├── AddCartCommand.java                      // カートに追加
 │       │   │   ├── DecreaseBuyCountCommand.java             // 購入個数を一つ減らす
 │       │   │   ├── GetCartListCommand.java                  // カートに追加された商品一覧の取得
 │       │   │   ├── IncreaseBuyCountCommand.java             // 購入個数を一つ増やす
 │       │   │   └── RemoveCartCommand.java                   // カートに追加した商品の削除
-│       │   ├── favorite                                      // お気に入り関係
+│       │   ├── favorite                                     // お気に入り関係
 │       │   │   ├── AddFavoriteCommand.java                  // お気に入りに追加
 │       │   │   ├── GetFavoriteListCommand.java              // お気に入りに追加された商品一覧の取得
 │       │   │   └── RemoveFavoriteCommand.java               // お気に入りの削除
-│       │   ├── move                                          // 移動関係
+│       │   ├── move                                         // 移動関係
 │       │   │   ├── MoveLeaveCommand.java                    // 退会ページへ移動
 │       │   │   ├── MoveModifyAddressCommand.java            // メールアドレス変更ページへ移動
 │       │   │   ├── MoveModifyBasicInfoCommand.java          // 基本情報編集ページへ移動
@@ -102,12 +102,12 @@
 │       │   │   ├── MoveSignInCommand.java                   // ログインページへ移動
 │       │   │   ├── MoveSignUpCommand.java                   // ログオン（会員登録）ページへ移動
 │       │   │   └── MoveTopCommand.java                      // トップページへ移動
-│       │   ├── order                                         // 注文関係
+│       │   ├── order                                        // 注文関係
 │       │   │   ├── AddOrderCommand.java                     // 商品を注文
 │       │   │   ├── AddPointOrderCommand.java                // ポイント商品を注文
 │       │   │   ├── GetOrderListCommand.java                 // 注文履歴一覧を取得
 │       │   │   └── GetPointOrderListCommand.java            // ポイント商品注文履歴を取得
-│       │   ├── product                                       // 商品関係
+│       │   ├── product                                      // 商品関係
 │       │   │   ├── GetProductDetailCommand.java             // 商品詳細を取得
 │       │   │   ├── GetProductsListCommand.java              // 商品一覧を取得
 │       │   │   ├── GetRewardProductsListCommand.java        // ポイント商品一覧を取得
@@ -116,16 +116,16 @@
 │       │   │   ├── SearchRewardProductsCommand.java         // ポイント商品検索
 │       │   │   ├── SortFavoriteCountCommand.java            // お気に入り数でソートされた商品一覧の取得
 │       │   │   └── SortProductsCommand.java                 // 値段でソートされた商品一覧の取得
-│       │   └── user                                          // ユーザー関連
-│       │       ├── ChangePasswordCommand.java                // パスワード変更
-│       │       ├── CreateAccountCommand.java                 // アカウント作成
-│       │       ├── EditUserInfoCommand.java                  // ユーザー情報編集
-│       │       ├── GetOrderHistoryCommand.java               // 注文履歴を取得
-│       │       ├── GetUserInfoCommand.java                   // ユーザー情報の取得
-│       │       ├── LapseUserCommand.java                     // ユーザーの退会
-│       │       ├── LoginCommand.java                         // ログイン
-│       │       └── LogoutCommand.java                        // ログアウト
-│       ├── commands.properties                                // コマンドのプロパティファイル
+│       │   └── user                                         // ユーザー関連
+│       │       ├── ChangePasswordCommand.java               // パスワード変更
+│       │       ├── CreateAccountCommand.java                // アカウント作成
+│       │       ├── EditUserInfoCommand.java                 // ユーザー情報編集
+│       │       ├── GetOrderHistoryCommand.java              // 注文履歴を取得
+│       │       ├── GetUserInfoCommand.java                  // ユーザー情報の取得
+│       │       ├── LapseUserCommand.java                    // ユーザーの退会
+│       │       ├── LoginCommand.java                        // ログイン
+│       │       └── LogoutCommand.java                       // ログアウト
+│       ├── commands.properties                              // コマンドのプロパティファイル
 │       ├── dao
 │       │   ├── Connector.java
 │       │   ├── admin
@@ -170,7 +170,7 @@
 │           ├── WebApplicationController.java
 │           ├── WebRequestContext.java
 │           └── WebResponseContext.java
-└── test.txt
+
 </pre>
 
 ## テーブル
