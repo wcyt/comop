@@ -74,8 +74,8 @@
                         <c:forEach var="color" items="${data}">
                             <tbody>
                                 <tr class="hover">
-                                    <td>${color.color_id}</td>
-                                    <th>${color.color_name}</th>
+                                    <td><c:out value="${color.color_id}" /></td>
+                                    <th><c:out value="${color.color_name}" /></th>
                                     <th><a href="removeColor?color_id=${color.color_id}" class="hover:underline">Delete</a></th>
                                 </tr>
                             </tbody>

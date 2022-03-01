@@ -45,10 +45,7 @@ public class AddOrderCommand extends AbstractCommand {
 		String expiration_date = expirationMonth + expirationYear;
 
 		//ポイント用
-		String stringpoint = rc.getParameter("point")[0]; // "207.0"
-		double doublepoint = Double.parseDouble(stringpoint);
-		int point = (int) doublepoint;
-		System.out.println("point: " + point);
+		int point = Integer.parseInt(rc.getParameter("point")[0]);
 
 		//Order用
 		int user_id = Integer.parseInt(rc.getParameter("user_id")[0]);
@@ -67,6 +64,7 @@ public class AddOrderCommand extends AbstractCommand {
 			buy_count += Integer.parseInt(rc.getParameter("buy_count")[i]);
 		}
 
+		// Beanにセット
 		OrderBean o = new OrderBean();
 		o.setUser_id(user_id);
 		o.setTotal_price(total_price);

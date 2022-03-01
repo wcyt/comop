@@ -82,17 +82,17 @@
                         </thead>
                         <c:forEach var="products" items="${data}">
                             <tr class="truncate whitespace-pre-wrap hover">
-                                <th>${products.product_id}</th>
-                                <td>${products.product_name}</td>
-                                <td>${products.product_image}</td>
-                                <td>${products.stock_quantity}</td>
-                                <td>${products.product_description}</td>
-                                <td>${products.price}</td>
-                                <td>${products.color_id}</td>
-                                <td>${products.size}</td>
-                                <td>${products.material}</td>
-                                <td>${products.packing_type}</td>
-                                <td>${products.favorite_count}</td>
+                                <th><c:out value="${products.product_id}" /></th>
+                                <td><c:out value="${products.product_name}" /></td>
+                                <td><c:out value="${products.product_image}" /></td>
+                                <td><c:out value="${products.stock_quantity}" /></td>
+                                <td><c:out value="${products.product_description}" /></td>
+                                <td><c:out value="${products.price}" /></td>
+                                <td><c:out value="${products.color_id}" /></td>
+                                <td><c:out value="${products.size}" /></td>
+                                <td><c:out value="${products.material}" /></td>
+                                <td><c:out value="${products.packing_type}" /></td>
+                                <td><c:out value="${products.favorite_count}" /></td>
                                 <td><a href="removeProduct?product_id=${products.product_id}" class="hover:underline">Delete</a></td>
                             </tr>
                         </c:forEach>

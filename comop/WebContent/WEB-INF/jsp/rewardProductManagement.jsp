@@ -77,12 +77,12 @@
                         </thead>
                         <c:forEach var="rewardProducts" items="${data}">
                             <tr class="hover">
-                                <th>${rewardProducts.reward_product_id}</th>
-                                <td>${rewardProducts.reward_product_name}</td>
-                                <td>${rewardProducts.reward_product_image}</td>
-                                <td>${rewardProducts.reward_product_description}</td>
-                                <td>${rewardProducts.point_price}</td>
-                                <td>${rewardProducts.stock_quantity}</td>
+                                <th><c:out value="${rewardProducts.reward_product_id}" /></th>
+                                <td><c:out value="${rewardProducts.reward_product_name}" /></td>
+                                <td><c:out value="${rewardProducts.reward_product_image}" /></td>
+                                <td><c:out value="${rewardProducts.reward_product_description}" /></td>
+                                <td><c:out value="${rewardProducts.point_price}" /></td>
+                                <td><c:out value="${rewardProducts.stock_quantity}" /></td>
                                 <td>
                                     <a href="removeRewardProduct?reward_product_id=${rewardProducts.reward_product_id}" class="hover:underline">Delete</a>
                                 </td>
