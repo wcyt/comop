@@ -80,7 +80,7 @@
 								<p class="text-lg text-red-600">発送準備中</p>
 								<div class="grid grid-cols-12 mt-5">
 									<div class="col-span-3">
-										<a href="getProductDetail?product_id=${order.product_id}"> <img src="images/${order.product_image}" alt="${order.product_name}" class="w-full h-44">
+										<a href="getProductDetail?product_id=${order.product_id}"> <img src="images/${order.product_image}" alt="${order.product_name}" class="w-full h-44 object-contain">
 										</a>
 									</div>
 									<div class="col-span-5 ml-5 border-r-2 border-gray-200">

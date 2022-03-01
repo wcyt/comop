@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	                	<li class="bg-white">
 	                        <div class="flex flex-col w-52">
 	                            <a href="getProductDetail?product_id=${product.product_id}">
-		                			<img class="w-full h-44" src="images/${product.product_image}" alt="${product.product_name}">
+		                			<img class="w-full h-44 object-contain" src="images/${product.product_image}" alt="${product.product_name}">
 		                		</a>
 	                            <div class="p-4">
 	                                <p class="mb-1 font-bold text-md">${product.product_name }</p>
