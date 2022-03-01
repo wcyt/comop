@@ -107,13 +107,13 @@
                         <!-- Credit Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">クレジット番号</p>
-                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字を入力してください" autocomplete="tel" class="col-span-9 w-72" required>
+                            <input type="text" name="creditNumber" id="creditNumber" value="${credit_number}" autocomplete="cc-number" placeholder="半角数字を入力してください" minlength="16" maxlength="16" autocomplete="tel" class="col-span-9 w-72" oninput="value = value.replace(/[^0-9]+/i,'');" required>
                         </div>
                         <!-- Credit Number End -->
                         <!-- Security Number -->
                         <div class="grid items-center grid-cols-12">
                             <p class="col-span-3">セキュリティ番号</p>
-                            <input type="text" name="securityCode" id="securityNumber" value="${security_code}" autocomplete="cc-csc" placeholder="半角数字を入力してください" autocomplete="tel" class="col-span-9 w-72" pattern="^[0-9]{3,4}\z" title="半角数字を入力してください" required>
+                            <input type="text" name="securityCode" id="securityNumber" value="${security_code}" autocomplete="cc-csc" placeholder="半角数字を入力してください" minlength="3" maxlength="3" autocomplete="tel" class="col-span-9 w-72" pattern="^[0-9]{3,4}\z" title="半角数字を入力してください" oninput="value = value.replace(/[^0-9]+/i,'');" required>
                         </div>
                         <!-- Security Number -->
                         <!-- Card Holder -->
@@ -198,7 +198,7 @@
                             <input type="hidden" name="name" value="${user.name}">
                             <input type="hidden" name="mail" value="${user.mail}">
                             <input type="hidden" name="total_price" value="${total_price}">
-                            <input type="hidden" name="point" value="${total_price / 10}">
+                            <input type="hidden" name="point" value="${point}">
                                 <button type="submit" id="modalSubmitButton" class="px-8 py-3 text-white bg-blue-400 rounded-lg font-bold">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteOrder()">キャンセル</label>

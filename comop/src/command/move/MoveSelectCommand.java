@@ -40,6 +40,7 @@ public class MoveSelectCommand extends AbstractCommand {
 		for (CartBean cartBean : carts) {
 			total_price += cartBean.getPrice() * cartBean.getBuy_count();
 			point += total_price * 0.05;
+			System.out.println(point);
 		}
 
 		//DBからユーザーIDに合致するクレジット情報を持ってきて、セットする
