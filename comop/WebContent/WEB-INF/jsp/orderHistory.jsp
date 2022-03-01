@@ -91,7 +91,7 @@
 										<p class="text-lg font-bold">\ ${order.price}</p>
 									</div>
 									<div class="col-span-4 ml-4">
-										<p>注文日：${order.order_date}</p>
+										<p>注文日：${order.order_date} UTC</p>
 										<p>注文番号：${order.order_id}</p>
 									</div>
 								</div>

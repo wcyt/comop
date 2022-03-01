@@ -103,7 +103,7 @@
                                             <p class="text-lg font-bold text-red-500">${reward.point_price}P</p>
                                         </div>
                                         <div class="col-span-4 ml-4">
-                                            <p>注文日：${reward.order_date}</p>
+                                            <p>注文日：${reward.order_date} UTC</p>
                                         </div>
                                     </div>
                                 </div>

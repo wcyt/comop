@@ -54,6 +54,10 @@ function r_check(){
 		         	</div>
 		         <!-- Search Input End -->
 		    </form>
+		    <div class="flex items-center">
+			    <span class="mt-6 text-2xl">現在のポイント：</span>
+			    <span class="mt-6 text-2xl text-red-500 ml-4">${user.point}P</span>
+		    </div>
             <!-- Products List -->
 	            <ul class="flex flex-row flex-wrap gap-6 mt-5">
 					<c:forEach var="reward" items="${data}">

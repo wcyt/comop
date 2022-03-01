@@ -176,6 +176,7 @@
                 <p class="mb-4 text-2xl font-bold">変更内容の確認</p>
                 <p class="my-2">お名前：\${firstName} \${lastName}</p>
                 <p class="my-2">お名前（カナ）：\${firstNameKana} \${lastNameKana}</p>
+                <p class="my-2">メールアドレス：\${address}</p>
                 <p class="my-2">電話番号：\${tel}</p>
                 <p class="my-2">郵便番号：\${postalCode}</p>
                 <p class="my-2">住所：\${address}</p>
