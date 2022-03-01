@@ -39,8 +39,11 @@ public class MoveSelectCommand extends AbstractCommand {
 		//商品の値段と購入個数を合計金額に加算
 		for (CartBean cartBean : carts) {
 			total_price += cartBean.getPrice() * cartBean.getBuy_count();
-			point += total_price * 0.05;
+
 		}
+
+		point += total_price * 0.05;
+		System.out.println("goukei point" + point);
 
 		//DBからユーザーIDに合致するクレジット情報を持ってきて、セットする
 		OrderDAO orderDAO = factory.getOrderDAO();

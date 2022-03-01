@@ -41,22 +41,22 @@ function check(){
 		                    <div class="flex flex-row">
 		                        <div class="flex flex-col w-full gap-2 mr-10">
 		                            <h2 class="mb-4 text-xl font-bold">アイテムを探す</h2>
-									<a href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a>
-									<a href="getRewardProductsList">ポイント商品一覧から探す</a>
-									<a href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a>
-									<a href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a>
-									<a href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a>
-									<a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a>
-									<a href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a>
-									<a href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a>
+									<a class="hover:underline" href="getRewardProductsList">ポイント商品一覧から探す</a>
+									<a class="hover:underline" href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a>
+									<a class="hover:underline" href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a>
+									<a class="hover:underline" href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a>
+									<a class="hover:underline" href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a>
+									<a class="hover:underline" href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a>
+									<a class="hover:underline" href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a>
 								</div>
 		                        <div class="flex flex-col w-full gap-2 ">
 		                        	<h2 class="mb-10 text-xl font-bold"> </h2>
-									<a href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -111,22 +111,22 @@ function check(){
 		                    <div class="flex flex-row">
 		                        <div class="flex flex-col w-full gap-2 mr-10">
 		                            <h2 class="mb-4 text-xl font-bold">アイテムを探す</h2>
-									<a href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a>
-									<a href="getRewardProductsList">ポイント商品一覧から探す</a>
-									<a href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a>
-									<a href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a>
-									<a href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a>
-									<a href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a>
-									<a href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a>
-									<a href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=5000">商品一覧から探す</a>
+									<a class="hover:underline" href="getRewardProductsList">ポイント商品一覧から探す</a>
+									<a class="hover:underline" href="refineSearch?size=キッズ&pmin=0&pmax=10000">キッズで探す</a>
+									<a class="hover:underline" href="refineSearch?size=小さめ&pmin=0&pmax=10000">小さめで探す</a>
+									<a class="hover:underline" href="refineSearch?size=ふつう&pmin=0&pmax=10000">ふつうで探す</a>
+									<a class="hover:underline" href="refineSearch?material=布&pmin=0&pmax=10000">布で探す</a>
+									<a class="hover:underline" href="refineSearch?material=不織布&pmin=0&pmax=10000">不織布で探す</a>
+									<a class="hover:underline" href="refineSearch?material=ウレタン&pmin=0&pmax=10000">ウレタンで探す</a>
 								</div>
 		                        <div class="flex flex-col w-full gap-2 ">
 		                        	<h2 class="mb-10 text-xl font-bold"> </h2>
-									<a href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a>
-									<a href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&packing_type=個別包装">個別包装で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&packing_type=大容量">大容量で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&sort=asc">価格が低い順で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&sort=desc">価格が高い順で探す</a>
+									<a class="hover:underline" href="refineSearch?pmin=0&pmax=10000&sort=favorite">お気に入り数が多い順で探す</a>
 		                        </div>
 		                    </div>
 		                </div>

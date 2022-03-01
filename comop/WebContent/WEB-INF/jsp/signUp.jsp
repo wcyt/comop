@@ -19,7 +19,7 @@
     <title>新規会員登録 - comop</title>
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
 	<%@include file="Header.jsp" %>
     <!-- Main -->
     <main class="grid grid-cols-12 mt-16 mb-8 lg:px-32 sm:px-4">
@@ -46,7 +46,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="text" name="name" id="" class="w-full px-3 py-2 focus:outline-blue-400" required>
+                    <input type="text" name="name" id="" class="w-full px-3 py-2 focus:outline-blue-400" maxlength="20" required>
                 </div>
             </div>
             <!-- User Name-->
@@ -57,7 +57,7 @@
                     <span class="ml-4 font-bold text-red-600">必須</span>
                 </div>
                 <div class="flex flex-row col-span-7 gap-5 lg:col-span-8">
-                    <input type="email" name="mail" class="w-full px-3 py-2 focus:outline-blue-400" required>
+                    <input type="email" name="mail" class="w-full px-3 py-2 focus:outline-blue-400" pattern=".+\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]" title="メールアドレスは、aaa@example.com のような形式で記入してください。" required>
                 </div>
             </div>
             <!-- Mail Address End -->

@@ -80,7 +80,7 @@
 								<p class="text-lg text-red-600">発送準備中</p>
 								<div class="grid grid-cols-12 mt-5">
 									<div class="col-span-3">
-										<a href="getProductDetail?product_id=${order.product_id}"> <img src="images/${order.product_image}" alt="${order.product_name}" class="w-full h-44">
+										<a href="getProductDetail?product_id=${order.product_id}"> <img src="images/${order.product_image}" alt="${order.product_name}" class="w-full h-44 object-contain">
 										</a>
 									</div>
 									<div class="col-span-5 ml-5 border-r-2 border-gray-200">
@@ -91,7 +91,7 @@
 										<p class="text-lg font-bold">\ ${order.price}</p>
 									</div>
 									<div class="col-span-4 ml-4">
-										<p>注文日：${order.order_date}</p>
+										<p>注文日：${order.order_date} UTC</p>
 										<p>注文番号：${order.order_id}</p>
 									</div>
 								</div>

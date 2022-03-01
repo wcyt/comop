@@ -18,7 +18,7 @@
     <title>ポイント注文</title>
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
     <%@include file="Header.jsp" %>
         <!-- Main -->
         <main id="main" class="grid grid-cols-12 py-16 bg-white sm:px-4 lg:px-32">
@@ -103,7 +103,7 @@
                                             <p class="text-lg font-bold text-red-500">${reward.point_price}P</p>
                                         </div>
                                         <div class="col-span-4 ml-4">
-                                            <p>注文日：${reward.order_date}</p>
+                                            <p>注文日：${reward.order_date} UTC</p>
                                         </div>
                                     </div>
                                 </div>
