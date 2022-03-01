@@ -93,23 +93,9 @@
                     </div>
                     <!-- New Password End -->
                     <!-- Modal -->
-                    <input type="checkbox" id="my-modal-2" class="modal-toggle">
-                    <div class="modal">
-                        <div class="modal-box">
-                            <!-- Modal Contents -->
-                            <div id="inputValues"></div>
-                            <div class="modal-action">
-                                <label for="my-modal-2">
-									<button type="submit" class="px-5 py-3 font-bold text-white bg-blue-500 rounded-lg">送信</button>
-								</label> <label for="my-modal-2" class="btn" onclick="deletePassword()">キャンセル</label>
-                            </div>
-                            <!-- Modal Contents -->
-                        </div>
-                    </div>
-                    <!-- Modal End -->
                     <!-- Check Button -->
                     <div class="flex justify-center mt-10">
-                        <label for="my-modal-2" class="px-20 py-3 text-xl font-bold text-white bg-blue-400 rounded-md " onclick="checkPassword()">確認する</label>
+                        <button type="submit" class="px-20 py-3 text-xl font-bold text-white bg-blue-400 rounded-md ">変更する</button>
                     </div>
                     <!-- Check Button End -->
                 </form>
@@ -121,26 +107,6 @@
 </body>
 
 <script>
-    function checkPassword() {
-        const nowPassword = document.getElementById('nowPassword').value;
-        const newPassword = document.getElementById('newPassword').value;
-        const output =
-            `
-                <div id="inputLists" class="text-lg ">
-                    <p class="mb-6 text-2xl font-bold ">変更内容の確認</p>
-                    <p class="my-2 ">現在のパスワード： \${nowPassword}</p>
-                    <p class="my-2 ">新しいパスワード： \${newPassword}</p>
-                </div>
-            `;
-        document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
-    }
-
-    function deletePassword() {
-        const inputLists = document.getElementById('inputLists');
-        inputLists.remove();
-        console.log(inputLists);
-    }
-
     // checkboxをクリックしたらinputのtypeを変更する関数
     function changeNowPasswordInputType() {
         const nowPassword = document.getElementById('nowPassword');

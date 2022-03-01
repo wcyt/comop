@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import bean.UserBean;
 import command.AbstractCommand;
 import dao.Connector;
 import dao.user.UserDAO;
@@ -70,6 +71,16 @@ public class ChangePasswordCommand extends AbstractCommand {
 
 			//top.jspに移動
 			resc.setTarget("modifyPassword");
+		}
+
+		//sessionの更新
+		if (reqc.getSessionAttribute("user") != null) {
+			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+			String smail = ((UserBean) reqc.getSessionAttribute("user")).getMail();
+			UserDAO userDAO = factory.getUserDAO();
+			UserBean u = new UserBean();
+			u = userDAO.getMyUserInfo(smail);
+			reqc.setSessionAttribute("user", u);
 		}
 		Connector.getInstance().commit();
 

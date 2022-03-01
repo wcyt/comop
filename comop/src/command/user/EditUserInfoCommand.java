@@ -55,6 +55,15 @@ public class EditUserInfoCommand extends AbstractCommand{
 		UserDAO userDAO = factory.getUserDAO();
 		userDAO.editUserInfo(userBean);
 
+		//sessionの更新
+		if (reqc.getSessionAttribute("user") != null) {
+			//TODO セッションに必要なユーザー情報を持ったBeanInstを登録
+			String smail = ((UserBean) reqc.getSessionAttribute("user")).getMail();
+			UserBean u = new UserBean();
+			u = userDAO.getMyUserInfo(smail);
+			reqc.setSessionAttribute("user", u);
+		}
+
 		Connector.getInstance().commit();
 
 		reqc.setAttribute("message","ユーザー情報を変更しました");

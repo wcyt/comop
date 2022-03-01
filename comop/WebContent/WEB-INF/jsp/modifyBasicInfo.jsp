@@ -68,8 +68,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstName" id="firstName" autocomplete="given-name" placeholder="例）上尾" value="${user.first_name}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
-                        <input type="text" name="lastName" id="lastName" autocomplete="family-name" placeholder="太郎" value="${user.last_name}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
+                        <input type="text" name="firstName" id="firstName" autocomplete="given-name" placeholder="例）上尾" value="${user.first_name}" class="w-1/2 px-3 py-2 focus:outline-blue-400" required>
+                        <input type="text" name="lastName" id="lastName" autocomplete="family-name" placeholder="太郎" value="${user.last_name}" class="w-1/2 px-3 py-2 focus:outline-blue-400" required>
                     </div>
                 </div>
                 <!-- Name End -->
@@ -83,8 +83,8 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" value="${user.first_name_kana}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
-                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" value="${user.last_name_kana}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
+                        <input type="text" name="firstNameKana" id="firstNameKana" placeholder="例）アゲオ" value="${user.first_name_kana}" class="w-1/2 px-3 py-2 focus:outline-blue-400" required>
+                        <input type="text" name="lastNameKana" id="lastNameKana" placeholder="タロウ" value="${user.last_name_kana}" class="w-1/2 px-3 py-2 focus:outline-blue-400"  required>
                     </div>
                 </div>
                 <!-- Name(kana) End -->
@@ -95,7 +95,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="email" name="mail" id="mail" placeholder="XXX.gmail.com" value="${user.mail}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
+                        <input type="email" name="mail" id="mail" placeholder="XXX.gmail.com" value="${user.mail}" class="w-1/2 px-3 py-2 focus:outline-blue-400"  pattern=".+\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]" title="メールアドレスは、aaa@example.com のような形式で記入してください。" required>
                     </div>
                 </div>
                 <!-- Mail Address End -->
@@ -117,7 +117,7 @@
                         <span class="ml-4 font-bold text-red-600">必須</span>
                     </div>
                     <div class="flex flex-row items-center col-span-8 gap-5 lg:col-span-9">
-                        <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" value="${user.postal_code}" class="w-1/2 px-3 py-2 focus:outline-blue-400">
+                        <input type="text" name="postalCode" id="postalCode" autocomplete="postal-code" placeholder="100-0002" value="${user.postal_code}" class="w-1/2 px-3 py-2 focus:outline-blue-400"  required>
                         <a href="https://www.post.japanpost.jp/zipcode/index.html" class="text-blue-400 hover:underline">郵便番号を調べる<i class="ml-3 bi bi-box-arrow-up-right"></i></a>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                         <div id="inputValues"></div>
                         <div class="modal-action">
                             <label for="my-modal-2">
-                                <button type="submit" class="px-5 py-3 bg-blue-500 text-white font-bold rounded-lg">送信</button>
+                                <button type="submit" id="modalSubmitButton" type="submit" class="px-5 py-3 bg-blue-500 text-white font-bold rounded-lg">送信</button>
                             </label>
                             <label for="my-modal-2" class="btn" onclick="deleteBasicInfo()">キャンセル</label>
                         </div>
@@ -161,44 +161,54 @@
 	<%@include file="Footer.jsp" %>
 </body>
 <script>
-    function checkBasicInfo() {
-        const firstName = document.getElementById('firstName').value;
-        const lastName = document.getElementById('lastName').value;
-        const firstNameKana = document.getElementById('firstNameKana').value;
-        const lastNameKana = document.getElementById('lastNameKana').value;
-        const postalCode = document.getElementById('postalCode').value;
-        const address = document.getElementById('address').value;
-        const mail = document.getElementById('mail').value;
-        const tel = document.getElementById('tel').value;
-        const output =
-            `
-            <div id="inputLists" class="text-lg">
-                <p class="mb-4 text-2xl font-bold">変更内容の確認</p>
-                <p class="my-2">お名前：\${firstName} \${lastName}</p>
-                <p class="my-2">お名前（カナ）：\${firstNameKana} \${lastNameKana}</p>
-                <p class="my-2">メールアドレス：\${address}</p>
-                <p class="my-2">電話番号：\${tel}</p>
-                <p class="my-2">郵便番号：\${postalCode}</p>
-                <p class="my-2">住所：\${address}</p>
-            </div>
-        `;
-        document.getElementById('inputValues').insertAdjacentHTML('beforeend', output);
-    }
+	function getInputElementsValue() {
+	    const inputElementValues = {
+	        firstName: document.getElementById('firstName').value,
+	        lastName: document.getElementById('lastName').value,
+	        firstNameKana: document.getElementById('firstNameKana').value,
+	        lastNameKana: document.getElementById('lastNameKana').value,
+	        mail: document.getElementById('mail').value,
+	        tel: document.getElementById('tel').value,
+	        postalCode: document.getElementById('postalCode').value,
+	        address: document.getElementById('address').value
+	    };
+	    return inputElementValues;
+	}
+
+	function createInputLists(inputElementValues) {
+	    const { firstName,lastName,firstNameKana,lastNameKana,mail,tel,postalCode,address } = inputElementValues;
+	    const inputLists = `
+	        <div id="inputLists" class="text-lg">
+	            <p class="mb-4 text-2xl font-bold">変更内容の確認</p>
+	            <p class="my-2">お名前： \${firstName} \${lastName}</p>
+	            <p class="my-2">お名前（カナ）： \${firstNameKana} \${lastNameKana}</p>
+	            <p class="my-2">電話番号： \${tel}</p>
+	            <p class="my-2">メールアドレス： \${mail}</p>
+	            <p class="my-2">郵便番号： \${postalCode}</p>
+	            <p class="my-2">住所： \${address}</p>
+	        </div>
+	    `;
+	    return inputLists;
+	}
+
+	function checkBasicInfo() {
+        const modalSubmitButton = document.getElementById('modalSubmitButton');
+	    const inputElementValues = getInputElementsValue();
+	    const inputLists = createInputLists(inputElementValues);
+
+	    console.log(modalSubmitButton);
+
+	    Object.keys(inputElementValues).forEach(function(key) {
+	        inputElementValues[key] === '' ? modalSubmitButton.style.display = 'none' : modalSubmitButton.style.display = 'block';
+	    });
+
+	    document.getElementById('inputValues').insertAdjacentHTML('beforeend', inputLists);
+	}
 
     function deleteBasicInfo() {
         const inputLists = document.getElementById('inputLists');
         inputLists.remove();
         console.log(inputLists);
-    }
-
-    document.getElementById("registMemberInfo").onkeypress = (e) => {
-        // form1に入力されたキーを取得
-        const key = e.keyCode || e.charCode || 0;
-        // 13はEnterキーのキーコード
-        if (key == 13) {
-            // アクションを行わない
-            e.preventDefault();
-        }
     }
 </script>
 
