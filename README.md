@@ -7,18 +7,39 @@
 ## 制作で躓いた部分
 - SQLで列名と表名を指定するとき、小文字にしないとAWSの時に取得・追加・更新・削除ができない
 ```
-NG例： INSERT INTO NAME FROM USER_TABLE;
-OK例： INSERT INTO name FROM user_table;
+NG： INSERT INTO NAME FROM USER_TABLE;
+OK： INSERT INTO name FROM user_table;
 ```
 
 - 画像を表示させるときWebContent直下にして、かつweb.xmlで
 ```
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/images/*</url-pattern>
-	</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>/images/*</url-pattern>
+</servlet-mapping>
 ```
 - を書かないと表示されない（JSも同様）
+
+- 一つのJSPでListを二つ以上使いたいとき、setResultではなくsetAttributeを二つ用意したほうが良い
+```
+NG:
+List<XXX> XXXList = XXXDAO.getXXXList();
+requestContext.setResult(XXList);
+
+List<YYY> YYYList = YYYDAO.getYYYList();
+requestContext.setResult(YYYList);       // こっちのsetResultで一個前のsetResultが上書きされて使えない
+
+OK: 
+List<XXX> XXXList = XXXDAO.getXXXList();
+requestContext.setAttribute("XXX_list", XXXList);
+
+List<YYY> YYYList = YYYDAO.getYYYList();
+requestContext.setAttribute("YYY_list", YYYList);
+
+JSP
+<c:forEach var="xxx" items="${XXX_list}"></c:forEach>
+<c:forEach var="yyy" items="${yyy_list}"></c:forEach>
+```
 
 ## フォルダ構成
 
