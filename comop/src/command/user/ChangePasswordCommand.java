@@ -82,6 +82,7 @@ public class ChangePasswordCommand extends AbstractCommand {
 			u = userDAO.getMyUserInfo(smail);
 			reqc.setSessionAttribute("user", u);
 		}
+
 		Connector.getInstance().commit();
 
 		return resc;
