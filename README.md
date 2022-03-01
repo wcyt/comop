@@ -8,7 +8,7 @@
 - SQLで列名と表名を指定するとき、小文字にしないとAWSの時に取得・追加・更新・削除ができない
 ```
 NG例： INSERT INTO NAME FROM USER_TABLE;
-OK例： INSERT INT name FROM user_table;
+OK例： INSERT INTO name FROM user_table;
 ```
 
 - 画像を表示させるときWebContent直下にして、かつweb.xmlで
