@@ -49,7 +49,7 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 		try {
 			Connection cn = Connector.getInstance().connect();
 
-			String sql = " SELECT po.order_date,po.total_point_price,reward_product_id,po.buy_count,pr.reward_product_name,pr.reward_product_image,pr.point_price FROM point_order_table po JOIN point_reward_table pr USING(reward_product_id) WHERE user_id=?";
+			String sql = " SELECT po.order_date,po.total_point_price,reward_product_id,po.buy_count,pr.reward_product_name,pr.reward_product_image,pr.point_price FROM point_order_table po JOIN point_reward_table pr USING(reward_product_id) WHERE user_id=? AND shipped=0";
 			st = cn.prepareStatement(sql);
 			st.setInt(1, user_id);
 
@@ -111,4 +111,77 @@ public class MySQLPointOrderDAO implements PointOrderDAO {
 			}
 		}
 	}
+
+	public void updateShipped(int user_id, PointOrderBean pOrderBean) {
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "UPDATE point_order_table SET shipped = 1 WHERE point_order_id = ? and user_id = ?";
+
+			st = cn.prepareStatement(sql);
+
+			st.setInt(1, pOrderBean.getPoint_order_id());
+			st.setInt(2, user_id);
+
+			st.executeUpdate();
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public List<PointOrderBean> getShippedOrderList(int user_id) {
+		ArrayList<PointOrderBean> orders = new ArrayList<PointOrderBean>();
+		try {
+			Connection cn = Connector.getInstance().connect();
+
+			String sql = "SELECT o.order_date,o.total_point_price,o.shipped,reward_product_id,o.buy_count,p.reward_product_name,p.reward_product_image,p.point_price, o.point_order_id "
+						+ "FROM point_order_table o JOIN point_reward_table p USING(reward_product_id) "
+						+ "WHERE o.user_id=? AND SHIPPED = 1;";
+
+			st = cn.prepareStatement(sql);
+			st.setInt(1, user_id);
+
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				PointOrderBean o = new PointOrderBean();
+
+				o.setOrder_date(rs.getString(1));
+				o.setTotal_point_price(rs.getInt(2));
+				o.setShipped(rs.getBoolean(3));
+				o.setReward_product_id(rs.getInt(4));
+				o.setBuy_count(rs.getInt(5));
+				o.setReward_product_name(rs.getString(6));
+				o.setReward_product_image(rs.getString(7));
+				o.setPoint_price(rs.getInt(8));
+				o.setPoint_order_id(rs.getInt(9));
+
+				orders.add(o);
+			}
+		} catch (SQLException e) {
+			//ロールバックする
+			Connector.getInstance().rollback();
+		} finally {
+			//リソースの解放処理
+			try {
+				if (st != null) {
+					st.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return orders;
+	}
+
 }

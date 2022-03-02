@@ -12,6 +12,7 @@ public class PointOrderBean implements Serializable {
 	private String reward_product_name;
 	private String reward_product_image;
 	private int point_price;
+	private Boolean shipped;
 
 	public PointOrderBean() {}
 
@@ -85,5 +86,13 @@ public class PointOrderBean implements Serializable {
 
 	public void setPoint_price(int point_price) {
 		this.point_price = point_price;
+	}
+
+	public void setShipped(Boolean shipped) {
+		this.shipped = shipped;
+	}
+
+	public Boolean getShipped() {
+		return shipped;
 	}
 }
