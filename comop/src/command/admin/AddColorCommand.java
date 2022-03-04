@@ -38,6 +38,5 @@ public class AddColorCommand extends AbstractCommand {
 		resc.setTarget("colorManagement");
 
 		return resc;
-		//競合除去
 	}
 }
