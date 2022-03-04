@@ -21,6 +21,11 @@ public class GetPointOrderListCommand extends AbstractCommand {
 		List<PointOrderBean> pointOrderList = pointOrderDAO.getPointOrderList(user_id);
 		resc.setResult(pointOrderList);
 
+		List<PointOrderBean> shippedProductsList = pointOrderDAO.getShippedOrderList(user_id);
+		rc.setAttribute("shipped_list", shippedProductsList);
+		System.out.println(shippedProductsList.size());
+		rc.setAttribute("shipped_order_list_size", shippedProductsList.size());
+
 		rc.setAttribute("point_order_list_size", pointOrderList.size());
 
 		resc.setTarget("rewardProductOrderHistory");

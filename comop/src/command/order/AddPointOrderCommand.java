@@ -1,5 +1,8 @@
 package command.order;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import bean.PointOrderBean;
@@ -54,8 +57,23 @@ public class AddPointOrderCommand extends AbstractCommand {
 		List<PointOrderBean> pointOrderList = pointOrderDAO.getPointOrderList(user_id);
 		resc.setResult(pointOrderList);
 
+		for (PointOrderBean pOrderBean : pointOrderList) {
+			LocalDate accessedDate = LocalDate.now(); // 注文履歴にアクセスした時の日付
+			LocalDate orderDate = LocalDate.parse(pOrderBean.getOrder_date(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")); //注文日時
+			long dateDifference = ChronoUnit.DAYS.between(orderDate, accessedDate); // アクセスした時の日付と注文日の差分
+
+			//日付の差分が3日以上の場合、発送済みにする
+			if (dateDifference >= 3) pointOrderDAO.updateShipped(user_id,pOrderBean);
+		}
+
 		rc.setAttribute("point_order_list_size", pointOrderList.size());
 
+		PointOrderDAO pdao = factory.getPointOrderDAO();
+		List<PointOrderBean> shippedProductsList = pdao.getShippedOrderList(user_id);
+		rc.setAttribute("shipped_list", shippedProductsList);
+		
+		System.out.println(shippedProductsList.size());
+		rc.setAttribute("shipped_order_list_size", shippedProductsList.size());
 		//rewardProductHistory.jspに移動
 		resc.setTarget("rewardProductOrderHistory");
 

@@ -1,10 +1,45 @@
-# **comop**
-
 ## 開発環境
 - OS: Windows10 Home Pro
-- Language: Java 8, HTML, CSS, javaScript
+- Language: Java 8, HTML, CSS(Tailwind CSS), javaScript(Alpine.js)
 - DB: MySQL 8.0.20
 - Server: Tomcat 8.5
+
+## 制作で躓いた部分
+- SQLで列名と表名を指定するとき、小文字にしないとAWSの時に取得・追加・更新・削除ができない
+```
+NG： INSERT INTO NAME FROM USER_TABLE;
+OK： INSERT INTO name FROM user_table;
+```
+
+- 画像を表示させるときWebContent直下にして、かつweb.xmlで
+```
+<servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>/images/*</url-pattern>
+</servlet-mapping>
+```
+- を書かないと表示されない（JSも同様）
+
+- 一つのJSPでListを二つ以上使いたいとき、setResultではなくsetAttributeを二つ用意したほうが良い
+```
+NG:
+List<XXX> XXXList = XXXDAO.getXXXList();
+requestContext.setResult(XXList);
+
+List<YYY> YYYList = YYYDAO.getYYYList();
+requestContext.setResult(YYYList);       // こっちのsetResultで一個前のsetResultが上書きされて使えない
+
+OK: 
+List<XXX> XXXList = XXXDAO.getXXXList();
+requestContext.setAttribute("XXX_list", XXXList);
+
+List<YYY> YYYList = YYYDAO.getYYYList();
+requestContext.setAttribute("YYY_list", YYYList);
+
+JSP
+<c:forEach var="xxx" items="${XXX_list}"></c:forEach>
+<c:forEach var="yyy" items="${yyy_list}"></c:forEach>
+```
 
 ## フォルダ構成
 
@@ -66,9 +101,9 @@
 │       │   ├── StockBean.java                                // stock_tableのBean
 │       │   └── UserBean.java                                 // user_tableのBean
 │       ├── command
-│       │   ├── AbstractCommand.java                         //
-│       │   ├── CommandFactory.java                          // プロパティファイルの読み込み・インスタンス化
-│       │   ├── admin                                        // 管理者関係
+│       │   ├── AbstractCommand.java                          //
+│       │   ├── CommandFactory.java                           // プロパティファイルの読み込み・インスタンス化
+│       │   ├── admin                                         // 管理者関係
 │       │   │   ├── AddColorCommand.java                     // 色の追加
 │       │   │   ├── AddProductCommand.java                   // 商品の追加
 │       │   │   ├── AddRewardProductCommand.java             // ポイント商品の追加
@@ -82,17 +117,17 @@
 │       │   │   ├── RemoveColorCommand.java                  // 色の削除
 │       │   │   ├── RemoveProductCommand.java                // 商品の削除
 │       │   │   └── RemoveRewardProductCommand.java          // ポイント商品の削除
-│       │   ├── cart                                         // カート関係
+│       │   ├── cart                                          // カート関係
 │       │   │   ├── AddCartCommand.java                      // カートに追加
 │       │   │   ├── DecreaseBuyCountCommand.java             // 購入個数を一つ減らす
 │       │   │   ├── GetCartListCommand.java                  // カートに追加された商品一覧の取得
 │       │   │   ├── IncreaseBuyCountCommand.java             // 購入個数を一つ増やす
 │       │   │   └── RemoveCartCommand.java                   // カートに追加した商品の削除
-│       │   ├── favorite                                     // お気に入り関係
+│       │   ├── favorite                                      // お気に入り関係
 │       │   │   ├── AddFavoriteCommand.java                  // お気に入りに追加
 │       │   │   ├── GetFavoriteListCommand.java              // お気に入りに追加された商品一覧の取得
 │       │   │   └── RemoveFavoriteCommand.java               // お気に入りの削除
-│       │   ├── move                                         // 移動関係
+│       │   ├── move                                          // 移動関係
 │       │   │   ├── MoveLeaveCommand.java                    // 退会ページへ移動
 │       │   │   ├── MoveModifyAddressCommand.java            // メールアドレス変更ページへ移動
 │       │   │   ├── MoveModifyBasicInfoCommand.java          // 基本情報編集ページへ移動
@@ -101,12 +136,12 @@
 │       │   │   ├── MoveSignInCommand.java                   // ログインページへ移動
 │       │   │   ├── MoveSignUpCommand.java                   // ログオン（会員登録）ページへ移動
 │       │   │   └── MoveTopCommand.java                      // トップページへ移動
-│       │   ├── order                                        // 注文関係
+│       │   ├── order                                         // 注文関係
 │       │   │   ├── AddOrderCommand.java                     // 商品を注文
 │       │   │   ├── AddPointOrderCommand.java                // ポイント商品を注文
 │       │   │   ├── GetOrderListCommand.java                 // 注文履歴一覧を取得
 │       │   │   └── GetPointOrderListCommand.java            // ポイント商品注文履歴を取得
-│       │   ├── product                                      // 商品関係
+│       │   ├── product                                       // 商品関係
 │       │   │   ├── GetProductDetailCommand.java             // 商品詳細を取得
 │       │   │   ├── GetProductsListCommand.java              // 商品一覧を取得
 │       │   │   ├── GetRewardProductsListCommand.java        // ポイント商品一覧を取得
@@ -115,16 +150,16 @@
 │       │   │   ├── SearchRewardProductsCommand.java         // ポイント商品検索
 │       │   │   ├── SortFavoriteCountCommand.java            // お気に入り数でソートされた商品一覧の取得
 │       │   │   └── SortProductsCommand.java                 // 値段でソートされた商品一覧の取得
-│       │   └── user                                         // ユーザー関連
-│       │       ├── ChangePasswordCommand.java               // パスワード変更
-│       │       ├── CreateAccountCommand.java                // アカウント作成
-│       │       ├── EditUserInfoCommand.java                 // ユーザー情報編集
-│       │       ├── GetOrderHistoryCommand.java              // 注文履歴を取得
-│       │       ├── GetUserInfoCommand.java                  // ユーザー情報の取得
-│       │       ├── LapseUserCommand.java                    // ユーザーの退会
-│       │       ├── LoginCommand.java                        // ログイン
-│       │       └── LogoutCommand.java                       // ログアウト
-│       ├── commands.properties                              // コマンドのプロパティファイル
+│       │   └── user                                          // ユーザー関連
+│       │       ├── ChangePasswordCommand.java                // パスワード変更
+│       │       ├── CreateAccountCommand.java                 // アカウント作成
+│       │       ├── EditUserInfoCommand.java                  // ユーザー情報編集
+│       │       ├── GetOrderHistoryCommand.java               // 注文履歴を取得
+│       │       ├── GetUserInfoCommand.java                   // ユーザー情報の取得
+│       │       ├── LapseUserCommand.java                     // ユーザーの退会
+│       │       ├── LoginCommand.java                         // ログイン
+│       │       └── LogoutCommand.java                        // ログアウト
+│       ├── commands.properties                                // コマンドのプロパティファイル
 │       ├── dao
 │       │   ├── Connector.java
 │       │   ├── admin
@@ -169,7 +204,7 @@
 │           ├── WebApplicationController.java
 │           ├── WebRequestContext.java
 │           └── WebResponseContext.java
-
+└── test.txt
 </pre>
 
 ## テーブル
@@ -393,4 +428,52 @@ insert into point_reward_table values(null, 'マスクバンド', 'MaskBand2.jpg
 insert into point_reward_table values(null, 'マスクケース', 'MaskCase3.jpg', '制菌加工を施したマスクケースマスクをケースで挟み、ゴムを留めるだけ一時的にマスクを外して清潔に保管したい時に便利なアイテム・サイズ　縦8 横10 cm　広げた時 縦16 横21 cm', 100, 10);
 insert into point_reward_table values(null, 'マスク用インナーフレーム', 'InnerFrame.jpg', '様々なマスク顔の間に挟み込むように使用する事で、マスク装着時の不快感を軽減するための商品・商品寸法：約100ｍｍ×85ｍｍ×厚さ40ｍｍ・素材：ポリエチレン', 100, 10);
 
+UPDATE product_table set product_image='package_pastelgreen.jpg' where product_id='36';
+UPDATE product_table set product_image='k_box_other7.jpg' where product_id='54';
+
+update product_table set size = 'キッズ' where product_id = 44;
+update product_table set size = 'キッズ' where product_id = 45;
+update product_table set size = 'キッズ' where product_id = 46;
+update product_table set size = 'キッズ' where product_id = 47;
+update product_table set size = 'キッズ' where product_id = 48;
+update product_table set size = 'キッズ' where product_id = 48;
+update product_table set size = 'キッズ' where product_id = 49;
+update product_table set size = 'キッズ' where product_id = 50;
+update product_table set size = 'キッズ' where product_id = 51;
+update product_table set size = 'キッズ' where product_id = 52;
+update product_table set size = 'キッズ' where product_id = 53;
+update product_table set size = 'キッズ' where product_id = 54;
+update product_table set size = 'キッズ' where product_id = 55;
+update product_table set size = 'キッズ' where product_id = 56;
+update product_table set size = 'キッズ' where product_id = 57;
+update product_table set size = 'キッズ' where product_id = 58;
+update product_table set size = 'キッズ' where product_id = 59;
+update product_table set size = 'キッズ' where product_id = 60;
+update product_table set size = 'キッズ' where product_id = 61;
+update product_table set size = 'キッズ' where product_id = 62;
+update product_table set size = 'キッズ' where product_id = 63;
+update product_table set size = 'キッズ' where product_id = 64;
+update product_table set size = 'キッズ' where product_id = 65;
+update product_table set size = 'キッズ' where product_id = 66;
+update product_table set size = 'キッズ' where product_id = 67;
+update product_table set size = 'キッズ' where product_id = 68;
+
+UPDATE product_table set product_image='package_biege1_1.jpg' where product_id='12';
+UPDATE product_table set product_image='package_blue3_1.jpg' where product_id='16';
+UPDATE product_table set product_image='package_green1_1.jpg' where product_id='18';
+UPDATE product_table set product_image='package_khaki1_1.jpg' where product_id='31';
+UPDATE product_table set product_image='package_pink2_1.jpg' where product_id='21';
+
+update point_reward_table set point_price=70 where reward_product_image='MaskCase.jpg';
+update point_reward_table set point_price=350 where reward_product_image='MaskStorageCase.jpg';
+update point_reward_table set point_price=70 where reward_product_image='MaskCase2.jpg';
+update point_reward_table set point_price=130 where reward_product_image='FaceShield.jpg';
+update point_reward_table set point_price=50 where reward_product_image='MaskStrap.jpg';
+update point_reward_table set point_price=70 where reward_product_image='TranslucentMask.jpg';
+update point_reward_table set point_price=50 where reward_product_image='MaskBand.jpg';
+update point_reward_table set point_price=50 where reward_product_image='MaskBand2.jpg';
+update point_reward_table set point_price=70 where reward_product_image='MaskCase3.jpg';
+update point_reward_table set point_price=80 where reward_product_image='InnerFrame.jpg';
+
+update product_table p join color_table c using(color_id) set product_description=concat('色：',c.color_name,'、サイズ：',size,'、素材：',material,'、包装タイプ：',packing_type);
 </pre>
